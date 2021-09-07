@@ -1,0 +1,41 @@
+
+#define horizon0 #16161C
+#define horizon1 #E95678
+#define horizon2 #29D398
+#define horizon3 #FAB795
+#define horizon4 #26BBD9
+#define horizon5 #EE64AE
+#define horizon6 #59E3E3
+#define horizon7 #FADAD1
+#define horizon8 #232530
+#define horizon9 #EC6A88
+#define horizon10 #3FDAA4
+#define horizon11 #FBC3A7
+#define horizon12 #3FC6DE
+#define horizon13 #F075B7
+#define horizon14 #6BE6E6
+#define horizon15 #FDF0ED
+
+*.foreground:  horizon4
+*.background:  horizon8
+*.cursorColor:  horizon4
+*fading: 35
+*fadeColor: horizon3
+
+
+*.color0: horizon1
+*.color1: horizon11
+*.color2: horizon14
+*.color3: horizon13
+*.color4: horizon4
+*.color5: horizon15
+*.color6: horizon8
+*.color7: horizon1
+*.color8: horizon3
+*.color9: horizon11
+*.color10: horizon14
+*.color11: horizon13
+*.color12: horizon4
+*.color13: horizon15
+*.color14: horizon7
+*.color15: horizon6
