@@ -20,7 +20,7 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Emacs state=tiled
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
-
+bspc rule -a GNvim state=tiled
 
 setxkbmap -model abnt2 -layout br -option ctrl:swapcaps &
 xinput --set-prop "SIGMACHIP Usb Mouse" "Coordinate Transformation Matrix" 0.2 0 0 0 0.2 0 0 0 1 &
