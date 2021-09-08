@@ -24,7 +24,7 @@ alt + n
 
 # run neovim-qt
 alt + ctrl + n 
-	nvim-qt
+	gnvim
 
 
 # program launcher
