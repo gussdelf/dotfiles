@@ -20,11 +20,11 @@ alt + ctrl + d
 
 # run neovim
 alt + n
-	st -e nvim
+	nvui
 
 # run neovim-qt
 alt + ctrl + n 
-	gnvim
+        gnvim --disable-ext-tabline --disable-ext-cmdline --disable-ext-popupmenu
 
 
 # program launcher

@@ -28,3 +28,4 @@ xsetroot -cursor_name left_ptr &
 picom -f &
 feh --bg-scale ~/Imgs/Void.jpg &
 xrdb ~/.config/Xresources/OneDarkDarker &
+pgrep bspswallow || bspswallow &
