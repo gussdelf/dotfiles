@@ -18,6 +18,8 @@ alias v='nvim'
 alias vi='/usr/bin/vim'
 alias e='sudoedit'
 alias N='nnn -e'
+alias lz='lazygit'
+alias doom='~/.emacs.d/bin/doom'
 
 # Exports
 set --export NNN_FIFO "/tmp/nnn.fifo"
