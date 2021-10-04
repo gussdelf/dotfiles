@@ -5,21 +5,22 @@ end
 # Starship prompt
 starship init fish | source
 
-# Aliases
-alias g='git'
-alias clone='git clone'
-alias c='clear'
+# Aliases and abbrs
 alias bat='bat --theme Solarized\ \(dark\)'
 alias ls='exa --icons -s type'
 alias ll='exa --icons -s type -l'
 alias la='exa --icons -s type -la'
-alias lg='logo-ls'
+alias lg='lazygit'
 alias v='nvim'
 alias vi='/usr/bin/vim'
-alias e='sudoedit'
+alias se='sudoedit'
 alias N='nnn -e'
-alias lz='lazygit'
+alias tree='exa --icons -s type -T'
 alias doom='~/.emacs.d/bin/doom'
+
+abbr c 'clear'
+abbr g 'git'
+abbr clone 'git clone'
 
 # Exports
 set --export NNN_FIFO "/tmp/nnn.fifo"
