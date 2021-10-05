@@ -1,0 +1,4 @@
+auto-reload yes
+bind-key j down
+bind-key k up
+include /usr/share/doc/newsboat/contrib/colorschemes/nord
