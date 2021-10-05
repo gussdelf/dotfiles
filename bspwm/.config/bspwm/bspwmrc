@@ -1,7 +1,6 @@
 #! /bin/sh
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-$HOME/.config/polybar/launch.sh 
 bspc monitor -d I II III IV V 
 
 bspc config border_width         0
@@ -29,3 +28,4 @@ picom -f &
 feh --bg-scale ~/Imgs/Void.jpg &
 xrdb ~/.config/Xresources/OneDarkDarker &
 pgrep bspswallow || bspswallow &
+$HOME/.config/polybar/launch.sh &

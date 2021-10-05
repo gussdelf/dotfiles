@@ -20,12 +20,17 @@ alias doom='~/.emacs.d/bin/doom'
 abbr c 'clear'
 abbr g 'git'
 abbr N 'nnn -e'
+abbr p 'doas pacman'
 
-# Exports
+# Exports and sets
 set --export NNN_FIFO "/tmp/nnn.fifo"
 export VISUAl='nvim' 
 export EDITOR='nvim'
 export NNN_PLUG='c:fzcd;l:launch;z:autojump;p:preview-tui;P:preview-tabbed;o:fzopen;'
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export PAGER="bat --paging=always"
+
+# Source
 source ~/.config/diricons.fish
