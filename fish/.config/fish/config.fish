@@ -14,13 +14,12 @@ alias lg='lazygit'
 alias v='nvim'
 alias vi='/usr/bin/vim'
 alias se='sudoedit'
-alias N='nnn -e'
 alias tree='exa --icons -s type -T'
 alias doom='~/.emacs.d/bin/doom'
 
 abbr c 'clear'
 abbr g 'git'
-abbr clone 'git clone'
+abbr N 'nnn -e'
 
 # Exports
 set --export NNN_FIFO "/tmp/nnn.fifo"

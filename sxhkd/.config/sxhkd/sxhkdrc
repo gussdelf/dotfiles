@@ -18,11 +18,7 @@ alt + ctrl + e
 alt + ctrl + d
 	emacs --daemon
 
-# run neovim
-alt + n
-	nvui
-
-# run neovim-qt
+# run gnvim
 alt + ctrl + n 
         gnvim --disable-ext-tabline --disable-ext-cmdline --disable-ext-popupmenu
 

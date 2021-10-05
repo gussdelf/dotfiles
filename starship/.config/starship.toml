@@ -3,7 +3,19 @@ format = "$all"
 
 [character]
 success_symbol = "[󰢱 ](green)"
-error_symbol = "[󰢱 ](red)"
+error_symbol = "[ ](yellow)"
+#success_symbol = "[󰘧 ](green)"
+#error_symbol = "[ ](red)"
+#success_symbol = "[󰮯 ](green)"
+#error_symbol = "[ ](red)"
+#success_symbol = "[󰯈 ](green)"
+#error_symbol = "[ ](red)"
+#success_symbol = "[󰉋 ](green)"
+#error_symbol = "[ ](red)"
+#success_symbol = "[󱙝 ](green)"
+#error_symbol = "[ ](red)"
+#success_symbol = "[ ](green)"
+#error_symbol = "[](red)"
 
 
 [line_break]
