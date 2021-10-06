@@ -29,3 +29,4 @@ feh --bg-scale ~/Imgs/Void.jpg &
 xrdb ~/.config/Xresources/OneDarkDarker &
 pgrep bspswallow || bspswallow &
 $HOME/.config/polybar/launch.sh &
+
