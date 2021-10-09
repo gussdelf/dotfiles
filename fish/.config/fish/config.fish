@@ -23,6 +23,11 @@ abbr c 'clear'
 abbr N 'nnn -e'
 abbr p 'doas pacman'
 
+# Change dis aliases
+abbr delf 'cd ~/.config/gussdelf/lua/'
+abbr fish 'cd ~/dotfiles/fish/.config/fish/'
+abbr doomdir 'cd ~/dotfiles/doom/.config/doom/'
+
 # Exports and sets
 set --export NNN_FIFO "/tmp/nnn.fifo"
 export VISUAl='nvim' 

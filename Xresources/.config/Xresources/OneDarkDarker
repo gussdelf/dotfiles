@@ -1,6 +1,7 @@
 ! window padding
 st.borderpx:          00
 st.opacity: 255
+st.font:           VictorMono Nerd Font:style:semibold:pixelsize=14
 
 ! special
 *.foreground:   #ABB2BF

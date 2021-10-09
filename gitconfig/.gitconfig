@@ -1,0 +1,5 @@
+[alias]
+   st = status
+   a = "!git status --short | peco | awk '{print $2}' | xargs git add"
+   ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+   pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
