@@ -27,6 +27,9 @@ alt + ctrl + n
 super + @space
 	dmenu_run -c -l 20 -g 4 -p "run: "
 
+super + c
+  rofi -show drun
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd

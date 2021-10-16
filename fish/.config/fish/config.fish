@@ -16,17 +16,13 @@ alias g='git'
 alias v='nvim'
 alias vi='/usr/bin/vim'
 alias se='sudoedit'
+alias nw='newsboat'
+alias cdr='cd (ghq list --full-path | fzf --reverse)'
 alias tree='exa --icons -s type -T'
 alias doom='~/.emacs.d/bin/doom'
 
 abbr c 'clear'
 abbr N 'nnn -e'
-abbr p 'doas pacman'
-
-# Change dis aliases
-abbr delf 'cd ~/.config/gussdelf/lua/'
-abbr fish 'cd ~/dotfiles/fish/.config/fish/'
-abbr doomdir 'cd ~/dotfiles/doom/.config/doom/'
 
 # Exports and sets
 set --export NNN_FIFO "/tmp/nnn.fifo"
