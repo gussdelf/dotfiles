@@ -3,6 +3,9 @@
 
 * Init.el
 My init.el
+#+begin_src emacs-lisp :tangle "init.el" :noweb no-export :comments no
+;;; init.el -*- lexical-binding: t; -*-
+#+end_src
 ** The file
 #+begin_src emacs-lisp :tangle "init.el" :noweb no-export :comments no
 (doom! :input
@@ -43,6 +46,7 @@ My init.el
 
        :config
        <<doom-config>>
+       )
 #+end_src
 ** doom-input
 #+name: doom-input
@@ -164,7 +168,7 @@ My init.el
        ;;beancount         ; mind the GAAP
        (cc +lsp)               ; C > C++ == 1
        ;;clojure           ; java with a lisp
-       ;; common-lisp       ; if you've seen one lisp, you've seen them all
+       common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
@@ -242,7 +246,7 @@ My init.el
 #+name: doom-config
 #+begin_src emacs-lisp
        literate
-       (default +bindings +smartparens))
+       (default +bindings +smartparens)
 #+end_src
 
 * Packages.el
@@ -251,6 +255,9 @@ My init.el
 (package! tree-sitter-langs)
 #+end_src
 * Config
+#+begin_src emacs-lisp :tangle yes
+;;; config.el -*- lexical-binding: t; -*-
+#+end_src
 ** Profile
 *** Identify
 Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets.
@@ -325,4 +332,12 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 #+begin_src emacs-lisp :tangle no
 (set-frame-parameter (selected-frame) 'alpha '(92 . 90))
 (add-to-list 'default-frame-alist '(alpha . (92 . 90)))
+#+end_src
+*** Modeline
+#+begin_src emacs-lisp :tangle yes
+(after! doom-modeline
+  (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
+  (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
+  (line-number-mode -1)
+  (setq doom-modeline-buffer-encoding nil))
 #+end_src
