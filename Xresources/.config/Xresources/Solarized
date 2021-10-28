@@ -1,3 +1,7 @@
+! window padding
+st.borderpx:          00
+st.opacity: 255
+st.font:           FiraCode Nerd Font:style:regular:pixelsize=14
 #define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75

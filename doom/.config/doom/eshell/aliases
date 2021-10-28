@@ -1,0 +1,6 @@
+alias ff find-file $1
+alias clear clear-scrollback
+alias ls exa --icons -s type
+alias la exa --icons -s type -la
+alias ll exa --icons -s type -l
+alias g git

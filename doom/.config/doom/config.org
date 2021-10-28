@@ -1,16 +1,68 @@
+#+title: My config of Doom emacs
+#+startup: fold
+
+* Init.el
+My init.el
+** The file
+#+begin_src emacs-lisp :tangle "init.el" :noweb no-export :comments no
 (doom! :input
+       <<doom-input>>
+
+       :completion
+       <<doom-completion>>
+
+       :ui
+       <<doom-ui>>
+
+       :editor
+       <<doom-editor>>
+
+       :emacs
+       <<doom-emacs>>
+
+       :term
+       <<doom-term>>
+
+       :checkers
+       <<doom-checkers>>
+
+       :tools
+       <<doom-tools>>
+
+       :os
+       <<doom-os>>
+
+       :lang
+       <<doom-lang>>
+
+       :email
+       <<doom-email>>
+
+       :app
+       <<doom-app>>
+
+       :config
+       <<doom-config>>
+#+end_src
+** doom-input
+#+name: doom-input
+#+begin_src emacs-lisp
        ;;chinese
        ;;japanese
        ;;layout            ; auie,ctsrnm is the superior home row
-
-       :completion
+#+end_src
+** doom-completion
+#+name: doom-completion
+#+begin_src emacs-lisp
        (company +childframe)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;; (ivy +icons +prescient)        ; a search engine for love and life
        (vertico +icons)           ; the search engine of the future
-
-       :ui
+#+end_src
+** doom-ui
+#+name: doom-ui
+#+begin_src emacs-lisp
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
@@ -34,8 +86,10 @@
        (window-select +numbers)     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
        zen               ; distraction-free coding or writing
-
-       :editor
+#+end_src
+** doom-editor
+#+name: doom-editor
+#+begin_src emacs-lisp
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
@@ -48,26 +102,34 @@
        ;;rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
        word-wrap         ; soft wrapping with language-aware indent
-
-       :emacs
+#+end_src
+** doom-emacs
+#+name: doom-emacs
+#+begin_src emacs-lisp
        (dired +ranger +icons)                          ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        (ibuffer +icons)         ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
-
-       :term
+#+end_src
+** doom-term
+#+name: doom-term
+#+begin_src emacs-lisp
        eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
        ;;term              ; basic terminal emulator for Emacs
        vterm             ; the best terminal emulation in Emacs
-
-       :checkers
+#+end_src
+** doom-checkers
+#+name: doom-checkers
+#+begin_src emacs-lisp
        (syntax +childframe)             ; tasing you for every semicolon you forget
        ;;(spell +flyspell) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
-
-       :tools
+#+end_src
+** doom-tools
+#+name: doom-tools
+#+begin_src emacs-lisp
        ;;ansible
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
@@ -88,12 +150,16 @@
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
-
-       :os
+#+end_src
+** doom-os
+#+name: doom-os
+#+begin_src emacs-lisp
        (:if IS-MAC macos)  ; improve compatibility with macOS
        ;;tty               ; improve the terminal Emacs experience
-
-       :lang
+#+end_src
+** doom-lang
+#+name: doom-lang
+#+begin_src emacs-lisp
        ;;agda              ; types of types of types of types...
        ;;beancount         ; mind the GAAP
        (cc +lsp)               ; C > C++ == 1
@@ -154,20 +220,109 @@
        ;;web               ; the tubes
        ;;yaml              ; JSON, but readable
        ;;zig               ; C, but simpler
-
-       :email
+#+end_src
+** doom-email
+#+name: doom-email
+#+begin_src emacs-lisp
        ;;(mu4e +org +gmail)
        ;;notmuch
        ;;(wanderlust +gmail)
-
-       :app
+#+end_src
+** doom-app
+#+name: doom-app
+#+begin_src emacs-lisp
        ;;calendar
        emms
        ;;everywhere        ; *leave* Emacs!? You must be joking
        irc               ; how neckbeards socialize
        (rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
-
-       :config
+#+end_src
+** doom-config
+#+name: doom-config
+#+begin_src emacs-lisp
        literate
        (default +bindings +smartparens))
+#+end_src
+
+* Packages.el
+#+begin_src emacs-lisp :tangle "packages.el" :noweb no-export :comments no
+(package! tree-sitter)
+(package! tree-sitter-langs)
+#+end_src
+* Config
+** Profile
+*** Identify
+Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets.
+#+begin_src emacs-lisp :tangle yes
+(setq user-full-name "Gustavo Freitas"
+      user-mail-address "flovatsug@gmail.com")
+#+end_src
+*** Org-mode dir
+#+begin_src emacs-lisp :tangle yes
+(setq org-directory "~/.config/org/")
+#+end_src
+** Extra packages
+*** Tree-sitter
+Tree-sitter is a parser generator tool and an incremental parsing library. It can build a concrete syntax tree for a source file and efficiently update the syntax tree as the source file is edited.
+#+begin_src emacs-lisp :tangle yes
+(use-package! tree-sitter
+  :config
+  (require 'tree-sitter-langs)
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+#+end_src
+** Some ui fix
+*** Fonts
+#+begin_src emacs-lisp :tangle yes
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 14)
+      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 17))
+#+end_src
+*** Theme
+#+begin_src emacs-lisp :tangle yes
+(setq doom-theme 'doom-material)
+#+end_src
+*** Line number
+This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
+#+begin_src emacs-lisp :tangle yes
+(setq display-line-numbers-type `relative)
+#+end_src
+*** Dashboard
+#+begin_src emacs-lisp :tangle yes
+(setq fancy-splash-image "~/.config/doom/misc/emacs-e.svg")
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+(add-hook! '+doom-dashboard-mode-hook (hide-mode-line-mode 1) (hl-line-mode -1))
+(setq-hook! '+doom-dashboard-mode-hook evil-normal-state-cursor (list nil))
+(doom-big-font-mode)
+
+(defun doom-dashboard-widget-footer ()
+  (insert
+   "\n"
+   (+doom-dashboard--center
+    (- +doom-dashboard--width 2)
+    (with-temp-buffer
+      (insert-text-button (or (all-the-icons-octicon "octoface" :face 'doom-dashboard-footer-icon :height 1.3 :v-adjust -0.15)
+                              (propertize "github" 'face 'doom-dashboard-footer))
+                          'action (lambda (_) (browse-url "https://github.com/gussdelf/"))
+                          'follow-link t
+                          'help-echo "Open my github page")
+      (buffer-string)))
+   "\n"))
+#+end_src
+*** Italic to Slant
+#+begin_src emacs-lisp :tangle yes
+(add-hook! 'doom-load-theme-hook
+  (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
+  (set-face-attribute 'font-lock-keyword-face nil :slant 'italic))
+#+end_src
+*** Dont show line number in org-mode
+#+begin_src emacs-lisp :tangle yes
+(dolist (mode '(org-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+end_src
+*** Transparency (if you wanna)
+#+begin_src emacs-lisp :tangle no
+(set-frame-parameter (selected-frame) 'alpha '(92 . 90))
+(add-to-list 'default-frame-alist '(alpha . (92 . 90)))
+#+end_src
