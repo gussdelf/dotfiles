@@ -18,10 +18,11 @@ alias vi='/usr/bin/vim'
 alias se='sudoedit'
 alias nw='newsboat'
 alias nf='neofetch'
-alias cdr='cd (ghq list --full-path | fzf --reverse)'
+alias cp='rsync'
 alias uf='ufetch'
 alias tree='exa --icons -s type -T'
 alias doom='~/.emacs.d/bin/doom'
+alias suspend='systemctl suspend'
 abbr c 'clear;'
 abbr N 'nnn -e'
 
@@ -44,6 +45,5 @@ xset r rate 210 40
 
 function fish_user_key_bindings
   bind -s -M insert -m default jk 'commandline -f repaint'
-  bind -s -M insert \cn cdr
 end
 funcsave fish_user_key_bindings

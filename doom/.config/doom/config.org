@@ -61,8 +61,8 @@ My init.el
        (company +childframe)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ;; (ivy +icons +prescient)        ; a search engine for love and life
-       (vertico +icons)           ; the search engine of the future
+       (ivy +icons +prescient)        ; a search engine for love and life
+       ;; (vertico +icons)           ; the search engine of the future
 #+end_src
 ** doom-ui
 #+name: doom-ui
@@ -71,20 +71,20 @@ My init.el
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       (emoji +unicode)  ; 🙂
+       (emoji +unicode +ascii +github)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
        ;; indent-guides     ; highlighted indent columns
        (ligatures +extra)         ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
-       modeline          ; snazzy, Atom-inspired modeline, plus API
-       ;;nav-flash         ; blink cursor line after big motions
+       (modeline +light)          ; snazzy, Atom-inspired modeline, plus API
+       nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
        (popup +defaults +all)   ; tame sudden yet inevitable temporary windows
-       tabs              ; a tab bar for Emacs
+       ;; tabs              ; a tab bar for Emacs
        (treemacs +lsp)          ; a project drawer, like neotree but cooler
-       ;;unicode           ; extended unicode support for various languages
+       ;; unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        (window-select +numbers)     ; visually switch windows
@@ -145,7 +145,7 @@ My init.el
        lookup              ; navigate your code and its documentation
        lsp               ; M-x vscode
        (magit +forge)            ; a git porcelain for Emacs
-       ;;make              ; run make tasks from Emacs
+       make              ; run make tasks from Emacs
        pass              ; password manager for nerds
        pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
@@ -159,7 +159,7 @@ My init.el
 #+name: doom-os
 #+begin_src emacs-lisp
        (:if IS-MAC macos)  ; improve compatibility with macOS
-       ;;tty               ; improve the terminal Emacs experience
+       tty               ; improve the terminal Emacs experience
 #+end_src
 ** doom-lang
 #+name: doom-lang
@@ -198,11 +198,11 @@ My init.el
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        (lua +lsp)               ; one-based indices? one-based indices
-       markdown          ; writing docs for people to ignore
+       (markdown +grip)         ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       (org +pretty)               ; organize your plain life in plain text
+       (org +pretty +roam2 +pomodoro)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
@@ -253,6 +253,8 @@ My init.el
 #+begin_src emacs-lisp :tangle "packages.el" :noweb no-export :comments no
 (package! tree-sitter)
 (package! tree-sitter-langs)
+(package! spacemacs-theme)
+(package! solarized-theme)
 #+end_src
 * Config
 #+begin_src emacs-lisp :tangle yes
@@ -267,7 +269,7 @@ Some functionality uses this to identify you, e.g. GPG configuration, email clie
 #+end_src
 *** Org-mode dir
 #+begin_src emacs-lisp :tangle yes
-(setq org-directory "~/.config/org/")
+(setq org-directory "~/Docs/org/")
 #+end_src
 ** Extra packages
 *** Tree-sitter
@@ -279,29 +281,183 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 #+end_src
+** Magit
+*** Pretty-magit
+#+begin_src emacs-lisp :tangle yes
+(require 'dash)
+
+(defmacro pretty-magit (WORD ICON PROPS &optional NO-PROMPT?)
+  "Replace sanitized WORD with ICON, PROPS and by default add to prompts."
+  `(prog1
+     (add-to-list 'pretty-magit-alist
+                  (list (rx bow (group ,WORD (eval (if ,NO-PROMPT? "" ":"))))
+                        ,ICON ',PROPS))
+     (unless ,NO-PROMPT?
+       (add-to-list 'pretty-magit-prompt (concat ,WORD ": ")))))
+
+(setq pretty-magit-alist nil)
+(setq pretty-magit-prompt nil)
+(pretty-magit "Feature" ? (:foreground "slate gray" :height 1.2))
+(pretty-magit "Add"     ? (:foreground "#375E97" :height 1.2))
+(pretty-magit "Fix"     ? (:foreground "#FB6542" :height 1.2))
+(pretty-magit "Clean"   ? (:foreground "#FFBB00" :height 1.2))
+(pretty-magit "Docs"    ? (:foreground "#3F681C" :height 1.2))
+(pretty-magit "master"  ? (:box t :height 1.2) t)
+(pretty-magit "origin"  ? (:box t :height 1.2) t)
+
+(defun add-magit-faces ()
+  "Add face properties and compose symbols for buffer from pretty-magit."
+  (interactive)
+  (with-silent-modifications
+    (--each pretty-magit-alist
+      (-let (((rgx icon props) it))
+        (save-excursion
+          (goto-char (point-min))
+          (while (search-forward-regexp rgx nil t)
+            (compose-region
+             (match-beginning 1) (match-end 1) icon)
+            (when props
+              (add-face-text-property
+               (match-beginning 1) (match-end 1) props))))))))
+
+(advice-add 'magit-status :after 'add-magit-faces)
+(advice-add 'magit-refresh-buffer :after 'add-magit-faces)
+(setq use-magit-commit-prompt-p nil)
+(defun use-magit-commit-prompt (&rest args)
+  (setq use-magit-commit-prompt-p t))
+
+(defun magit-commit-prompt ()
+  "Magit prompt and insert commit header with faces."
+  (interactive)
+  (when use-magit-commit-prompt-p
+    (setq use-magit-commit-prompt-p nil)
+    (insert (ivy-read "Commit Type " pretty-magit-prompt
+                      :require-match t :sort t :preselect "Add: "))
+    ;; Or if you are using Helm...
+    ;; (insert (helm :sources (helm-build-sync-source "Commit Type "
+    ;;                          :candidates pretty-magit-prompt)
+    ;;               :buffer "*magit cmt prompt*"))
+    ;; I haven't tested this but should be simple to get the same behaior
+    (add-magit-faces)
+    (evil-insert 1)  ; If you use evil
+    ))
+
+(remove-hook 'git-commit-setup-hook 'with-editor-usage-message)
+(add-hook 'git-commit-setup-hook 'magit-commit-prompt)
+(advice-add 'magit-commit :after 'use-magit-commit-prompt)
+#+end_src
 ** Some ui fix
 *** Fonts
 #+begin_src emacs-lisp :tangle yes
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14)
-      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 14)
-      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 17))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 16)
+      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 19)
+      ;; doom-unicode-font (font-spec :family "Fira")
+      ;; doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light)
+      )
+;; (doom-big-font-mode)
 #+end_src
 *** Theme
 #+begin_src emacs-lisp :tangle yes
 (setq doom-theme 'doom-material)
 #+end_src
-*** Line number
-This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
-#+begin_src emacs-lisp :tangle yes
-(setq display-line-numbers-type `relative)
-#+end_src
 *** Dashboard
+#+name: splash-image
 #+begin_src emacs-lisp :tangle yes
-(setq fancy-splash-image "~/.config/doom/misc/emacs-e.svg")
+(defvar fancy-splash-image-template
+  (expand-file-name "misc/splash-images/emacs-e.svg" doom-private-dir)
+  "Default template svg used for the splash image, with substitutions from ")
+
+(defvar fancy-splash-sizes
+  `((:height 150 :min-height 50 :padding (0 . 2))
+    (:height 126 :min-height 42 :padding (2 . 4))
+    (:height 105  :min-height 35 :padding (3 . 3))
+    (:height 84  :min-height 28 :padding (3 . 3))
+    (:height 60 :min-height 20 :padding (2 . 2))
+    (:height 45  :min-height 15 :padding (2 . 1))
+    (:height 30  :min-height 10 :padding (1 . 0))
+    (:height 1   :min-height 0  :padding (0 . 0)))
+  "list of plists with the following properties
+  :height the height of the image
+  :min-height minimum `frame-height' for image
+  :padding `+doom-dashboard-banner-padding' (top . bottom) to apply
+  :template non-default template file
+  :file file to use instead of template")
+
+(defvar fancy-splash-template-colours
+  '(("$colour1" . keywords) ("$colour2" . type) ("$colour3" . base5) ("$colour4" . base8))
+  "list of colour-replacement alists of the form (\"$placeholder\" . 'theme-colour) which applied the template")
+
+(unless (file-exists-p (expand-file-name "theme-splashes" doom-cache-dir))
+  (make-directory (expand-file-name "theme-splashes" doom-cache-dir) t))
+
+(defun fancy-splash-filename (theme-name height)
+  (expand-file-name (concat (file-name-as-directory "theme-splashes")
+                            theme-name
+                            "-" (number-to-string height) ".svg")
+                    doom-cache-dir))
+
+(defun fancy-splash-clear-cache ()
+  "Delete all cached fancy splash images"
+  (interactive)
+  (delete-directory (expand-file-name "theme-splashes" doom-cache-dir) t)
+  (message "Cache cleared!"))
+
+(defun fancy-splash-generate-image (template height)
+  "Read TEMPLATE and create an image if HEIGHT with colour substitutions as
+   described by `fancy-splash-template-colours' for the current theme"
+  (with-temp-buffer
+    (insert-file-contents template)
+    (re-search-forward "$height" nil t)
+    (replace-match (number-to-string height) nil nil)
+    (dolist (substitution fancy-splash-template-colours)
+      (goto-char (point-min))
+      (while (re-search-forward (car substitution) nil t)
+        (replace-match (doom-color (cdr substitution)) nil nil)))
+    (write-region nil nil
+                  (fancy-splash-filename (symbol-name doom-theme) height) nil nil)))
+
+(defun fancy-splash-generate-images ()
+  "Perform `fancy-splash-generate-image' in bulk"
+  (dolist (size fancy-splash-sizes)
+    (unless (plist-get size :file)
+      (fancy-splash-generate-image (or (plist-get size :template)
+                                       fancy-splash-image-template)
+                                   (plist-get size :height)))))
+
+(defun ensure-theme-splash-images-exist (&optional height)
+  (unless (file-exists-p (fancy-splash-filename
+                          (symbol-name doom-theme)
+                          (or height
+                              (plist-get (car fancy-splash-sizes) :height))))
+    (fancy-splash-generate-images)))
+
+(defun get-appropriate-splash ()
+  (let ((height (frame-height)))
+    (cl-some (lambda (size) (when (>= height (plist-get size :min-height)) size))
+             fancy-splash-sizes)))
+
+(setq fancy-splash-last-size nil)
+(setq fancy-splash-last-theme nil)
+(defun set-appropriate-splash (&rest _)
+  (let ((appropriate-image (get-appropriate-splash)))
+    (unless (and (equal appropriate-image fancy-splash-last-size)
+                 (equal doom-theme fancy-splash-last-theme)))
+    (unless (plist-get appropriate-image :file)
+      (ensure-theme-splash-images-exist (plist-get appropriate-image :height)))
+    (setq fancy-splash-image
+          (or (plist-get appropriate-image :file)
+              (fancy-splash-filename (symbol-name doom-theme) (plist-get appropriate-image :height))))
+    (setq +doom-dashboard-banner-padding (plist-get appropriate-image :padding))
+    (setq fancy-splash-last-size appropriate-image)
+    (setq fancy-splash-last-theme doom-theme)
+    (+doom-dashboard-reload)))
+
+(add-hook 'window-size-change-functions #'set-appropriate-splash)
+(add-hook 'doom-load-theme-hook #'set-appropriate-splash)
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 (add-hook! '+doom-dashboard-mode-hook (hide-mode-line-mode 1) (hl-line-mode -1))
 (setq-hook! '+doom-dashboard-mode-hook evil-normal-state-cursor (list nil))
-(doom-big-font-mode)
 
 (defun doom-dashboard-widget-footer ()
   (insert
@@ -317,6 +473,98 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
       (buffer-string)))
    "\n"))
 #+end_src
+#+name: splash-phrases
+#+begin_src emacs-lisp :tangle yes
+(defvar splash-phrase-source-folder
+  (expand-file-name "misc/splash-phrases" doom-private-dir)
+  "A folder of text files with a fun phrase on each line.")
+
+(defvar splash-phrase-sources
+  (let* ((files (directory-files splash-phrase-source-folder nil "\\.txt\\'"))
+         (sets (delete-dups (mapcar
+                             (lambda (file)
+                               (replace-regexp-in-string "\\(?:-[0-9]+-\\w+\\)?\\.txt" "" file))
+                             files))))
+    (mapcar (lambda (sset)
+              (cons sset
+                    (delq nil (mapcar
+                               (lambda (file)
+                                 (when (string-match-p (regexp-quote sset) file)
+                                   file))
+                               files))))
+            sets))
+  "A list of cons giving the phrase set name, and a list of files which contain phrase components.")
+
+(defvar splash-phrase-set
+  (nth (random (length splash-phrase-sources)) (mapcar #'car splash-phrase-sources))
+  "The default phrase set. See `splash-phrase-sources'.")
+
+(defun splase-phrase-set-random-set ()
+  "Set a new random splash phrase set."
+  (interactive)
+  (setq splash-phrase-set
+        (nth (random (1- (length splash-phrase-sources)))
+             (cl-set-difference (mapcar #'car splash-phrase-sources) (list splash-phrase-set))))
+  (+doom-dashboard-reload t))
+
+(defvar splase-phrase--cache nil)
+
+(defun splash-phrase-get-from-file (file)
+  "Fetch a random line from FILE."
+  (let ((lines (or (cdr (assoc file splase-phrase--cache))
+                   (cdar (push (cons file
+                                     (with-temp-buffer
+                                       (insert-file-contents (expand-file-name file splash-phrase-source-folder))
+                                       (split-string (string-trim (buffer-string)) "\n")))
+                               splase-phrase--cache)))))
+    (nth (random (length lines)) lines)))
+
+(defun splash-phrase (&optional set)
+  "Construct a splash phrase from SET. See `splash-phrase-sources'."
+  (mapconcat
+   #'splash-phrase-get-from-file
+   (cdr (assoc (or set splash-phrase-set) splash-phrase-sources))
+   " "))
+
+(defun doom-dashboard-phrase ()
+  "Get a splash phrase, flow it over multiple lines as needed, and make fontify it."
+  (mapconcat
+   (lambda (line)
+     (+doom-dashboard--center
+      +doom-dashboard--width
+      (with-temp-buffer
+        (insert-text-button
+         line
+         'action
+         (lambda (_) (+doom-dashboard-reload t))
+         'face 'doom-dashboard-menu-title
+         'mouse-face 'doom-dashboard-menu-title
+         'help-echo "Random phrase"
+         'follow-link t)
+        (buffer-string))))
+   (split-string
+    (with-temp-buffer
+      (insert (splash-phrase))
+      (setq fill-column (min 70 (/ (* 2 (window-width)) 3)))
+      (fill-region (point-min) (point-max))
+      (buffer-string))
+    "\n")
+   "\n"))
+
+(defadvice! doom-dashboard-widget-loaded-with-phrase ()
+  :override #'doom-dashboard-widget-loaded
+  (setq line-spacing 0.2)
+  (insert
+   "\n\n"
+   (propertize
+    (+doom-dashboard--center
+     +doom-dashboard--width
+     (doom-display-benchmark-h 'return))
+    'face 'doom-dashboard-loaded)
+   "\n"
+   (doom-dashboard-phrase)
+   "\n"))
+#+end_src
 *** Italic to Slant
 #+begin_src emacs-lisp :tangle yes
 (add-hook! 'doom-load-theme-hook
@@ -325,19 +573,42 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 #+end_src
 *** Dont show line number in org-mode
 #+begin_src emacs-lisp :tangle yes
-(dolist (mode '(org-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+(add-hook! org-mode
+  (display-line-numbers-mode 0))
+;; and init he with zen-mode
+(add-hook! org-mode
+  (+zen/toggle))
 #+end_src
-*** Transparency (if you wanna)
-#+begin_src emacs-lisp :tangle no
-(set-frame-parameter (selected-frame) 'alpha '(92 . 90))
-(add-to-list 'default-frame-alist '(alpha . (92 . 90)))
 #+end_src
-*** Modeline
+*** Miscellaneous
+**** Line number
+This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
 #+begin_src emacs-lisp :tangle yes
-(after! doom-modeline
-  (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
-  (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
-  (line-number-mode -1)
-  (setq doom-modeline-buffer-encoding nil))
+(setq display-line-numbers-type `relative)
+#+end_src
+**** Default buffer name
+#+begin_src emacs-lisp :tangle yes
+(setq doom-fallback-buffer-name "Doom"
+      +doom-dashboard-name "Doom")
+#+end_src
+**** Which key
+#+begin_src emacs-lisp :tangle yes
+(setq which-key-idle-delay 0.5)
+(after! which-key
+  (pushnew!
+   which-key-replacement-alist
+   '(("" . "\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil . "¡\\1"))
+   '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . "¡\\1"))
+   ))
+#+end_src
+** Company
+#+begin_src emacs-lisp :tangle yes
+(after! company
+  (setq company-idle-delay 0.2
+        company-minimum-prefix-length 2))
+#+end_src
+** Org
+#+begin_src emacs-lisp :tangle yes
+(after! evil-org
+  (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
 #+end_src
