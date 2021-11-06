@@ -221,7 +221,7 @@ My init.el
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       ;;web               ; the tubes
+       web               ; the tubes
        ;;yaml              ; JSON, but readable
        ;;zig               ; C, but simpler
 #+end_src
@@ -255,6 +255,7 @@ My init.el
 (package! tree-sitter-langs)
 (package! spacemacs-theme)
 (package! solarized-theme)
+(package! kaolin-themes)
 #+end_src
 * Config
 #+begin_src emacs-lisp :tangle yes
@@ -297,8 +298,8 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 
 (setq pretty-magit-alist nil)
 (setq pretty-magit-prompt nil)
-(pretty-magit "Feature" ? (:foreground "slate gray" :height 1.2))
-(pretty-magit "Add"     ? (:foreground "#375E97" :height 1.2))
+(pretty-magit "Feature" ?🐉 (:foreground "slate gray" :height 1.2))
+(pretty-magit "Add"     ?🐎 (:foreground "#375E97" :height 1.2))
 (pretty-magit "Fix"     ? (:foreground "#FB6542" :height 1.2))
 (pretty-magit "Clean"   ? (:foreground "#FFBB00" :height 1.2))
 (pretty-magit "Docs"    ? (:foreground "#3F681C" :height 1.2))
@@ -336,7 +337,13 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 #+end_src
 *** Theme
 #+begin_src emacs-lisp :tangle yes
-(setq doom-theme 'doom-material)
+(setq doom-theme 'kaolin-aurora)
+(setq kaolin-themes-italic-comments t)
+(kaolin-treemacs-theme)
+#+end_src
+*** Disable fringe
+#+begin_src emacs-lisp :tangle yes
+(fringe-mode '(0 . 0))
 #+end_src
 *** Dashboard
 #+name: splash-image

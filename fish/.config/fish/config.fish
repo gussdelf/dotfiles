@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 # Starship prompt
-starship init fish | source
+# starship init fish | source
 
 # Aliases and abbrs
 alias bat='bat --theme Solarized\ \(dark\)'
@@ -22,6 +22,7 @@ alias cp='rsync'
 alias uf='ufetch'
 alias tree='exa --icons -s type -T'
 alias doom='~/.emacs.d/bin/doom'
+alias server="python -m http.server"
 alias suspend='systemctl suspend'
 abbr c 'clear;'
 abbr N 'nnn -e'
