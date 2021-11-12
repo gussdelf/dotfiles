@@ -5,7 +5,7 @@
 ! Version:    0.1.0
 ! Repository: https://github.com/arcticicestudio/nord-xresources
 ! License:    MIT
-st.font:           JetBrainsMono Nerd Font:pixelsize=14
+st.font:           VictorMono Nerd Font:style:semibold:pixelsize=14
 
 #define nord0 #2E3440
 #define nord1 #3B4252
