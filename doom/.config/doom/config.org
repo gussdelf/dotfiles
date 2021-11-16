@@ -2,7 +2,8 @@
 #+startup: fold
 
 * Init.el
-My init.el
+** Lexical bind
+#+srcname: lexical-bind-init-el
 #+begin_src emacs-lisp :tangle "init.el" :noweb no-export :comments no
 ;;; init.el -*- lexical-binding: t; -*-
 #+end_src
@@ -77,7 +78,7 @@ My init.el
        ;; indent-guides     ; highlighted indent columns
        (ligatures +extra)         ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
-       (modeline +light)          ; snazzy, Atom-inspired modeline, plus API
+       modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
@@ -113,7 +114,7 @@ My init.el
        (dired +ranger +icons)                          ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        (ibuffer +icons)         ; interactive buffer management
-       undo              ; persistent, smarter undo for your inevitable mistakes
+       (undo +tree)              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 #+end_src
 ** doom-term
@@ -190,7 +191,7 @@ My init.el
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        json              ; At least it ain't XML
-       ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
+       (java +meghanada +lsp) ; the poster child for carpal tunnel syndrome
        (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
@@ -203,7 +204,7 @@ My init.el
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org +pretty +roam2 +pomodoro)               ; organize your plain life in plain text
-       ;;php               ; perl's insecure younger brother
+       (php +lsp)               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        python            ; beautiful is better than ugly
@@ -212,7 +213,7 @@ My init.el
        ;;raku              ; the artist formerly known as perl6
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
-       ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+       (ruby +rails +lsp)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        (rust +lsp)             ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
@@ -254,10 +255,11 @@ My init.el
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! spacemacs-theme)
-(package! solarized-theme)
-(package! kaolin-themes)
+(package! theme-magic)
 #+end_src
 * Config
+** Lexical bind
+#+srcname: lexical-bind-config-el
 #+begin_src emacs-lisp :tangle yes
 ;;; config.el -*- lexical-binding: t; -*-
 #+end_src
@@ -281,6 +283,31 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
   (require 'tree-sitter-langs)
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+#+end_src
+*** Theme-magic
+#+begin_src emacs-lisp :tangle yes
+(use-package! theme-magic
+  :commands theme-magic-from-emacs
+  :config
+  (defadvice! theme-magic--auto-extract-16-doom-colors ()
+    :override #'theme-magic--auto-extract-16-colors
+    (list
+     (face-attribute 'default :background)
+     (doom-color 'error)
+     (doom-color 'success)
+     (doom-color 'type)
+     (doom-color 'keywords)
+     (doom-color 'constants)
+     (doom-color 'functions)
+     (face-attribute 'default :foreground)
+     (face-attribute 'shadow :foreground)
+     (doom-blend 'base8 'error 0.1)
+     (doom-blend 'base8 'success 0.1)
+     (doom-blend 'base8 'type 0.1)
+     (doom-blend 'base8 'keywords 0.1)
+     (doom-blend 'base8 'constants 0.1)
+     (doom-blend 'base8 'functions 0.1)
+     (face-attribute 'default :foreground))))
 #+end_src
 ** Magit
 *** Pretty-magit
@@ -327,9 +354,9 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 ** Some ui fix
 *** Fonts
 #+begin_src emacs-lisp :tangle yes
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16)
-      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 16)
-      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 19)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 20)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 20)
+      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 24)
       ;; doom-unicode-font (font-spec :family "Fira")
       ;; doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light)
       )
@@ -337,13 +364,18 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 #+end_src
 *** Theme
 #+begin_src emacs-lisp :tangle yes
-(setq doom-theme 'kaolin-aurora)
-(setq kaolin-themes-italic-comments t)
-(kaolin-treemacs-theme)
+(setq doom-theme 'doom-horizon)
+;;(setq kaolin-themes-italic-comments t)
+;;(kaolin-treemacs-theme)
 #+end_src
 *** Disable fringe
 #+begin_src emacs-lisp :tangle yes
 (fringe-mode '(0 . 0))
+#+end_src
+*** Disable prettify-symbols-mode
+#+begin_src emacs-lisp :tangle yes
+(prettify-symbols-mode -1)
+(global-prettify-symbols-mode -1)
 #+end_src
 *** Dashboard
 #+name: splash-image
@@ -549,6 +581,10 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
    (doom-dashboard-phrase)
    "\n"))
 #+end_src
+*** Modeline
+#+begin_src emacs-lisp :tangle yes
+(setq doom-modeline-major-mode-icon t)
+#+end_src
 *** Italic to Slant
 #+begin_src emacs-lisp :tangle yes
 (add-hook! 'doom-load-theme-hook
@@ -559,9 +595,6 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 #+begin_src emacs-lisp :tangle yes
 (add-hook! org-mode
   (display-line-numbers-mode 0))
-;; and init he with zen-mode
-(add-hook! org-mode
-  (+zen/toggle))
 #+end_src
 #+end_src
 *** Miscellaneous
@@ -574,16 +607,6 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 #+begin_src emacs-lisp :tangle yes
 (setq doom-fallback-buffer-name "Doom"
       +doom-dashboard-name "Doom")
-#+end_src
-**** Which key
-#+begin_src emacs-lisp :tangle yes
-(setq which-key-idle-delay 0.5)
-(after! which-key
-  (pushnew!
-   which-key-replacement-alist
-   '(("" . "\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil . "¡\\1"))
-   '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . "¡\\1"))
-   ))
 #+end_src
 ** Company
 #+begin_src emacs-lisp :tangle yes

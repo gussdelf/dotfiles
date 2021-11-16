@@ -14,10 +14,6 @@ alt + ctrl + Return
 alt + ctrl + e
 	emacsclient -nc
 
-# run emacs daemon
-alt + ctrl + d
-	emacs --daemon
-
 # run gnvim
 alt + ctrl + n 
         gnvim --disable-ext-tabline --disable-ext-cmdline --disable-ext-popupmenu

@@ -1,3 +1,5 @@
+st.font:           JetBrainsMono Nerd Font:style:semibold:pixelsize=14
+
 ! special
 *.foreground:   #ABB2BF
 *.background:   #282C34

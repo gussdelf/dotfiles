@@ -65,12 +65,13 @@ $shell\
 $character\
 """
 [character]
-#success_symbol = "[󰢱 ](green)"
-#vicmd_symbol = "[󰢱 ](green)"
+
+success_symbol = "[❯](purple)"
+vicmd_symbol = "[❮](purple)"
 #error_symbol = "[ ](yellow)"
-success_symbol = "[󰘧 ](blue)"
-vicmd_symbol = "[󰘧 ](blue)"
-error_symbol = "[ ](yellow)"
+#success_symbol = "[ﬦ ](bold blue)"
+#vicmd_symbol = "[ﬦ ](bold blue)"
+#error_symbol = "[ ](bold yellow)"
 #success_symbol = "[󰮯 ](green)"
 #vicmd_symbol = "[󰮯 ](green)"
 #error_symbol = "[ ](red)"
