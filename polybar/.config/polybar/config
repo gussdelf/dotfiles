@@ -63,6 +63,7 @@ modules-right =      launcher pulseaudio round-left cpu round-right empty-space 
 font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=9
 font-1 = JetBrainsMono Nerd Font:size=9
 font-2 = Material Design Icons:style=Bold:size=9
+font-4 = FontAwesome:size=8:antialias=true;
 font-3 = unifont:fontformat=truetype:size=8:antialias=true;
 
 cursor-click = pointer
@@ -148,35 +149,70 @@ content-foreground = ${colors.cyan-a1}
 type = internal/pulseaudio
 sink = alsa_output.pci-0000_12_00.3.analog-stereo
 use-ui-max = true
+;;;;;;;; OLD
 
-interval = 5
-format-volume = <label-volume> <bar-volume>
-label-volume = " "  
-label-volume-foreground = ${colors.foreground}
-format-muted-foreground = ${colors.foreground}
-label-muted = 󰚙
+;interval = 5
+;format-volume = <ramp-volume> <label-volume>
+;label-volume = " "  
+;label-volume-foreground = ${colors.foreground}
+;format-muted-foreground = ${colors.foreground}
+;label-muted = 󰚙
+;label-volume = %percentage%%
 
-format-muted-padding = 1
+;format-muted-padding = 1
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #61afef
-bar-volume-foreground-1 = #61afef
-bar-volume-foreground-2 = #61afef
-bar-volume-foreground-3 = #61afef
-bar-volume-foreground-4 = #61afef
-bar-volume-foreground-5 = #61afef
-bar-volume-foreground-6 = #61afef
-bar-volume-gradient = false
-bar-volume-indicator = 
-bar-volume-indicator-foreground = #61afef
-bar-volume-indicator-font = 2
-bar-volume-fill = ━ 
-bar-volume-fill-foreground = #61afef
-bar-volume-fill-font = 2
-bar-volume-empty = ━
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = #565c64
-format-volume-padding = 2
+;bar-volume-width = 10
+;bar-volume-foreground-0 = #61afef
+;bar-volume-foreground-1 = #61afef
+;bar-volume-foreground-2 = #61afef
+;bar-volume-foreground-3 = #61afef
+;bar-volume-foreground-4 = #61afef
+;bar-volume-foreground-5 = #61afef
+;bar-volume-foreground-6 = #61afef
+;bar-volume-gradient = false
+;bar-volume-indicator = 
+;bar-volume-indicator-foreground = #61afef
+;bar-volume-indicator-font = 2
+;bar-volume-fill = ━ 
+;bar-volume-fill-foreground = #61afef
+;bar-volume-fill-font = 2
+;bar-volume-empty = ━
+;bar-volume-empty-font = 2
+;bar-volume-empty-foreground = #565c64
+;format-volume-padding = 2
+;;;;;;;;;;;;;;;;
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels%
+label-volume = 墳 %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels%
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
+; Right and Middle click
+click-right = pavucontrol
+; click-middle = 
+
 
 [module/time]
 type = internal/date

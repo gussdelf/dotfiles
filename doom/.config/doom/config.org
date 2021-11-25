@@ -1,5 +1,5 @@
-#+title: My config of Doom emacs
-#+startup: fold
+#+TITLE: My config of Doom emacs
+#+STARTUP: fold
 
 * Init.el
 ** Lexical bind
@@ -62,8 +62,8 @@
        (company +childframe)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       (ivy +icons +prescient)        ; a search engine for love and life
-       ;; (vertico +icons)           ; the search engine of the future
+       ;; (ivy +icons)        ; a search engine for love and life
+       (vertico +icons)           ; the search engine of the future
 #+end_src
 ** doom-ui
 #+name: doom-ui
@@ -71,7 +71,7 @@
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
        (emoji +unicode +ascii +github)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
@@ -229,7 +229,7 @@
 ** doom-email
 #+name: doom-email
 #+begin_src emacs-lisp
-       ;;(mu4e +org +gmail)
+       ;; (mu4e +org +gmail)
        ;;notmuch
        ;;(wanderlust +gmail)
 #+end_src
@@ -246,7 +246,7 @@
 ** doom-config
 #+name: doom-config
 #+begin_src emacs-lisp
-       literate
+       ;; literate
        (default +bindings +smartparens)
 #+end_src
 * Packages.el
@@ -353,28 +353,17 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 ** Some ui fix
 *** Fonts
 #+begin_src emacs-lisp :tangle yes
-(setq doom-font (font-spec :family "VictorMono Nerd Font" :size 22)
-      doom-variable-pitch-font (font-spec :family "VictorMono Nerd Font" :size 22)
-      doom-big-font (font-spec :family "VictorMono Nerd Font" :size 26)
-      doom-unicode-font (font-spec :family "Fira")
-      doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light)
-      )
-;; (doom-big-font-mode)
+(setq doom-font (font-spec :family "Source Code Pro" :size 18)
+      doom-big-font (font-spec :family "Source Code Pro" :size 20)
+      doom-variable-pitch-font (font-spec :family "Overpass")
+      doom-unicode-font (font-spec :family "JuliaMono")
+      doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))
 #+end_src
 *** Theme
 #+begin_src emacs-lisp :tangle yes
-(setq doom-theme 'spacemacs-dark)
+(setq doom-theme 'doom-one)
 ;;(setq kaolin-themes-italic-comments t)
 ;;(kaolin-treemacs-theme)
-#+end_src
-*** Disable fringe
-#+begin_src emacs-lisp :tangle yes
-(fringe-mode '(0 . 0))
-#+end_src
-*** Disable prettify-symbols-mode
-#+begin_src emacs-lisp :tangle yes
-(prettify-symbols-mode -1)
-(global-prettify-symbols-mode -1)
 #+end_src
 *** Dashboard
 #+name: splash-image
@@ -590,12 +579,6 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
   (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
   (set-face-attribute 'font-lock-keyword-face nil :slant 'italic))
 #+end_src
-*** Dont show line number in org-mode
-#+begin_src emacs-lisp :tangle yes
-(add-hook! org-mode
-  (display-line-numbers-mode 0))
-#+end_src
-#+end_src
 *** Miscellaneous
 **** Line number
 This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
@@ -604,11 +587,31 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 #+end_src
 **** Default buffer name
 #+begin_src emacs-lisp :tangle yes
+;;
 (setq doom-fallback-buffer-name "Doom"
       +doom-dashboard-name "Doom")
+#+end_src
+**** Cursor colors
+#+begin_src emacs-lisp :tangle yes
+(setq evil-normal-state-cursor '(box "orange")
+      evil-insert-state-cursor '(bar "medium sea green")
+      evil-visual-state-cursor '(hbar "gray")
+      evil-operator-state-cursor '(hbar "medium sea green")
+      )
+#+end_src
+**** Emojis
+#+begin_src emacs-lisp :tangle yes
+(setq emojify-emoji-set "twemoji-v2")
 #+end_src
 ** Org
 #+begin_src emacs-lisp :tangle yes
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
+#+end_src
+
+** Maps
+#+begin_src emacs-lisp :tangle yes
+(map! :leader
+      :desc "M-x" "SPC" #'execute-extended-command
+      :desc "Find file in project"  "ç"  #'projectile-find-file)
 #+end_src
