@@ -361,9 +361,7 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 #+end_src
 *** Theme
 #+begin_src emacs-lisp :tangle yes
-(setq doom-theme 'doom-one)
-;;(setq kaolin-themes-italic-comments t)
-;;(kaolin-treemacs-theme)
+(setq doom-theme 'doom-wilmersdorf)
 #+end_src
 *** Dashboard
 #+name: splash-image
@@ -597,7 +595,7 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
       evil-insert-state-cursor '(bar "medium sea green")
       evil-visual-state-cursor '(hbar "gray")
       evil-operator-state-cursor '(hbar "medium sea green")
-      )
+      evil-replace-state-cursor '(hbar "medium sea green"))
 #+end_src
 **** Emojis
 #+begin_src emacs-lisp :tangle yes
@@ -608,7 +606,6 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
 #+end_src
-
 ** Maps
 #+begin_src emacs-lisp :tangle yes
 (map! :leader
