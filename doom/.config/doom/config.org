@@ -1,4 +1,5 @@
 #+TITLE: My config of Doom emacs
+#+DESCRIPTION: config of Doom emacs in org-mode
 #+STARTUP: fold
 
 * Init.el
@@ -111,7 +112,7 @@
 ** doom-emacs
 #+name: doom-emacs
 #+begin_src emacs-lisp
-       (dired +ranger +icons)                          ; making dired pretty [functional]
+       (dired +icons)                          ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        (ibuffer +icons)         ; interactive buffer management
        (undo +tree)              ; persistent, smarter undo for your inevitable mistakes
@@ -596,10 +597,6 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
       evil-visual-state-cursor '(hbar "gray")
       evil-operator-state-cursor '(hbar "medium sea green")
       evil-replace-state-cursor '(hbar "medium sea green"))
-#+end_src
-**** Emojis
-#+begin_src emacs-lisp :tangle yes
-(setq emojify-emoji-set "twemoji-v2")
 #+end_src
 ** Org
 #+begin_src emacs-lisp :tangle yes
