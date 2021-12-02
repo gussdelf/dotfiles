@@ -28,7 +28,7 @@ alias tree='exa --icons -s type -T'
 alias dooom='~/.Doom/bin/doom'
 alias magit='emacsclient -nw -e "(magit-status)"'
 alias server="python -m http.server"
-alias suspend='systemctl suspend'
+alias zzz='systemctl suspend'
 abbr c 'clear;'
 abbr N 'nnn -e'
 

@@ -251,6 +251,7 @@
        (default +bindings +smartparens)
 #+end_src
 * Packages.el
+** Packages
 #+begin_src emacs-lisp :tangle "packages.el" :noweb no-export :comments no
 (package! tree-sitter)
 (package! tree-sitter-langs)
@@ -354,8 +355,8 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 ** Some ui fix
 *** Fonts
 #+begin_src emacs-lisp :tangle yes
-(setq doom-font (font-spec :family "Source Code Pro" :size 18)
-      doom-big-font (font-spec :family "Source Code Pro" :size 20)
+(setq doom-font (font-spec :family "FuraCode Nerd Font" :size 18)
+      doom-big-font (font-spec :family "FuraCode Nerd Font" :size 20)
       doom-variable-pitch-font (font-spec :family "Overpass")
       doom-unicode-font (font-spec :family "JuliaMono")
       doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))
@@ -586,7 +587,6 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 #+end_src
 **** Default buffer name
 #+begin_src emacs-lisp :tangle yes
-;;
 (setq doom-fallback-buffer-name "Doom"
       +doom-dashboard-name "Doom")
 #+end_src
@@ -597,6 +597,11 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
       evil-visual-state-cursor '(hbar "gray")
       evil-operator-state-cursor '(hbar "medium sea green")
       evil-replace-state-cursor '(hbar "medium sea green"))
+#+end_src
+**** Disable prettify-simbols-mode
+#+begin_src emacs-lisp :tangle yes
+(prettify-symbols-mode 0)
+(add-hook! 'org-mode-hook (prettify-symbols-mode 1))
 #+end_src
 ** Org
 #+begin_src emacs-lisp :tangle yes

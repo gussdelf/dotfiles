@@ -248,7 +248,7 @@ label-foreground = #BF616A
 type = custom/text 
 content =" " 
 content-padding =2
-click-left = doas zzz &
+click-left = zzz &
 content-foreground =  #e06c75
 
 [module/wlan]
