@@ -355,8 +355,8 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 ** Some ui fix
 *** Fonts
 #+begin_src emacs-lisp :tangle yes
-(setq doom-font (font-spec :family "FuraCode Nerd Font" :size 18)
-      doom-big-font (font-spec :family "FuraCode Nerd Font" :size 20)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
+      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 20)
       doom-variable-pitch-font (font-spec :family "Overpass")
       doom-unicode-font (font-spec :family "JuliaMono")
       doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: github
+# key: github
+# uuid: github
+# --
+https://github.com/gussdelf/`%`$0
