@@ -1,4 +1,5 @@
 #+TITLE: My config of Doom emacs
+#+AUTHOR: Gustavo L. Freitas
 #+DESCRIPTION: config of Doom emacs in org-mode
 #+STARTUP: fold
 
