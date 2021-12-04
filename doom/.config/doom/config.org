@@ -3,7 +3,7 @@
 #+STARTUP: fold
 
 * My doom-emacs config
-This is part of my dotfiles in :https://github.com/gussdelf/dotfiles.
+This is part of my dotfiles in https://github.com/gussdelf/dotfiles
 ** Init.el
 *** Lexical bind
 #+srcname: lexical-bind-init-el
