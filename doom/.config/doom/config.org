@@ -605,3 +605,44 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
       :desc "M-x" "SPC" #'execute-extended-command
       :desc "Find file in project"  "ç"  #'projectile-find-file)
 #+end_src
+
+* Misc
+** Snippets
+*** Nome
+#+begin_src text :tangle snippets/fundamental-mode/nome :mkdirp yes
+# -*- mode: snippet -*-
+# name: nome
+# key: nome
+# uuid: nome
+# --
+Gustavo L. Freitas
+#+end_src
+*** Github
+#+begin_src text :tangle snippets/fundamental-mode/github :mkdirp yes
+# -*- mode: snippet -*-
+# name: github
+# key: ghub
+# uuid: github
+# --
+https://github.com/gussdelf/`%`$0
+#+end_src
+*** Gitlab
+#+begin_src text :tangle snippets/fundamental-mode/gitlab :mkdirp yes
+# -*- mode: snippet -*-
+# name: gitlab
+# key: glab
+# uuid: gitlab
+# --
+
+https://gitlab.com/gussdelf/`%`$0
+#+end_src
+** Eshell
+*** Aliases
+#+begin_src text :tangle eshell/aliases :mkdirp yes
+alias ff find-file $1
+alias clear clear-scrollback
+alias ls exa --icons -s type
+alias la exa --icons -s type -la
+alias ll exa --icons -s type -l
+alias g git
+#+end_src
