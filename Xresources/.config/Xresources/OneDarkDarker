@@ -1,5 +1,5 @@
 ! window padding
-st.font:           JetBrainsMono Nerd Font:style:semibold:pixelsize=14
+st.font:           Iosevka Nerd Font:style:semibold:pixelsize=16
 
 ! special
 *.foreground:   #ABB2BF
