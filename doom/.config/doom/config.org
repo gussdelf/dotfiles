@@ -261,6 +261,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 (package! spacemacs-theme)
 (package! kaolin-themes)
 (package! theme-magic)
+(package! password-generator)
 #+end_src
 ** Config
 *** Lexical bind
@@ -367,7 +368,7 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 #+end_src
 **** Theme
 #+begin_src emacs-lisp :tangle yes
-(setq doom-theme 'kaolin-dark)
+(setq doom-theme 'doom-one)
 #+end_src
 **** Dashboard
 #+name: splash-image
@@ -611,8 +612,16 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 *** Maps
 #+begin_src emacs-lisp :tangle yes
 (map! :leader
-      :desc "M-x" "SPC" #'execute-extended-command
-      :desc "Find file in project"  "ç"  #'projectile-find-file)
+       :desc "M-x" "SPC" #'execute-extended-command
+       :desc "Find file in project"  "ç"  #'projectile-find-file
+      (:prefix-map ("i p" . "password")
+       :desc "password-generator-simple" "1" #'password-generator-simple
+       :desc "password-generator-strong" "2" #'password-generator-strong
+       :desc "password-generator-paranoid" "3" #'password-generator-paranoid
+       :desc "password-generator-phonetic" "p" #'password-generator-phonetic
+       :desc "password-generator-numeric" "n" #'password-generator-numeric
+       :desc "password-generator-words" "w" #'password-generator-words
+       ))
 #+end_src
 
 ** Misc
