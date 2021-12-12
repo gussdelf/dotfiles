@@ -1,7 +1,5 @@
-doom/.config/doom/flycheck_init.el
-doom/.config/doom/flycheck_config.el
-doom/.config/doom/init.el
-doom/.config/doom/packages.el
-doom/.config/doom/config.el
+doom/.config/doom/*
+!doom/.config/doom/config.org
+!doom/.config/doom/misc/
 zsh/
 nvim/.config/nvim/plugin/
