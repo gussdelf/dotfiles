@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: gitlab
-# key: glab
-# uuid: gitlab
-# --
-
-https://gitlab.com/gussdelf/`%`$0
