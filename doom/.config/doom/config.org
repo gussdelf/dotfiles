@@ -262,7 +262,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 (package! kaolin-themes)
 (package! theme-magic)
 (package! password-generator)
-(package! screenshot :recipe (:local-repo "lisp/screenshot"))
+(package! screenshot :recipe (:host github :repo "tecosaur/screenshot"))
 #+end_src
 ** Config
 *** Lexical bind

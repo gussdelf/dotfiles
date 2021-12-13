@@ -1,6 +1,5 @@
 doom/.config/doom/*
 !doom/.config/doom/config.org
 !doom/.config/doom/misc/
-!doom/.config/doom/lisp/
 zsh/
 nvim/.config/nvim/plugin/
