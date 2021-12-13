@@ -72,12 +72,12 @@ cursor-scroll = ns-resize
 [module/round-left]
 type = custom/text
 content = %{T3}%{T-}
-content-foreground = #1e222a
+content-foreground = ${colors.background}
 
 [module/round-right]
 type = custom/text
 content = %{T3}%{T-}
-content-foreground = #1e222a
+content-foreground = ${colors.background}
 
 [module/temperature]
 type = internal/temperature
@@ -111,24 +111,23 @@ ws-icon-3 = IV;%{F#81A1C1}
 ws-icon-4 = V;%{F#A3BE8C} 
 
 label-separator = ""
-label-separator-background = #1e222a
+label-separator-background = ${colors.background}
 
 label-focused =%icon%  
 label-focused-foreground = ${colors.foreground}
 label-focused-underline =  #565c64
 label-focused-padding = 1
-label-focused-background = #1e222a
+label-focused-background = ${colors.background}
 
 label-occupied =%icon%   
 label-occupied-foreground = #646870  
-label-occupied-background = #1e222a
+label-occupied-background = ${colors.background}
 label-occupied-padding = 1
 
 label-empty =%icon%
 label-empty-foreground =   ${colors.foreground}
 label-empty-padding = 1
-label-empty-background = #1e222a
-
+label-empty-background = ${colors.background}
 
 label-urgent =%icon%
 label-urgent-foreground = #88C0D0
@@ -218,7 +217,7 @@ click-right = pavucontrol
 type = internal/date
 interval = 60
 format = <label>
-format-background = #1e222a
+format-background = 
 date = %{F#888e96}󰥔 %H:%M%{F-}
 time-alt = %{F#61afef}󰃭 %a, %b %d%{F-}
 
@@ -331,7 +330,7 @@ format = <label>
 
 label = CPU %percentage%%
 
-format-background = #1e222a
+format-background = ${colors.background}
 format-foreground = #989cff
 
 [module/xwindow]
@@ -351,7 +350,7 @@ label-maxlen = 30 ...
 type = custom/script
 exec = ~/.config/polybar/modules/polywins.sh 2>/dev/null
 format = <label>
-format-background = #1e222a
+format-background = ${colors.background}
 label = %output%
 label-padding = 0
 tail = true
