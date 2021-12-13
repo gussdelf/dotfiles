@@ -18,6 +18,10 @@ alt + ctrl + e
 alt + ctrl + n 
         gnvim --disable-ext-tabline --disable-ext-cmdline --disable-ext-popupmenu
 
+# emacs everywhere
+alt + ctrl + o 
+	emacsclient --eval '(emacs-everywhere)'
+
 
 # program launcher
 super + @space

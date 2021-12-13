@@ -82,7 +82,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        ;; indent-guides     ; highlighted indent columns
        (ligatures +extra)         ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
-       modeline          ; snazzy, Atom-inspired modeline, plus API
+       (modeline +light)          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
@@ -242,7 +242,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 #+begin_src emacs-lisp
        ;;calendar
        emms
-       ;;everywhere        ; *leave* Emacs!? You must be joking
+       everywhere        ; *leave* Emacs!? You must be joking
        irc               ; how neckbeards socialize
        (rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
@@ -262,6 +262,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 (package! kaolin-themes)
 (package! theme-magic)
 (package! password-generator)
+(package! screenshot :recipe (:local-repo "lisp/screenshot"))
 #+end_src
 ** Config
 *** Lexical bind
@@ -314,6 +315,11 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
      (doom-blend 'base8 'constants 0.1)
      (doom-blend 'base8 'functions 0.1)
      (face-attribute 'default :foreground))))
+#+end_src
+**** Screenshot
+#+begin_src emacs-lisp :tangle yes
+(use-package! screenshot
+  :defer t)
 #+end_src
 *** Magit
 **** Pretty-magit
@@ -605,9 +611,41 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
       evil-motion-state-cursor '(box "purple")
       evil-emacs-state-cursor '(box "DeepSkyBlue"))
 #+end_src
+***** Disable modeline in treemacs
+#+begin_src emacs-lisp :tangle yes
+(add-hook 'treemacs-mode #'hide-mode-line-mode)
+#+end_src
+*** Writeroom
+**** zoom
+#+begin_src emacs-lisp :tangle yes
+(setq +zen-text-scale 0.8)
+#+end_src
 *** Org
+**** Org-ellipsis
 #+begin_src emacs-lisp :tangle yes
 (setq org-ellipsis " ")
+#+end_src
+**** +org-pretty-mode
+#+begin_src emacs-lisp :tangle yes
+(add-hook 'org-mode-hook #'+org-pretty-mode)
+(add-hook 'org-mode-hook #'mixed-pitch-mode)
+#+end_src
+**** Make headings a little bigger
+#+begin_src emacs-lisp :tangle yes
+(custom-set-faces!
+  '(outline-1 :weight extra-bold :height 1.25)
+  '(outline-2 :weight bold :height 1.15)
+  '(outline-3 :weight bold :height 1.12)
+  '(outline-4 :weight semi-bold :height 1.09)
+  '(outline-5 :weight semi-bold :height 1.06)
+  '(outline-6 :weight semi-bold :height 1.03)
+  '(outline-8 :weight semi-bold)
+  '(outline-9 :weight semi-bold)
+  '(org-document-title :height 1.2))
+#+end_src
+**** Org-fontify
+#+begin_src emacs-lisp :tangle yes
+(setq org-fontify-quote-and-verse-blocks t)
 #+end_src
 *** Maps
 #+begin_src emacs-lisp :tangle yes
@@ -623,7 +661,6 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
        :desc "password-generator-words" "w" #'password-generator-words
        ))
 #+end_src
-
 ** Misc
 *** Snippets
 **** Nome
