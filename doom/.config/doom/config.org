@@ -76,7 +76,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       (emoji +unicode +ascii +github)  ; 🙂
+       ;; (emoji +unicode +ascii +github)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
        ;; indent-guides     ; highlighted indent columns
@@ -262,6 +262,8 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 (package! kaolin-themes)
 (package! theme-magic)
 (package! password-generator)
+(package! selectric-mode)
+(package! monkeytype)
 (package! screenshot :recipe (:host github :repo "tecosaur/screenshot"))
 #+end_src
 ** Config
@@ -321,6 +323,25 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 (use-package! screenshot
   :defer t)
 #+end_src
+**** Selectric-mode
+#+begin_src emacs-lisp :tangle yes
+(use-package! selectric-mode
+  :commands selectric-mode)
+#+end_src
+**** Monkeytype
+#+begin_src elisp :tangle yes
+(use-package! monkeytype
+  :commands (monkeytype-region monkeytype-buffer monkeytype-region-as-words)
+  :init
+  (evil-escape-mode -1)
+  (evil-insert -1)
+  :config
+  (setq monkeytype-directory "~/.config/monkeytype"
+        monkeytype-file-name "%a-%d-%b-%Y-%H-%M-%S"
+        monkeytype-randomize t
+        monkeytype-delete-trailing-whitespace t
+        monkeytype-excluded-chars-regexp "[^[:alnum:]']"))
+#+end_src 
 *** Magit
 **** Pretty-magit
 #+begin_src emacs-lisp :tangle yes
@@ -379,206 +400,214 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 **** Dashboard
 #+name: splash-image
 #+begin_src emacs-lisp :tangle yes
-(defvar fancy-splash-image-template
-  (expand-file-name "misc/splash-images/emacs-e.svg" doom-private-dir)
-  "Default template svg used for the splash image, with substitutions from ")
+;; (defvar fancy-splash-image-template
+;;   (expand-file-name "misc/splash-images/emacs-e.svg" doom-private-dir)
+;;   "Default template svg used for the splash image, with substitutions from ")
 
-(defvar fancy-splash-sizes
-  `((:height 150 :min-height 50 :padding (0 . 2))
-    (:height 126 :min-height 42 :padding (2 . 4))
-    (:height 105  :min-height 35 :padding (3 . 3))
-    (:height 84  :min-height 28 :padding (3 . 3))
-    (:height 60 :min-height 20 :padding (2 . 2))
-    (:height 45  :min-height 15 :padding (2 . 1))
-    (:height 30  :min-height 10 :padding (1 . 0))
-    (:height 1   :min-height 0  :padding (0 . 0)))
-  "list of plists with the following properties
-  :height the height of the image
-  :min-height minimum `frame-height' for image
-  :padding `+doom-dashboard-banner-padding' (top . bottom) to apply
-  :template non-default template file
-  :file file to use instead of template")
+;; (defvar fancy-splash-sizes
+;;   `((:height 150 :min-height 50 :padding (0 . 2))
+;;     (:height 126 :min-height 42 :padding (2 . 4))
+;;     (:height 105  :min-height 35 :padding (3 . 3))
+;;     (:height 84  :min-height 28 :padding (3 . 3))
+;;     (:height 60 :min-height 20 :padding (2 . 2))
+;;     (:height 45  :min-height 15 :padding (2 . 1))
+;;     (:height 30  :min-height 10 :padding (1 . 0))
+;;     (:height 1   :min-height 0  :padding (0 . 0)))
+;;   "list of plists with the following properties
+;;   :height the height of the image
+;;   :min-height minimum `frame-height' for image
+;;   :padding `+doom-dashboard-banner-padding' (top . bottom) to apply
+;;   :template non-default template file
+;;   :file file to use instead of template")
 
-(defvar fancy-splash-template-colours
-  '(("$colour1" . keywords) ("$colour2" . type) ("$colour3" . base5) ("$colour4" . base8))
-  "list of colour-replacement alists of the form (\"$placeholder\" . 'theme-colour) which applied the template")
+;; (defvar fancy-splash-template-colours
+;;   '(("$colour1" . keywords) ("$colour2" . type) ("$colour3" . base5) ("$colour4" . base8))
+;;   "list of colour-replacement alists of the form (\"$placeholder\" . 'theme-colour) which applied the template")
 
-(unless (file-exists-p (expand-file-name "theme-splashes" doom-cache-dir))
-  (make-directory (expand-file-name "theme-splashes" doom-cache-dir) t))
+;; (unless (file-exists-p (expand-file-name "theme-splashes" doom-cache-dir))
+;;   (make-directory (expand-file-name "theme-splashes" doom-cache-dir) t))
 
-(defun fancy-splash-filename (theme-name height)
-  (expand-file-name (concat (file-name-as-directory "theme-splashes")
-                            theme-name
-                            "-" (number-to-string height) ".svg")
-                    doom-cache-dir))
+;; (defun fancy-splash-filename (theme-name height)
+;;   (expand-file-name (concat (file-name-as-directory "theme-splashes")
+;;                             theme-name
+;;                             "-" (number-to-string height) ".svg")
+;;                     doom-cache-dir))
 
-(defun fancy-splash-clear-cache ()
-  "Delete all cached fancy splash images"
-  (interactive)
-  (delete-directory (expand-file-name "theme-splashes" doom-cache-dir) t)
-  (message "Cache cleared!"))
+;; (defun fancy-splash-clear-cache ()
+;;   "Delete all cached fancy splash images"
+;;   (interactive)
+;;   (delete-directory (expand-file-name "theme-splashes" doom-cache-dir) t)
+;;   (message "Cache cleared!"))
 
-(defun fancy-splash-generate-image (template height)
-  "Read TEMPLATE and create an image if HEIGHT with colour substitutions as
-   described by `fancy-splash-template-colours' for the current theme"
-  (with-temp-buffer
-    (insert-file-contents template)
-    (re-search-forward "$height" nil t)
-    (replace-match (number-to-string height) nil nil)
-    (dolist (substitution fancy-splash-template-colours)
-      (goto-char (point-min))
-      (while (re-search-forward (car substitution) nil t)
-        (replace-match (doom-color (cdr substitution)) nil nil)))
-    (write-region nil nil
-                  (fancy-splash-filename (symbol-name doom-theme) height) nil nil)))
+;; (defun fancy-splash-generate-image (template height)
+;;   "Read TEMPLATE and create an image if HEIGHT with colour substitutions as
+;;    described by `fancy-splash-template-colours' for the current theme"
+;;   (with-temp-buffer
+;;     (insert-file-contents template)
+;;     (re-search-forward "$height" nil t)
+;;     (replace-match (number-to-string height) nil nil)
+;;     (dolist (substitution fancy-splash-template-colours)
+;;       (goto-char (point-min))
+;;       (while (re-search-forward (car substitution) nil t)
+;;         (replace-match (doom-color (cdr substitution)) nil nil)))
+;;     (write-region nil nil
+;;                   (fancy-splash-filename (symbol-name doom-theme) height) nil nil)))
 
-(defun fancy-splash-generate-images ()
-  "Perform `fancy-splash-generate-image' in bulk"
-  (dolist (size fancy-splash-sizes)
-    (unless (plist-get size :file)
-      (fancy-splash-generate-image (or (plist-get size :template)
-                                       fancy-splash-image-template)
-                                   (plist-get size :height)))))
+;; (defun fancy-splash-generate-images ()
+;;   "Perform `fancy-splash-generate-image' in bulk"
+;;   (dolist (size fancy-splash-sizes)
+;;     (unless (plist-get size :file)
+;;       (fancy-splash-generate-image (or (plist-get size :template)
+;;                                        fancy-splash-image-template)
+;;                                    (plist-get size :height)))))
 
-(defun ensure-theme-splash-images-exist (&optional height)
-  (unless (file-exists-p (fancy-splash-filename
-                          (symbol-name doom-theme)
-                          (or height
-                              (plist-get (car fancy-splash-sizes) :height))))
-    (fancy-splash-generate-images)))
+;; (defun ensure-theme-splash-images-exist (&optional height)
+;;   (unless (file-exists-p (fancy-splash-filename
+;;                           (symbol-name doom-theme)
+;;                           (or height
+;;                               (plist-get (car fancy-splash-sizes) :height))))
+;;     (fancy-splash-generate-images)))
 
-(defun get-appropriate-splash ()
-  (let ((height (frame-height)))
-    (cl-some (lambda (size) (when (>= height (plist-get size :min-height)) size))
-             fancy-splash-sizes)))
+;; (defun get-appropriate-splash ()
+;;   (let ((height (frame-height)))
+;;     (cl-some (lambda (size) (when (>= height (plist-get size :min-height)) size))
+;;              fancy-splash-sizes)))
 
-(setq fancy-splash-last-size nil)
-(setq fancy-splash-last-theme nil)
-(defun set-appropriate-splash (&rest _)
-  (let ((appropriate-image (get-appropriate-splash)))
-    (unless (and (equal appropriate-image fancy-splash-last-size)
-                 (equal doom-theme fancy-splash-last-theme)))
-    (unless (plist-get appropriate-image :file)
-      (ensure-theme-splash-images-exist (plist-get appropriate-image :height)))
-    (setq fancy-splash-image
-          (or (plist-get appropriate-image :file)
-              (fancy-splash-filename (symbol-name doom-theme) (plist-get appropriate-image :height))))
-    (setq +doom-dashboard-banner-padding (plist-get appropriate-image :padding))
-    (setq fancy-splash-last-size appropriate-image)
-    (setq fancy-splash-last-theme doom-theme)
-    (+doom-dashboard-reload)))
+;; (setq fancy-splash-last-size nil)
+;; (setq fancy-splash-last-theme nil)
+;; (defun set-appropriate-splash (&rest _)
+;;   (let ((appropriate-image (get-appropriate-splash)))
+;;     (unless (and (equal appropriate-image fancy-splash-last-size)
+;;                  (equal doom-theme fancy-splash-last-theme)))
+;;     (unless (plist-get appropriate-image :file)
+;;       (ensure-theme-splash-images-exist (plist-get appropriate-image :height)))
+;;     (setq fancy-splash-image
+;;           (or (plist-get appropriate-image :file)
+;;               (fancy-splash-filename (symbol-name doom-theme) (plist-get appropriate-image :height))))
+;;     (setq +doom-dashboard-banner-padding (plist-get appropriate-image :padding))
+;;     (setq fancy-splash-last-size appropriate-image)
+;;     (setq fancy-splash-last-theme doom-theme)
+;;     (+doom-dashboard-reload)))
 
-(add-hook 'window-size-change-functions #'set-appropriate-splash)
-(add-hook 'doom-load-theme-hook #'set-appropriate-splash)
-(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
-(add-hook! '+doom-dashboard-mode-hook (hide-mode-line-mode 1) (hl-line-mode -1))
-(setq-hook! '+doom-dashboard-mode-hook evil-normal-state-cursor (list nil))
+;; (add-hook 'window-size-change-functions #'set-appropriate-splash)
+;; (add-hook 'doom-load-theme-hook #'set-appropriate-splash)
 
-(defun doom-dashboard-widget-footer ()
-  (insert
-   "\n"
-   (+doom-dashboard--center
-    (- +doom-dashboard--width 2)
-    (with-temp-buffer
-      (insert-text-button (or (all-the-icons-octicon "octoface" :face 'doom-dashboard-footer-icon :height 1.3 :v-adjust -0.15)
-                              (propertize "github" 'face 'doom-dashboard-footer))
-                          'action (lambda (_) (browse-url "https://github.com/gussdelf/"))
-                          'follow-link t
-                          'help-echo "Open my github page")
-      (buffer-string)))
-   "\n"))
 #+end_src
 #+name: splash-phrases
 #+begin_src emacs-lisp :tangle yes
-(defvar splash-phrase-source-folder
-  (expand-file-name "misc/splash-phrases" doom-private-dir)
-  "A folder of text files with a fun phrase on each line.")
+;; (defun doom-dashboard-widget-footer ()
+;;   (insert
+;;    "\n"
+;;    (+doom-dashboard--center
+;;     (- +doom-dashboard--width 2)
+;;     (with-temp-buffer
+;;       (insert-text-button (or (all-the-icons-octicon "octoface" :face 'doom-dashboard-footer-icon :height 1.3 :v-adjust -0.15)
+;;                               (propertize "github" 'face 'doom-dashboard-footer))
+;;                           'action (lambda (_) (browse-url "https://github.com/gussdelf/"))
+;;                           'follow-link t
+;;                           'help-echo "Open my github page")
+;;       (buffer-string)))
+;;    "\n"))
+;; (defvar splash-phrase-source-folder
+;;   (expand-file-name "misc/splash-phrases" doom-private-dir)
+;;   "A folder of text files with a fun phrase on each line.")
 
-(defvar splash-phrase-sources
-  (let* ((files (directory-files splash-phrase-source-folder nil "\\.txt\\'"))
-         (sets (delete-dups (mapcar
-                             (lambda (file)
-                               (replace-regexp-in-string "\\(?:-[0-9]+-\\w+\\)?\\.txt" "" file))
-                             files))))
-    (mapcar (lambda (sset)
-              (cons sset
-                    (delq nil (mapcar
-                               (lambda (file)
-                                 (when (string-match-p (regexp-quote sset) file)
-                                   file))
-                               files))))
-            sets))
-  "A list of cons giving the phrase set name, and a list of files which contain phrase components.")
+;; (defvar splash-phrase-sources
+;;   (let* ((files (directory-files splash-phrase-source-folder nil "\\.txt\\'"))
+;;          (sets (delete-dups (mapcar
+;;                              (lambda (file)
+;;                                (replace-regexp-in-string "\\(?:-[0-9]+-\\w+\\)?\\.txt" "" file))
+;;                              files))))
+;;     (mapcar (lambda (sset)
+;;               (cons sset
+;;                     (delq nil (mapcar
+;;                                (lambda (file)
+;;                                  (when (string-match-p (regexp-quote sset) file)
+;;                                    file))
+;;                                files))))
+;;             sets))
+;;   "A list of cons giving the phrase set name, and a list of files which contain phrase components.")
 
-(defvar splash-phrase-set
-  (nth (random (length splash-phrase-sources)) (mapcar #'car splash-phrase-sources))
-  "The default phrase set. See `splash-phrase-sources'.")
+;; (defvar splash-phrase-set
+;;   (nth (random (length splash-phrase-sources)) (mapcar #'car splash-phrase-sources))
+;;   "The default phrase set. See `splash-phrase-sources'.")
 
-(defun splase-phrase-set-random-set ()
-  "Set a new random splash phrase set."
-  (interactive)
-  (setq splash-phrase-set
-        (nth (random (1- (length splash-phrase-sources)))
-             (cl-set-difference (mapcar #'car splash-phrase-sources) (list splash-phrase-set))))
-  (+doom-dashboard-reload t))
+;; (defun splase-phrase-set-random-set ()
+;;   "Set a new random splash phrase set."
+;;   (interactive)
+;;   (setq splash-phrase-set
+;;         (nth (random (1- (length splash-phrase-sources)))
+;;              (cl-set-difference (mapcar #'car splash-phrase-sources) (list splash-phrase-set))))
+;;   (+doom-dashboard-reload t))
 
-(defvar splase-phrase--cache nil)
+;; (defvar splase-phrase--cache nil)
 
-(defun splash-phrase-get-from-file (file)
-  "Fetch a random line from FILE."
-  (let ((lines (or (cdr (assoc file splase-phrase--cache))
-                   (cdar (push (cons file
-                                     (with-temp-buffer
-                                       (insert-file-contents (expand-file-name file splash-phrase-source-folder))
-                                       (split-string (string-trim (buffer-string)) "\n")))
-                               splase-phrase--cache)))))
-    (nth (random (length lines)) lines)))
+;; (defun splash-phrase-get-from-file (file)
+;;   "Fetch a random line from FILE."
+;;   (let ((lines (or (cdr (assoc file splase-phrase--cache))
+;;                    (cdar (push (cons file
+;;                                      (with-temp-buffer
+;;                                        (insert-file-contents (expand-file-name file splash-phrase-source-folder))
+;;                                        (split-string (string-trim (buffer-string)) "\n")))
+;;                                splase-phrase--cache)))))
+;;     (nth (random (length lines)) lines)))
 
-(defun splash-phrase (&optional set)
-  "Construct a splash phrase from SET. See `splash-phrase-sources'."
-  (mapconcat
-   #'splash-phrase-get-from-file
-   (cdr (assoc (or set splash-phrase-set) splash-phrase-sources))
-   " "))
+;; (defun splash-phrase (&optional set)
+;;   "Construct a splash phrase from SET. See `splash-phrase-sources'."
+;;   (mapconcat
+;;    #'splash-phrase-get-from-file
+;;    (cdr (assoc (or set splash-phrase-set) splash-phrase-sources))
+;;    " "))
 
-(defun doom-dashboard-phrase ()
-  "Get a splash phrase, flow it over multiple lines as needed, and make fontify it."
-  (mapconcat
-   (lambda (line)
-     (+doom-dashboard--center
-      +doom-dashboard--width
-      (with-temp-buffer
-        (insert-text-button
-         line
-         'action
-         (lambda (_) (+doom-dashboard-reload t))
-         'face 'doom-dashboard-menu-title
-         'mouse-face 'doom-dashboard-menu-title
-         'help-echo "Random phrase"
-         'follow-link t)
-        (buffer-string))))
-   (split-string
-    (with-temp-buffer
-      (insert (splash-phrase))
-      (setq fill-column (min 70 (/ (* 2 (window-width)) 3)))
-      (fill-region (point-min) (point-max))
-      (buffer-string))
-    "\n")
-   "\n"))
+;; (defun doom-dashboard-phrase ()
+;;   "Get a splash phrase, flow it over multiple lines as needed, and make fontify it."
+;;   (mapconcat
+;;    (lambda (line)
+;;      (+doom-dashboard--center
+;;       +doom-dashboard--width
+;;       (with-temp-buffer
+;;         (insert-text-button
+;;          line
+;;          'action
+;;          (lambda (_) (+doom-dashboard-reload t))
+;;          'face 'doom-dashboard-menu-title
+;;          'mouse-face 'doom-dashboard-menu-title
+;;          'help-echo "Random phrase"
+;;          'follow-link t)
+;;         (buffer-string))))
+;;    (split-string
+;;     (with-temp-buffer
+;;       (insert (splash-phrase))
+;;       (setq fill-column (min 70 (/ (* 2 (window-width)) 3)))
+;;       (fill-region (point-min) (point-max))
+;;       (buffer-string))
+;;     "\n")
+;;    "\n"))
 
-(defadvice! doom-dashboard-widget-loaded-with-phrase ()
-  :override #'doom-dashboard-widget-loaded
-  (setq line-spacing 0.2)
-  (insert
-   "\n\n"
-   (propertize
-    (+doom-dashboard--center
-     +doom-dashboard--width
-     (doom-display-benchmark-h 'return))
-    'face 'doom-dashboard-loaded)
-   "\n"
-   (doom-dashboard-phrase)
-   "\n"))
+;; (defadvice! doom-dashboard-widget-loaded-with-phrase ()
+;;   :override #'doom-dashboard-widget-loaded
+;;   (setq line-spacing 0.2)
+;;   (insert
+;;    "\n\n"
+;;    (propertize
+;;     (+doom-dashboard--center
+;;      +doom-dashboard--width
+;;      (doom-display-benchmark-h 'return))
+;;     'face 'doom-dashboard-loaded)
+;;    "\n"
+;;    (doom-dashboard-phrase)
+;;    "\n"))
+
+
+#+end_src
+
+#+begin_src emacs-lisp :tangle yes
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+(add-hook! '+doom-dashboard-mode-hook (hl-line-mode -1))
+(setq-hook! '+doom-dashboard-mode-hook evil-normal-state-cursor (list nil))
+
+(setq fancy-splash-image (expand-file-name "misc/splash-images/skull.svg" doom-private-dir))
+(setq +doom-dashboard-banner-padding '(0 . 0))
 #+end_src
 **** Modeline
 #+begin_src emacs-lisp :tangle yes
@@ -604,10 +633,10 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 ***** Cursor colors
 #+begin_src emacs-lisp :tangle yes
 (setq evil-normal-state-cursor '(box "orange")
-      evil-insert-state-cursor '(bar "medium sea green")
+      evil-insert-state-cursor '(bar "#33CED8")
       evil-visual-state-cursor '(hbar "gray")
       evil-operator-state-cursor '(hbar "medium sea green")
-      evil-replace-state-cursor '(hbar "chocolate")
+      evil-replace-state-cursor '(hbar "#ff6655")
       evil-motion-state-cursor '(box "purple")
       evil-emacs-state-cursor '(box "DeepSkyBlue"))
 #+end_src
@@ -646,11 +675,91 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 #+begin_src emacs-lisp :tangle yes
 (setq org-fontify-quote-and-verse-blocks t)
 #+end_src
+**** Ligatures
+#+begin_src emacs-lisp :tangle yes
+(appendq! +ligatures-extra-symbols
+          `(:checkbox      "☐"
+            :pending       "◼"
+            :checkedbox    "☑"
+            :list_property "∷"
+            :em_dash       "—"
+            :ellipses      "…"
+            :arrow_right   "→"
+            :arrow_left    "←"
+            :property      "☸"
+            :options       "⌥"
+            :startup       "⏻"
+            :html_head     "🅷"
+            :html          "🅗"
+            :latex_class   "🄻"
+            :latex_header  "🅻"
+            :beamer_header "🅑"
+            :latex         "🅛"
+            :attr_latex    "🄛"
+            :attr_html     "🄗"
+            :attr_org      "⒪"
+            :begin_quote   "❝"
+            :end_quote     "❞"
+            :caption       "☰"
+            :header        "›"
+            :begin_export  "⏩"
+            :end_export    "⏪"
+            :properties    "⚙"
+            :end           "∎"
+            :priority_a   ,(propertize "⚑" 'face 'all-the-icons-red)
+            :priority_b   ,(propertize "⬆" 'face 'all-the-icons-orange)
+            :priority_c   ,(propertize "■" 'face 'all-the-icons-yellow)
+            :priority_d   ,(propertize "⬇" 'face 'all-the-icons-green)
+            :priority_e   ,(propertize "❓" 'face 'all-the-icons-blue)))
+(set-ligatures! 'org-mode
+  :merge t
+  :checkbox      "[ ]"
+  :pending       "[-]"
+  :checkedbox    "[X]"
+  :list_property "::"
+  :em_dash       "---"
+  :ellipsis      "..."
+  :arrow_right   "->"
+  :arrow_left    "<-"
+  :title         "#+title:"
+  :subtitle      "#+subtitle:"
+  :author        "#+author:"
+  :date          "#+date:"
+  :property      "#+property:"
+  :options       "#+options:"
+  :startup       "#+startup:"
+  :macro         "#+macro:"
+  :html_head     "#+html_head:"
+  :html          "#+html:"
+  :latex_class   "#+latex_class:"
+  :latex_header  "#+latex_header:"
+  :beamer_header "#+beamer_header:"
+  :latex         "#+latex:"
+  :attr_latex    "#+attr_latex:"
+  :attr_html     "#+attr_html:"
+  :attr_org      "#+attr_org:"
+  :begin_quote   "#+begin_quote"
+  :end_quote     "#+end_quote"
+  :caption       "#+caption:"
+  :header        "#+header:"
+  :begin_export  "#+begin_export"
+  :end_export    "#+end_export"
+  :results       "#+RESULTS:"
+  :property      ":PROPERTIES:"
+  :end           ":END:"
+  :priority_a    "[#A]"
+  :priority_b    "[#B]"
+  :priority_c    "[#C]"
+  :priority_d    "[#D]"
+  :priority_e    "[#E]")
+(plist-put +ligatures-extra-symbols :name "⁍")
+#+end_src
 *** Maps
 #+begin_src emacs-lisp :tangle yes
 (map! :leader
        :desc "M-x" "SPC" #'execute-extended-command
        :desc "Find file in project"  "ç"  #'projectile-find-file
+       :desc "Manual-entry"  "h ç"  #'man
       (:prefix-map ("i p" . "password")
        :desc "password-generator-simple" "1" #'password-generator-simple
        :desc "password-generator-strong" "2" #'password-generator-strong
@@ -689,6 +798,17 @@ https://github.com/gussdelf/`%`$0
 # --
 
 https://gitlab.com/gussdelf/`%`$0
+#+end_src
+**** Shell
+#+begin_src text :tangle snippets/org-mode/shell :mkdirp yes
+# -*- mode: snippet -*-
+# name: shell
+# key: sh
+# uuid: shell
+# --
+,#+begin_src shell :tangle yes
+`%`$0
+,#+end_src
 #+end_src
 *** Eshell
 **** Aliases
