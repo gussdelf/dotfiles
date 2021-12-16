@@ -1,0 +1,4 @@
+#! /usr/bin/env dash
+yt-dlp -f 'bestvideo[height<=480]+bestaudio/best[height<=480]' $@
+
+  ## This is made using emacs

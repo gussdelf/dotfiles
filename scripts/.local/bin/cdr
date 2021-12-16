@@ -1,0 +1,4 @@
+#! /usr/bin/env dash
+REPODIR=$(ghq list --full-path | fzf --reverse --height=50%) && cd $REPODIR
+
+## This is made using emacs

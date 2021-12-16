@@ -1,0 +1,8 @@
+#! /usr/bin/env dash
+
+tmux new-session -d -s 'Hydra' -n ''
+tmux new-window  -n '' 'ncmpcpp'
+tmux next-window
+tmux attach-session -t Hydra
+
+  ## This is made using emacs
