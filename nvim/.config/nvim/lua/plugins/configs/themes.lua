@@ -1,13 +1,3 @@
--- NeoSolarized
-vim.g.neosolarized_bold = 1
-vim.g.neosolarized_underline = 1
-vim.g.neosolarized_italic = 1
-
-if vim.g.gnvim then
-else 
-  vim.g.neosolarized_termtrans = 1
-end
-
 -- Tokyonight
 vim.g.tokyonight_style = "day"
 vim.g.tokyonight_day_brightness	 = 0.1
@@ -54,16 +44,3 @@ vim.g.material_style = "palenight"
 -- Onedark
 vim.g.onedark_style = 'cool'
 --require('onedark').setup()
-
--- Calvera
-vim.g.calvera_italic_keywords = true
-vim.g.calvera_italic_comments = true
-vim.g.calvera_italic_functions = true
-vim.g.calvera_borders = true
-vim.g.calvera_contrast = true
-vim.g.calvera_hide_eob = true
---vim.g.calvera_custom_colors = {contrast = "#0f111a"}
---require('tokyonight').set()
-
--- Set colorscheme
-vim.cmd [[ colorscheme NeoSolarized ]]

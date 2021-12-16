@@ -55,3 +55,5 @@ function fish_user_key_bindings
 end
 
 funcsave fish_user_key_bindings
+
+xi

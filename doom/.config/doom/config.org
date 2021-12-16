@@ -76,13 +76,13 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       ;; (emoji +unicode +ascii +github)  ; 🙂
+       (emoji +unicode +ascii +github)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
        ;; indent-guides     ; highlighted indent columns
        (ligatures +extra)         ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
-       (modeline +light)          ; snazzy, Atom-inspired modeline, plus API
+       modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
@@ -259,11 +259,8 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! spacemacs-theme)
-(package! kaolin-themes)
 (package! theme-magic)
 (package! password-generator)
-(package! selectric-mode)
-(package! monkeytype)
 (package! screenshot :recipe (:host github :repo "tecosaur/screenshot"))
 #+end_src
 ** Config
@@ -323,25 +320,6 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 (use-package! screenshot
   :defer t)
 #+end_src
-**** Selectric-mode
-#+begin_src emacs-lisp :tangle yes
-(use-package! selectric-mode
-  :commands selectric-mode)
-#+end_src
-**** Monkeytype
-#+begin_src elisp :tangle yes
-(use-package! monkeytype
-  :commands (monkeytype-region monkeytype-buffer monkeytype-region-as-words)
-  :init
-  (evil-escape-mode -1)
-  (evil-insert -1)
-  :config
-  (setq monkeytype-directory "~/.config/monkeytype"
-        monkeytype-file-name "%a-%d-%b-%Y-%H-%M-%S"
-        monkeytype-randomize t
-        monkeytype-delete-trailing-whitespace t
-        monkeytype-excluded-chars-regexp "[^[:alnum:]']"))
-#+end_src 
 *** Magit
 **** Pretty-magit
 #+begin_src emacs-lisp :tangle yes
@@ -603,7 +581,7 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 
 #+begin_src emacs-lisp :tangle yes
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
-(add-hook! '+doom-dashboard-mode-hook (hl-line-mode -1))
+(add-hook! '+doom-dashboard-mode-hook (hide-mode-line-mode 1)(hl-line-mode -1))
 (setq-hook! '+doom-dashboard-mode-hook evil-normal-state-cursor (list nil))
 
 (setq fancy-splash-image (expand-file-name "misc/splash-images/skull.svg" doom-private-dir))
@@ -615,9 +593,12 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 #+end_src
 **** Italic to Slant
 #+begin_src emacs-lisp :tangle yes
-(add-hook! 'doom-load-theme-hook
-  (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
-  (set-face-attribute 'font-lock-keyword-face nil :slant 'italic))
+(after! doom-themes
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t))
+(custom-set-faces!
+  '(font-lock-comment-face :slant italic)
+  '(font-lock-keyword-face :slant italic))
 #+end_src
 **** Miscellaneous
 ***** Line number
@@ -640,10 +621,6 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
       evil-motion-state-cursor '(box "purple")
       evil-emacs-state-cursor '(box "DeepSkyBlue"))
 #+end_src
-***** Disable modeline in treemacs
-#+begin_src emacs-lisp :tangle yes
-(add-hook 'treemacs-mode #'hide-mode-line-mode)
-#+end_src
 *** Writeroom
 **** zoom
 #+begin_src emacs-lisp :tangle yes
@@ -657,7 +634,6 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 **** +org-pretty-mode
 #+begin_src emacs-lisp :tangle yes
 (add-hook 'org-mode-hook #'+org-pretty-mode)
-(add-hook 'org-mode-hook #'mixed-pitch-mode)
 #+end_src
 **** Make headings a little bigger
 #+begin_src emacs-lisp :tangle yes
@@ -807,6 +783,17 @@ https://gitlab.com/gussdelf/`%`$0
 # uuid: shell
 # --
 ,#+begin_src shell :tangle yes
+`%`$0
+,#+end_src
+#+end_src
+**** Python-src
+#+begin_src text :tangle snippets/org-mode/python :mkdirp yes
+# -*- mode: snippet -*-
+# name: python
+# key: py
+# uuid: py-org
+# --
+,#+begin_src python :tangle yes
 `%`$0
 ,#+end_src
 #+end_src
