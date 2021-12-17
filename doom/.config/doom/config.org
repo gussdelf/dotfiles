@@ -3,7 +3,7 @@
 #+DESCRIPTION: Config of Doom emacs in org-mode
 #+STARTUP: fold
 
-* My doom-emacs config
+* MY DOOM-EMACS CONFIG
 This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 ** Init.el
 *** Lexical bind
@@ -143,7 +143,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
        docker
-       ;;editorconfig      ; let someone else argue about tabs vs spaces
+       editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
@@ -589,7 +589,7 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 #+end_src
 **** Modeline
 #+begin_src emacs-lisp :tangle yes
-(setq doom-modeline-major-mode-icon t)
+(cond ((featurep! :ui modeline) (setq doom-modeline-major-mode-icon t)))
 #+end_src
 **** Italic to Slant
 #+begin_src emacs-lisp :tangle yes
@@ -620,6 +620,10 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
       evil-replace-state-cursor '(hbar "#ff6655")
       evil-motion-state-cursor '(box "purple")
       evil-emacs-state-cursor '(box "DeepSkyBlue"))
+#+end_src
+***** Remove hook emojify
+#+begin_src emacs-lisp :tangle yes
+(remove-hook 'doom-first-buffer-hook #'global-emojify-mode)
 #+end_src
 *** Writeroom
 **** zoom
@@ -801,7 +805,8 @@ https://gitlab.com/gussdelf/`%`$0
 **** Aliases
 #+begin_src text :tangle eshell/aliases :mkdirp yes
 alias ff find-file $1
-alias clear clear-scrollback
+alias clear clear-scrollback;
+alias c clear-scrollback;
 alias ls exa --icons -s type
 alias la exa --icons -s type -la
 alias ll exa --icons -s type -l
