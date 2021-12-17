@@ -3,4 +3,4 @@ doom/.config/doom/*
 !doom/.config/doom/misc/
 !doom/.config/doom/themes/
 zsh/
-nvim/.config/nvim/plugin/
+nvim/
