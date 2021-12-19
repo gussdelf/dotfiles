@@ -247,7 +247,7 @@ label-foreground = #BF616A
 type = custom/text 
 content =" " 
 content-padding =2
-click-left = zzz &
+click-left = systemctl suspend &
 content-foreground =  #e06c75
 
 [module/wlan]
