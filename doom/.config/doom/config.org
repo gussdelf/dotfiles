@@ -3,7 +3,7 @@
 #+DESCRIPTION: Config of Doom emacs in org-mode
 #+STARTUP: fold
 
-* MY DOOM-EMACS CONFIG
+* My Doom-Emacs Config
 This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 ** Init.el
 *** Lexical bind
@@ -11,6 +11,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 #+begin_src emacs-lisp :tangle "init.el" :noweb no-export :comments no
 ;;; init.el -*- lexical-binding: t; -*-
 #+end_src
+
 *** The file
 #+begin_src emacs-lisp :tangle "init.el" :noweb no-export :comments no
 (doom! :input
@@ -53,6 +54,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        <<doom-config>>
        )
 #+end_src
+
 *** doom-input
 #+name: doom-input
 #+begin_src emacs-lisp
@@ -60,6 +62,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        ;;japanese
        ;;layout            ; auie,ctsrnm is the superior home row
 #+end_src
+
 *** doom-completion
 #+name: doom-completion
 #+begin_src emacs-lisp
@@ -69,6 +72,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        ;; (ivy +icons)        ; a search engine for love and life
        (vertico +icons)           ; the search engine of the future
 #+end_src
+
 *** doom-ui
 #+name: doom-ui
 #+begin_src emacs-lisp
@@ -96,6 +100,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        workspaces        ; tab emulation, persistence & separate workspaces
        zen               ; distraction-free coding or writing
 #+end_src
+
 *** doom-editor
 #+name: doom-editor
 #+begin_src emacs-lisp
@@ -112,6 +117,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        snippets          ; my elves. They type so I don't have to
        word-wrap         ; soft wrapping with language-aware indent
 #+end_src
+
 *** doom-emacs
 #+name: doom-emacs
 #+begin_src emacs-lisp
@@ -121,6 +127,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        (undo +tree)              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 #+end_src
+
 *** doom-term
 #+name: doom-term
 #+begin_src emacs-lisp
@@ -129,6 +136,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        ;;term              ; basic terminal emulator for Emacs
        vterm             ; the best terminal emulation in Emacs
 #+end_src
+
 *** doom-checkers
 #+name: doom-checkers
 #+begin_src emacs-lisp
@@ -136,6 +144,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        ;;(spell +flyspell) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 #+end_src
+
 *** doom-tools
 #+name: doom-tools
 #+begin_src emacs-lisp
@@ -160,12 +169,14 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
 #+end_src
+
 *** doom-os
 #+name: doom-os
 #+begin_src emacs-lisp
        ;;(:if IS-MAC macos)  ; improve compatibility with macOS
        tty               ; improve the terminal Emacs experience
 #+end_src
+
 *** doom-lang
 #+name: doom-lang
 #+begin_src emacs-lisp
@@ -230,6 +241,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        ;;yaml              ; JSON, but readable
        ;;zig               ; C, but simpler
 #+end_src
+
 *** doom-email
 #+name: doom-email
 #+begin_src emacs-lisp
@@ -237,6 +249,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        ;;notmuch
        ;;(wanderlust +gmail)
 #+end_src
+
 *** doom-app
 #+name: doom-app
 #+begin_src emacs-lisp
@@ -247,12 +260,14 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        (rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
 #+end_src
+
 *** doom-config
 #+name: doom-config
 #+begin_src emacs-lisp
        ;; literate
        (default +bindings +smartparens)
 #+end_src
+
 ** Packages.el
 *** Packages
 #+begin_src emacs-lisp :tangle "packages.el" :noweb no-export :comments no
@@ -263,12 +278,14 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 (package! password-generator)
 (package! screenshot :recipe (:host github :repo "tecosaur/screenshot"))
 #+end_src
+
 ** Config
 *** Lexical bind
 #+srcname: lexical-bind-config-el
 #+begin_src emacs-lisp :tangle yes
 ;;; config.el -*- lexical-binding: t; -*-
 #+end_src
+
 *** Profile
 **** Identify
 Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets.
@@ -276,10 +293,12 @@ Some functionality uses this to identify you, e.g. GPG configuration, email clie
 (setq user-full-name "Gustavo de Lima Freitas"
       user-mail-address "flovatsug@gmail.com")
 #+end_src
+
 **** Org-mode dir
 #+begin_src emacs-lisp :tangle yes
 (setq org-directory "~/Docs/org/")
 #+end_src
+
 *** Extra packages
 **** Tree-sitter
 Tree-sitter is a parser generator tool and an incremental parsing library. It can build a concrete syntax tree for a source file and efficiently update the syntax tree as the source file is edited.
@@ -290,6 +309,7 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 #+end_src
+
 **** Theme-magic
 #+begin_src emacs-lisp :tangle yes
 (use-package! theme-magic
@@ -315,11 +335,13 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
      (doom-blend 'base8 'functions 0.1)
      (face-attribute 'default :foreground))))
 #+end_src
+
 **** Screenshot
 #+begin_src emacs-lisp :tangle yes
 (use-package! screenshot
   :defer t)
 #+end_src
+
 *** Magit
 **** Pretty-magit
 #+begin_src emacs-lisp :tangle yes
@@ -362,6 +384,7 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 (advice-add 'magit-status :after 'add-magit-faces)
 (advice-add 'magit-refresh-buffer :after 'add-magit-faces)
 #+end_src
+
 *** Some ui fix
 **** Fonts
 #+begin_src emacs-lisp :tangle yes
@@ -371,10 +394,12 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
       doom-unicode-font (font-spec :family "JuliaMono")
       doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))
 #+end_src
+
 **** Theme
 #+begin_src emacs-lisp :tangle yes
 (setq doom-theme 'doom-city-lights)
 #+end_src
+
 **** Dashboard
 #+name: splash-image
 #+begin_src emacs-lisp :tangle yes
@@ -587,10 +612,12 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 (setq fancy-splash-image (expand-file-name "misc/splash-images/skull.svg" doom-private-dir))
 (setq +doom-dashboard-banner-padding '(0 . 0))
 #+end_src
+
 **** Modeline
 #+begin_src emacs-lisp :tangle yes
 (cond ((featurep! :ui modeline) (setq doom-modeline-major-mode-icon t)))
 #+end_src
+
 **** Italic to Slant
 #+begin_src emacs-lisp :tangle yes
 (after! doom-themes
@@ -600,17 +627,20 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
 #+end_src
+
 **** Miscellaneous
 ***** Line number
 This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
 #+begin_src emacs-lisp :tangle yes
 (setq display-line-numbers-type `relative)
 #+end_src
+
 ***** Default buffer name
 #+begin_src emacs-lisp :tangle yes
 (setq doom-fallback-buffer-name "Doom"
       +doom-dashboard-name "Doom")
 #+end_src
+
 ***** Cursor colors
 #+begin_src emacs-lisp :tangle yes
 (setq evil-normal-state-cursor '(box "orange")
@@ -621,40 +651,47 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
       evil-motion-state-cursor '(box "purple")
       evil-emacs-state-cursor '(box "DeepSkyBlue"))
 #+end_src
+
 ***** Remove hook emojify
 #+begin_src emacs-lisp :tangle yes
 (remove-hook 'doom-first-buffer-hook #'global-emojify-mode)
 #+end_src
+
 *** Writeroom
 **** zoom
 #+begin_src emacs-lisp :tangle yes
 (setq +zen-text-scale 0.8)
 #+end_src
+
 *** Org
 **** Org-ellipsis
 #+begin_src emacs-lisp :tangle yes
-(setq org-ellipsis " ")
+(setq org-ellipsis "  ")
 #+end_src
+
 **** +org-pretty-mode
 #+begin_src emacs-lisp :tangle yes
 (add-hook 'org-mode-hook #'+org-pretty-mode)
 #+end_src
-**** Make headings a little bigger
+
+**** Make headings a little more beatiful
 #+begin_src emacs-lisp :tangle yes
 (custom-set-faces!
-  '(outline-1 :weight extra-bold)
-  '(outline-2 :weight bold)
-  '(outline-3 :weight bold)
-  '(outline-4 :weight semi-bold)
-  '(outline-5 :weight semi-bold)
-  '(outline-6 :weight semi-bold)
-  '(outline-8 :weight semi-bold)
-  '(outline-9 :weight semi-bold))
+  `(outline-1 :weight ultra-bold :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-2 :weight extra-bold :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-3 :weight extra-bold :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-4 :weight bold :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-5 :weight bold :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-6 :weight bold :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-8 :weight bold :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-9 :weight bold :slant italic :background ,(doom-color 'bg-alt)))
 #+end_src
+
 **** Org-fontify
 #+begin_src emacs-lisp :tangle yes
 (setq org-fontify-quote-and-verse-blocks t)
 #+end_src
+
 **** Ligatures
 #+begin_src emacs-lisp :tangle yes
 (appendq! +ligatures-extra-symbols
@@ -734,6 +771,12 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
   :priority_e    "[#E]")
 (plist-put +ligatures-extra-symbols :name "⁍")
 #+end_src
+
+**** Disable hl-line-mode on org-mode
+#+begin_src emacs-lisp :tangle yes
+(add-hook! 'org-mode-hook (hl-line-mode -1))
+#+end_src
+
 *** Maps
 #+begin_src emacs-lisp :tangle yes
 (map! :leader
@@ -749,6 +792,7 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
        :desc "password-generator-words" "w" #'password-generator-words
        ))
 #+end_src
+
 ** Misc
 *** Snippets
 **** Nome
@@ -760,6 +804,7 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 # --
 Gustavo L. Freitas
 #+end_src
+
 **** Github
 #+begin_src text :tangle snippets/fundamental-mode/github :mkdirp yes
 # -*- mode: snippet -*-
@@ -769,6 +814,7 @@ Gustavo L. Freitas
 # --
 https://github.com/gussdelf/`%`$0
 #+end_src
+
 **** Gitlab
 #+begin_src text :tangle snippets/fundamental-mode/gitlab :mkdirp yes
 # -*- mode: snippet -*-
@@ -779,6 +825,7 @@ https://github.com/gussdelf/`%`$0
 
 https://gitlab.com/gussdelf/`%`$0
 #+end_src
+
 **** Shell
 #+begin_src text :tangle snippets/org-mode/shell :mkdirp yes
 # -*- mode: snippet -*-
@@ -790,6 +837,7 @@ https://gitlab.com/gussdelf/`%`$0
 `%`$0
 ,#+end_src
 #+end_src
+
 **** Python-src
 #+begin_src text :tangle snippets/org-mode/python :mkdirp yes
 # -*- mode: snippet -*-
@@ -801,6 +849,7 @@ https://gitlab.com/gussdelf/`%`$0
 `%`$0
 ,#+end_src
 #+end_src
+
 *** Eshell
 **** Aliases
 #+begin_src text :tangle eshell/aliases :mkdirp yes
