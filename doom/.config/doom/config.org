@@ -84,7 +84,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
        ;; indent-guides     ; highlighted indent columns
-       (ligatures +extra)         ; ligatures and symbols to make your code pretty again
+       ligatures         ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink cursor line after big motions
@@ -95,7 +95,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        (treemacs +lsp)          ; a project drawer, like neotree but cooler
        ;; unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
-       vi-tilde-fringe   ; fringe tildes to mark beyond EOB
+       ;; vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        (window-select +numbers)     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
        zen               ; distraction-free coding or writing
@@ -107,7 +107,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       (format +onsave)  ; automated prettiness
+       ;; (format +onsave)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
        multiple-cursors  ; editing in many places at once
@@ -222,7 +222,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        (php +lsp)               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python +lsp +pyright)           ; beautiful is better than ugly
+       ;;(python +lsp +pyright)           ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
@@ -657,6 +657,34 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 (remove-hook 'doom-first-buffer-hook #'global-emojify-mode)
 #+end_src
 
+***** Unpretty
+Disable prettify-symbols mode(i im not a big fan).
+#+begin_src emacs-lisp :tangle yes
+(defun unprettify ()
+  (global-prettify-symbols-mode -1)
+)
+(add-hook 'buffer-list-update-hook 'unprettify)
+#+end_src
+
+***** Make fringes background = bg-alt
+#+begin_src emacs-lisp :tangle yes
+(custom-set-faces!
+  `(fringe :background ,(doom-color 'bg-alt)))
+#+end_src
+
+***** Disable warnings in minibuffer
+#+begin_src emacs-lisp :tangle yes
+(defun my-command-error-function (data context caller)
+  "Ignore the buffer-read-only, beginning-of-buffer,
+end-of-buffer signals; pass the rest to the default handler."
+  (when (not (memq (car data) '(buffer-read-only
+                                beginning-of-buffer
+                                end-of-buffer)))
+    (command-error-default-function data context caller)))
+
+(setq command-error-function #'my-command-error-function)
+#+end_src
+
 *** Writeroom
 **** zoom
 #+begin_src emacs-lisp :tangle yes
@@ -674,102 +702,32 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 (add-hook 'org-mode-hook #'+org-pretty-mode)
 #+end_src
 
-**** Make headings a little more beatiful
+**** org-superstar
+#+begin_src emacs-lisp :tangle yes
+(setq org-superstar-headline-bullets-list
+      '("α" "β" "γ" "δ" "ε" "ς" "ζ" "η" "θ"))
+#+end_src
+
+**** Make headings(and src blocks) a little more beatiful
 #+begin_src emacs-lisp :tangle yes
 (custom-set-faces!
-  `(outline-1 :weight ultra-bold :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-2 :weight extra-bold :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-3 :weight extra-bold :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-4 :weight bold :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-5 :weight bold :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-6 :weight bold :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-8 :weight bold :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-9 :weight bold :slant italic :background ,(doom-color 'bg-alt)))
+  `(outline-1 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-2 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-3 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-4 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-5 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-6 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-8 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-9 :slant italic :background ,(doom-color 'bg-alt))
+  `(org-block-begin-line :slant italic :weight bold :background ,(doom-color 'bg-alt))
+  `(org-block-begin-line :slant italic :weight bold :background ,(doom-color 'bg-alt))
+  `(org-block :background ,(doom-color 'bg-alt))
+  )
 #+end_src
 
 **** Org-fontify
 #+begin_src emacs-lisp :tangle yes
 (setq org-fontify-quote-and-verse-blocks t)
-#+end_src
-
-**** Ligatures
-#+begin_src emacs-lisp :tangle yes
-(appendq! +ligatures-extra-symbols
-          `(:checkbox      "☐"
-            :pending       "◼"
-            :checkedbox    "☑"
-            :list_property "∷"
-            :em_dash       "—"
-            :ellipses      "…"
-            :arrow_right   "→"
-            :arrow_left    "←"
-            :property      "☸"
-            :options       "⌥"
-            :startup       "⏻"
-            :html_head     "🅷"
-            :html          "🅗"
-            :latex_class   "🄻"
-            :latex_header  "🅻"
-            :beamer_header "🅑"
-            :latex         "🅛"
-            :attr_latex    "🄛"
-            :attr_html     "🄗"
-            :attr_org      "⒪"
-            :begin_quote   "❝"
-            :end_quote     "❞"
-            :caption       "☰"
-            :header        "›"
-            :begin_export  "⏩"
-            :end_export    "⏪"
-            :properties    "⚙"
-            :end           "∎"
-            :priority_a   ,(propertize "⚑" 'face 'all-the-icons-red)
-            :priority_b   ,(propertize "⬆" 'face 'all-the-icons-orange)
-            :priority_c   ,(propertize "■" 'face 'all-the-icons-yellow)
-            :priority_d   ,(propertize "⬇" 'face 'all-the-icons-green)
-            :priority_e   ,(propertize "❓" 'face 'all-the-icons-blue)))
-(set-ligatures! 'org-mode
-  :merge t
-  :checkbox      "[ ]"
-  :pending       "[-]"
-  :checkedbox    "[X]"
-  :list_property "::"
-  :em_dash       "---"
-  :ellipsis      "..."
-  :arrow_right   "->"
-  :arrow_left    "<-"
-  :title         "#+title:"
-  :subtitle      "#+subtitle:"
-  :author        "#+author:"
-  :date          "#+date:"
-  :property      "#+property:"
-  :options       "#+options:"
-  :startup       "#+startup:"
-  :macro         "#+macro:"
-  :html_head     "#+html_head:"
-  :html          "#+html:"
-  :latex_class   "#+latex_class:"
-  :latex_header  "#+latex_header:"
-  :beamer_header "#+beamer_header:"
-  :latex         "#+latex:"
-  :attr_latex    "#+attr_latex:"
-  :attr_html     "#+attr_html:"
-  :attr_org      "#+attr_org:"
-  :begin_quote   "#+begin_quote"
-  :end_quote     "#+end_quote"
-  :caption       "#+caption:"
-  :header        "#+header:"
-  :begin_export  "#+begin_export"
-  :end_export    "#+end_export"
-  :results       "#+RESULTS:"
-  :property      ":PROPERTIES:"
-  :end           ":END:"
-  :priority_a    "[#A]"
-  :priority_b    "[#B]"
-  :priority_c    "[#C]"
-  :priority_d    "[#D]"
-  :priority_e    "[#E]")
-(plist-put +ligatures-extra-symbols :name "⁍")
 #+end_src
 
 **** Disable hl-line-mode on org-mode
@@ -791,6 +749,18 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
        :desc "password-generator-numeric" "n" #'password-generator-numeric
        :desc "password-generator-words" "w" #'password-generator-words
        ))
+#+end_src
+
+*** Smartparens
+#+begin_src emacs-lisp :tangle yes
+(sp-local-pair
+ `(org-mode)
+ "<<" ">>"
+ :actions `(insert))
+(sp-local-pair
+ `(c-mode)
+ "<" ">"
+ :actions `(insert))
 #+end_src
 
 ** Misc
