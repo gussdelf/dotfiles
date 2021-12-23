@@ -8,7 +8,7 @@ super + Return
 
 # terminal emulator
 alt + ctrl + Return
-	st bash
+	st -e zsh
 
 # run emacs
 alt + ctrl + e

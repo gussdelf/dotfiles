@@ -34,24 +34,24 @@ abbr N 'nnn -e'
 
 # Exports and sets
 set --export NNN_FIFO "/tmp/nnn.fifo"
-export VISUAl='nvim'
-export EDITOR='nvim'
+export VISUAl='/usr/local/bin/emacsclient -nc'
+export EDITOR='/usr/local/bin/emacsclient -nc'
 export NNN_PLUG='c:fzcd;l:launch;z:autojump;p:preview-tui;P:preview-tabbed;o:fzopen;'
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/Projects/shell:$PATH"
-export PAGER="bat --paging=always"
 export ZDOTDIR=$HOME/.config/zsh
 
 # Source
 source ~/.config/diricons.fish
 
-xset r rate 210 40
+xset r rate 320 40
 
 function fish_user_key_bindings
     bind -s -M insert -m default jk 'commandline -f repaint'
+    fzf_key_bindings
 end
 
 funcsave fish_user_key_bindings

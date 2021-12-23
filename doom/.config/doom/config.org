@@ -8,12 +8,12 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 ** Init.el
 *** Lexical bind
 #+srcname: lexical-bind-init-el
-#+begin_src emacs-lisp :tangle "init.el" :noweb no-export :comments no
+#+BEGIN_SRC emacs-lisp :tangle "init.el" :noweb no-export :comments no
 ;;; init.el -*- lexical-binding: t; -*-
-#+end_src
+#+END_SRC
 
 *** The file
-#+begin_src emacs-lisp :tangle "init.el" :noweb no-export :comments no
+#+BEGIN_SRC emacs-lisp :tangle "init.el" :noweb no-export :comments no
 (doom! :input
        <<doom-input>>
 
@@ -53,29 +53,29 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        :config
        <<doom-config>>
        )
-#+end_src
+#+END_SRC
 
 *** doom-input
 #+name: doom-input
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        ;;chinese
        ;;japanese
        ;;layout            ; auie,ctsrnm is the superior home row
-#+end_src
+#+END_SRC
 
 *** doom-completion
 #+name: doom-completion
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        (company +childframe)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ;; (ivy +icons)        ; a search engine for love and life
+       ;;(ivy +icons)        ; a search engine for love and life
        (vertico +icons)           ; the search engine of the future
-#+end_src
+#+END_SRC
 
 *** doom-ui
 #+name: doom-ui
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
@@ -99,11 +99,11 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        (window-select +numbers)     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
        zen               ; distraction-free coding or writing
-#+end_src
+#+END_SRC
 
 *** doom-editor
 #+name: doom-editor
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
@@ -116,38 +116,38 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        ;;rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
        word-wrap         ; soft wrapping with language-aware indent
-#+end_src
+#+END_SRC
 
 *** doom-emacs
 #+name: doom-emacs
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        (dired +icons)                          ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        (ibuffer +icons)         ; interactive buffer management
        (undo +tree)              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
-#+end_src
+#+END_SRC
 
 *** doom-term
 #+name: doom-term
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
        ;;term              ; basic terminal emulator for Emacs
        vterm             ; the best terminal emulation in Emacs
-#+end_src
+#+END_SRC
 
 *** doom-checkers
 #+name: doom-checkers
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        (syntax +childframe)             ; tasing you for every semicolon you forget
        ;;(spell +flyspell) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
-#+end_src
+#+END_SRC
 
 *** doom-tools
 #+name: doom-tools
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        ;;ansible
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
@@ -168,18 +168,18 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
-#+end_src
+#+END_SRC
 
 *** doom-os
 #+name: doom-os
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        ;;(:if IS-MAC macos)  ; improve compatibility with macOS
        tty               ; improve the terminal Emacs experience
-#+end_src
+#+END_SRC
 
 *** doom-lang
 #+name: doom-lang
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        ;;agda              ; types of types of types of types...
        ;;beancount         ; mind the GAAP
        (cc +lsp)               ; C > C++ == 1
@@ -202,7 +202,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
        ;;gdscript          ; the language you waited for
        (go +lsp)         ; the hipster dialect
-       ;;(haskell +lsp)    ; a language that's lazier than I am
+       (haskell +lsp)    ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        json              ; At least it ain't XML
@@ -240,78 +240,80 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        web               ; the tubes
        ;;yaml              ; JSON, but readable
        ;;zig               ; C, but simpler
-#+end_src
+#+END_SRC
 
 *** doom-email
 #+name: doom-email
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        ;; (mu4e +org +gmail)
        ;;notmuch
        ;;(wanderlust +gmail)
-#+end_src
+#+END_SRC
 
 *** doom-app
 #+name: doom-app
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        ;;calendar
        emms
        everywhere        ; *leave* Emacs!? You must be joking
        irc               ; how neckbeards socialize
        (rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
-#+end_src
+#+END_SRC
 
 *** doom-config
 #+name: doom-config
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
        ;; literate
        (default +bindings +smartparens)
-#+end_src
+#+END_SRC
 
 ** Packages.el
 *** Packages
-#+begin_src emacs-lisp :tangle "packages.el" :noweb no-export :comments no
+#+BEGIN_SRC emacs-lisp :tangle "packages.el" :noweb no-export :comments no
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! spacemacs-theme)
 (package! theme-magic)
 (package! password-generator)
 (package! screenshot :recipe (:host github :repo "tecosaur/screenshot"))
-#+end_src
+#+END_SRC
 
 ** Config
 *** Lexical bind
 #+srcname: lexical-bind-config-el
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;;; config.el -*- lexical-binding: t; -*-
-#+end_src
+#+END_SRC
 
 *** Profile
 **** Identify
 Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets.
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq user-full-name "Gustavo de Lima Freitas"
       user-mail-address "flovatsug@gmail.com")
-#+end_src
+#+END_SRC
 
 **** Org-mode dir
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq org-directory "~/Docs/org/")
-#+end_src
+#+END_SRC
 
 *** Extra packages
 **** Tree-sitter
-Tree-sitter is a parser generator tool and an incremental parsing library. It can build a concrete syntax tree for a source file and efficiently update the syntax tree as the source file is edited.
-#+begin_src emacs-lisp :tangle yes
+Tree-sitter is a parser generator tool and an incremental parsing library. It
+can build a concrete syntax tree for a source file and efficiently update the
+syntax tree as the source file is edited.
+#+BEGIN_SRC emacs-lisp :tangle yes
 (use-package! tree-sitter
   :config
   (require 'tree-sitter-langs)
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-#+end_src
+#+END_SRC
 
 **** Theme-magic
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (use-package! theme-magic
   :commands theme-magic-from-emacs
   :config
@@ -334,17 +336,17 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
      (doom-blend 'base8 'constants 0.1)
      (doom-blend 'base8 'functions 0.1)
      (face-attribute 'default :foreground))))
-#+end_src
+#+END_SRC
 
 **** Screenshot
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (use-package! screenshot
   :defer t)
-#+end_src
+#+END_SRC
 
 *** Magit
 **** Pretty-magit
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (require 'dash)
 
 (defmacro pretty-magit (WORD ICON PROPS &optional NO-PROMPT?)
@@ -383,26 +385,26 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 
 (advice-add 'magit-status :after 'add-magit-faces)
 (advice-add 'magit-refresh-buffer :after 'add-magit-faces)
-#+end_src
+#+END_SRC
 
 *** Some ui fix
 **** Fonts
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq doom-font (font-spec :family "Iosevka Nerd Font" :size 20)
       doom-big-font (font-spec :family "Iosevka Nerd Font" :size 20)
       doom-variable-pitch-font (font-spec :family "Overpass")
       doom-unicode-font (font-spec :family "JuliaMono")
       doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))
-#+end_src
+#+END_SRC
 
 **** Theme
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq doom-theme 'doom-city-lights)
-#+end_src
+#+END_SRC
 
 **** Dashboard
 #+name: splash-image
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; (defvar fancy-splash-image-template
 ;;   (expand-file-name "misc/splash-images/emacs-e.svg" doom-private-dir)
 ;;   "Default template svg used for the splash image, with substitutions from ")
@@ -495,22 +497,22 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 ;; (add-hook 'window-size-change-functions #'set-appropriate-splash)
 ;; (add-hook 'doom-load-theme-hook #'set-appropriate-splash)
 
-#+end_src
+#+END_SRC
 #+name: splash-phrases
-#+begin_src emacs-lisp :tangle yes
-;; (defun doom-dashboard-widget-footer ()
-;;   (insert
-;;    "\n"
-;;    (+doom-dashboard--center
-;;     (- +doom-dashboard--width 2)
-;;     (with-temp-buffer
-;;       (insert-text-button (or (all-the-icons-octicon "octoface" :face 'doom-dashboard-footer-icon :height 1.3 :v-adjust -0.15)
-;;                               (propertize "github" 'face 'doom-dashboard-footer))
-;;                           'action (lambda (_) (browse-url "https://github.com/gussdelf/"))
-;;                           'follow-link t
-;;                           'help-echo "Open my github page")
-;;       (buffer-string)))
-;;    "\n"))
+#+BEGIN_SRC emacs-lisp :tangle yes
+(defun doom-dashboard-widget-footer ()
+  (insert
+   "\n"
+   (+doom-dashboard--center
+    (- +doom-dashboard--width 2)
+    (with-temp-buffer
+      (insert-text-button (or (all-the-icons-octicon "octoface" :face 'doom-dashboard-footer-icon :height 1.3 :v-adjust -0.15)
+                              (propertize "github" 'face 'doom-dashboard-footer))
+                          'action (lambda (_) (browse-url "https://github.com/gussdelf/"))
+                          'follow-link t
+                          'help-echo "Open my github page")
+      (buffer-string)))
+   "\n"))
 ;; (defvar splash-phrase-source-folder
 ;;   (expand-file-name "misc/splash-phrases" doom-private-dir)
 ;;   "A folder of text files with a fun phrase on each line.")
@@ -601,48 +603,47 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 ;;    (doom-dashboard-phrase)
 ;;    "\n"))
 
+#+END_SRC
 
-#+end_src
-
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 (add-hook! '+doom-dashboard-mode-hook (hide-mode-line-mode 1)(hl-line-mode -1))
 (setq-hook! '+doom-dashboard-mode-hook evil-normal-state-cursor (list nil))
 
 (setq fancy-splash-image (expand-file-name "misc/splash-images/skull.svg" doom-private-dir))
 (setq +doom-dashboard-banner-padding '(0 . 0))
-#+end_src
+#+END_SRC
 
 **** Modeline
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (cond ((featurep! :ui modeline) (setq doom-modeline-major-mode-icon t)))
-#+end_src
+#+END_SRC
 
 **** Italic to Slant
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
 (custom-set-faces!
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
-#+end_src
+#+END_SRC
 
 **** Miscellaneous
 ***** Line number
 This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq display-line-numbers-type `relative)
-#+end_src
+#+END_SRC
 
 ***** Default buffer name
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq doom-fallback-buffer-name "Doom"
       +doom-dashboard-name "Doom")
-#+end_src
+#+END_SRC
 
 ***** Cursor colors
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq evil-normal-state-cursor '(box "orange")
       evil-insert-state-cursor '(bar "#33CED8")
       evil-visual-state-cursor '(hbar "gray")
@@ -650,30 +651,31 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
       evil-replace-state-cursor '(hbar "#ff6655")
       evil-motion-state-cursor '(box "purple")
       evil-emacs-state-cursor '(box "DeepSkyBlue"))
-#+end_src
+#+END_SRC
 
-***** Remove hook emojify
-#+begin_src emacs-lisp :tangle yes
+***** Remove emojify hook
+#+BEGIN_SRC emacs-lisp :tangle yes
 (remove-hook 'doom-first-buffer-hook #'global-emojify-mode)
-#+end_src
+#+END_SRC
 
 ***** Unpretty
 Disable prettify-symbols mode(i im not a big fan).
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (defun unprettify ()
+  "This function just disable prettify-symbols-mode."
   (global-prettify-symbols-mode -1)
 )
 (add-hook 'buffer-list-update-hook 'unprettify)
-#+end_src
+#+END_SRC
 
 ***** Make fringes background = bg-alt
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (custom-set-faces!
   `(fringe :background ,(doom-color 'bg-alt)))
-#+end_src
+#+END_SRC
 
 ***** Disable warnings in minibuffer
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (defun my-command-error-function (data context caller)
   "Ignore the buffer-read-only, beginning-of-buffer,
 end-of-buffer signals; pass the rest to the default handler."
@@ -683,60 +685,60 @@ end-of-buffer signals; pass the rest to the default handler."
     (command-error-default-function data context caller)))
 
 (setq command-error-function #'my-command-error-function)
-#+end_src
+#+END_SRC
 
 *** Writeroom
 **** zoom
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq +zen-text-scale 0.8)
-#+end_src
+#+END_SRC
 
 *** Org
 **** Org-ellipsis
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq org-ellipsis "  ")
-#+end_src
+#+END_SRC
 
 **** +org-pretty-mode
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'org-mode-hook #'+org-pretty-mode)
-#+end_src
+#+END_SRC
 
 **** org-superstar
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq org-superstar-headline-bullets-list
       '("α" "β" "γ" "δ" "ε" "ς" "ζ" "η" "θ"))
-#+end_src
+#+END_SRC
 
 **** Make headings(and src blocks) a little more beatiful
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (custom-set-faces!
-  `(outline-1 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-2 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-3 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-4 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-5 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-6 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-8 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-9 :slant italic :background ,(doom-color 'bg-alt))
-  `(org-block-begin-line :slant italic :weight bold :background ,(doom-color 'bg-alt))
-  `(org-block-begin-line :slant italic :weight bold :background ,(doom-color 'bg-alt))
+  `(outline-1 :slant oblique :background ,(doom-color 'bg-alt))
+  `(outline-2 :slant oblique :background ,(doom-color 'bg-alt))
+  `(outline-3 :slant oblique :background ,(doom-color 'bg-alt))
+  `(outline-4 :slant oblique :background ,(doom-color 'bg-alt))
+  `(outline-5 :slant oblique :background ,(doom-color 'bg-alt))
+  `(outline-6 :slant oblique :background ,(doom-color 'bg-alt))
+  `(outline-8 :slant oblique :background ,(doom-color 'bg-alt))
+  `(outline-9 :slant oblique :background ,(doom-color 'bg-alt))
+  `(org-block-begin-line :slant oblique :weight bold :background ,(doom-color 'bg-alt))
+  `(org-block-begin-line :slant oblique :weight bold :background ,(doom-color 'bg-alt))
   `(org-block :background ,(doom-color 'bg-alt))
   )
-#+end_src
+#+END_SRC
 
 **** Org-fontify
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq org-fontify-quote-and-verse-blocks t)
-#+end_src
+#+END_SRC
 
 **** Disable hl-line-mode on org-mode
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook! 'org-mode-hook (hl-line-mode -1))
-#+end_src
+#+END_SRC
 
 *** Maps
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (map! :leader
        :desc "M-x" "SPC" #'execute-extended-command
        :desc "Find file in project"  "ç"  #'projectile-find-file
@@ -749,10 +751,10 @@ end-of-buffer signals; pass the rest to the default handler."
        :desc "password-generator-numeric" "n" #'password-generator-numeric
        :desc "password-generator-words" "w" #'password-generator-words
        ))
-#+end_src
+#+END_SRC
 
 *** Smartparens
-#+begin_src emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle yes
 (sp-local-pair
  `(org-mode)
  "<<" ">>"
@@ -761,32 +763,32 @@ end-of-buffer signals; pass the rest to the default handler."
  `(c-mode)
  "<" ">"
  :actions `(insert))
-#+end_src
+#+END_SRC
 
 ** Misc
 *** Snippets
 **** Nome
-#+begin_src text :tangle snippets/fundamental-mode/nome :mkdirp yes
+#+BEGIN_SRC text :tangle snippets/fundamental-mode/nome :mkdirp yes
 # -*- mode: snippet -*-
 # name: nome
 # key: nome
 # uuid: nome
 # --
 Gustavo L. Freitas
-#+end_src
+#+END_SRC
 
 **** Github
-#+begin_src text :tangle snippets/fundamental-mode/github :mkdirp yes
+#+BEGIN_SRC text :tangle snippets/fundamental-mode/github :mkdirp yes
 # -*- mode: snippet -*-
 # name: github
 # key: ghub
 # uuid: github
 # --
 https://github.com/gussdelf/`%`$0
-#+end_src
+#+END_SRC
 
 **** Gitlab
-#+begin_src text :tangle snippets/fundamental-mode/gitlab :mkdirp yes
+#+BEGIN_SRC text :tangle snippets/fundamental-mode/gitlab :mkdirp yes
 # -*- mode: snippet -*-
 # name: gitlab
 # key: glab
@@ -794,35 +796,35 @@ https://github.com/gussdelf/`%`$0
 # --
 
 https://gitlab.com/gussdelf/`%`$0
-#+end_src
+#+END_SRC
 
 **** Shell
-#+begin_src text :tangle snippets/org-mode/shell :mkdirp yes
+#+BEGIN_SRC text :tangle snippets/org-mode/shell :mkdirp yes
 # -*- mode: snippet -*-
 # name: shell
 # key: sh
 # uuid: shell
 # --
-,#+begin_src shell :tangle yes
+,#+BEGIN_SRC shell :tangle yes
 `%`$0
-,#+end_src
-#+end_src
+,#+END_SRC
+#+END_SRC
 
 **** Python-src
-#+begin_src text :tangle snippets/org-mode/python :mkdirp yes
+#+BEGIN_SRC text :tangle snippets/org-mode/python :mkdirp yes
 # -*- mode: snippet -*-
 # name: python
 # key: py
 # uuid: py-org
 # --
-,#+begin_src python :tangle yes
+,#+BEGIN_SRC python :tangle yes
 `%`$0
-,#+end_src
-#+end_src
+,#+END_SRC
+#+END_SRC
 
 *** Eshell
 **** Aliases
-#+begin_src text :tangle eshell/aliases :mkdirp yes
+#+BEGIN_SRC text :tangle eshell/aliases :mkdirp yes
 alias ff find-file $1
 alias clear clear-scrollback;
 alias c clear-scrollback;
@@ -830,4 +832,10 @@ alias ls exa --icons -s type
 alias la exa --icons -s type -la
 alias ll exa --icons -s type -l
 alias g git
+#+END_SRC
+
+*** Emms
+#+begin_src emacs-lisp :tangle yes
+(require 'emms-setup)
+(setq emms-source-file-default-directory "~/Files/Music/")
 #+end_src
