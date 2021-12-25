@@ -69,7 +69,7 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
        (company +childframe)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ;;(ivy +icons)        ; a search engine for love and life
+       ;; (ivy +icons +prescient)        ; a search engine for love and life
        (vertico +icons)           ; the search engine of the future
 #+END_SRC
 
@@ -273,7 +273,6 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 #+BEGIN_SRC emacs-lisp :tangle "packages.el" :noweb no-export :comments no
 (package! tree-sitter)
 (package! tree-sitter-langs)
-(package! spacemacs-theme)
 (package! theme-magic)
 (package! password-generator)
 (package! screenshot :recipe (:host github :repo "tecosaur/screenshot"))
@@ -713,16 +712,16 @@ end-of-buffer signals; pass the rest to the default handler."
 **** Make headings(and src blocks) a little more beatiful
 #+BEGIN_SRC emacs-lisp :tangle yes
 (custom-set-faces!
-  `(outline-1 :slant oblique :background ,(doom-color 'bg-alt))
-  `(outline-2 :slant oblique :background ,(doom-color 'bg-alt))
-  `(outline-3 :slant oblique :background ,(doom-color 'bg-alt))
-  `(outline-4 :slant oblique :background ,(doom-color 'bg-alt))
-  `(outline-5 :slant oblique :background ,(doom-color 'bg-alt))
-  `(outline-6 :slant oblique :background ,(doom-color 'bg-alt))
-  `(outline-8 :slant oblique :background ,(doom-color 'bg-alt))
-  `(outline-9 :slant oblique :background ,(doom-color 'bg-alt))
-  `(org-block-begin-line :slant oblique :weight bold :background ,(doom-color 'bg-alt))
-  `(org-block-begin-line :slant oblique :weight bold :background ,(doom-color 'bg-alt))
+  `(outline-1 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-2 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-3 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-4 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-5 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-6 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-8 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-9 :slant italic :background ,(doom-color 'bg-alt))
+  `(org-block-begin-line :slant italic :weight bold :background ,(doom-color 'bg-alt))
+  `(org-block-begin-line :slant italic :weight bold :background ,(doom-color 'bg-alt))
   `(org-block :background ,(doom-color 'bg-alt))
   )
 #+END_SRC
