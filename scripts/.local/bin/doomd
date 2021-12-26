@@ -1,3 +1,0 @@
-#! /usr/bin/env sh
-
-st -e emacs --with-profile doom --daemon
