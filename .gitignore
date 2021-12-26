@@ -1,3 +1,4 @@
+zsh/.config/zsh/plugins/
 doom/.config/doom/*
 !doom/.config/doom/config.org
 !doom/.config/doom/misc/
