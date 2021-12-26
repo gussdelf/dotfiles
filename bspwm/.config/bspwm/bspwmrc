@@ -26,9 +26,10 @@ setxkbmap -model abnt2 -layout br -option caps:swapescape &
 #setxkbmap -model abnt2 -layout br -option ctrl:swapcaps &
 xinput --set-prop "SIGMACHIP Usb Mouse" "Coordinate Transformation Matrix" 0.2 0 0 0 0.2 0 0 0 1 &
 xsetroot -cursor_name left_ptr &
-picom -f &
+picom &
 feh --bg-scale ~/Imgs/wall/nord-dark.jpg --no-fehbg &
 xrdb ~/.config/Xresources/OneDarkDarker &
 pgrep bspswallow || bspswallow &
+sleep 5 &
 $HOME/.config/polybar/launch.sh &
 

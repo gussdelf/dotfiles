@@ -66,8 +66,8 @@ $character\
 """
 [character]
 
-success_symbol = "[❯](purple)"
-vicmd_symbol = "[❮](purple)"
+success_symbol = "[❯](green)"
+vicmd_symbol = "[❮](green)"
 #error_symbol = "[ ](yellow)"
 #success_symbol = "[ﬦ](bold blue)"
 #vicmd_symbol = "[ﬦ](bold yellow)"
