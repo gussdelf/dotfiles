@@ -3,4 +3,3 @@
 tmux new-session -d -s 'Hydra' -n ''
 tmux attach-session -t Hydra
 
-  ## This is made using emacs

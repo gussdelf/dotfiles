@@ -29,7 +29,6 @@ xsetroot -cursor_name left_ptr &
 picom &
 feh --bg-scale ~/Imgs/wall/nord-dark.jpg --no-fehbg &
 xrdb ~/.config/Xresources/OneDarkDarker &
-pgrep bspswallow || bspswallow &
 sleep 5 &
 $HOME/.config/polybar/launch.sh &
 

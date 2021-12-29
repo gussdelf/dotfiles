@@ -3,4 +3,3 @@
 SFILE=$(fd -H --type f -E .git -E .gitignore -E .github -E *.png -E *.jpg -E *.jpeg -E *.svg  . | fzf --height=50% --reverse) && nvim $SFILE
 
 
-  ## This is made using emacs
