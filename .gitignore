@@ -1,6 +1,7 @@
 zsh/.config/zsh/plugins/
 doom/.config/doom/*
-scripts/.local/share/
+scripts/.local/*
+!scripts/.local/bin/
 !doom/.config/doom/config.org
 !doom/.config/doom/misc/
 !doom/.config/doom/themes/
