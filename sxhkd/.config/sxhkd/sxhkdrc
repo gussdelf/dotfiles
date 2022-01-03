@@ -22,6 +22,9 @@ alt + ctrl + n
 alt + ctrl + o 
 	emacsclient --eval '(emacs-everywhere)'
 
+# watch
+alt + ctrl + y
+	watch -D
 
 # program launcher
 super + @space
