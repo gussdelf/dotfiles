@@ -2,7 +2,7 @@ zsh/.config/zsh/*
 !zsh/.config/zsh/.zshrc
 !zsh/.config/zsh/add-plugins.zsh
 !zsh/.config/zsh/zsh-exports.zsh
-!doom/.config/doom/*
+doom/.config/doom/*
 scripts/.local/*
 !scripts/.local/bin/
 !doom/.config/doom/config.org
