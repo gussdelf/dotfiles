@@ -1,4 +1,4 @@
-zsh/.config/zsh/
+zsh/.config/zsh/*
 !zsh/.config/zsh/.zshrc
 !zsh/.config/zsh/add-plugins.zsh
 !zsh/.config/zsh/zsh-exports.zsh
