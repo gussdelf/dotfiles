@@ -202,11 +202,11 @@ emacs-lisp        ; drown in parentheses
 ;;fstar             ; (dependent) types and (monadic) effects and Z3
 ;;gdscript          ; the language you waited for
 (go +lsp)         ; the hipster dialect
-(haskell +lsp)    ; a language that's lazier than I am
+;;(haskell +lsp)    ; a language that's lazier than I am
 ;;hy                ; readability of scheme w/ speed of python
 ;;idris             ; a language you can depend on
 json              ; At least it ain't XML
-(java +meghanada +lsp) ; the poster child for carpal tunnel syndrome
+;;(java +meghanada +lsp) ; the poster child for carpal tunnel syndrome
 (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
 ;;julia             ; a better, faster MATLAB
 ;;kotlin            ; a better, slicker Java(Script)
@@ -214,7 +214,7 @@ json              ; At least it ain't XML
 ;;lean              ; for folks with too much to prove
 ;;ledger            ; be audit you can be
 (lua +lsp)               ; one-based indices? one-based indices
-(markdown +grip)         ; writing docs for people to ignore
+markdown         ; writing docs for people to ignore
 ;;nim               ; python + lisp at the speed of c
 ;;nix               ; I hereby declare "nix geht mehr!"
 ;;ocaml             ; an objective camel
@@ -256,8 +256,8 @@ web               ; the tubes
 ;;calendar
 emms
 everywhere        ; *leave* Emacs!? You must be joking
-irc               ; how neckbeards socialize
-(rss +org)        ; emacs as an RSS reader
+;;irc               ; how neckbeards socialize
+;;(rss +org)        ; emacs as an RSS reader
 ;;twitter           ; twitter client https://twitter.com/vnought
 #+END_SRC
 
@@ -272,6 +272,7 @@ irc               ; how neckbeards socialize
 *** Packages
 #+srcname: packages
 #+BEGIN_SRC emacs-lisp :tangle "packages.el" :noweb no-export :comments no
+(unpin! (:ui doom))
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! theme-magic)
