@@ -26,10 +26,13 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 setopt appendhistory
 unsetopt BEEP
-setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
-setopt HIST_SAVE_NO_DUPS  # do not save duplicated command
-setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
-setopt INC_APPEND_HISTORY_TIME  # append command to history file immediately after execution
-setopt EXTENDED_HISTORY  # record command start time
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS 
+setopt HIST_REDUCE_BLANKS 
+setopt INC_APPEND_HISTORY_TIME 
+setopt EXTENDED_HISTORY 
 setopt autocd extendedglob nomatch menucomplete
+
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+ . /home/haunter/.nix-profile/etc/profile.d/nix.sh
+
