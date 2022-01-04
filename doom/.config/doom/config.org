@@ -216,7 +216,7 @@ json              ; At least it ain't XML
 (lua +lsp)               ; one-based indices? one-based indices
 markdown         ; writing docs for people to ignore
 ;;nim               ; python + lisp at the speed of c
-;;nix               ; I hereby declare "nix geht mehr!"
+nix               ; I hereby declare "nix geht mehr!"
 ;;ocaml             ; an objective camel
 (org +pretty +roam2 +pomodoro)               ; organize your plain life in plain text
 (php +lsp)               ; perl's insecure younger brother
@@ -413,7 +413,7 @@ syntax tree as the source file is edited.
 
 **** Dashboard
 #+name: splash-image
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle no
 ;; (defvar fancy-splash-image-template
 ;;   (expand-file-name "misc/splash-images/emacs-e.svg" doom-private-dir)
 ;;   "Default template svg used for the splash image, with substitutions from ")
@@ -509,7 +509,7 @@ syntax tree as the source file is edited.
 #+END_SRC
 
 #+name: splash-phrases
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle no
 ;; (defvar splash-phrase-source-folder
 ;;   (expand-file-name "misc/splash-phrases" doom-private-dir)
 ;;   "A folder of text files with a fun phrase on each line.")
