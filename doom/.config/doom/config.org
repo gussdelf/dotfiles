@@ -679,6 +679,11 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 (remove-hook 'doom-first-buffer-hook #'global-emojify-mode)
 #+END_SRC
 
+***** Add emojis for pretty magit
+#+begin_src emacs-lisp :tangle yes
+(add-hook 'magit-mode-hook #'emojify-mode)
+#+end_src
+
 ***** Unpretty
 Disable prettify-symbols mode(i im not a big fan).
 #+srcname: unprettify
