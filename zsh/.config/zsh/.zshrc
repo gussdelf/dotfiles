@@ -32,6 +32,11 @@ setopt INC_APPEND_HISTORY_TIME
 setopt EXTENDED_HISTORY 
 setopt autocd extendedglob nomatch menucomplete
 
+# prompt
+eval "$(starship init zsh)"
+
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
- . /home/haunter/.nix-profile/etc/profile.d/nix.sh
+
+xset r rate 320 40
+. /home/haunter/.nix-profile/etc/profile.d/nix.sh
 
