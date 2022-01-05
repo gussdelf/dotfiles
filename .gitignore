@@ -1,7 +1,6 @@
 zsh/.config/zsh/*
 !zsh/.config/zsh/.zshrc
-!zsh/.config/zsh/add-plugins.zsh
-!zsh/.config/zsh/zsh-exports.zsh
+!zsh/.config/zsh/functions.zsh
 !zsh/.config/zsh/alias.zsh
 doom/.config/doom/*
 scripts/.local/*
