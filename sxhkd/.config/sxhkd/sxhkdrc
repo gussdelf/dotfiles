@@ -10,17 +10,17 @@ super + Return
 alt + ctrl + Return
 	st -e fish
 
-# run emacs
+# run emacs daemon
+alt + ctrl + d
+	st -e emacs --daemon
+
+# run emacsclient
 alt + ctrl + e
 	emacsclient -nc
 
 # run gnvim
 alt + ctrl + n 
         gnvim --disable-ext-tabline --disable-ext-cmdline --disable-ext-popupmenu
-
-# emacs everywhere
-alt + ctrl + o 
-	emacsclient --eval '(emacs-everywhere)'
 
 # watch
 alt + ctrl + y
