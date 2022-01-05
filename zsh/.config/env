@@ -1,4 +1,5 @@
-set --export NNN_FIFO "/tmp/nnn.fifo"
+#! /usr/bin/env sh
+
 export VISUAl='emacsclient -nc' 
 export EDITOR='emacsclient -nc'
 export NNN_PLUG='c:fzcd;l:launch;z:autojump;p:preview-tui;P:preview-tabbed;o:fzopen;'
@@ -34,3 +35,4 @@ export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export FZF_DEFAULT_OPTS="--height=50% --layout=reverse --info=inline --color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1"

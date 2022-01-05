@@ -4,22 +4,21 @@ zstyle ':completion:*' menu select
 compinit
 _comp_options+=(globdots)
 
+# vim bindings
 bindkey -v
-xset r rate 320 40
-eval "$(starship init zsh)"
 
 # Sources
 export ZDOTDIR=~/.config/zsh
-source $ZDOTDIR/add-plugins.zsh
-zsh_add_file "zsh-exports.zsh"
-zsh_add_file "alias.zsh"
+source $ZDOTDIR/functions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $ZDOTDIR/plugins/zsh-autopair/autopair.plugin.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+source ~/.config/env
 
+zsh_add_file "alias.zsh"
 zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin "Aloxaf/fzf-tab"
 
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
