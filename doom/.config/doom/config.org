@@ -1,6 +1,6 @@
-#+TITLE: My config of Doom emacs
+#+TITLE: My config of Doom Emacs
 #+AUTHOR: Gustavo L. Freitas
-#+DESCRIPTION: Config of Doom emacs in org-mode
+#+DESCRIPTION: Config of Doom Emacs in org-mode
 #+STARTUP: fold
 
 * My Doom-Emacs Config
@@ -141,7 +141,7 @@ vterm             ; the best terminal emulation in Emacs
 #+name: doom-checkers
 #+BEGIN_SRC emacs-lisp
 (syntax +childframe)             ; tasing you for every semicolon you forget
-;;(spell +flyspell) ; tasing you for misspelling mispelling
+;;(spell +aspell) ; tasing you for misspelling mispelling
 ;;grammar           ; tasing grammar mistake every you make
 #+END_SRC
 
@@ -414,6 +414,7 @@ syntax tree as the source file is edited.
 **** Dashboard
 #+name: splash-image
 #+BEGIN_SRC emacs-lisp :tangle no
+;; REVIEW
 ;; (defvar fancy-splash-image-template
 ;;   (expand-file-name "misc/splash-images/emacs-e.svg" doom-private-dir)
 ;;   "Default template svg used for the splash image, with substitutions from ")
@@ -510,6 +511,7 @@ syntax tree as the source file is edited.
 
 #+name: splash-phrases
 #+BEGIN_SRC emacs-lisp :tangle no
+;; REVIEW
 ;; (defvar splash-phrase-source-folder
 ;;   (expand-file-name "misc/splash-phrases" doom-private-dir)
 ;;   "A folder of text files with a fun phrase on each line.")
@@ -630,7 +632,7 @@ syntax tree as the source file is edited.
 #+END_SRC
 
 **** Modeline
-#+srcname: modeline
+#+srcname: doom-modeline
 #+BEGIN_SRC emacs-lisp :tangle yes
 (cond ((featurep! :ui modeline) (setq doom-modeline-major-mode-icon t)))
 #+END_SRC
