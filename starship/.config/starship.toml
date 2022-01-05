@@ -1,24 +1,9 @@
 add_newline = false
 
 [character]
-#success_symbol = "[\\$](green)"
-#vicmd_symbol = "[£](green)"
-#error_symbol = "[\\$](yellow)"
-#success_symbol = "[ﬦ](bold blue)"
-#vicmd_symbol = "[ﬦ](bold yellow)"
-#error_symbol = "[ ](bold red)"
-##success_symbol = "[󰮯 ](green)"
-#vicmd_symbol = "[󰮯 ](yellow)"
-#error_symbol = "[ ](red)"
-#success_symbol = "[󰯈 ](green)"
-#vicmd_symbol = "[󰯈 ](green)"
-#error_symbol = "[ ](red)"
-#success_symbol = "[󰉋 ](green)"
-#vicmd_symbol = "[󰉋 ](green)"
-#error_symbol = "[ ](red)"
-#success_symbol = "[󱙝 ](green)"
-#vicmd_symbol = "[󱙝 ](yellow)"
-#error_symbol = "[ ](red)"
+success_symbol = "[λ](green)"
+error_symbol = "[λ](red)"
+vicmd_symbol = "[ﬦ](blue)"
 disabled = false
 
 [hostname]
