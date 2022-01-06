@@ -38,5 +38,3 @@ eval "$(starship init zsh)"
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 xset r rate 320 40
-. /home/haunter/.nix-profile/etc/profile.d/nix.sh
-
