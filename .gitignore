@@ -6,8 +6,7 @@ doom/.config/doom/*
 !doom/.config/doom/config.org
 !doom/.config/doom/misc/
 !doom/.config/doom/themes/
-scripts/.local/*
-!scripts/.local/bin/
 fish/.config/fish/*
+scripts
 !fish/.config/fish/alias.fish
 !fish/.config/fish/config.fish

@@ -1,5 +1,0 @@
-#! /usr/bin/env dash
-
-tmux new-session -d -s 'Hydra' -n ''
-tmux attach-session -t Hydra
-

@@ -1,3 +1,0 @@
-#! /usr/bin/env dash
-
-mpv '--ytdl-format=bestvideo[height<=480]+bestaudio/best[height<=480]' $(ytfzf -tL $1)
