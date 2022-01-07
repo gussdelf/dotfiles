@@ -10,17 +10,13 @@ super + Return
 alt + ctrl + Return
 	st -e fish
 
-# run emacs daemon
+# run emacsclient doom
 alt + ctrl + d
-	st -e emacs --daemon
+	emacsclient -nc --socket-name doom
 
-# run emacsclient
-alt + ctrl + e
-	emacsclient -nc
-
-# run gnvim
-alt + ctrl + n 
-        gnvim --disable-ext-tabline --disable-ext-cmdline --disable-ext-popupmenu
+# run emacsclient spacemacs
+alt + ctrl + s
+	emacsclient -nc --socket-name spacemacs
 
 # watch
 alt + ctrl + y
@@ -147,5 +143,3 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-alt + ctrl + s
-	subl
