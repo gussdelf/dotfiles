@@ -280,7 +280,7 @@ everywhere        ; *leave* Emacs!? You must be joking
 (package! screenshot :recipe (:host github :repo "tecosaur/screenshot"))
 #+END_SRC
 
-** Config
+** Config.el
 *** Lexical bind
 #+srcname: lexical-bind-config-el
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -695,13 +695,6 @@ Disable prettify-symbols mode(i im not a big fan).
   (global-prettify-symbols-mode -1)
   )
 (add-hook 'buffer-list-update-hook 'unprettify)
-#+END_SRC
-
-***** Make fringes background = bg-alt
-#+srcname: fringes-bg-alt
-#+BEGIN_SRC emacs-lisp :tangle yes
-(custom-set-faces!
-  `(fringe :background ,(doom-color 'bg-alt)))
 #+END_SRC
 
 ***** Disable warnings in minibuffer
