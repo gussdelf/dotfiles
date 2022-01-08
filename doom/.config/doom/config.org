@@ -400,9 +400,9 @@ syntax tree as the source file is edited.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (setq doom-font (font-spec :family "Iosevka Nerd Font" :size 20)
       doom-big-font (font-spec :family "Iosevka Nerd Font" :size 20)
-      doom-variable-pitch-font (font-spec :family "Overpass")
+      doom-variable-pitch-font (font-spec :family "Overpass Nerd Font")
       doom-unicode-font (font-spec :family "JuliaMono")
-      doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))
+      doom-serif-font (font-spec :family "BlexMono Nerd Font" :weight 'light))
 #+END_SRC
 
 **** Theme
@@ -634,7 +634,8 @@ syntax tree as the source file is edited.
 **** Modeline
 #+srcname: doom-modeline
 #+BEGIN_SRC emacs-lisp :tangle yes
-(cond ((featurep! :ui modeline) (setq doom-modeline-major-mode-icon t)))
+(cond ((featurep! :ui modeline) (setq doom-modeline-major-mode-icon t
+              doom-modeline-persp-name t)))
 #+END_SRC
 
 **** Italic to Slant
@@ -715,7 +716,7 @@ end-of-buffer signals; pass the rest to the default handler."
 **** zoom
 #+srcname: zen-text-scale
 #+BEGIN_SRC emacs-lisp :tangle yes
-(setq +zen-text-scale 0.8)
+(setq +zen-text-scale 1.0)
 #+END_SRC
 
 *** Org
