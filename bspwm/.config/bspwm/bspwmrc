@@ -13,22 +13,14 @@ bspc config focus_follows_pointer         true
 bspc config active_border_color "#2e3440"
 bspc config focused_border_color "#4c566a"
 
-bspc rule -a Gimp state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a zathura state=tiled
-bspc rule -a mplayer2 state=floating
 bspc rule -a Emacs state=tiled
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
-bspc rule -a GNvim state=tiled
+bspc rule -a Zathura state=tiled
 
 setxkbmap -model abnt2 -layout br -option caps:swapescape &
-#setxkbmap -model abnt2 -layout br -option ctrl:swapcaps &
 xinput --set-prop "SIGMACHIP Usb Mouse" "Coordinate Transformation Matrix" 0.2 0 0 0 0.2 0 0 0 1 &
 xsetroot -cursor_name left_ptr &
 picom &
 feh --bg-scale ~/Imgs/wall/kurtco.jpg --no-fehbg &
 xrdb ~/.config/Xresources/Nord &
-sleep 5 &
+sleep 10 &
 $HOME/.config/polybar/launch.sh &
-
