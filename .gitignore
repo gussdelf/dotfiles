@@ -10,3 +10,4 @@ fish/.config/fish/*
 scripts
 !fish/.config/fish/alias.fish
 !fish/.config/fish/config.fish
+!fish/.config/fish/themes/
