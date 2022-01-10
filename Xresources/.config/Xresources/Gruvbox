@@ -1,6 +1,6 @@
 ! Base16 Gruvbox dark, hard
 ! Scheme: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
-st.font:           Iosevka Nerd Font:style:semibold:pixelsize=16
+st.font:           Iosevka Nerd Font:style:semibold:pixelsize=18
 
 #define base00 #1d2021
 #define base01 #3c3836
