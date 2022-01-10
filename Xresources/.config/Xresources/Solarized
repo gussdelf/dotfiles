@@ -1,7 +1,7 @@
 ! window padding
 st.borderpx:          00
 st.opacity: 255
-st.font:           Iosevka Nerd Font:style:semibold:pixelsize=18
+st.font:           Iosevka Nerd Font:style:semibold:pixelsize=16
 #define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75

@@ -1,6 +1,6 @@
 ! TokyoNight colors for Xresources
 
-st.font:           Iosevka Nerd Font:style:medium:pixelsize=18
+st.font:           Iosevka Nerd Font:style:medium:pixelsize=16
 
 *background: #24283b
 *foreground: #c0caf5

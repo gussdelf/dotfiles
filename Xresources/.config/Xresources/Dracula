@@ -1,6 +1,6 @@
 ! Base16 Dracula
 ! Scheme: Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula)
-st.font:           Iosevka Nerd Font:style:semibold:pixelsize=18
+st.font:           Iosevka Nerd Font:style:semibold:pixelsize=16
 
 #define base00 #282936
 #define base01 #3a3c4e

@@ -1,5 +1,5 @@
 
-st.font:           Iosevka Nerd Font:style:semibold:pixelsize=18
+st.font:           Iosevka Nerd Font:style:semibold:pixelsize=16
 ! special
 *.foreground:   #b7c5d3
 *.background:   #181e24
