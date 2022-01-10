@@ -54,7 +54,7 @@ symbol = " "
 symbol = " "
 
 [lua]
-symbol = "󰢱  "
+symbol = " "
 
 [julia]
 symbol = " "
