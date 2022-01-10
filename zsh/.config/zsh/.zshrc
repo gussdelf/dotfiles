@@ -42,3 +42,6 @@ eval "$(zoxide init zsh)"
 
 # Increase autorepeat 
 xset r rate 320 40
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
