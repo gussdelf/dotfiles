@@ -19,7 +19,6 @@ source /usr/share/fzf/completion.zsh
 
 zsh_add_file "alias.zsh"
 zsh_add_plugin "hlissner/zsh-autopair"
-zsh_add_plugin "Aloxaf/fzf-tab"
 
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export HISTSIZE=10000

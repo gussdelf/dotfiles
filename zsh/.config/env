@@ -43,5 +43,4 @@ export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export SPACEMACSDIR="$XDG_CONFIG_HOME"/spacemacs.d
-export FZF_DEFAULT_OPTS="--color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1"
 source $XDG_CONFIG_HOME/iconslf
