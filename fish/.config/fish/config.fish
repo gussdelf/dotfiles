@@ -11,6 +11,8 @@ source ~/.config/fish/alias.fish
 # Source
 source ~/.config/env
 
+# Themes
+#source ./themes/tokyoStorm.fish
 
 zoxide init fish | source
 xset r rate 320 40
