@@ -3,13 +3,6 @@
 export VISUAl='emacsclient -nc' 
 export EDITOR='emacsclient -tc --socket-name=doom'
 export NNN_PLUG='c:fzcd;l:launch;z:autojump;p:preview-tui;P:preview-tabbed;o:fzopen;'
-export PATH="$XDG_DATA_HOME/go/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$XDG_DATA_HOME/.cargo/bin:$PATH"
-export PATH="$XDG_DATA_HOME/gem/ruby/3.0.0/bin:$PATH"
-export PATH="$XDG_CONFIG_HOME/Doom/bin:$PATH"
-export PATH="$XDG_DATA_HOME/npm/bin:$PATH"
-export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 export LC_CTYPE=pt_BR.UTF-8
 export GOPATH="$XDG_DATA_HOME"/go
 export ZDOTDIR=$HOME/.config/zsh
@@ -44,3 +37,9 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export SPACEMACSDIR="$XDG_CONFIG_HOME"/spacemacs.d
 source $XDG_CONFIG_HOME/iconslf
+export PATH="$GOPATH/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$CARGO_HOME/bin:$PATH"
+export PATH="$GEM_HOME/ruby/3.0.0/bin:$PATH"
+export PATH="$XDG_CONFIG_HOME/Doom/bin:$PATH"
+export PATH="$XDG_DATA_HOME/npm/bin:$PATH"
