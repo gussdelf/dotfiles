@@ -408,7 +408,7 @@ syntax tree as the source file is edited.
 **** Theme
 #+srcname: theme
 #+BEGIN_SRC emacs-lisp :tangle yes
-(setq doom-theme 'doom-city-lights)
+(setq doom-theme 'doom-nord)
 #+END_SRC
 
 **** Dashboard
@@ -743,14 +743,14 @@ end-of-buffer signals; pass the rest to the default handler."
 #+srcname: custom-headings-and-src-blocks
 #+BEGIN_SRC emacs-lisp :tangle yes
 (custom-set-faces!
-  `(outline-1 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-2 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-3 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-4 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-5 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-6 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-8 :slant italic :background ,(doom-color 'bg-alt))
-  `(outline-9 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-1  :background ,(doom-color 'bg-alt))
+  `(outline-2  :background ,(doom-color 'bg-alt))
+  `(outline-3  :background ,(doom-color 'bg-alt))
+  `(outline-4  :background ,(doom-color 'bg-alt))
+  `(outline-5  :background ,(doom-color 'bg-alt))
+  `(outline-6  :background ,(doom-color 'bg-alt))
+  `(outline-8  :background ,(doom-color 'bg-alt))
+  `(outline-9  :background ,(doom-color 'bg-alt))
   `(org-block-begin-line :slant italic :weight bold :background ,(doom-color 'bg-alt))
   `(org-block-begin-line :slant italic :weight bold :background ,(doom-color 'bg-alt))
   `(org-block :background ,(doom-color 'bg-alt))
