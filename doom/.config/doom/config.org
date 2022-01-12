@@ -276,6 +276,7 @@ everywhere        ; *leave* Emacs!? You must be joking
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! theme-magic)
+(package! zenburn-theme)
 (package! password-generator)
 (package! screenshot :recipe (:host github :repo "tecosaur/screenshot"))
 #+END_SRC
@@ -368,11 +369,11 @@ syntax tree as the source file is edited.
 (setq pretty-magit-alist nil)
 (setq pretty-magit-prompt nil)
 (pretty-magit "Feature" ?🐉 (:foreground "slate gray" :height 1.2))
-(pretty-magit "Add"     ?🐎 (:foreground "#375E97" :height 1.2))
-(pretty-magit "Fix"     ? (:foreground "#FB6542" :height 1.2))
+(pretty-magit "Add"     ? (:foreground "#375E97" :height 1.2))
+(pretty-magit "Fix"     ? (:foreground "#FB6542" :height 1.2))
 (pretty-magit "Clean"   ? (:foreground "#FFBB00" :height 1.2))
 (pretty-magit "Docs"    ? (:foreground "#3F681C" :height 1.2))
-(pretty-magit "master"  ? (:box t :height 1.2) t)
+(pretty-magit "master"  ? (:box t :height 1.2) t)
 (pretty-magit "origin"  ? (:box t :height 1.2) t)
 
 (defun add-magit-faces ()
