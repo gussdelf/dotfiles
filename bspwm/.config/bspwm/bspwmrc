@@ -21,7 +21,7 @@ setxkbmap -model abnt2 -layout br -option caps:swapescape &
 xinput --set-prop "SIGMACHIP Usb Mouse" "Coordinate Transformation Matrix" 0.2 0 0 0 0.2 0 0 0 1 &
 xsetroot -cursor_name left_ptr &
 picom &
-feh --bg-scale ~/Imgs/wall/kurtco.jpg --no-fehbg &
-xrdb ~/.config/Xresources/Nord &
+feh --bg-scale ~/Imgs/wall/stairs.jpg --no-fehbg &
+xrdb ~/.config/Xresources/Everforest &
 sleep 10 &
 $HOME/.config/polybar/launch.sh &
