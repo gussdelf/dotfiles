@@ -4,6 +4,7 @@ alias g='git'
 alias v='nvim'
 alias c='clear;'
 alias n='nnn -e'
+alias :q='exit'
 alias ww="wget"
 alias lg='lazygit'
 alias nf='neofetch'
