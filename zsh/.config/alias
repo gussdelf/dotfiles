@@ -1,3 +1,4 @@
+#! /usr/bin/env sh
 
 ##Aliases
 alias g='git'
@@ -5,6 +6,8 @@ alias v='nvim'
 alias c='clear;'
 alias n='nnn -e'
 alias :q='exit'
+alias :e='$EDITOR'
+alias xx='chmod +x'
 alias ww="wget"
 alias lg='lazygit'
 alias nf='neofetch'
@@ -23,7 +26,10 @@ alias del='doas rm -rf'
 alias zzz='systemctl suspend'
 alias cat='bat --style plain -P'
 alias vim='nvim'
+alias use='xrdb merge'
+alias load='kill -USR1 $(pidof st)'
 alias tree='exa --icons -s type -T --git'
+alias mutt='neomutt'
 alias magit='emacsclient -nc -e "(magit-status)"'
 alias server='python -m http.server'
 alias startx='startx ~/.config/X11/xinitrc'

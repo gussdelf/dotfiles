@@ -17,7 +17,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-zsh_add_file "alias.zsh"
+source $XDG_CONFIG_HOME/alias
 zsh_add_plugin "hlissner/zsh-autopair"
 
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
@@ -37,8 +37,6 @@ eval "$(starship init zsh)"
 
 # Zoxide
 eval "$(zoxide init zsh)"
-
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 # Increase autorepeat 
 xset r rate 320 40
