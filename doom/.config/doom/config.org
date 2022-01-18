@@ -86,7 +86,7 @@ hydra
 ;; indent-guides     ; highlighted indent columns
 ligatures         ; ligatures and symbols to make your code pretty again
 ;;minimap           ; show a map of the code on the side
-modeline          ; snazzy, Atom-inspired modeline, plus API
+(modeline +light)          ; snazzy, Atom-inspired modeline, plus API
 nav-flash         ; blink cursor line after big motions
 ;;neotree           ; a project drawer, like NERDTree for vim
 ophints           ; highlight the region an operation acts on
@@ -744,14 +744,14 @@ end-of-buffer signals; pass the rest to the default handler."
 #+srcname: custom-headings-and-src-blocks
 #+BEGIN_SRC emacs-lisp :tangle yes
 (custom-set-faces!
-  `(outline-1  :background ,(doom-color 'bg-alt))
-  `(outline-2  :background ,(doom-color 'bg-alt))
-  `(outline-3  :background ,(doom-color 'bg-alt))
-  `(outline-4  :background ,(doom-color 'bg-alt))
-  `(outline-5  :background ,(doom-color 'bg-alt))
-  `(outline-6  :background ,(doom-color 'bg-alt))
-  `(outline-8  :background ,(doom-color 'bg-alt))
-  `(outline-9  :background ,(doom-color 'bg-alt))
+  `(outline-1 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-2 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-3 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-4 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-5 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-6 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-8 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-9 :slant italic :background ,(doom-color 'bg-alt))
   `(org-block-begin-line :slant italic :weight bold :background ,(doom-color 'bg-alt))
   `(org-block-begin-line :slant italic :weight bold :background ,(doom-color 'bg-alt))
   `(org-block :background ,(doom-color 'bg-alt))
