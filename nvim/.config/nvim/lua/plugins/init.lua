@@ -15,7 +15,7 @@ return require("packer").startup(function()
 	use {
 		"lewis6991/impatient.nvim",
 		config = function()
-			require "plugins.configs.impacient"
+			require("impatient").enable_profile()
 		end,
 	}
 
@@ -75,7 +75,7 @@ return require("packer").startup(function()
 		"p00f/nvim-ts-rainbow",
 		after = "nvim-treesitter",
 		config = function()
-			require "plugins.configs.ts-rainbow"
+			require("plugins.configs.others").tsrainbow()
 		end,
 	}
 
@@ -196,7 +196,7 @@ return require("packer").startup(function()
 		event = "BufWinEnter",
 		cmd = "Neoformat",
 		config = function()
-			require "plugins.configs.neoformat"
+			require("plugins.configs.others").neoformat()
 		end,
 	}
 end)
