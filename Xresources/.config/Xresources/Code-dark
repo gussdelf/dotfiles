@@ -14,7 +14,6 @@ URxvt*cursorColor:  #d4d4d4
 XTerm*cursorColor:  #d4d4d4
 UXTerm*cursorColor: #d4d4d4
 URxvt*borderColor:  [100]#1e1e1e
-st.font:           JetBrainsMono Nerd Font:style:semibold:pixelsize=14
 
 ! Colors 0-15.
 *.color0: #1e1e1e
@@ -65,3 +64,5 @@ XClock*secondColor: rgba:d4/d4/d4/ff
 
 ! Set depth to make transparency work.
 URxvt*depth: 32
+
+st.font: SauceCodePro Nerd Font:style:medium:pixelsize=15

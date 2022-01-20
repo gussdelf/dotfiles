@@ -1,4 +1,4 @@
-st.font:           Iosevka Nerd Font:style:semibold:pixelsize=16
+st.font: SauceCodePro Nerd Font:style:medium:pixelsize=15
 
 #define base00 #232136
 #define base01 #2a273f

@@ -399,8 +399,8 @@ syntax tree as the source file is edited.
 **** Fonts
 #+srcname: fonts
 #+BEGIN_SRC emacs-lisp :tangle yes
-(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 20)
-      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 20)
+(setq doom-font (font-spec :family "SauceCodePro Nerd Font" :size 16 :height 'medium)
+      doom-big-font (font-spec :family "SauceCodePro Nerd Font" :size 16 :height 'medium)
       doom-variable-pitch-font (font-spec :family "Overpass Nerd Font")
       doom-unicode-font (font-spec :family "JuliaMono")
       doom-serif-font (font-spec :family "BlexMono Nerd Font" :weight 'light))
@@ -750,6 +750,7 @@ end-of-buffer signals; pass the rest to the default handler."
   `(outline-4 :slant italic :background ,(doom-color 'bg-alt))
   `(outline-5 :slant italic :background ,(doom-color 'bg-alt))
   `(outline-6 :slant italic :background ,(doom-color 'bg-alt))
+  `(outline-7 :slant italic :background ,(doom-color 'bg-alt))
   `(outline-8 :slant italic :background ,(doom-color 'bg-alt))
   `(outline-9 :slant italic :background ,(doom-color 'bg-alt))
   `(org-block-begin-line :slant italic :weight bold :background ,(doom-color 'bg-alt))

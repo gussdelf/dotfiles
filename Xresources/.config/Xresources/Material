@@ -1,6 +1,6 @@
 ! Google Material Design
 
-st.font:           Iosevka Nerd Font:style:medium:pixelsize=16
+st.font: SauceCodePro Nerd Font:style:medium:pixelsize=15
 
 *background 		: #263238
 *foreground 		: #eceff1

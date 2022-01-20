@@ -1,5 +1,5 @@
 
-st.font:           Iosevka Nerd Font:style:semibold:pixelsize=16
+st.font: SauceCodePro Nerd Font:style:medium:pixelsize=15
 ! Nightfox colors for Xresources
 ! Style: nightfox
 *background: #192330
