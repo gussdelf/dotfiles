@@ -18,10 +18,10 @@ bspc rule -a Zathura state=tiled
 
 setxkbmap -model abnt2 -layout br -option caps:swapescape &
 #setxkbmap -model abnt2 -layout br -option ctrl:swapcaps &
-xinput --set-prop "SIGMACHIP Usb Mouse" "Coordinate Transformation Matrix" 0.2 0 0 0 0.2 0 0 0 1 &
+xinput --set-prop "SIGMACHIP Usb Mouse" "Coordinate Transformation Matrix" 0.5 0 0 0 0.5 0 0 0 1 &
 xsetroot -cursor_name left_ptr &
 picom &
-feh --bg-scale ~/Imgs/wall/stairs.jpg --no-fehbg &
-xrdb ~/.config/Xresources/Everforest &
+feh --bg-scale ~/Imgs/wall/kurtco.jpg --no-fehbg &
+xrdb ~/.config/Xresources/Nordfox &
 sleep 10 &
 $HOME/.config/polybar/launch.sh &

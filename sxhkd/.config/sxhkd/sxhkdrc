@@ -8,7 +8,7 @@ super + Return
 
 # terminal emulator
 alt + ctrl + Return
-	st -e fish
+	st -e bash
 
 # run emacsclient doom
 alt + ctrl + d

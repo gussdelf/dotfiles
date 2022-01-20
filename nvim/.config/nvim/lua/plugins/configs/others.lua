@@ -18,6 +18,7 @@ M.colorizer = function()
 	local present, colorizer = pcall(require, "colorizer")
 	if present then
 		require("colorizer").setup()
+		map("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
 	end
 end
 

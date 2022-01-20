@@ -31,6 +31,9 @@ alias load='kill -USR1 $(pidof st)'
 alias tree='exa --icons -s type -T --git'
 alias mutt='neomutt'
 alias magit='emacsclient -nc -e "(magit-status)"'
+alias mkdir='mkdir -p'
 alias server='python -m http.server'
-alias startx='startx ~/.config/X11/xinitrc'
+
+alias bspwm='startx ~/.config/X11/bspwm'
+alias ddwm='startx ~/.config/X11/dwm'
 

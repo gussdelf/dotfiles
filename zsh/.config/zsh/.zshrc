@@ -36,7 +36,7 @@ setopt autocd extendedglob nomatch menucomplete
 eval "$(starship init zsh)"
 
 # Zoxide
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd j zsh)"
 
 # Increase autorepeat 
 xset r rate 320 40
