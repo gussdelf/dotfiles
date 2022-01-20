@@ -20,26 +20,25 @@ return require("packer").startup(function()
 	}
 
 	use "nvim-lua/plenary.nvim"
-	use "kyazdani42/nvim-web-devicons"
 
-	-- Themes
+	-- Theme
 	use {
-		"sainnhe/everforest",
-		requires = {
-			"sainnhe/gruvbox-material",
-			"tomasiser/vim-code-dark",
-			"shaunsingh/nord.nvim",
-			opt = true,
-		},
+		"EdenEast/nightfox.nvim",
+		event = "VimEnter",
 		config = function()
-			require "plugins.configs.theme"
+			require("plugins.configs.others").theme()
 		end,
+	}
+
+	use {
+		"kyazdani42/nvim-web-devicons",
+		after = "nightfox.nvim",
 	}
 
 	-- Lualine
 	use {
 		"nvim-lualine/lualine.nvim",
-		event = "BufWinEnter",
+		after = "nightfox.nvim",
 		config = function()
 			require "plugins.configs.lualine"
 		end,
@@ -48,15 +47,16 @@ return require("packer").startup(function()
 	-- Bufferline
 	use {
 		"akinsho/bufferline.nvim",
+		after = "nvim-web-devicons",
 		config = function()
 			require("plugins.configs.others").bufferline()
 		end,
 	}
+
 	-- Tree-sitter
 	use {
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-		event = "BufWinEnter",
+		event = "BufRead",
 		config = function()
 			require "plugins.configs.treesitter"
 		end,
@@ -64,7 +64,6 @@ return require("packer").startup(function()
 
 	use {
 		"windwp/nvim-ts-autotag",
-		event = "InsertEnter",
 		after = "nvim-treesitter",
 		config = function()
 			require("plugins.configs.others").colorizer()
@@ -123,10 +122,14 @@ return require("packer").startup(function()
 	use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
 
 	-- Cmp
-	use "rafamadriz/friendly-snippets"
+	use {
+		"rafamadriz/friendly-snippets",
+		evert = "InsertCharPre",
+	}
 
 	use {
 		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
 		config = function()
 			require "plugins.configs.cmp"
 		end,
@@ -150,7 +153,7 @@ return require("packer").startup(function()
 
 	use {
 		"hrsh7th/cmp-nvim-lsp",
-		after = "cmp_luasnip",
+		after = "cmp-nvim-lua",
 	}
 	use {
 		"hrsh7th/cmp-buffer",
@@ -185,6 +188,7 @@ return require("packer").startup(function()
 	use {
 		"windwp/nvim-autopairs",
 		after = "nvim-cmp",
+		event = "InsertEnter",
 		config = function()
 			require("plugins.configs.others").autopairs()
 		end,
@@ -197,6 +201,14 @@ return require("packer").startup(function()
 		cmd = "Neoformat",
 		config = function()
 			require("plugins.configs.others").neoformat()
+		end,
+	}
+
+	-- Commenter
+	use {
+		"numToStr/Comment.nvim",
+		config = function()
+			require("plugins.configs.others").comment()
 		end,
 	}
 end)

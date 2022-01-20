@@ -3,7 +3,12 @@ M = {}
 M.bufferline = function()
 	local present, bufferline = pcall(require, "bufferline")
 	if present then
-		require("bufferline").setup {}
+		require("bufferline").setup {
+			options = {
+
+				separator_style = "thick",
+			},
+		}
 		map("n", "<leader>bj", "<cmd>BufferLineCycleNext<CR>", { silent = true })
 		map("n", "<leader>bk", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
 	end
@@ -60,12 +65,12 @@ M.hop = function()
 		require("hop").setup()
 
 		-- Mapping
-		map("n", "f", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
-		map("n", "F", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
-		map("v", "f", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
-		map("v", "F", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
-		map("o", "f", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
-		map("o", "F", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
+		map("n", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
+		map("n", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
+		map("v", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
+		map("v", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
+		map("o", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
+		map("o", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
 	end
 end
 
@@ -78,7 +83,6 @@ M.signature = function()
 			floating_window = true,
 			fix_pos = true,
 			hint_enable = true,
-			hint_prefix = " ",
 			hint_scheme = "String",
 			hi_parameter = "Search",
 			max_height = 22,
@@ -88,21 +92,6 @@ M.signature = function()
 			},
 			zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
 			padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
-		}
-	end
-end
-
-M.gitsigns = function()
-	local present, gitsigns = pcall(require, "gitsigns")
-	if present then
-		gitsigns.setup {
-			signs = {
-				add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
-				change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
-				delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
-				topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
-				changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
-			},
 		}
 	end
 end
@@ -120,6 +109,25 @@ end
 
 M.neoformat = function()
 	map("n", "<C-f>", "<cmd>Neoformat<cr>", { silent = true })
+end
+
+M.comment = function()
+	require("Comment").setup()
+end
+
+M.theme = function()
+	require("nightfox").setup {
+		fox = "nordfox",
+		styles = {
+			comments = "italic",
+			keywords = "bold",
+			functions = "italic,bold",
+		},
+		inverse = {
+			match_paren = true, -- inverse the highlighting of match_parens
+		},
+	}
+	require("nightfox").load()
 end
 
 return M
