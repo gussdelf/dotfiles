@@ -9,10 +9,10 @@ starship init fish | source
 source ~/.config/fish/alias.fish
 
 # Source
-source ~/.config/env
+# source ~/.config/env
 
 # Themes
-#source ./themes/tokyoStorm.fish
+source ./themes/NordFox.fish
 
 zoxide init fish | source
 xset r rate 320 40
