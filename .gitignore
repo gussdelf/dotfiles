@@ -12,4 +12,4 @@ scripts
 !fish/.config/fish/config.fish
 !fish/.config/fish/themes/
 tmux/.config/tmux/plugins
-nvim/.config/nvim/plugin
+nvim/.config/nvim/lua/packer_compiled.lua
