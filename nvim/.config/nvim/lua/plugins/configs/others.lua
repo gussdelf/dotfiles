@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 M.bufferline = function()
 	local present, bufferline = pcall(require, "bufferline")
@@ -118,17 +118,20 @@ end
 
 M.theme = function()
 	require("nightfox").setup {
-		fox = "nordfox",
+		fox = "nightfox", -- Which fox style should be applied
 		styles = {
-			comments = "italic",
-			keywords = "bold",
-			functions = "italic,bold",
+			comments = "italic", -- change style of comments to be italic
+			keywords = "bold", -- change style of keywords to be bold
+			functions = "italic,bold", -- styles can be a comma separated list
 		},
+		transparent = true, -- Disable setting the background color
 		inverse = {
-			match_paren = true, -- inverse the highlighting of match_parens
+			match_paren = true, -- Enable/Disable inverse highlighting for match parens
 		},
 	}
 	require("nightfox").load()
 end
+
+M.outline = function() end
 
 return M

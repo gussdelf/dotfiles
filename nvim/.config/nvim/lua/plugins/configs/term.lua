@@ -1,7 +1,7 @@
 require("toggleterm").setup {
 	open_mapping = [[<c-t>]],
 	hide_numbers = true, -- hide the number column in toggleterm buffers
-	shade_terminals = true,
+	shade_terminals = false,
 	start_in_insert = true,
 	insert_mappings = true, -- whether or not the open mapping applies in insert mode
 	persist_size = true,
@@ -10,7 +10,7 @@ require("toggleterm").setup {
 	shell = vim.o.shell, -- change the default shell
 	float_opts = {
 		border = "curved",
-		winblend = 3,
+		winblend = 0,
 		highlights = {
 			border = "Normal",
 			background = "Normal",
@@ -19,11 +19,10 @@ require("toggleterm").setup {
 }
 
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
-
+local lazygit = Terminal:new { cmd = "lazygit", hidden = true }
 
 function _lazygit_toggle()
-  lazygit:toggle()
+	lazygit:toggle()
 end
 
 map("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { silent = true })
