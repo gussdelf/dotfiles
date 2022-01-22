@@ -46,6 +46,9 @@ require("telescope").setup {
 		find_files = {
 			hidden = true,
 		},
+		buffers = {
+			preview = true,
+		},
 	},
 	extensions = {
 		fzf = {
@@ -60,19 +63,3 @@ require("telescope").setup {
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "zoxide"
-
-map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", { silent = true })
-map("n", "<leader>ft", "<cmd>lua require('telescope.builtin').filetypes()<cr>", { silent = true })
-map("n", "<leader>j", "<cmd>lua require('telescope').extensions.zoxide.list()<cr>", { silent = true })
-map("n", "<leader>fd", "<cmd>lua require('telescope').extensions.file_browser.file_browser()<cr>", { silent = true })
-map("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { silent = true })
-map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", { silent = true })
-map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { silent = true })
-map("n", "<leader>cc", "<cmd>lua require('telescope.builtin').colorscheme()<cr>", { silent = true })
-map("n", "<leader>is", "<cmd>lua require('telescope.builtin').symbols()<cr>", { silent = true })
-map(
-	"n",
-	"<leader>ss",
-	"<cmd>Telescope current_buffer_fuzzy_find fuzzy=false case_mode=ignore_case previewer=false<cr>",
-	{ silent = true }
-)

@@ -46,6 +46,9 @@ return require("packer").startup {
 		use {
 			"akinsho/bufferline.nvim",
 			after = "nvim-web-devicons",
+			setup = function()
+				require("user.keys").bufferline()
+			end,
 			config = function()
 				require("plugins.configs.others").bufferline()
 			end,
@@ -64,7 +67,7 @@ return require("packer").startup {
 			"windwp/nvim-ts-autotag",
 			after = "nvim-treesitter",
 			config = function()
-				require("plugins.configs.others").colorizer()
+				require("plugins.configs.others").autotags()
 			end,
 		}
 
@@ -79,6 +82,9 @@ return require("packer").startup {
 		-- Colorizer
 		use {
 			"norcalli/nvim-colorizer.lua",
+			setup = function()
+				require("user.keys").colorizer()
+			end,
 			config = function()
 				require("plugins.configs.others").colorizer()
 			end,
@@ -97,6 +103,9 @@ return require("packer").startup {
 				"nvim-telescope/telescope-symbols.nvim",
 				"jvgrootveld/telescope-zoxide",
 			},
+			setup = function()
+				require("user.keys").telescope()
+			end,
 			config = function()
 				require "plugins.configs.telescope"
 			end,
@@ -106,6 +115,9 @@ return require("packer").startup {
 		use {
 			"phaazon/hop.nvim",
 			event = "BufWinEnter",
+			setup = function()
+				require("user.keys").hop()
+			end,
 			config = function()
 				require("plugins.configs.others").hop()
 			end,
@@ -196,6 +208,9 @@ return require("packer").startup {
 				"rust",
 				"css",
 			},
+			setup = function()
+				require("user.keys").lspconfig()
+			end,
 			config = function()
 				require "plugins.configs.lspconfig"
 			end,
@@ -224,7 +239,7 @@ return require("packer").startup {
 			event = "BufWinEnter",
 			cmd = "Neoformat",
 			config = function()
-				require("plugins.configs.others").neoformat()
+				require("user.keys").neoformat()
 			end,
 		}
 
@@ -241,7 +256,7 @@ return require("packer").startup {
 		compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
 		display = {
 			open_fn = function()
-				return require("packer.util").float { border = "single" }
+				return require("packer.util").float { border = "rounded" }
 			end,
 		},
 	},

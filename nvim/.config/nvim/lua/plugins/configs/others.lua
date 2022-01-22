@@ -5,12 +5,9 @@ M.bufferline = function()
 	if present then
 		require("bufferline").setup {
 			options = {
-
-				separator_style = "thick",
+				separator_style = "thin",
 			},
 		}
-		map("n", "<leader>bj", "<cmd>BufferLineCycleNext<CR>", { silent = true })
-		map("n", "<leader>bk", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
 	end
 end
 
@@ -18,7 +15,6 @@ M.colorizer = function()
 	local present, colorizer = pcall(require, "colorizer")
 	if present then
 		require("colorizer").setup()
-		map("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
 	end
 end
 
@@ -64,14 +60,6 @@ M.hop = function()
 	local present, hop = pcall(require, "hop")
 	if present then
 		require("hop").setup()
-
-		-- Mapping
-		map("n", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
-		map("n", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
-		map("v", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
-		map("v", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
-		map("o", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
-		map("o", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
 	end
 end
 
@@ -106,10 +94,6 @@ M.tsrainbow = function()
 			max_file_lines = nil, -- Do not enable for files with more than n lines, int
 		},
 	}
-end
-
-M.neoformat = function()
-	map("n", "<C-f>", "<cmd>Neoformat<cr>", { silent = true })
 end
 
 M.comment = function()
