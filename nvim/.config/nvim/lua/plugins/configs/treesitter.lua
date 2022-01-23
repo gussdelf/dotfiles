@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup {
-	ensure_installed = { "javascript", "typescript", "fish", "bash", "rust", "c", "cpp", "tsx" },
+	ensure_installed = tsEnsureInstall,
 	highlight = {
 		enable = true,
 	},

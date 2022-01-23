@@ -9,6 +9,20 @@ local on_attach = function(client, bufnr)
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
+map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { silent = true })
+map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
+map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true })
+map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true })
+map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { silent = true })
+map("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { silent = true })
+map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true })
+map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
+map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true })
+map("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true })
+map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { silent = true })
+map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { silent = true })
+map("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", { silent = true })
+map("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", { silent = true })
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 nvim_lsp.sumneko_lua.setup {
@@ -27,7 +41,7 @@ nvim_lsp.sumneko_lua.setup {
 			workspace = {
 				library = {
 					[vim.fn.expand "$VIMRUNTIME/lua"] = true,
-					[vim.fn.stdpath("config") .. "/lua"] = true,
+					[vim.fn.stdpath "config" .. "/lua"] = true,
 					[vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
 				},
 				maxPreload = 100000,

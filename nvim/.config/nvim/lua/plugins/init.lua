@@ -46,9 +46,6 @@ return require("packer").startup {
 		use {
 			"akinsho/bufferline.nvim",
 			after = "nvim-web-devicons",
-			setup = function()
-				require("user.keys").bufferline()
-			end,
 			config = function()
 				require("plugins.configs.others").bufferline()
 			end,
@@ -82,9 +79,6 @@ return require("packer").startup {
 		-- Colorizer
 		use {
 			"norcalli/nvim-colorizer.lua",
-			setup = function()
-				require("user.keys").colorizer()
-			end,
 			config = function()
 				require("plugins.configs.others").colorizer()
 			end,
@@ -103,9 +97,6 @@ return require("packer").startup {
 				"nvim-telescope/telescope-symbols.nvim",
 				"jvgrootveld/telescope-zoxide",
 			},
-			setup = function()
-				require("user.keys").telescope()
-			end,
 			config = function()
 				require "plugins.configs.telescope"
 			end,
@@ -115,9 +106,6 @@ return require("packer").startup {
 		use {
 			"phaazon/hop.nvim",
 			event = "BufWinEnter",
-			setup = function()
-				require("user.keys").hop()
-			end,
 			config = function()
 				require("plugins.configs.others").hop()
 			end,
@@ -132,7 +120,11 @@ return require("packer").startup {
 			end,
 		}
 		-- Markdown preview
-		use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
+		use {
+			"iamcco/markdown-preview.nvim",
+			ft = { "markdown" },
+			run = "cd app && yarn install",
+		}
 
 		-- Cmp
 		use {
@@ -142,7 +134,9 @@ return require("packer").startup {
 
 		use {
 			"hrsh7th/nvim-cmp",
-			after = "nvim-lspconfig",
+			-- after = "friendly-snippets",
+			-- event = "InsertEnter",
+			ft = { "html" },
 			config = function()
 				require "plugins.configs.cmp"
 			end,
@@ -190,27 +184,7 @@ return require("packer").startup {
 		-- Lsp stuff
 		use {
 			"neovim/nvim-lspconfig",
-			ft = {
-				"python",
-				"c",
-				"cpp",
-				"go",
-				"typescript",
-				"javascript",
-				"javascriptreact",
-				"typescriptreact",
-				"typescriptcommon",
-				"sh",
-				"bash",
-				"lua",
-				"html",
-				"css",
-				"rust",
-				"css",
-			},
-			setup = function()
-				require("user.keys").lspconfig()
-			end,
+			ft = lspLangs,
 			config = function()
 				require "plugins.configs.lspconfig"
 			end,
@@ -239,7 +213,7 @@ return require("packer").startup {
 			event = "BufWinEnter",
 			cmd = "Neoformat",
 			config = function()
-				require("user.keys").neoformat()
+				require("plugins.configs.others").neoformat()
 			end,
 		}
 

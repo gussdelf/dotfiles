@@ -8,6 +8,8 @@ M.bufferline = function()
 				separator_style = "thin",
 			},
 		}
+		map("n", "<leader>bj", "<cmd>BufferLineCycleNext<CR>", { silent = true })
+		map("n", "<leader>bk", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
 	end
 end
 
@@ -16,6 +18,7 @@ M.colorizer = function()
 	if present then
 		require("colorizer").setup()
 	end
+	map("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
 end
 
 M.autotags = function()
@@ -61,6 +64,13 @@ M.hop = function()
 	if present then
 		require("hop").setup()
 	end
+	-- Mapping
+	map("n", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
+	map("n", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
+	map("v", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
+	map("v", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
+	map("o", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
+	map("o", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
 end
 
 M.signature = function()
@@ -104,9 +114,9 @@ M.theme = function()
 	require("nightfox").setup {
 		fox = "nightfox", -- Which fox style should be applied
 		styles = {
-			comments = "italic", -- change style of comments to be italic
 			keywords = "bold", -- change style of keywords to be bold
-			functions = "italic,bold", -- styles can be a comma separated list
+			functions = "bold,italic", -- styles can be a comma separated list
+			strings = "italic",
 		},
 		transparent = true, -- Disable setting the background color
 		inverse = {
@@ -116,6 +126,17 @@ M.theme = function()
 	require("nightfox").load()
 end
 
-M.outline = function() end
+M.matchup = function()
+	require("nvim-treesitter.configs").setup {
+		matchup = {},
+	}
+	vim.cmd [[
+	hi MatchParen cterm=underline gui=underline 
+	hi MatchWord cterm=underline gui=underline
+	]]
+end
 
+M.neoformat = function()
+	map("n", "<C-f>", "<cmd>Neoformat<cr>", { silent = true })
+end
 return M
