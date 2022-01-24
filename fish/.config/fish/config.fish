@@ -12,14 +12,13 @@ source ~/.config/fish/alias.fish
 # source ~/.config/env
 
 # Themes
-source ./themes/NordFox.fish
+source ~/.config/fish/themes/nightfox.fish
 
 zoxide init fish | source
 xset r rate 320 40
 set -U fish_greeting 
 
 function fish_user_key_bindings
-    bind -s -M insert -m default jk 'commandline -f repaint'
     fzf_key_bindings
     fish_vi_key_bindings
 end
