@@ -46,6 +46,7 @@ M.autopairs = function()
 		local cmp = require "cmp"
 		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 	end
+	require("nvim-autopairs").setup {}
 end
 
 M.luasnip = function()
@@ -124,19 +125,44 @@ M.theme = function()
 		},
 	}
 	require("nightfox").load()
-end
-
-M.matchup = function()
-	require("nvim-treesitter.configs").setup {
-		matchup = {},
-	}
 	vim.cmd [[
-	hi MatchParen cterm=underline gui=underline 
-	hi MatchWord cterm=underline gui=underline
+	hi default GHTextViewDark guifg=#e0d8f4
+	hi default GHListDark guifg=#e0d8f4
+	hi default GHListHl guifg=#e0d8f4 guibg=#283648
 	]]
 end
 
-M.neoformat = function()
-	map("n", "<C-f>", "<cmd>Neoformat<cr>", { silent = true })
+M.navigator = function()
+	require("navigator").setup {
+		transparency = 100,
+		default_mapping = false,
+		keymaps = {
+			{ key = "gr", func = "require('navigator.reference').reference()" },
+			{ key = "gK", func = "declaration()" },
+			{ key = "gd", func = "definition()" },
+			{ key = "gsy", func = "require('navigator.symbols').document_symbols()" },
+			{ key = "gW", func = "require('navigator.workspace').workspace_symbol()" },
+			{ key = "gp", func = "require('navigator.definition').definition_preview()" },
+			{ key = "K", func = "hover({ popup_opts = { border = single, max_width = 80 }})" },
+			{ key = "<leader>ca", mode = "n", func = "require('navigator.codeAction').code_action()" },
+			{ key = "<leader>cA", mode = "v", func = "range_code_action()" },
+			{ key = "<leader>rn", func = "require('navigator.rename').rename()" },
+			{ key = "gL", func = "require('navigator.diagnostics').show_diagnostics()" },
+			{ key = "gG", func = "require('navigator.diagnostics').show_buf_diagnostics()" },
+		},
+	}
 end
+
+M.null_ls = function()
+	require("null-ls").setup {
+		sources = {
+			require("null-ls").builtins.formatting.stylua,
+			require("null-ls").builtins.diagnostics.eslint,
+			require("null-ls").builtins.completion.spell,
+		},
+	}
+	map("n", "<C-f>", "<Cmd>lua vim.lsp.buf.formatting()<cr>", { silent = true })
+	map("v", "<C-f>", "<Cmd>lua vim.lsp.buf.range_formatting()<cr>", { silent = true })
+end
+
 return M

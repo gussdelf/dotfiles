@@ -17,6 +17,14 @@ require("telescope").setup {
 		selection_strategy = "reset",
 		sorting_strategy = "ascending",
 		layout_strategy = "horizontal",
+		mappings = {
+      		n = {
+        		["<C-t>"] = require("telescope.actions.layout").toggle_preview
+      		},
+      		i = {
+        		["<C-t>"] = require("telescope.actions.layout").toggle_preview
+      		},
+    	},
 		layout_config = {
 			horizontal = {
 				prompt_position = "bottom",
@@ -39,12 +47,24 @@ require("telescope").setup {
 		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 		color_devicons = true,
 		use_less = true,
-		preview = false,
+		-- preview = false,
 		set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
 	},
 	pickers = {
 		find_files = {
 			hidden = true,
+      		find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+			mappings = {
+        		n = {
+          			["cd"] = function(prompt_bufnr)
+            			local selection = require("telescope.actions.state").get_selected_entry()
+            			local dir = vim.fn.fnamemodify(selection.path, ":p:h")
+            			require("telescope.actions").close(prompt_bufnr)
+            			-- Depending on what you want put `cd`, `lcd`, `tcd`
+            			vim.cmd(string.format("silent lcd %s", dir))
+          			end
+        		}
+      		}
 		},
 		buffers = {
 			preview = true,
@@ -57,14 +77,23 @@ require("telescope").setup {
 			override_file_sorter = true,
 			case_mode = "smart_case",
 		},
+		frecency = {
+      		ignore_patterns = {"*.git/*", "*/node_modules/*"},
+			workspaces = {
+				["lua"] = "/home/haunter/.config/nvim/lua",
+				["tmux"] = "/home/haunter/.config/tmux",
+				["projects"] = "/home/haunter/Projects",
+			},
+		},
 	},
 }
 
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "zoxide"
+require("telescope").load_extension "frecency"
 
-map("n", "<leader><leader>", "<cmd>Telescope<cr>", { silent = true })
+map("n", "<leader><leader>", "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>", { silent = true })
 map("n", "<leader>bb", "<cmd>lua require('telescope.builtin').buffers()<cr>", { silent = true })
 map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", { silent = true })
 map("n", "<leader>ft", "<cmd>lua require('telescope.builtin').filetypes()<cr>", { silent = true })
