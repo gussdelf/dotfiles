@@ -40,13 +40,13 @@ end
 M.autopairs = function()
 	local present1, autopairs = pcall(require, "nvim-autopairs")
 	local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+
 	if present1 and present2 then
-		autopairs.setup()
+		autopairs.setup { fast_wrap = {} }
 
 		local cmp = require "cmp"
 		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 	end
-	require("nvim-autopairs").setup {}
 end
 
 M.luasnip = function()
