@@ -87,8 +87,8 @@ return require("packer").startup {
 					run = "make all",
 				},
 				{
-  					"nvim-telescope/telescope-frecency.nvim",
-  					requires = {"tami5/sqlite.lua"}
+					"nvim-telescope/telescope-frecency.nvim",
+					requires = { "tami5/sqlite.lua" },
 				},
 				"nvim-telescope/telescope-file-browser.nvim",
 				"nvim-telescope/telescope-symbols.nvim",
@@ -197,19 +197,19 @@ return require("packer").startup {
 				ft = lspLangs,
 				requires = {
 					"ray-x/guihua.lua",
-					run = "cd lua/fzy && make"
+					run = "cd lua/fzy && make",
 				},
 				config = function()
-					require "plugins.configs.others".navigator()
-				end
+					require("plugins.configs.others").navigator()
+				end,
 			},
 			{
 				"jose-elias-alvarez/null-ls.nvim",
 				ft = lspLangs,
 				config = function()
 					require("plugins.configs.others").null_ls()
-				end
-			}
+				end,
+			},
 		}
 
 		-- Etc

@@ -28,7 +28,7 @@ show_always = true
 read_only = " "
 #home_symbol = "-"
 truncation_length = 2
-truncation_symbol = "…/"
+truncation_symbol = "… /"
 
 [line_break]
 disabled = true
