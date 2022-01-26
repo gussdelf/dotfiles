@@ -5,8 +5,8 @@ vim.opt.preserveindent = true
 
 -- I prefer tabs over spaces
 --vim.g.noexpandtab = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 0
 
 -- Clipboard

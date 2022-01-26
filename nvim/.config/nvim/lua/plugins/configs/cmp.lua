@@ -1,5 +1,4 @@
-local cmp = pcall(require, "cmp")
-
+local cmp = require "cmp"
 vim.opt.completeopt = "menuone,noselect"
 
 local kind_icons = {
@@ -79,7 +78,7 @@ cmp.setup {
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm {
 			behavior = cmp.ConfirmBehavior.Replace,
-			select = false,
+			select = true,
 		},
 	},
 	sources = {

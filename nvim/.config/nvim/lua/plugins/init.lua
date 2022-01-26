@@ -145,7 +145,7 @@ return require("packer").startup {
 				"hrsh7th/nvim-cmp",
 				-- after = "friendly-snippets",
 				-- event = "InsertEnter",
-				ft = { "html" },
+				ft = lspLangs,
 				config = function()
 					require "plugins.configs.cmp"
 				end,

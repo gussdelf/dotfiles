@@ -76,24 +76,16 @@ require("telescope").setup {
 			override_file_sorter = true,
 			case_mode = "smart_case",
 		},
-		frecency = {
-			ignore_patterns = { "*.git/*", "*/node_modules/*" },
-			workspaces = {
-				["lua"] = "/home/haunter/.config/nvim/lua",
-				["tmux"] = "/home/haunter/.config/tmux",
-				["projects"] = "/home/haunter/Projects",
-				["dot"] = "/home/haunter/.dotfiles",
-			},
-		},
+		file_browser = {
+			hidden = true,
+		}
 	},
 }
 
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "zoxide"
-require("telescope").load_extension "frecency"
 
-map("n", "<leader><leader>", "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>", { silent = true })
 map("n", "<leader>bb", "<cmd>lua require('telescope.builtin').buffers()<cr>", { silent = true })
 map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", { silent = true })
 map("n", "<leader>fp", "<cmd>lua require('telescope.builtin').git_files()<cr>", { silent = true })

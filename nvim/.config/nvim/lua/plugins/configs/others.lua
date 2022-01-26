@@ -22,7 +22,6 @@ M.colorizer = function()
 end
 
 M.autotags = function()
-	-- Autotag
 	require("nvim-treesitter.configs").setup {
 		autotag = {
 			enable = true,
@@ -38,15 +37,13 @@ M.autotags = function()
 end
 
 M.autopairs = function()
-	local present1, autopairs = pcall(require, "nvim-autopairs")
-	local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+	local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+	local cmp = require "cmp"
+	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
-	if present1 and present2 then
-		autopairs.setup { fast_wrap = {} }
-
-		local cmp = require "cmp"
-		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-	end
+	-- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
+	cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
+	require('nvim-autopairs').setup{}
 end
 
 M.luasnip = function()
@@ -113,15 +110,15 @@ end
 
 M.theme = function()
 	require("nightfox").setup {
-		fox = "nightfox", -- Which fox style should be applied
+		fox = "nightfox",
 		styles = {
-			keywords = "bold", -- change style of keywords to be bold
-			functions = "bold,italic", -- styles can be a comma separated list
+			keywords = "bold",
+			functions = "bold,italic",
 			strings = "italic",
 		},
-		transparent = true, -- Disable setting the background color
+		transparent = true,
 		inverse = {
-			match_paren = true, -- Enable/Disable inverse highlighting for match parens
+			match_paren = true,
 		},
 	}
 	require("nightfox").load()
