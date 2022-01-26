@@ -43,7 +43,7 @@ M.autopairs = function()
 
 	-- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
 	cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
-	require('nvim-autopairs').setup{}
+	require("nvim-autopairs").setup {}
 end
 
 M.luasnip = function()
@@ -116,16 +116,21 @@ M.theme = function()
 			functions = "bold,italic",
 			strings = "italic",
 		},
-		transparent = true,
 		inverse = {
 			match_paren = true,
 		},
 	}
+	if vim.g.gnvim then
+	else
+		require("nightfox").setup {
+			transparent = true,
+		}
+	end
 	require("nightfox").load()
 	vim.cmd [[
 	hi default GHTextViewDark guifg=#e0d8f4
 	hi default GHListDark guifg=#e0d8f4
-	hi default GHListHl guifg=#e0d8f4 guibg=#283648
+	hi default GHListHl guifg=#e0d8f4 guibg=CursorLine
 	]]
 end
 

@@ -7,6 +7,7 @@ require "packer_compiled"
 
 return require("packer").startup {
 	function()
+
 		use "wbthomason/packer.nvim"
 		use "nvim-lua/plenary.nvim"
 
@@ -22,6 +23,7 @@ return require("packer").startup {
 			{
 				"EdenEast/nightfox.nvim",
 				event = "VimEnter",
+				module = "theme",
 				config = function()
 					require("plugins.configs.others").theme()
 				end,
@@ -39,6 +41,7 @@ return require("packer").startup {
 			},
 			{
 				"akinsho/bufferline.nvim",
+				opt = true,
 				after = "nvim-web-devicons",
 				config = function()
 					require("plugins.configs.others").bufferline()
@@ -85,10 +88,6 @@ return require("packer").startup {
 				{
 					"nvim-telescope/telescope-fzf-native.nvim",
 					run = "make all",
-				},
-				{
-					"nvim-telescope/telescope-frecency.nvim",
-					requires = { "tami5/sqlite.lua" },
 				},
 				"nvim-telescope/telescope-file-browser.nvim",
 				"nvim-telescope/telescope-symbols.nvim",

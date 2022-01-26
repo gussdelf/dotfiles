@@ -19,7 +19,18 @@ nvim_lsp.sumneko_lua.setup {
 	settings = {
 		Lua = {
 			diagnostics = {
-				globals = { "vim", "use" },
+        enable = true,
+				globals = {
+					"vim",
+					"describe",
+					"it",
+					"before_each",
+					"after_each",
+					"awesome",
+					"theme",
+					"client",
+					"P",
+				},
 			},
 			runtime = {
 				version = "LuaJIT",
