@@ -35,3 +35,5 @@ alias server='python -m http.server'
 alias bspwm='startx ~/.config/X11/bspwm'
 alias ddwm='startx ~/.config/X11/dwm'
 
+alias pcomp='nvim +PackerCompile'
+alias psync='nvim +PackerSync'

@@ -4,7 +4,6 @@
 vim.cmd [[ packadd packer.nvim ]]
 
 require "packer_compiled"
-
 return require("packer").startup {
 	function()
 		use "wbthomason/packer.nvim"
@@ -31,7 +30,7 @@ return require("packer").startup {
 			{
 				"EdenEast/nightfox.nvim",
 				event = "VimEnter",
-				module = "theme",
+				requires = "navarasu/onedark.nvim",
 				config = function()
 					require("plugins.configs.others").theme()
 				end,
@@ -42,6 +41,7 @@ return require("packer").startup {
 			},
 			{
 				"nvim-lualine/lualine.nvim",
+				opt = true,
 				after = "nightfox.nvim",
 				config = function()
 					require "plugins.configs.lualine"
@@ -91,6 +91,7 @@ return require("packer").startup {
 		-- Telescope
 		use {
 			"nvim-telescope/telescope.nvim",
+			module = "telescope",
 			event = "BufWinEnter",
 			requires = {
 				{
@@ -104,7 +105,6 @@ return require("packer").startup {
 			config = function()
 				require "plugins.configs.telescope"
 			end,
-			module = "telescope",
 		}
 
 		-- Editor utils plugins
@@ -118,7 +118,7 @@ return require("packer").startup {
 			},
 			{
 				"windwp/nvim-autopairs",
-				event = "InsertEnter",
+				after = "nvim-cmp",
 				config = function()
 					require("plugins.configs.others").autopairs()
 				end,
@@ -139,8 +139,8 @@ return require("packer").startup {
 			},
 			{
 				"L3MON4D3/LuaSnip",
-				wants = "friendly-snippets",
 				after = "nvim-cmp",
+				wants = "friendly-snippets",
 				config = function()
 					require("plugins.configs.others").luasnip()
 				end,
@@ -151,8 +151,6 @@ return require("packer").startup {
 		use {
 			{
 				"hrsh7th/nvim-cmp",
-				-- after = "friendly-snippets",
-				-- event = "InsertEnter",
 				ft = lspLangs,
 				config = function()
 					require "plugins.configs.cmp"

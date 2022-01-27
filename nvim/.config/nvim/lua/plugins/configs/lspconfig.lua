@@ -19,7 +19,7 @@ nvim_lsp.sumneko_lua.setup {
 	settings = {
 		Lua = {
 			diagnostics = {
-        enable = true,
+				enable = true,
 				globals = {
 					"vim",
 					"describe",

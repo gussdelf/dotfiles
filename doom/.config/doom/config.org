@@ -276,7 +276,7 @@ everywhere        ; *leave* Emacs!? You must be joking
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! theme-magic)
-(package! zenburn-theme)
+(package! spacemacs-theme)
 (package! password-generator)
 (package! screenshot :recipe (:host github :repo "tecosaur/screenshot"))
 #+END_SRC
@@ -668,13 +668,13 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 ***** Cursor colors
 #+srcname: cursor-colors
 #+BEGIN_SRC emacs-lisp :tangle yes
-(setq evil-normal-state-cursor '(box "orange")
-      evil-insert-state-cursor '(bar "#33CED8")
-      evil-visual-state-cursor '(hbar "gray")
-      evil-operator-state-cursor '(hbar "medium sea green")
-      evil-replace-state-cursor '(hbar "#ff6655")
-      evil-motion-state-cursor '(box "purple")
-      evil-emacs-state-cursor '(box "DeepSkyBlue"))
+(setq evil-normal-state-cursor `(box "orange")
+      ;; evil-insert-state-cursor `(box "red")
+      evil-visual-state-cursor `(hbar)
+      evil-operator-state-cursor `(hbar)
+      evil-replace-state-cursor `(hbar)
+      evil-motion-state-cursor `(box)
+      evil-emacs-state-cursor `(box))
 #+END_SRC
 
 ***** Remove emojify hook

@@ -7,7 +7,7 @@
 	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
 	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
 [user]
-	email = flovatsug@gmail.com
+	email = gussdelf@gmail.com
 	name = Gustavo Freitas
 [init]
 	defaultBranch = master

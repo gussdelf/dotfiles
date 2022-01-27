@@ -1,24 +1,19 @@
 local M = {}
 
 M.bufferline = function()
-	local present, bufferline = pcall(require, "bufferline")
-	if present then
-		require("bufferline").setup {
-			options = {
-				separator_style = "thin",
-			},
-		}
-		map("n", "<leader>bj", "<cmd>BufferLineCycleNext<CR>", { silent = true })
-		map("n", "<leader>bk", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
-	end
+	require("bufferline").setup {
+		options = {
+			separator_style = "thin",
+		},
+	}
+	vim.keymap.set("n", "<leader>bj", "<cmd>BufferLineCycleNext<CR>", { silent = true })
+	vim.keymap.set("n", "<leader>bk", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
+	vim.keymap.set("n", "<leader><leader>", "<cmd>BufferLinePick<CR>", { silent = true })
 end
 
 M.colorizer = function()
-	local present, colorizer = pcall(require, "colorizer")
-	if present then
-		require("colorizer").setup()
-	end
-	map("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
+	require("colorizer").setup()
+	vim.keymap.set("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
 end
 
 M.autotags = function()
@@ -43,54 +38,47 @@ M.autopairs = function()
 
 	-- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
 	cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
-	require("nvim-autopairs").setup {}
+	require("nvim-autopairs").setup()
 end
 
 M.luasnip = function()
-	local present, luasnip = pcall(require, "luasnip")
-	if present then
-		luasnip.config.set_config {
-			history = true,
-			updateevents = "TextChanged,TextChangedI",
-		}
-		require("luasnip.loaders.from_vscode").load()
-	end
+	local luasnip = require "luasnip"
+	luasnip.config.set_config {
+		history = true,
+		updateevents = "TextChanged,TextChangedI",
+	}
+	require("luasnip.loaders.from_vscode").load()
 end
 
 M.hop = function()
-	local present, hop = pcall(require, "hop")
-	if present then
-		require("hop").setup()
-	end
+	require("hop").setup()
 	-- Mapping
-	map("n", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
-	map("n", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
-	map("v", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
-	map("v", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
-	map("o", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
-	map("o", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
+	vim.keymap.set("n", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
+	vim.keymap.set("n", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
+	vim.keymap.set("v", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
+	vim.keymap.set("v", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
+	vim.keymap.set("o", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
+	vim.keymap.set("o", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
 end
 
 M.signature = function()
-	local present, lspsignature = pcall(require, "lsp_signature")
-	if present then
-		lspsignature.setup {
-			bind = true,
-			doc_lines = 0,
-			floating_window = true,
-			fix_pos = true,
-			hint_enable = true,
-			hint_scheme = "String",
-			hi_parameter = "Search",
-			max_height = 22,
-			max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-			handler_opts = {
-				border = "single", -- double, single, shadow, none
-			},
-			zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
-			padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
-		}
-	end
+	local lspsignature = require "lsp_signature"
+	lspsignature.setup {
+		bind = true,
+		doc_lines = 0,
+		floating_window = true,
+		fix_pos = true,
+		hint_enable = true,
+		hint_scheme = "String",
+		hi_parameter = "Search",
+		max_height = 22,
+		max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+		handler_opts = {
+			border = "single", -- double, single, shadow, none
+		},
+		zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
+		padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
+	}
 end
 
 M.tsrainbow = function()
@@ -163,8 +151,8 @@ M.null_ls = function()
 			require("null-ls").builtins.completion.spell,
 		},
 	}
-	map("n", "<C-f>", "<Cmd>lua vim.lsp.buf.formatting()<cr>", { silent = true })
-	map("v", "<C-f>", "<Cmd>lua vim.lsp.buf.range_formatting()<cr>", { silent = true })
+	vim.keymap.set("n", "<C-f>", "<Cmd>lua vim.lsp.buf.formatting()<cr>", { silent = true })
+	vim.keymap.set("v", "<C-f>", "<Cmd>lua vim.lsp.buf.range_formatting()<cr>", { silent = true })
 end
 
 return M
