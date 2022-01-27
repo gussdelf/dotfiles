@@ -7,15 +7,23 @@ require "packer_compiled"
 
 return require("packer").startup {
 	function()
-
 		use "wbthomason/packer.nvim"
 		use "nvim-lua/plenary.nvim"
 
+		-- Performance
 		use {
-			"lewis6991/impatient.nvim",
-			config = function()
-				require "impatient"
-			end,
+			{
+				"lewis6991/impatient.nvim",
+				config = function()
+					require "impatient"
+				end,
+			},
+			{
+				"nathom/filetype.nvim",
+				config = function()
+					vim.g.did_load_filetypes = 1
+				end,
+			},
 		}
 
 		-- Ui
@@ -42,7 +50,7 @@ return require("packer").startup {
 			{
 				"akinsho/bufferline.nvim",
 				opt = true,
-				after = "nvim-web-devicons",
+				event = "BufAdd",
 				config = function()
 					require("plugins.configs.others").bufferline()
 				end,
@@ -96,6 +104,7 @@ return require("packer").startup {
 			config = function()
 				require "plugins.configs.telescope"
 			end,
+			module = "telescope",
 		}
 
 		-- Editor utils plugins
@@ -227,7 +236,6 @@ return require("packer").startup {
 			},
 		}
 	end,
-
 	config = {
 		compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
 		display = {
