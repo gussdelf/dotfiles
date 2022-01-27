@@ -52,7 +52,7 @@ nvim_lsp.sumneko_lua.setup {
 	},
 }
 
-local servers = { "pyright", "clangd", "gopls", "tsserver", "rust_analyzer", "texlab", "bashls", "html", "cssls" }
+local servers = { "pyright", "clangd", "gopls", "tsserver", "rust_analyzer", "texlab", "bashls", "html", "cssls"}
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup {
 		on_attach = on_attach,

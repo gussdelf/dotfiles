@@ -36,6 +36,7 @@ lspLangs = {
 	"bash",
 	"sh",
 	"html",
+    "php",
 	"css",
 	"go",
 	"mod",

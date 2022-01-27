@@ -118,7 +118,7 @@ M.theme = function()
 	vim.cmd [[
 	hi default GHTextViewDark guifg=#e0d8f4
 	hi default GHListDark guifg=#e0d8f4
-	hi default GHListHl guifg=#e0d8f4 guibg=CursorLine
+	hi default GHListHl guifg=#e0d8f4 guibg=#283648
 	]]
 end
 

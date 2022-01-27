@@ -29,3 +29,4 @@ vim.o.background = "dark"
 vim.opt.shadafile = "NONE"
 vim.opt.shadafile = ""
 vim.opt.fillchars = { eob = " " }
+vim.opt.guicursor = "i:block"
