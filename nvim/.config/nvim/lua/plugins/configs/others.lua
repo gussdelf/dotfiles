@@ -1,5 +1,16 @@
 local M = {}
 
+M.lualine = function()
+	require("lualine").setup {
+		options = {
+			theme = "auto",
+			section_separators = { left = "", right = "" },
+			component_separators = { left = "", right = "" },
+		},
+		extensions = { "toggleterm" },
+	}
+end
+
 M.bufferline = function()
 	require("bufferline").setup {
 		options = {
@@ -141,6 +152,7 @@ M.navigator = function()
 			{ key = "gG", func = "require('navigator.diagnostics').show_buf_diagnostics()" },
 		},
 	}
+	-- vim.keymap.set("n", "<C-o>", "<cmd>bw<cr>", { silent = true })
 end
 
 M.null_ls = function()

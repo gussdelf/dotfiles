@@ -1,4 +1,5 @@
 local cmp = require "cmp"
+
 vim.opt.completeopt = "menuone,noselect"
 
 local kind_icons = {
@@ -78,7 +79,7 @@ cmp.setup {
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm {
 			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
+			select = false,
 		},
 	},
 	sources = {
@@ -86,7 +87,7 @@ cmp.setup {
 		{ name = "path" },
 		{ name = "tmux" },
 		{ name = "buffer" },
-		{ name = "luasnip" },
+		-- { name = "luasnip" },
 		{ name = "nvim_lua" },
 	},
 }

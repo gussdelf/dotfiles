@@ -30,7 +30,6 @@ return require("packer").startup {
 			{
 				"EdenEast/nightfox.nvim",
 				event = "VimEnter",
-				requires = "navarasu/onedark.nvim",
 				config = function()
 					require("plugins.configs.others").theme()
 				end,
@@ -44,7 +43,7 @@ return require("packer").startup {
 				opt = true,
 				after = "nightfox.nvim",
 				config = function()
-					require "plugins.configs.lualine"
+					require "plugins.configs.others".lualine()
 				end,
 			},
 			{
@@ -68,6 +67,7 @@ return require("packer").startup {
 			},
 			{
 				"windwp/nvim-ts-autotag",
+                opt = true,
 				ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "typescriptcommon" },
 				config = function()
 					require("plugins.configs.others").autotags()
@@ -75,6 +75,7 @@ return require("packer").startup {
 			},
 			{
 				"p00f/nvim-ts-rainbow",
+				opt = true,
 				after = "nvim-treesitter",
 				config = function()
 					require("plugins.configs.others").tsrainbow()
@@ -82,6 +83,7 @@ return require("packer").startup {
 			},
 			{
 				"norcalli/nvim-colorizer.lua",
+				opt = true,
 				config = function()
 					require("plugins.configs.others").colorizer()
 				end,
@@ -101,9 +103,10 @@ return require("packer").startup {
 				"nvim-telescope/telescope-file-browser.nvim",
 				"nvim-telescope/telescope-symbols.nvim",
 				"jvgrootveld/telescope-zoxide",
+                opt = true,
 			},
 			config = function()
-				require "plugins.configs.telescope"
+                require("plugins.configs.telescope")
 			end,
 		}
 
@@ -125,6 +128,7 @@ return require("packer").startup {
 			},
 			{
 				"numToStr/Comment.nvim",
+		--		opt = true,
 				config = function()
 					require("plugins.configs.others").comment()
 				end,
@@ -222,6 +226,7 @@ return require("packer").startup {
 		use {
 			{
 				"akinsho/toggleterm.nvim",
+				opt = true,
 				event = "BufWinEnter",
 				config = function()
 					require "plugins.configs.term"
@@ -229,6 +234,7 @@ return require("packer").startup {
 			},
 			{
 				"iamcco/markdown-preview.nvim",
+				opt = true,
 				ft = { "markdown" },
 				run = "cd app && yarn install",
 			},
