@@ -1,4 +1,4 @@
 require "user.ui"
 require "user.utils"
-require "user.keys"
+require "user.keymaps"
 require "user.opts"

@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 
 -- Window managment
-vim.keymap.set("n", "<leader>wq", "<cmd>bw<cr>", { silent = true }) -- Close buffer
+vim.keymap.set("n", "<leader>q", "<cmd>bw<cr>", { silent = true }) -- Close buffer
 vim.keymap.set("n", "<leader>wj", "<C-w>j", { silent = true }) -- Window down
 vim.keymap.set("n", "<leader>wk", "<C-w>k", { silent = true }) -- Window up
 vim.keymap.set("n", "<leader>wl", "<C-w>l", { silent = true }) -- Window right
@@ -23,6 +23,3 @@ vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { silent = true }) -- Save file
 -- others
 vim.keymap.set("n", "<Esc>", ":noh<CR>", { silent = true })
 vim.keymap.set({ "n", "v" }, "ç", ":", { silent = false })
-vim.keymap.set("n", "lhs", function()
-	print "real lua function"
-end)
