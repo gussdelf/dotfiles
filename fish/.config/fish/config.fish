@@ -14,7 +14,7 @@ source ~/.config/fish/alias.fish
 # Themes
 source ~/.config/fish/themes/nightfox.fish
 
-zoxide init fish | source
+zoxide init fish --cmd j | source
 xset r rate 320 40
 set -U fish_greeting 
 

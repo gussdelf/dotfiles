@@ -12,13 +12,7 @@ M.lualine = function()
 end
 
 M.bufferline = function()
-	require("bufferline").setup {
-		options = {
-			separator_style = "thin",
-		},
-	}
-	vim.keymap.set("n", "<leader>bj", "<cmd>BufferLineCycleNext<CR>", { silent = true })
-	vim.keymap.set("n", "<leader>bk", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
+	require("bufferline").setup {}
 	vim.keymap.set("n", "<leader><leader>", "<cmd>BufferLinePick<CR>", { silent = true })
 end
 
@@ -70,6 +64,19 @@ M.hop = function()
 	vim.keymap.set("v", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
 	vim.keymap.set("o", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
 	vim.keymap.set("o", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
+end
+
+M.gomove = function()
+	require("gomove").setup {
+		-- whether or not to map default key bindings, (true/false)
+		map_defaults = true,
+		-- whether or not to reindent lines moved vertically (true/false)
+		reindent = true,
+		-- whether or not to undojoin same direction moves (true/false)
+		undojoin = true,
+		-- whether to not to move past end column when moving blocks horizontally, (true/false)
+		move_past_end_col = false,
+	}
 end
 
 M.signature = function()

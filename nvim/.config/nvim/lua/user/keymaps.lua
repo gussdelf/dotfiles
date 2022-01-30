@@ -9,6 +9,10 @@ vim.keymap.set("n", "<leader>wl", "<C-w>l", { silent = true }) -- Window right
 vim.keymap.set("n", "<leader>wh", "<C-w>h", { silent = true }) -- Window left
 vim.keymap.set("n", "<leader>ww", "<cmd>vsplit<cr> <C-w>l", { silent = true }) -- Vertical split window
 
+-- Buffer
+vim.keymap.set("n", "<leader>bj", "<cmd>bnext<CR>", { silent = true })
+vim.keymap.set("n", "<leader>bk", "<cmd>bprevious<CR>", { silent = true })
+
 -- Moviment
 vim.keymap.set("n", "j", "gj", { silent = true })
 vim.keymap.set("n", "k", "gk", { silent = true })
@@ -16,6 +20,7 @@ vim.keymap.set("v", "j", "gj", { silent = true })
 vim.keymap.set("v", "k", "gk", { silent = true })
 vim.keymap.set("n", "H", "0", { silent = true })
 vim.keymap.set("n", "L", "$", { silent = true })
+
 
 -- Files
 vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { silent = true }) -- Save file

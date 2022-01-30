@@ -1,5 +1,5 @@
 require("toggleterm").setup {
-	open_mapping = [[<c-t>]],
+	open_mapping = [[<C-t>]],
 	hide_numbers = true, -- hide the number column in toggleterm buffers
 	shade_terminals = false,
 	start_in_insert = true,
@@ -25,4 +25,4 @@ function _lazygit_toggle()
 	lazygit:toggle()
 end
 
-vim.keymap.set("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>ot", "<cmd>lua require('toggleterm.terminal').Terminal:new():toggle()<cr>",  {silent = true})

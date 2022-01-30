@@ -10,16 +10,14 @@ _comp_options+=(globdots)
 # Vim bindings
 bindkey -v
 
-# Sources
+###-----------Others--------------###
 source $ZDOTDIR/functions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
-
 source $XDG_CONFIG_HOME/alias
 zsh_add_plugin "hlissner/zsh-autopair"
-
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export HISTSIZE=10000
 export SAVEHIST=10000
@@ -31,9 +29,11 @@ setopt HIST_REDUCE_BLANKS
 setopt INC_APPEND_HISTORY_TIME 
 setopt EXTENDED_HISTORY 
 setopt autocd extendedglob nomatch menucomplete
+###--------------------------------###
 
-# Prompt
+###-------------Prompt-------------###
 eval "$(starship init zsh)"
+###--------------------------------###
 
 # Zoxide
 eval "$(zoxide init --cmd j zsh)"
