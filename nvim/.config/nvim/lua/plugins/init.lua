@@ -30,7 +30,7 @@ return require("packer").startup {
 			{
 				"EdenEast/nightfox.nvim",
 				event = "VimEnter",
-                requires = "rose-pine/neovim",
+				requires = "rose-pine/neovim",
 				config = function()
 					require("plugins.configs.others").theme()
 				end,
@@ -68,7 +68,7 @@ return require("packer").startup {
 			},
 			{
 				"windwp/nvim-ts-autotag",
-                opt = true,
+				opt = true,
 				ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "typescriptcommon" },
 				config = function()
 					require("plugins.configs.others").autotags()
@@ -97,13 +97,17 @@ return require("packer").startup {
 			module = "telescope",
 			event = "BufWinEnter",
 			requires = {
+                {
+                    "nvim-telescope/telescope-fzf-native.nvim",
+                    run = "make all",
+                },
 				"nvim-telescope/telescope-file-browser.nvim",
 				"nvim-telescope/telescope-symbols.nvim",
 				"jvgrootveld/telescope-zoxide",
-                opt = true,
+				-- opt = true,
 			},
 			config = function()
-                require("plugins.configs.telescope")
+				require "plugins.configs.telescope"
 			end,
 		}
 
@@ -116,13 +120,13 @@ return require("packer").startup {
 					require("plugins.configs.others").hop()
 				end,
 			},
-            {
-                'booperlv/nvim-gomove',
-                event = "BufWinEnter",
-                config = function ()
-                    require("plugins.configs.others").gomove()
-                end
-            },
+			{
+				"booperlv/nvim-gomove",
+				event = "BufWinEnter",
+				config = function()
+					require("plugins.configs.others").gomove()
+				end,
+			},
 			{
 				"windwp/nvim-autopairs",
 				after = "nvim-cmp",
@@ -132,7 +136,7 @@ return require("packer").startup {
 			},
 			{
 				"numToStr/Comment.nvim",
-			    -- opt = true,
+				-- opt = true,
 				config = function()
 					require("plugins.configs.others").comment()
 				end,

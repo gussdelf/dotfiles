@@ -1,7 +1,6 @@
 #! /usr/bin/env sh
 
 ##Aliases
-alias g='git'
 alias c='clear;'
 alias n='nnn -e'
 alias :q='exit'

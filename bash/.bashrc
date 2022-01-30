@@ -15,5 +15,5 @@ HISTFILESIZE="$XDG_CONFIG_HOME"/bash/history
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
 
-eval "$(zoxide init bash)"
+eval "$(zoxide init --cmd j bash)"
 xset r rate 320 40
