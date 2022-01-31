@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 require("telescope").setup {
 	defaults = {
 		vimgrep_arguments = {
@@ -91,21 +92,49 @@ require("telescope").load_extension "fzf"
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "zoxide"
 
-vim.keymap.set("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", { silent = true })
-vim.keymap.set("n", "<leader>fp", "<cmd>lua require('telescope.builtin').git_files()<cr>", { silent = true })
-vim.keymap.set("n", "<leader>ft", "<cmd>lua require('telescope.builtin').filetypes()<cr>", { silent = true })
-vim.keymap.set("n", "<leader>j", "<cmd>lua require('telescope').extensions.zoxide.list()<cr>", { silent = true })
-vim.keymap.set("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { silent = true })
-vim.keymap.set("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", { silent = true })
-vim.keymap.set("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { silent = true })
-vim.keymap.set("n", "<leader>cc", "<cmd>lua require('telescope.builtin').colorscheme()<cr>", { silent = true })
-vim.keymap.set("n", "<leader>is", "<cmd>lua require('telescope.builtin').symbols()<cr>", { silent = true })
+vim.keymap.set("n", "<leader>ff", function()
+	require("telescope.builtin").find_files()
+end, { silent = true })
+
+vim.keymap.set("n", "<leader>fp", function()
+	require("telescope.builtin").git_files()
+end, { silent = true })
+
+vim.keymap.set("n", "<leader>ft", function()
+	require("telescope.builtin").filetypes()
+end, { silent = true })
+
+vim.keymap.set("n", "<leader>j", function()
+	require("telescope").extensions.zoxide.list()
+end, { silent = true })
+
+vim.keymap.set("n", "<leader>fg", function()
+	require("telescope.builtin").live_grep()
+end, { silent = true })
+
+vim.keymap.set("n", "<leader>fb", function()
+	require("telescope.builtin").buffers()
+end, { silent = true })
+
+vim.keymap.set("n", "<leader>fh", function()
+	require("telescope.builtin").help_tags()
+end, { silent = true })
+
+vim.keymap.set("n", "<leader>cc", function()
+	require("telescope.builtin").colorscheme()
+end, { silent = true })
+
+vim.keymap.set("n", "<leader>is", function()
+	require("telescope.builtin").symbols()
+end, { silent = true })
+
 vim.keymap.set(
 	"n",
 	"<leader>ss",
 	"<cmd>Telescope current_buffer_fuzzy_find fuzzy=false case_mode=ignore_case previewer=false<cr>",
 	{ silent = true }
 )
+
 vim.keymap.set(
 	"n",
 	"<leader>fd",

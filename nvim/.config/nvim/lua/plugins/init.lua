@@ -11,18 +11,10 @@ return require("packer").startup {
 
 		-- Performance
 		use {
-			{
-				"lewis6991/impatient.nvim",
-				config = function()
-					require "impatient"
-				end,
-			},
-			{
-				"nathom/filetype.nvim",
-				config = function()
-					vim.g.did_load_filetypes = 1
-				end,
-			},
+			"lewis6991/impatient.nvim",
+			config = function()
+				require "impatient"
+			end,
 		}
 
 		-- Ui
@@ -30,7 +22,6 @@ return require("packer").startup {
 			{
 				"EdenEast/nightfox.nvim",
 				event = "VimEnter",
-				requires = "rose-pine/neovim",
 				config = function()
 					require("plugins.configs.others").theme()
 				end,
@@ -44,9 +35,17 @@ return require("packer").startup {
 				opt = true,
 				after = "nightfox.nvim",
 				config = function()
-					require "plugins.configs.others".lualine()
+					require("plugins.configs.others").lualine()
 				end,
 			},
+			-- {
+			-- 	"feline-nvim/feline.nvim",
+			-- 	opt = true,
+			-- 	after = "nightfox.nvim",
+			-- 	config = function()
+			-- 		require "plugins.configs.feline"
+			-- 	end,
+			-- },
 			{
 				"akinsho/bufferline.nvim",
 				opt = true,
@@ -57,6 +56,13 @@ return require("packer").startup {
 			},
 		}
 
+		-- Git
+		use {
+			"TimUntersberger/neogit",
+			config = function()
+				require("plugins.configs.others").neogit()
+			end,
+		}
 		-- Treesitter
 		use {
 			{
@@ -84,7 +90,6 @@ return require("packer").startup {
 			},
 			{
 				"norcalli/nvim-colorizer.lua",
-				opt = true,
 				config = function()
 					require("plugins.configs.others").colorizer()
 				end,
@@ -97,10 +102,10 @@ return require("packer").startup {
 			module = "telescope",
 			event = "BufWinEnter",
 			requires = {
-                {
-                    "nvim-telescope/telescope-fzf-native.nvim",
-                    run = "make all",
-                },
+				{
+					"nvim-telescope/telescope-fzf-native.nvim",
+					run = "make all",
+				},
 				"nvim-telescope/telescope-file-browser.nvim",
 				"nvim-telescope/telescope-symbols.nvim",
 				"jvgrootveld/telescope-zoxide",
@@ -204,6 +209,9 @@ return require("packer").startup {
 				end,
 			},
 			{
+				"nvim-lua/lsp-status.nvim",
+			},
+			{
 				"ray-x/lsp_signature.nvim",
 				ft = lspLangs,
 				config = function()
@@ -245,6 +253,14 @@ return require("packer").startup {
 				opt = true,
 				ft = { "markdown" },
 				run = "cd app && yarn install",
+			},
+			{
+				"andymass/vim-matchup",
+				opt = true,
+				ft = lspLangs,
+				config = function()
+					require("plugins.configs.others").matchup()
+				end,
 			},
 		}
 	end,

@@ -20,5 +20,5 @@
 *color14: #93ccdc
 *color15: #e7ecf4
 
-st.alpha: 0.8
-st.font: Iosevka Mono Nerd Font:style:medium:pixelsize=16
+st.alpha: 1.0
+st.font: Iosevka Nerd Font:style:medium:pixelsize=15

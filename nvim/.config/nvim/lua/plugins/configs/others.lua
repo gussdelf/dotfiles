@@ -6,13 +6,14 @@ M.lualine = function()
 			theme = "auto",
 			section_separators = { left = "", right = "" },
 			component_separators = { left = "", right = "" },
+			disabled_filetypes = { "dashboard", "startify", "NvimTree", "packer" },
 		},
 		extensions = { "toggleterm" },
 	}
 end
 
 M.bufferline = function()
-	require("bufferline").setup {}
+	require("bufferline").setup { offsets = { { filetype = "NvimTree", text = "File Explorer" } } }
 	vim.keymap.set("n", "<leader><leader>", "<cmd>BufferLinePick<CR>", { silent = true })
 end
 
@@ -68,13 +69,9 @@ end
 
 M.gomove = function()
 	require("gomove").setup {
-		-- whether or not to map default key bindings, (true/false)
 		map_defaults = true,
-		-- whether or not to reindent lines moved vertically (true/false)
 		reindent = true,
-		-- whether or not to undojoin same direction moves (true/false)
 		undojoin = true,
-		-- whether to not to move past end column when moving blocks horizontally, (true/false)
 		move_past_end_col = false,
 	}
 end
@@ -116,7 +113,7 @@ end
 
 M.theme = function()
 	require("nightfox").setup {
-		fox = "nightfox",
+		fox = "nordfox",
 		styles = {
 			keywords = "bold",
 			functions = "bold,italic",
@@ -126,13 +123,15 @@ M.theme = function()
 			match_paren = true,
 		},
 	}
-	if vim.g.gnvim then
-	else
-		require("nightfox").setup {
-			transparent = true,
-		}
-	end
+
+	-- if vim.g.gnvim then
+	-- else
+	-- 	require("nightfox").setup {
+	-- 		transparent = true,
+	-- 	}
+	-- end
 	require("nightfox").load()
+
 	vim.cmd [[
 	hi default GHTextViewDark guifg=#e0d8f4
 	hi default GHListDark guifg=#e0d8f4
@@ -172,6 +171,20 @@ M.null_ls = function()
 	}
 	vim.keymap.set("n", "<C-f>", "<Cmd>lua vim.lsp.buf.formatting()<cr>", { silent = true })
 	vim.keymap.set("v", "<C-f>", "<Cmd>lua vim.lsp.buf.range_formatting()<cr>", { silent = true })
+end
+
+M.matchup = function()
+	require("nvim-treesitter.configs").setup {
+		matchup = {
+			enable = true, -- mandatory, false will disable the whole extension
+		},
+	}
+end
+
+M.neogit = function()
+	vim.keymap.set("n", "<leader>gg", function()
+		require("neogit").open()
+	end, { silent = true })
 end
 
 return M
