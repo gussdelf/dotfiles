@@ -36,7 +36,7 @@ lspLangs = {
 	"bash",
 	"sh",
 	"html",
-    "php",
+	"php",
 	"css",
 	"go",
 	"mod",
@@ -68,4 +68,3 @@ tsEnsureInstall = {
 	"make",
 	"cmake",
 }
-

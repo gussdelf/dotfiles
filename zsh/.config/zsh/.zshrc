@@ -12,12 +12,14 @@ bindkey -v
 
 ###-----------Others--------------###
 source $ZDOTDIR/functions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $XDG_CONFIG_HOME/alias
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
-source $XDG_CONFIG_HOME/alias
 zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export HISTSIZE=10000
 export SAVEHIST=10000

@@ -201,9 +201,9 @@ return require("packer").startup {
 					require "plugins.configs.lspconfig"
 				end,
 			},
-			{
-				"nvim-lua/lsp-status.nvim",
-			},
+			-- {
+			-- 	"nvim-lua/lsp-status.nvim",
+			-- },
 			{
 				"ray-x/lsp_signature.nvim",
 				ft = lspLangs,

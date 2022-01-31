@@ -21,7 +21,6 @@ vim.keymap.set("v", "k", "gk", { silent = true })
 vim.keymap.set("n", "H", "0", { silent = true })
 vim.keymap.set("n", "L", "$", { silent = true })
 
-
 -- Files
 vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { silent = true }) -- Save file
 

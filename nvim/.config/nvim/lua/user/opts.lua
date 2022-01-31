@@ -32,4 +32,4 @@ vim.opt.fillchars = { eob = " " }
 --- vim.opt.guicursor = "i:block"
 vim.g.did_load_filetypes = 0
 vim.g.do_filetype_lua = 1
-vim.cmd[[au BufRead * set buftype=""]]
+vim.cmd [[au BufRead * set buftype=""]]
