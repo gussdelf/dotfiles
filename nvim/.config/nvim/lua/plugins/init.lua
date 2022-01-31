@@ -56,18 +56,11 @@ return require("packer").startup {
 			},
 		}
 
-		-- Git
-		use {
-			"TimUntersberger/neogit",
-			config = function()
-				require("plugins.configs.others").neogit()
-			end,
-		}
 		-- Treesitter
 		use {
 			{
 				"nvim-treesitter/nvim-treesitter",
-				event = "BufRead",
+				event = "FileType",
 				config = function()
 					require "plugins.configs.treesitter"
 				end,

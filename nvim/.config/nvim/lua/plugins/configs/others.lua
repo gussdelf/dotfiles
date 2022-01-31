@@ -171,6 +171,7 @@ M.null_ls = function()
 	}
 	vim.keymap.set("n", "<C-f>", "<Cmd>lua vim.lsp.buf.formatting()<cr>", { silent = true })
 	vim.keymap.set("v", "<C-f>", "<Cmd>lua vim.lsp.buf.range_formatting()<cr>", { silent = true })
+    vim.cmd[[autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100)]]
 end
 
 M.matchup = function()
@@ -179,12 +180,6 @@ M.matchup = function()
 			enable = true, -- mandatory, false will disable the whole extension
 		},
 	}
-end
-
-M.neogit = function()
-	vim.keymap.set("n", "<leader>gg", function()
-		require("neogit").open()
-	end, { silent = true })
 end
 
 return M
