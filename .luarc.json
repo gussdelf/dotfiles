@@ -9,6 +9,7 @@
         "teardown",
         "pending",
         "runtime_path",
-        "use"
+        "use",
+        "lspLangs"
     ]
 }

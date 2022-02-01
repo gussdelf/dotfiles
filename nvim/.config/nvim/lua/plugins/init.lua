@@ -60,7 +60,8 @@ return require("packer").startup {
 		use {
 			{
 				"nvim-treesitter/nvim-treesitter",
-				event = "FileType",
+				-- event = "BufRead",
+                ft = tsFileTypes,
 				config = function()
 					require "plugins.configs.treesitter"
 				end,
