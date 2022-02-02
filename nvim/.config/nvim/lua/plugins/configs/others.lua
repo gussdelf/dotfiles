@@ -111,13 +111,13 @@ M.comment = function()
 	require("Comment").setup()
 end
 
-M.theme = function()
+M.nightfox = function()
 	require("nightfox").setup {
 		fox = "nordfox",
 		styles = {
 			keywords = "bold",
-			functions = "bold,italic",
-			strings = "italic",
+			functions = "bold",
+			strings = "bold",
 		},
 		inverse = {
 			match_paren = true,
@@ -166,6 +166,7 @@ M.null_ls = function()
 		sources = {
 			require("null-ls").builtins.formatting.stylua,
 			require("null-ls").builtins.diagnostics.eslint,
+			require("null-ls").builtins.formatting.prettier,
 			require("null-ls").builtins.completion.spell,
 		},
 	}
@@ -181,6 +182,11 @@ M.matchup = function()
 			enable = true, -- mandatory, false will disable the whole extension
 		},
 	}
+end
+
+M.neoformat = function()
+	vim.keymap.set("n", "<C-f>", "<Cmd>Neoformat<cr>", { silent = true })
+	vim.keymap.set("v", "<C-f>", "<Cmd>Neoformat<cr>", { silent = true })
 end
 
 return M

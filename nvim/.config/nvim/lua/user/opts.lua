@@ -21,6 +21,7 @@ vim.opt.undofile = true
 -- Others
 vim.opt.compatible = false
 vim.opt.ignorecase = true
+vim.o.smartcase = true
 vim.opt.incsearch = true
 vim.opt.ttyfast = true
 vim.opt.so = 5
@@ -31,6 +32,4 @@ vim.opt.shadafile = ""
 vim.opt.fillchars = { eob = " " }
 vim.g.did_load_filetypes = 0
 vim.g.do_filetype_lua = 1
--- vim.cmd [[au VimEnter * set buftype=""]]
--- vim.opt.guicursor = "i:block"
 vim.opt.guicursor =  "n:blinkon100,v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"

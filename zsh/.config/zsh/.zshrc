@@ -42,3 +42,6 @@ eval "$(zoxide init --cmd j zsh)"
 
 # Increase autorepeat 
 xset r rate 320 40
+
+# nix
+if [ -e /home/haunter/.nix-profile/etc/profile.d/nix.sh ]; then . /home/haunter/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

@@ -1,4 +1,9 @@
--- This is the file to manage the plugins
+-- Install packer
+local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+	vim.fn.execute("!git clone --depth 1 https://github.com/wbthomason/packer.nvim " .. install_path)
+end
 
 -- Adding packer.nvim
 vim.cmd [[ packadd packer.nvim ]]
@@ -22,8 +27,9 @@ return require("packer").startup {
 			{
 				"EdenEast/nightfox.nvim",
 				event = "VimEnter",
+				requires = { "sainnhe/gruvbox-material" },
 				config = function()
-					require("plugins.configs.others").theme()
+					require("plugins.configs.others").nightfox()
 				end,
 			},
 			{
@@ -60,8 +66,7 @@ return require("packer").startup {
 		use {
 			{
 				"nvim-treesitter/nvim-treesitter",
-				-- event = "BufRead",
-                ft = tsFileTypes,
+				ft = tsFileTypes,
 				config = function()
 					require "plugins.configs.treesitter"
 				end,
@@ -69,7 +74,7 @@ return require("packer").startup {
 			{
 				"windwp/nvim-ts-autotag",
 				opt = true,
-				ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "typescriptcommon" },
+				ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "typescriptcommon", "vue" },
 				config = function()
 					require("plugins.configs.others").autotags()
 				end,
@@ -223,13 +228,20 @@ return require("packer").startup {
 					require("plugins.configs.others").navigator()
 				end,
 			},
-			{
-				"jose-elias-alvarez/null-ls.nvim",
-				ft = lspLangs,
-				config = function()
-					require("plugins.configs.others").null_ls()
-				end,
-			},
+			-- {
+			-- 	"jose-elias-alvarez/null-ls.nvim",
+			-- 	ft = lspLangs,
+			-- 	config = function()
+			-- 		require("plugins.configs.others").null_ls()
+			-- 	end,
+			-- },
+            {
+                "sbdchd/neoformat",
+                ft = lspLangs,
+                config = function()
+                    require("plugins.configs.others").neoformat()
+                end
+            },
 		}
 
 		-- Etc

@@ -62,6 +62,7 @@ require("telescope").setup {
 			find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
 			prompt_title = false,
 			hidden = true,
+            previewer = false,
 			width = 2.0,
 		},
 		buffers = {
