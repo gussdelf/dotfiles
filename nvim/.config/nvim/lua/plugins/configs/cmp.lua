@@ -44,7 +44,7 @@ cmp.setup {
 			vim_item.menu = ({
 				buffer = "Buffer",
 				nvim_lsp = "LSP",
-				name = "Nvim_lua",
+				name = "api",
 				luasnip = "LuaSnip",
 				latex_symbols = "LaTeX",
 				tmux = "Tmux",

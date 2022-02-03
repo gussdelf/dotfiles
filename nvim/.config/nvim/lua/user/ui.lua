@@ -15,4 +15,5 @@ vim.cmd [[
   autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]]
--- vim: ts=2 sts=2 sw=2 et
+
+vim.opt.guicursor =  "n-i:blinkon100,v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"

@@ -123,20 +123,15 @@ M.nightfox = function()
 			match_paren = true,
 		},
 	}
-
-	-- if vim.g.gnvim then
-	-- else
-	-- 	require("nightfox").setup {
-	-- 		transparent = true,
-	-- 	}
-	-- end
 	require("nightfox").load()
 
-	vim.cmd [[
-	hi default GHTextViewDark guifg=#e0d8f4
-	hi default GHListDark guifg=#e0d8f4
-	hi default GHListHl guifg=#e0d8f4 guibg=#283648
-	]]
+	-- vim.cmd [[
+	-- hi default GHTextViewDark guifg=#e0d8f4
+	-- hi default GHListDark guifg=#e0d8f4
+	-- hi default GHListHl guifg=#e0d8f4 guibg=#282828
+	-- ]]
+	vim.g.gruvbox_material_background = "hard"
+    vim.cmd[[colorscheme gruvbox-material]]
 end
 
 M.navigator = function()
@@ -187,6 +182,13 @@ end
 M.neoformat = function()
 	vim.keymap.set("n", "<C-f>", "<Cmd>Neoformat<cr>", { silent = true })
 	vim.keymap.set("v", "<C-f>", "<Cmd>Neoformat<cr>", { silent = true })
+end
+
+M.blankline = function()
+	require("indent_blankline").setup {
+		show_current_context = false,
+		show_current_context_start = false,
+	}
 end
 
 return M

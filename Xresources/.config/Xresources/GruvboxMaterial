@@ -1,4 +1,5 @@
-st.font: Iosevka Nerd Font:style:medium:pixelsize=16
+st.alpha: 1.0
+st.font: Meslo LG L Nerd Font:style:semibold:pixelsize=15
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Gruvbox Material Dark

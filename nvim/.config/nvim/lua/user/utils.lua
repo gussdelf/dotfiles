@@ -28,6 +28,7 @@ end
 vim.cmd[[
 au BufRead,BufNewFile *.mod set filetype=gomod
 au BufRead,BufNewFile *.tex set filetype=tex
+au BufRead,BufNewFile *.fnl set filetype=fennel
 ]]
 
 lspLangs = {
@@ -38,11 +39,11 @@ lspLangs = {
 tsEnsureInstall = {
 	"lua", "vim", "bash", "fish", "c", "cpp", "gomod", "go", "rust", "html",
     "css", "javascript", "typescript", "tsx", "python", "ruby", "php", "yaml",
-    "json", "latex", "markdown", "make", "cmake", "vue",
+    "json", "latex", "markdown", "make", "cmake", "vue", "fennel",
 }
 tsFileTypes = {
     "lua", "vim", "bash", "fish", "c", "cpp", "go", "rust", "html", "css",
     "javascript", "javascriptreact", "typescript", "typescriptreact",
     "typescriptcommon", "python", "ruby", "php", "yaml", "json", "tex",
-    "markdown", "make", "cmake", "gomod", "vue"
+    "markdown", "make", "cmake", "gomod", "vue", "fennel",
 }
