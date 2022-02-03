@@ -9,12 +9,13 @@ end
 vim.cmd [[ packadd packer.nvim ]]
 
 require "packer_compiled"
+
 return require("packer").startup {
 	function()
 		use "wbthomason/packer.nvim"
 		use "nvim-lua/plenary.nvim"
 
-		-- Performance
+		-- Improve startup time
 		use {
 			"lewis6991/impatient.nvim",
 			config = function()
@@ -27,11 +28,18 @@ return require("packer").startup {
 			{
 				"EdenEast/nightfox.nvim",
 				event = "VimEnter",
-				requires = { "sainnhe/gruvbox-material" },
+				requires = { "sainnhe/gruvbox-material", "sainnhe/everforest" },
 				config = function()
 					require("plugins.configs.others").nightfox()
 				end,
 			},
+			-- {
+			-- 	"themercorp/themer.lua",
+			--              event = "VimEnter",
+			--              config = function()
+			--                  require("plugins.configs.themer")
+			--              end
+			-- },
 			{
 				"kyazdani42/nvim-web-devicons",
 				after = "nightfox.nvim",
@@ -74,7 +82,15 @@ return require("packer").startup {
 			{
 				"windwp/nvim-ts-autotag",
 				opt = true,
-				ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "typescriptcommon", "vue" },
+				ft = {
+					"html",
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"typescriptcommon",
+					"vue",
+				},
 				config = function()
 					require("plugins.configs.others").autotags()
 				end,
@@ -228,20 +244,13 @@ return require("packer").startup {
 					require("plugins.configs.others").navigator()
 				end,
 			},
-			-- {
-			-- 	"jose-elias-alvarez/null-ls.nvim",
-			-- 	ft = lspLangs,
-			-- 	config = function()
-			-- 		require("plugins.configs.others").null_ls()
-			-- 	end,
-			-- },
-            {
-                "sbdchd/neoformat",
-                ft = lspLangs,
-                config = function()
-                    require("plugins.configs.others").neoformat()
-                end
-            },
+			{
+				"jose-elias-alvarez/null-ls.nvim",
+				ft = lspLangs,
+				config = function()
+					require("plugins.configs.others").null_ls()
+				end,
+			},
 		}
 
 		-- Etc

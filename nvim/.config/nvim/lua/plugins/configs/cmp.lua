@@ -83,11 +83,11 @@ cmp.setup {
 		},
 	},
 	sources = {
-		{ name = "nvim_lsp" },
+		{ name = "nvim_lsp", priority = 9 },
 		{ name = "path" },
 		{ name = "tmux" },
 		{ name = "buffer" },
 		-- { name = "luasnip" },
-		{ name = "nvim_lua" },
+		{ name = "nvim_lua", priority = 2 },
 	},
 }

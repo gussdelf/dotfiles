@@ -129,6 +129,10 @@ vim.keymap.set("n", "<leader>is", function()
 	require("telescope.builtin").symbols()
 end, { silent = true })
 
+vim.keymap.set("n", "<leader>dl", function()
+    require("telescope.builtin").diagnostics()
+end)
+
 vim.keymap.set(
 	"n",
 	"<leader>ss",

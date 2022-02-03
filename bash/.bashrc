@@ -17,3 +17,4 @@ source /usr/share/fzf/key-bindings.bash
 
 eval "$(zoxide init --cmd j bash)"
 xset r rate 320 40
+set -o vi
