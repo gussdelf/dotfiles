@@ -18,11 +18,13 @@ vim.opt.mouse = "a"
 -- Undo
 vim.opt.undofile = true
 
--- Others
-vim.opt.compatible = false
-vim.opt.ignorecase = true
+-- Search 
+vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.opt.incsearch = true
+
+-- Others
+vim.opt.compatible = false
 vim.opt.ttyfast = true
 vim.opt.so = 5
 vim.o.swapfile = false

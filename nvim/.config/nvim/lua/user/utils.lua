@@ -34,16 +34,16 @@ au BufRead,BufNewFile *.fnl set filetype=fennel
 lspLangs = {
 	"javascript", "javascriptreact", "typescript", "typescriptreact",
     "typescriptcommon", "c", "cpp", "lua", "rust", "bash", "sh", "html", "php",
-    "css", "go", "markdown", "tex", "vue",
+    "css", "go", "markdown", "tex", "vue", "lisp"
 }
 tsEnsureInstall = {
 	"lua", "vim", "bash", "fish", "c", "cpp", "gomod", "go", "rust", "html",
     "css", "javascript", "typescript", "tsx", "python", "ruby", "php", "yaml",
-    "json", "latex", "markdown", "make", "cmake", "vue", "fennel",
+    "json", "latex", "markdown", "make", "cmake", "vue", "fennel", "commonlisp"
 }
 tsFileTypes = {
     "lua", "vim", "bash", "fish", "c", "cpp", "go", "rust", "html", "css",
     "javascript", "javascriptreact", "typescript", "typescriptreact",
     "typescriptcommon", "python", "ruby", "php", "yaml", "json", "tex",
-    "markdown", "make", "cmake", "gomod", "vue", "fennel",
+    "markdown", "make", "cmake", "gomod", "vue", "fennel", "lisp"
 }

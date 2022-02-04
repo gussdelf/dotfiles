@@ -18,10 +18,6 @@ alt + ctrl + d
 alt + ctrl + e
 	emacs
 
-# run emacsclient spacemacs
-alt + ctrl + s
-	emacsclient -nc --socket-name spacemacs
-
 # watch
 alt + ctrl + y
 	watch -D

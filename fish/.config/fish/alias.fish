@@ -1,6 +1,6 @@
 
 alias g 'git'
-alias c 'clear;'
+alias c 'clear'
 alias n 'nnn -e'
 alias :q 'exit'
 alias :e '$EDITOR'

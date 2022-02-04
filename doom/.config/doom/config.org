@@ -69,8 +69,8 @@ This is part of my dotfiles in https://github.com/gussdelf/dotfiles.
 (company +childframe)           ; the ultimate code completion backend
 ;;helm              ; the *other* search engine for love and life
 ;;ido               ; the other *other* search engine...
-(ivy +icons +prescient)        ; a search engine for love and life
-;; (vertico +icons)           ; the search engine of the future
+;; (ivy +icons +prescient)        ; a search engine for love and life
+(vertico +icons)           ; the search engine of the future
 #+END_SRC
 
 *** doom-ui
@@ -84,7 +84,7 @@ doom-quit         ; DOOM quit-message prompts when you quit Emacs
 hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
 hydra
 ;; indent-guides     ; highlighted indent columns
-ligatures         ; ligatures and symbols to make your code pretty again
+(ligatures  +iosevka)        ; ligatures and symbols to make your code pretty again
 ;;minimap           ; show a map of the code on the side
 (modeline +light)          ; snazzy, Atom-inspired modeline, plus API
 nav-flash         ; blink cursor line after big motions
@@ -107,7 +107,7 @@ zen               ; distraction-free coding or writing
 (evil +everywhere); come to the dark side, we have cookies
 file-templates    ; auto-snippets for empty files
 fold              ; (nigh) universal code folding
-;; (format +onsave)  ; automated prettiness
+(format +onsave)  ; automated prettiness
 ;;god               ; run Emacs commands without modifier keys
 ;;lispy             ; vim for lisp, for people who don't like vim
 multiple-cursors  ; editing in many places at once
@@ -294,7 +294,7 @@ Some functionality uses this to identify you, e.g. GPG configuration, email clie
 #+srcname: identify
 #+BEGIN_SRC emacs-lisp :tangle yes
 (setq user-full-name "Gustavo de Lima Freitas"
-      user-mail-address "flovatsug@gmail.com")
+      user-mail-address "gussdelf@gmail.com")
 #+END_SRC
 
 **** Org-mode dir
@@ -399,8 +399,8 @@ syntax tree as the source file is edited.
 **** Fonts
 #+srcname: fonts
 #+BEGIN_SRC emacs-lisp :tangle yes
-(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 18 :height 'medium)
-      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 18 :height 'medium)
+(setq doom-font (font-spec :family "Meslo LG L Nerd Font" :size 18 :height 'medium)
+      doom-big-font (font-spec :family "Meslo LG L Nerd Font" :size 18 :height 'medium)
       doom-variable-pitch-font (font-spec :family "Overpass Nerd Font")
       doom-unicode-font (font-spec :family "JuliaMono")
       doom-serif-font (font-spec :family "BlexMono Nerd Font" :weight 'light))
@@ -786,6 +786,7 @@ end-of-buffer signals; pass the rest to the default handler."
        :desc "password-generator-numeric" "n" #'password-generator-numeric
        :desc "password-generator-words" "w" #'password-generator-words
        ))
+(map! :n "ç" #'evil-ex)
 #+END_SRC
 
 *** Smartparens
