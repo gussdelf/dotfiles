@@ -62,7 +62,7 @@ require("telescope").setup {
 			find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
 			prompt_title = false,
 			hidden = true,
-            previewer = false,
+			previewer = false,
 			width = 2.0,
 		},
 		buffers = {
@@ -130,7 +130,7 @@ vim.keymap.set("n", "<leader>is", function()
 end, { silent = true })
 
 vim.keymap.set("n", "<leader>dl", function()
-    require("telescope.builtin").diagnostics()
+	require("telescope.builtin").diagnostics()
 end)
 
 vim.keymap.set(

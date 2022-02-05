@@ -18,7 +18,7 @@ vim.opt.mouse = "a"
 -- Undo
 vim.opt.undofile = true
 
--- Search 
+-- Search
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.opt.incsearch = true

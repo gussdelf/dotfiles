@@ -21,7 +21,7 @@ local kind_icons = {
 	Operator = "",
 	Property = " ",
 	Reference = " ",
-	Snippet = " ",
+	Snippet = " ",
 	Struct = " ",
 	Text = " ",
 	TypeParameter = " ",
@@ -30,7 +30,30 @@ local kind_icons = {
 	Variable = " ",
 }
 
+local border = {
+	"╔",
+	"═",
+	"╗",
+	"║",
+	"╝",
+	"═",
+	"╚",
+	"║",
+}
+
 cmp.setup {
+	window = {
+		completion = {
+			border = border,
+			scrollbar = "┃",
+			-- scrollbar = "║",
+		},
+		documentation = {
+			border = border,
+			-- scrollbar = "║",
+			scrollbar = "┃",
+		},
+	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)

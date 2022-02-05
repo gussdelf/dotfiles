@@ -16,4 +16,4 @@ vim.cmd [[
   augroup end
 ]]
 
-vim.opt.guicursor =  "n-i:blinkon100,v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+vim.opt.guicursor = "n-i:blinkon100,v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"

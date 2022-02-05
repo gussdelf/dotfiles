@@ -131,7 +131,7 @@ M.nightfox = function()
 	-- hi default GHListHl guifg=#e0d8f4 guibg=#282828
 	-- ]]
 	vim.g.gruvbox_material_background = "hard"
-    vim.cmd[[colorscheme gruvbox-material]]
+	vim.cmd [[colorscheme gruvbox-material]]
 end
 
 M.navigator = function()
