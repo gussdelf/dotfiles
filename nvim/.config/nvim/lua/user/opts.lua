@@ -23,14 +23,15 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.opt.incsearch = true
 
+-- Filetypes
+vim.g.did_load_filetypes = 0
+vim.g.do_filetype_lua = 1
+
 -- Others
 vim.opt.compatible = false
-vim.opt.ttyfast = true
 vim.opt.so = 5
 vim.o.swapfile = false
 vim.o.background = "dark"
+vim.opt.fillchars = { eob = " " }
 vim.opt.shadafile = "NONE"
 vim.opt.shadafile = ""
-vim.opt.fillchars = { eob = " " }
-vim.g.did_load_filetypes = 0
-vim.g.do_filetype_lua = 1

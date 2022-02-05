@@ -806,7 +806,7 @@ end-of-buffer signals; pass the rest to the default handler."
 #+srcname: set-defaults
 #+begin_src emacs-lisp :tangle yes
 (setq-default indent-tabs-mode t
-              tab-width 2)
+              tab-width 4)
 #+end_src
 
 ** Misc
