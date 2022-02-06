@@ -19,7 +19,7 @@ end
 
 M.colorizer = function()
 	require("colorizer").setup()
-	vim.keymap.set("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
+	vim.keymap.set("n", "<leader>ct", "<cmd>packadd nvim-colorizer.lua<cr>|<cmd>ColorizerToggle<cr>", { silent = true })
 end
 
 M.autotags = function()
@@ -131,6 +131,7 @@ M.nightfox = function()
 	-- hi default GHListHl guifg=#e0d8f4 guibg=#282828
 	-- ]]
 	vim.g.gruvbox_material_background = "hard"
+    vim.g.everforest_background = 'hard'
 	vim.cmd [[colorscheme gruvbox-material]]
 end
 
@@ -189,6 +190,22 @@ M.blankline = function()
 		show_current_context = false,
 		show_current_context_start = false,
 	}
+end
+
+M.trouble = function()
+	require("trouble").setup {}
+	vim.keymap.set("n", "<leader>tt", "<cmd>TroubleToggle<cr>", { silent = true })
+	vim.keymap.set("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true })
+	vim.keymap.set("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true })
+end
+
+M.todo = function()
+	require("todo-comments").setup {
+		search = {
+			pattern = [[\b(KEYWORDS):]], -- ripgrep regex
+		},
+	}
+	vim.keymap.set("n", "<leader>to", "<cmd>TodoTrouble<cr>", { silent = true })
 end
 
 return M

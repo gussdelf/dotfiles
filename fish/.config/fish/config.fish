@@ -6,13 +6,11 @@ end
 starship init fish | source
 
 # Aliases and abbrs
-source ~/.config/fish/alias.fish
-
 # Source
 # source ~/.config/env
 
 # Themes
-source ~/.config/fish/themes/nightfox.fish
+source ~/.config/fish/themes/gruvbox.fish
 
 zoxide init fish --cmd j | source
 xset r rate 320 40

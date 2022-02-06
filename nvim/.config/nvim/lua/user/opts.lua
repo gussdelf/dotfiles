@@ -33,5 +33,7 @@ vim.opt.so = 5
 vim.o.swapfile = false
 vim.o.background = "dark"
 vim.opt.fillchars = { eob = " " }
+vim.opt.listchars = { tab = "••", trail = "•", extends = "»", precedes = "«" }
 vim.opt.shadafile = "NONE"
 vim.opt.shadafile = ""
+vim.opt.history = 10000

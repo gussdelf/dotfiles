@@ -1,4 +1,5 @@
-st.font: SauceCodePro Nerd Font:style:medium:pixelsize=15
+st.alpha: 1.0
+st.font: Meslo LG L Nerd Font:style:regular:pixelsize=15
 
 ! special
 *.foreground:   #d8caac

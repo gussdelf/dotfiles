@@ -33,13 +33,6 @@ return require("packer").startup {
 					require("plugins.configs.others").nightfox()
 				end,
 			},
-			-- {
-			-- 	"themercorp/themer.lua",
-			--              event = "VimEnter",
-			--              config = function()
-			--                  require("plugins.configs.themer")
-			--              end
-			-- },
 			{
 				"kyazdani42/nvim-web-devicons",
 				after = "nightfox.nvim",
@@ -52,6 +45,7 @@ return require("packer").startup {
 					require("plugins.configs.others").lualine()
 				end,
 			},
+			--  TODO:: Finish my feline config.
 			-- {
 			-- 	"feline-nvim/feline.nvim",
 			-- 	opt = true,
@@ -72,6 +66,7 @@ return require("packer").startup {
 
 		-- Treesitter
 		use {
+			--  PERF:: I think this can get a little bit faster.
 			{
 				"nvim-treesitter/nvim-treesitter",
 				ft = tsFileTypes,
@@ -105,6 +100,7 @@ return require("packer").startup {
 			},
 			{
 				"norcalli/nvim-colorizer.lua",
+				opt = true,
 				config = function()
 					require("plugins.configs.others").colorizer()
 				end,
@@ -131,7 +127,7 @@ return require("packer").startup {
 			end,
 		}
 
-		-- Editor utils plugins
+		-- Some utils plugins
 		use {
 			{
 				"phaazon/hop.nvim",
@@ -245,6 +241,14 @@ return require("packer").startup {
 				end,
 			},
 			{
+				"folke/trouble.nvim",
+				ft = lspLangs,
+				-- after = "nvim-lspconfig",
+				config = function()
+					require("plugins.configs.others").trouble()
+				end,
+			},
+			{
 				"jose-elias-alvarez/null-ls.nvim",
 				ft = lspLangs,
 				config = function()
@@ -275,6 +279,13 @@ return require("packer").startup {
 				ft = lspLangs,
 				config = function()
 					require("plugins.configs.others").matchup()
+				end,
+			},
+			{
+				"folke/todo-comments.nvim",
+				ft = lspLangs,
+				config = function()
+                    require("plugins.configs.others").todo()
 				end,
 			},
 		}
