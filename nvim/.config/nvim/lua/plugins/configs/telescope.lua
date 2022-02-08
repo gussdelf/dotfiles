@@ -121,7 +121,7 @@ vim.keymap.set("n", "<leader>fh", function()
 	require("telescope.builtin").help_tags()
 end, { silent = true })
 
-vim.keymap.set("n", "<leader>cc", function()
+vim.keymap.set("n", "<leader>ht", function()
 	require("telescope.builtin").colorscheme()
 end, { silent = true })
 

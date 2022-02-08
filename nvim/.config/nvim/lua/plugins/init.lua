@@ -69,7 +69,8 @@ return require("packer").startup {
 			--  PERF:: I think this can get a little bit faster.
 			{
 				"nvim-treesitter/nvim-treesitter",
-				ft = tsFileTypes,
+				-- ft = tsFileTypes,
+                event = "BufRead",
 				config = function()
 					require "plugins.configs.treesitter"
 				end,
