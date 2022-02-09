@@ -121,7 +121,7 @@ vim.keymap.set("n", "<leader>fh", function()
 	require("telescope.builtin").help_tags()
 end, { silent = true })
 
-vim.keymap.set("n", "<leader>ht", function()
+vim.keymap.set("n", "<leader>ht", function() -- Yes i like doom emacs keybindings
 	require("telescope.builtin").colorscheme()
 end, { silent = true })
 
@@ -133,16 +133,14 @@ vim.keymap.set("n", "<leader>dl", function()
 	require("telescope.builtin").diagnostics()
 end)
 
+
+vim.keymap.set("n", "<leader>fd", function()
+	require("telescope").extensions.file_browser.file_browser()
+end, { silent = true })
+
 vim.keymap.set(
 	"n",
 	"<leader>ss",
 	"<cmd>Telescope current_buffer_fuzzy_find fuzzy=false case_mode=ignore_case previewer=false<cr>",
-	{ silent = true }
-)
-
-vim.keymap.set(
-	"n",
-	"<leader>fd",
-	"<cmd>lua require('telescope').extensions.file_browser.file_browser()<cr>",
 	{ silent = true }
 )

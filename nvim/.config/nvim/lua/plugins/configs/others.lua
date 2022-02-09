@@ -42,7 +42,6 @@ M.autopairs = function()
 	local cmp = require "cmp"
 	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
-	-- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
 	cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
 	require("nvim-autopairs").setup()
 end
@@ -100,9 +99,9 @@ M.tsrainbow = function()
 	require("nvim-treesitter.configs").setup {
 		rainbow = {
 			enable = true,
-			-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-			extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-			max_file_lines = nil, -- Do not enable for files with more than n lines, int
+			-- disable = { "jsx", "cpp" },
+			extended_mode = true,
+			max_file_lines = nil,
 		},
 	}
 end
@@ -123,16 +122,75 @@ M.nightfox = function()
 			match_paren = true,
 		},
 	}
-	require("nightfox").load()
-
+	-- require("nightfox").load()
 	-- vim.cmd [[
 	-- hi default GHTextViewDark guifg=#e0d8f4
 	-- hi default GHListDark guifg=#e0d8f4
 	-- hi default GHListHl guifg=#e0d8f4 guibg=#282828
 	-- ]]
+
 	vim.g.gruvbox_material_background = "hard"
-    vim.g.everforest_background = 'hard'
-	vim.cmd [[colorscheme gruvbox-material]]
+	vim.g.everforest_background = 'hard'
+	-- vim.cmd [[colorscheme gruvbox-material]]
+
+	require("catppuccin").setup {
+		transparent_background = false,
+		term_colors = false,
+		styles = {
+			comments = "italic",
+			functions = "italic",
+			keywords = "italic",
+			strings = "NONE",
+			variables = "italic",
+		},
+		integrations = {
+			treesitter = true,
+			native_lsp = {
+				enabled = true,
+				virtual_text = {
+					errors = "italic",
+					hints = "italic",
+					warnings = "italic",
+					information = "italic",
+				},
+				underlines = {
+					errors = "undercurl",
+					hints = "undercurl",
+					warnings = "undercurl",
+					information = "undercurl",
+				},
+			},
+			lsp_trouble = false,
+			cmp = true,
+			lsp_saga = false,
+			gitgutter = false,
+			gitsigns = false,
+			telescope = true,
+			nvimtree = {
+				enabled = false,
+				show_root = false,
+				transparent_panel = false,
+			},
+			which_key = false,
+			indent_blankline = {
+				enabled = false,
+				colored_indent_levels = false,
+			},
+			dashboard = false,
+			neogit = false,
+			vim_sneak = false,
+			fern = false,
+			barbar = false,
+			bufferline = true,
+			markdown = true,
+			lightspeed = false,
+			ts_rainbow = true,
+			hop = true,
+			notify = true,
+			telekasten = true,
+		},
+	}
+    vim.cmd [[colorscheme gruvbox-material]]
 end
 
 M.navigator = function()

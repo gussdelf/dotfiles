@@ -28,7 +28,7 @@ return require("packer").startup {
 			{
 				"EdenEast/nightfox.nvim",
 				event = "VimEnter",
-				requires = { "sainnhe/gruvbox-material", "sainnhe/everforest" },
+				requires = { "sainnhe/gruvbox-material",  {"catppuccin/nvim", as = "catppuccin"} },
 				config = function()
 					require("plugins.configs.others").nightfox()
 				end,
@@ -274,14 +274,14 @@ return require("packer").startup {
 				ft = { "markdown" },
 				run = "cd app && yarn install",
 			},
-			{
-				"andymass/vim-matchup",
-				opt = true,
-				ft = lspLangs,
-				config = function()
-					require("plugins.configs.others").matchup()
-				end,
-			},
+			-- {
+			-- 	"andymass/vim-matchup",
+			-- 	opt = true,
+			-- 	ft = lspLangs,
+			-- 	config = function()
+			-- 		require("plugins.configs.others").matchup()
+			-- 	end,
+			-- },
 			{
 				"folke/todo-comments.nvim",
 				ft = lspLangs,
