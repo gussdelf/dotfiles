@@ -58,12 +58,12 @@ end
 M.hop = function()
 	require("hop").setup()
 	-- Mapping
-	vim.keymap.set("n", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
-	vim.keymap.set("n", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
-	vim.keymap.set("v", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
-	vim.keymap.set("v", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
-	vim.keymap.set("o", "F", '<cmd>lua require"hop".hint_lines()<cr>', { silent = true })
-	vim.keymap.set("o", "f", '<cmd>lua require"hop".hint_words()<cr>', { silent = true })
+	vim.keymap.set({"n", "v", "o"}, "F", function()
+        require"hop".hint_lines()
+    end, { silent = true })
+    vim.keymap.set({"n", "v", "o" }, "f", function()
+        require"hop".hint_words()
+    end,{silent = true})
 end
 
 M.gomove = function()
