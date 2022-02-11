@@ -19,7 +19,7 @@ end
 
 M.colorizer = function()
 	require("colorizer").setup()
-	vim.keymap.set("n", "<leader>ct", "<cmd>packadd nvim-colorizer.lua<cr>|<cmd>ColorizerToggle<cr>", { silent = true })
+	vim.keymap.set("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
 end
 
 M.autotags = function()
@@ -58,12 +58,12 @@ end
 M.hop = function()
 	require("hop").setup()
 	-- Mapping
-	vim.keymap.set({"n", "v", "o"}, "F", function()
-        require"hop".hint_lines()
-    end, { silent = true })
-    vim.keymap.set({"n", "v", "o" }, "f", function()
-        require"hop".hint_words()
-    end,{silent = true})
+	vim.keymap.set({ "n", "v", "o" }, "F", function()
+		require("hop").hint_lines()
+	end, { silent = true })
+	vim.keymap.set({ "n", "v", "o" }, "f", function()
+		require("hop").hint_words()
+	end, { silent = true })
 end
 
 M.gomove = function()
@@ -86,12 +86,12 @@ M.signature = function()
 		hint_scheme = "String",
 		hi_parameter = "Search",
 		max_height = 22,
-		max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+		max_width = 120,
 		handler_opts = {
-			border = "single", -- double, single, shadow, none
+			border = "single",
 		},
-		zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
-		padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
+		zindex = 200,
+		padding = "",
 	}
 end
 
@@ -114,83 +114,28 @@ M.nightfox = function()
 	require("nightfox").setup {
 		fox = "nordfox",
 		styles = {
-			keywords = "bold",
-			functions = "bold",
+			keywords = "italic",
+			functions = "italic",
 			strings = "bold",
+			variables = "italic",
 		},
 		inverse = {
 			match_paren = true,
 		},
 	}
 	-- require("nightfox").load()
-	-- vim.cmd [[
-	-- hi default GHTextViewDark guifg=#e0d8f4
-	-- hi default GHListDark guifg=#e0d8f4
-	-- hi default GHListHl guifg=#e0d8f4 guibg=#282828
-	-- ]]
 
+	vim.g.gruvbox_material_palette = "original"
 	vim.g.gruvbox_material_background = "hard"
-	vim.g.everforest_background = 'hard'
-	-- vim.cmd [[colorscheme gruvbox-material]]
 
-	require("catppuccin").setup {
-		transparent_background = false,
-		term_colors = false,
-		styles = {
-			comments = "italic",
-			functions = "italic",
-			keywords = "italic",
-			strings = "NONE",
-			variables = "italic",
-		},
-		integrations = {
-			treesitter = true,
-			native_lsp = {
-				enabled = true,
-				virtual_text = {
-					errors = "italic",
-					hints = "italic",
-					warnings = "italic",
-					information = "italic",
-				},
-				underlines = {
-					errors = "undercurl",
-					hints = "undercurl",
-					warnings = "undercurl",
-					information = "undercurl",
-				},
-			},
-			lsp_trouble = false,
-			cmp = true,
-			lsp_saga = false,
-			gitgutter = false,
-			gitsigns = false,
-			telescope = true,
-			nvimtree = {
-				enabled = false,
-				show_root = false,
-				transparent_panel = false,
-			},
-			which_key = false,
-			indent_blankline = {
-				enabled = false,
-				colored_indent_levels = false,
-			},
-			dashboard = false,
-			neogit = false,
-			vim_sneak = false,
-			fern = false,
-			barbar = false,
-			bufferline = true,
-			markdown = true,
-			lightspeed = false,
-			ts_rainbow = true,
-			hop = true,
-			notify = true,
-			telekasten = true,
-		},
-	}
-    vim.cmd [[colorscheme gruvbox-material]]
+	vim.cmd [[colorscheme gruvbox-material]]
+	-- vim.cmd [[colorscheme rose-pine]]
+
+	vim.cmd [[
+	hi default GHTextViewDark guifg=#e0d8f4
+	hi default GHListDark guifg=#e0d8f4
+	hi default GHListHl guifg=#e0d8f4 guibg=#282828
+	]]
 end
 
 M.navigator = function()

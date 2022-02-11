@@ -28,7 +28,7 @@ return require("packer").startup {
 			{
 				"EdenEast/nightfox.nvim",
 				event = "VimEnter",
-				requires = { "sainnhe/gruvbox-material",  {"catppuccin/nvim", as = "catppuccin"} },
+				requires = { "sainnhe/gruvbox-material", "rose-pine/neovim" },
 				config = function()
 					require("plugins.configs.others").nightfox()
 				end,
@@ -50,6 +50,7 @@ return require("packer").startup {
 			-- 	"feline-nvim/feline.nvim",
 			-- 	opt = true,
 			-- 	after = "nightfox.nvim",
+			-- 	requires = { "nvim-lua/lsp-status.nvim" },
 			-- 	config = function()
 			-- 		require "plugins.configs.feline"
 			-- 	end,
@@ -70,7 +71,7 @@ return require("packer").startup {
 			{
 				"nvim-treesitter/nvim-treesitter",
 				-- ft = tsFileTypes,
-                event = "BufRead",
+				event = "BufRead",
 				config = function()
 					require "plugins.configs.treesitter"
 				end,
@@ -101,7 +102,7 @@ return require("packer").startup {
 			},
 			{
 				"norcalli/nvim-colorizer.lua",
-				opt = true,
+				ft = lspLangs,
 				config = function()
 					require("plugins.configs.others").colorizer()
 				end,
@@ -220,9 +221,6 @@ return require("packer").startup {
 					require "plugins.configs.lspconfig"
 				end,
 			},
-			-- {
-			-- 	"nvim-lua/lsp-status.nvim",
-			-- },
 			{
 				"ray-x/lsp_signature.nvim",
 				ft = lspLangs,
@@ -275,20 +273,12 @@ return require("packer").startup {
 				run = "cd app && yarn install",
 			},
 			-- {
-			-- 	"andymass/vim-matchup",
-			-- 	opt = true,
+			-- 	"folke/todo-comments.nvim",
 			-- 	ft = lspLangs,
-			-- 	config = function()
-			-- 		require("plugins.configs.others").matchup()
-			-- 	end,
+			-- config = function()
+			--                 require("plugins.configs.others").todo()
+			-- end,
 			-- },
-			{
-				"folke/todo-comments.nvim",
-				ft = lspLangs,
-				config = function()
-                    require("plugins.configs.others").todo()
-				end,
-			},
 		}
 	end,
 	config = {
