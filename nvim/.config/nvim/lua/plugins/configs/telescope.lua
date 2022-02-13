@@ -133,7 +133,6 @@ vim.keymap.set("n", "<leader>dl", function()
 	require("telescope.builtin").diagnostics()
 end)
 
-
 vim.keymap.set("n", "<leader>fd", function()
 	require("telescope").extensions.file_browser.file_browser()
 end, { silent = true })

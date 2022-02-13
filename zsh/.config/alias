@@ -32,6 +32,7 @@ alias mkdir='mkdir -p'
 alias server='python -m http.server'
 
 alias bspwm='startx ~/.config/X11/bspwm'
+alias awesomewm='startx ~/.config/X11/awesome'
 alias ddwm='startx ~/.config/X11/dwm'
 alias qtil='startx ~/.config/X11/qtile'
 

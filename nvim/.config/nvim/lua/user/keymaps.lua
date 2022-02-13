@@ -28,5 +28,4 @@ vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { silent = true })
 
 -- others
 vim.keymap.set("n", "<Esc>", ":noh<CR>", { silent = true })
-vim.keymap.set("n", "<C-c>", ":noh<CR>", { silent = true })
 vim.keymap.set({ "n", "v" }, "ç", ":", { silent = false })

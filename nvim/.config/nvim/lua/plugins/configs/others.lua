@@ -106,10 +106,6 @@ M.tsrainbow = function()
 	}
 end
 
-M.comment = function()
-	require("Comment").setup()
-end
-
 M.nightfox = function()
 	require("nightfox").setup {
 		fox = "nordfox",
@@ -129,7 +125,6 @@ M.nightfox = function()
 	vim.g.gruvbox_material_background = "hard"
 
 	vim.cmd [[colorscheme gruvbox-material]]
-	-- vim.cmd [[colorscheme rose-pine]]
 
 	vim.cmd [[
 	hi default GHTextViewDark guifg=#e0d8f4

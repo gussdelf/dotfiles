@@ -25,10 +25,11 @@ return require("packer").startup {
 
 		-- Ui
 		use {
+			-- Theme(s)
 			{
 				"EdenEast/nightfox.nvim",
 				event = "VimEnter",
-				requires = { "sainnhe/gruvbox-material", "rose-pine/neovim" },
+				requires = { "sainnhe/gruvbox-material" },
 				config = function()
 					require("plugins.configs.others").nightfox()
 				end,
@@ -156,7 +157,7 @@ return require("packer").startup {
 				"numToStr/Comment.nvim",
 				-- opt = true,
 				config = function()
-					require("plugins.configs.others").comment()
+					require("Comment").setup()
 				end,
 			},
 		}
@@ -272,13 +273,6 @@ return require("packer").startup {
 				ft = { "markdown" },
 				run = "cd app && yarn install",
 			},
-			-- {
-			-- 	"folke/todo-comments.nvim",
-			-- 	ft = lspLangs,
-			-- config = function()
-			--                 require("plugins.configs.others").todo()
-			-- end,
-			-- },
 		}
 	end,
 	config = {

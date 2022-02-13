@@ -399,7 +399,7 @@ syntax tree as the source file is edited.
 **** Fonts
 #+srcname: fonts
 #+BEGIN_SRC emacs-lisp :tangle yes
-(setq doom-font (font-spec :family "Meslo LG L Nerd Font" :size 18 :height 'medium)
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 18 :height 'medium)
       doom-big-font (font-spec :family "Meslo LG L Nerd Font" :size 18 :height 'medium)
       doom-variable-pitch-font (font-spec :family "Overpass Nerd Font")
       doom-unicode-font (font-spec :family "JuliaMono")
@@ -409,7 +409,8 @@ syntax tree as the source file is edited.
 **** Theme
 #+srcname: theme
 #+BEGIN_SRC emacs-lisp :tangle yes
-(setq doom-theme 'doom-city-lights)
+(setq doom-theme 'doom-gruvbox)
+(setq doom-gruvbox-dark-variant "hard")
 #+END_SRC
 
 **** Dashboard
