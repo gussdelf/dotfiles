@@ -1,13 +1,6 @@
 require "plugins.configs.feline.colors"
 local u = require "plugins.configs.feline.util"
 
-local get_diag = function(str)
-	local diagnostics = vim.diagnostic.get(0, { severity = vim.diagnostic.severity[str] })
-	local count = #diagnostics
-
-	return (count > 0) and " " .. count .. " " or ""
-end
-
 local function vi_mode_hl()
 	return u.vi.colors[vim.fn.mode()] or "FlnViBlack"
 end

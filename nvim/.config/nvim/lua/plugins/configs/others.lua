@@ -159,15 +159,26 @@ M.null_ls = function()
 	require("null-ls").setup {
 		sources = {
 			require("null-ls").builtins.formatting.stylua,
-			require("null-ls").builtins.diagnostics.eslint,
-			require("null-ls").builtins.formatting.prettier,
-			require("null-ls").builtins.completion.spell,
+			require("null-ls").builtins.formatting.prettierd.with {
+				filetypes = {
+					"typescriptreact",
+					"typescript",
+					"javascriptreact",
+					"javascript",
+					"svelte",
+					"json",
+					"jsonc",
+					"css",
+					"html",
+					"vue",
+				},
+			},
 		},
 	}
 	vim.keymap.set("n", "<C-f>", "<Cmd>lua vim.lsp.buf.formatting()<cr>", { silent = true })
 	vim.keymap.set("v", "<C-f>", "<Cmd>lua vim.lsp.buf.range_formatting()<cr>", { silent = true })
-	--    vim.cmd[[autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100)]]--
-	--    vim.cmd[[autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 100)]]
+
+	vim.cmd [[autocmd BufWrite *.lua lua vim.lsp.buf.formatting()]] --
 end
 
 M.matchup = function()
