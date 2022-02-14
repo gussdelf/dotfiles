@@ -46,3 +46,4 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
 export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 source $XDG_CONFIG_HOME/iconslf
+export WLR_NO_HARDWARE_CURSORS=1

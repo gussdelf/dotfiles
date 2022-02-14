@@ -90,7 +90,7 @@ vim.keymap.set("n", "<leader>fg", function()
 	require("telescope.builtin").live_grep()
 end, { silent = true, noremap = true })
 
-vim.keymap.set("n", "<leader>fb", function()
+vim.keymap.set("n", "<leader>bb", function()
 	require("telescope.builtin").buffers(minimal())
 end, { silent = true, noremap = true })
 
