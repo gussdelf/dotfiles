@@ -15,7 +15,9 @@ alias nzo="nvim -c \"lua require('telescope').extensions.zoxide.list(require('pl
 alias nfzf="nvim -c \"lua require('telescope.builtin').find_files(require('plugins.configs.telescope').minimal())\""
 bindkey -s '^O' "nzo\n"
 bindkey -s '^F' "nfzf\n"
-bindkey '^K' autosuggest-accept
+bindkey -s '^N' "\n"
+bindkey '^H' backward-char-delete
+bindkey '^L' autosuggest-accept
 
 # Others
 source $ZDOTDIR/functions.zsh
