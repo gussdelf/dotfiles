@@ -1,7 +1,7 @@
 # Source env file
 source $XDG_CONFIG_HOME/env
 
-## Completetions
+# Completetions
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 compinit
@@ -10,11 +10,16 @@ _comp_options+=(globdots)
 # Vim bindings
 bindkey -v
 
-###-----------Others--------------###
+# Some bindings
+alias nzo="nvim -c \"lua require('telescope').extensions.zoxide.list(require('plugins.configs.telescope').minimal())\""
+alias nfzf="nvim -c \"lua require('telescope.builtin').find_files(require('plugins.configs.telescope').minimal())\""
+bindkey -s '^O' "nzo\n"
+bindkey -s '^F' "nfzf\n"
+bindkey '^K' autosuggest-accept
+
+# Others
 source $ZDOTDIR/functions.zsh
 source $XDG_CONFIG_HOME/alias
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 zsh_add_plugin "hlissner/zsh-autopair"
@@ -31,7 +36,6 @@ setopt HIST_REDUCE_BLANKS
 setopt INC_APPEND_HISTORY_TIME 
 setopt EXTENDED_HISTORY 
 setopt autocd extendedglob nomatch menucomplete
-###--------------------------------###
 
 # Prompt
 eval "$(starship init zsh)"

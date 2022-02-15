@@ -5,7 +5,7 @@ o.smartindent = true
 o.autoindent = true
 
 -- I prefer tabs over spaces
-o.expandtab = true
+-- o.expandtab = true
 o.tabstop = 4
 o.shiftwidth = 4
 
@@ -38,6 +38,6 @@ o.shadafile = ""
 o.history = 10000
 o.list = true
 o.listchars = { tab = "» " }
-o.pumheight = 5
+o.pumheight = 7
 o.splitbelow = true
 o.splitright = true

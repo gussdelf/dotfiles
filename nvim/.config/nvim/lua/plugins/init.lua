@@ -120,6 +120,7 @@ return require("packer").startup {
 					"nvim-telescope/telescope-fzf-native.nvim",
 					run = "make all",
 				},
+				"nvim-telescope/telescope-file-browser.nvim",
 				"nvim-telescope/telescope-symbols.nvim",
 				"jvgrootveld/telescope-zoxide",
 				-- opt = true,
