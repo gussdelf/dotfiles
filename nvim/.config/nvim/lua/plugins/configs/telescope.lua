@@ -6,6 +6,8 @@ require("telescope").setup {
 		mappings = {
 			n = {
 				["<C-t>"] = require("telescope.actions.layout").toggle_preview,
+				["<C-j>"] = require("telescope.actions").move_selection_next,
+				["<C-k>"] = require("telescope.actions").move_selection_previous,
 			},
 			i = {
 				["<C-t>"] = require("telescope.actions.layout").toggle_preview,
@@ -25,7 +27,7 @@ require("telescope").setup {
 	},
 	pickers = {
 		find_files = {
-			find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+			find_command = { "fd", "--type", "f" },
 		},
 		current_buffer_fuzzy_find = {
 			previewer = false,
