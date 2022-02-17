@@ -8,8 +8,6 @@ end
 -- Adding packer.nvim
 vim.cmd [[ packadd packer.nvim ]]
 
-require "packer_compiled"
-
 return require("packer").startup {
 	function()
 		use {
@@ -289,4 +287,5 @@ return require("packer").startup {
 			end,
 		},
 	},
-}
+},
+	require "packer_compiled"
