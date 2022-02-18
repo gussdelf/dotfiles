@@ -1,4 +1,4 @@
-require("nvim-treesitter.configs").setup {
+require("nvim-treesitter.configs").setup({
 	ensure_installed = tsEnsureInstall,
 	highlight = {
 		enable = true,
@@ -9,4 +9,4 @@ require("nvim-treesitter.configs").setup {
 	incremental_selection = {
 		enable = true,
 	},
-}
+})

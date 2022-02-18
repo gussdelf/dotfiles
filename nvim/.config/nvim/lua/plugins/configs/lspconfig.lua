@@ -1,19 +1,13 @@
 local nvim_lsp = require "lspconfig"
 
-local on_attach = function(client, bufnr)
-	local function buf_set_option(...)
-		vim.api.nvim_buf_set_option(bufnr, ...)
+local on_attach = function(client)
+	if client.resolved_capabilities.document_formatting then
+		vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
 	end
-	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 nvim_lsp.sumneko_lua.setup {
 	on_attach = on_attach,
-	function(client, bufnr)
-		require("lsp_signature").on_attach()
-	end,
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -51,7 +45,9 @@ nvim_lsp.sumneko_lua.setup {
 }
 
 nvim_lsp.rust_analyzer.setup {
-	on_attach = on_attach,
+	on_attach = function(client)
+		client.resolved_capabilities.document_formatting = false
+	end,
 	settings = {
 		["rust-analyzer"] = {
 			assist = {
@@ -71,7 +67,9 @@ nvim_lsp.rust_analyzer.setup {
 local servers = { "pyright", "clangd", "gopls", "tsserver", "rust_analyzer", "texlab", "bashls", "html", "cssls" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup {
-		on_attach = on_attach,
+		on_attach = function(client)
+			client.resolved_capabilities.document_formatting = false
+		end,
 	}
 end
 

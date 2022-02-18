@@ -1,4 +1,4 @@
-local cmp = require "cmp"
+local cmp = require("cmp")
 
 vim.opt.completeopt = "menuone,noselect"
 
@@ -41,7 +41,7 @@ local border = {
 	"║",
 }
 
-cmp.setup {
+cmp.setup({
 	window = {
 		completion = {
 			border = border,
@@ -100,10 +100,10 @@ cmp.setup {
 		end,
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping.confirm {
+		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = false,
-		},
+		}),
 	},
 	sources = {
 		{ name = "nvim_lsp", priority = 9 },
@@ -113,4 +113,4 @@ cmp.setup {
 		-- { name = "luasnip" },
 		{ name = "nvim_lua", priority = 2 },
 	},
-}
+})

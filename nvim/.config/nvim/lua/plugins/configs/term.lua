@@ -1,4 +1,4 @@
-require("toggleterm").setup {
+require("toggleterm").setup({
 	open_mapping = [[<c-t>]],
 	hide_numbers = true, -- hide the number column in toggleterm buffers
 	shade_terminals = false,
@@ -16,10 +16,10 @@ require("toggleterm").setup {
 			background = "Normal",
 		},
 	},
-}
+})
 
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new { cmd = "lazygit", hidden = true }
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 
 local function _lazygit_toggle()
 	lazygit:toggle()

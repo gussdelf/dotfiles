@@ -8,6 +8,8 @@
         "after_each",
         "teardown",
         "pending",
-        "use"
-    ]
+        "use",
+        "runtime_path"
+    ],
+    "Lua.format.enable": "false"
 }

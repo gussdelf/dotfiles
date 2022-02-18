@@ -1,7 +1,7 @@
 ---@diagnostic disable: different-requires
 local M = {}
 
-require("telescope").setup {
+require("telescope").setup({
 	defaults = {
 		mappings = {
 			n = {
@@ -45,10 +45,10 @@ require("telescope").setup {
 			case_mode = "smart_case",
 		},
 	},
-}
+})
 
 M.minimal = function()
-	return require("telescope.themes").get_dropdown {
+	return require("telescope.themes").get_dropdown({
 		borderchars = {
 			{ "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 			prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
@@ -64,12 +64,12 @@ M.minimal = function()
 		hidden = true,
 		disable_devicons = true,
 		winblend = 0,
-	}
+	})
 end
 
-require("telescope").load_extension "fzf"
-require("telescope").load_extension "zoxide"
-require("telescope").load_extension "file_browser"
+require("telescope").load_extension("fzf")
+require("telescope").load_extension("zoxide")
+require("telescope").load_extension("file_browser")
 
 vim.keymap.set("n", "<leader>te", function()
 	require("telescope.builtin").builtin(M.minimal())

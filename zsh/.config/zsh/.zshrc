@@ -37,10 +37,11 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS 
 setopt INC_APPEND_HISTORY_TIME 
 setopt EXTENDED_HISTORY 
-setopt autocd extendedglob nomatch menucomplete
+setopt autocd extendedglob nomatch menucomplete interactivecomments
 
 # Prompt
 eval "$(starship init zsh)"
+ZSH_HIGHLIGHT_STYLES[comment]=fg=245
 
 # Zoxide
 eval "$(zoxide init --cmd j zsh)"

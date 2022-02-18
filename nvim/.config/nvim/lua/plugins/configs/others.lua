@@ -178,8 +178,6 @@ M.null_ls = function()
 	}
 	vim.keymap.set("n", "<C-f>", "<Cmd>lua vim.lsp.buf.formatting()<cr>", { silent = true })
 	vim.keymap.set("v", "<C-f>", "<Cmd>lua vim.lsp.buf.range_formatting()<cr>", { silent = true })
-
-	vim.cmd [[autocmd BufWrite *.lua lua vim.lsp.buf.formatting()]] --
 end
 
 M.matchup = function()
