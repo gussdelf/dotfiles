@@ -1,12 +1,13 @@
+local o = vim.opt
 -- Termguicolors
-vim.opt.termguicolors = true
+o.termguicolors = true
 
 -- Numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
+o.number = true
+o.relativenumber = true
 
 -- Cursorline
-vim.opt.cursorline = true
+o.cursorline = true
 
 -- Highlight on yank
 vim.cmd [[
@@ -16,4 +17,11 @@ vim.cmd [[
   augroup end
 ]]
 
-vim.opt.guicursor = "n-i:blinkon100,v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+o.guicursor = "n-i:blinkon100,v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+o.fillchars = { eob = " " }
+o.background = "dark"
+o.listchars = { tab = "» " }
+o.list = true
+o.pumheight = 7
+o.splitbelow = true
+o.splitright = true

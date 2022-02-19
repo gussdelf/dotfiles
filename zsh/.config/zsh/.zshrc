@@ -13,6 +13,8 @@ bindkey -v
 # some bindings
 bindkey '^H' backward-char-delete
 bindkey '^L' autosuggest-accept
+bindkey '^K' up-line-or-history
+bindkey '^J' down-line-or-history
 
 # load some useful functions
 source $ZDOTDIR/functions.zsh

@@ -31,13 +31,6 @@ vim.g.do_filetype_lua = 1
 o.compatible = false
 o.so = 5
 o.swapfile = false
-o.background = "dark"
-o.fillchars = { eob = " " }
 o.shadafile = "NONE"
 o.shadafile = ""
 o.history = 10000
-o.list = true
-o.listchars = { tab = "» " }
-o.pumheight = 7
-o.splitbelow = true
-o.splitright = true
