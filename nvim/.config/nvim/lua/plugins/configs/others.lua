@@ -106,21 +106,7 @@ M.tsrainbow = function()
 	}
 end
 
-M.nightfox = function()
-	require("nightfox").setup {
-		fox = "nordfox",
-		styles = {
-			keywords = "italic",
-			functions = "italic",
-			strings = "bold",
-			variables = "italic",
-		},
-		inverse = {
-			match_paren = true,
-		},
-	}
-	-- require("nightfox").load()
-
+M.setTheme = function()
 	vim.g.gruvbox_material_palette = "original"
 	vim.g.gruvbox_material_background = "hard"
 	-- vim.g.gruvbox_material_transparent_background = true

@@ -26,23 +26,30 @@ return require("packer").startup {
 			{
 				-- Theme(s)
 				{
-					"EdenEast/nightfox.nvim",
+					"sainnhe/gruvbox-material",
 					event = "VimEnter",
-					requires = { "sainnhe/gruvbox-material" },
 					config = function()
-						require("plugins.configs.others").nightfox()
+						require("plugins.configs.others").setTheme()
 					end,
 				},
 				{
 					"kyazdani42/nvim-web-devicons",
-					after = "nightfox.nvim",
+					after = "gruvbox-material",
 				},
 				{
 					"nvim-lualine/lualine.nvim",
 					opt = true,
-					after = "nightfox.nvim",
+					after = "gruvbox-material",
 					config = function()
 						require("plugins.configs.others").lualine()
+					end,
+				},
+				{
+					"akinsho/bufferline.nvim",
+					opt = true,
+					event = "BufAdd",
+					config = function()
+						require("plugins.configs.others").bufferline()
 					end,
 				},
 				--  TODO:: Finish my feline config.
@@ -55,14 +62,6 @@ return require("packer").startup {
 				-- 		require "plugins.configs.feline"
 				-- 	end,
 				-- },
-				{
-					"akinsho/bufferline.nvim",
-					opt = true,
-					event = "BufAdd",
-					config = function()
-						require("plugins.configs.others").bufferline()
-					end,
-				},
 			},
 
 			-- Treesitter
@@ -152,6 +151,7 @@ return require("packer").startup {
 				{
 					"windwp/nvim-autopairs",
 					after = "nvim-cmp",
+					-- event = "FileType",
 					config = function()
 						require("plugins.configs.others").autopairs()
 					end,

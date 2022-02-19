@@ -14,6 +14,8 @@ set -g status-left-length "100"
 set -g status-right-length "100"
 set -g status-left-style NONE
 set -g status-right-style NONE
+
+
 set -g status-left "#[fg=#282828,bg=#a89984,bold] #S #[fg=#a89984,bg=#504945,nobold,nounderscore,noitalics]#[fg=#a89984,bg=#504945] %R #[fg=#504945,bg=#3a3735,nobold,nounderscore,noitalics]"
 set -g status-right "#[fg=#504945,bg=#3a3735,nobold,nounderscore,noitalics]#[fg=#a89984,bg=#504945] %a #[fg=#a89984,bg=#504945,nobold,nounderscore,noitalics]#[fg=#282828,bg=#a89984,bold] #h "
 setw -g window-status-activity-style "underscore,fg=#AEAFB0,bg=#131A24"
