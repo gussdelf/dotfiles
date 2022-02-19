@@ -6,8 +6,7 @@ end
 starship init fish | source
 
 # Aliases and abbrs
-# Source
-# source ~/.config/env
+source ~/.config/fish/alias.fish
 
 # Themes
 source ~/.config/fish/themes/gruvbox.fish
