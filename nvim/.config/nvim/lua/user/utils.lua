@@ -25,11 +25,11 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 -- Just some things to lazy load properly
-vim.cmd([[
+vim.cmd [[
 au BufRead,BufNewFile *.mod set filetype=gomod
 au BufRead,BufNewFile *.tex set filetype=tex
 au BufRead,BufNewFile *.fnl set filetype=fennel
-]])
+]]
 
 lspLangs = {
 	"javascript",
@@ -113,4 +113,4 @@ tsFileTypes = {
 	"lisp",
 	"java",
 }
-vim.cmd([[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]])
+vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]]

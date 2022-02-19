@@ -63,10 +63,10 @@ end
 
 local function tabline_colors_from_theme()
 	return {
-		tabl = fromhl("TabLine"),
-		norm = fromhl("Normal"),
-		sel = fromhl("TabLineSel"),
-		fill = fromhl("TabLineFill"),
+		tabl = fromhl "TabLine",
+		norm = fromhl "Normal",
+		sel = fromhl "TabLineSel",
+		fill = fromhl "TabLineFill",
 	}
 end
 

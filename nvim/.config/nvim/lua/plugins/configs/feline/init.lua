@@ -1,5 +1,5 @@
-require("plugins.configs.feline.colors")
-local u = require("plugins.configs.feline.util")
+require "plugins.configs.feline.colors"
+local u = require "plugins.configs.feline.util"
 
 local function vi_mode_hl()
 	return u.vi.colors[vim.fn.mode()] or "FlnViBlack"
@@ -25,6 +25,6 @@ local active = {
 	},
 }
 
-require("feline").setup({
+require("feline").setup {
 	components = { active = active },
-})
+}

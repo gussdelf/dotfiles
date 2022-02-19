@@ -9,11 +9,11 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 
 -- Highlight on yank
-vim.cmd([[
+vim.cmd [[
   augroup YankHighlight
   autocmd!
   autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
-]])
+]]
 
 vim.opt.guicursor = "n-i:blinkon100,v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"

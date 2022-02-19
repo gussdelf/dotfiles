@@ -1,16 +1,16 @@
 -- Install packer
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.fn.execute("!git clone --depth 1 https://github.com/wbthomason/packer.nvim " .. install_path)
 end
 
 -- Adding packer.nvim
-vim.cmd([[ packadd packer.nvim ]])
+vim.cmd [[ packadd packer.nvim ]]
 
-return require("packer").startup({
+return require("packer").startup {
 	function()
-		use({
+		use {
 			"wbthomason/packer.nvim",
 			"nvim-lua/plenary.nvim",
 
@@ -18,7 +18,7 @@ return require("packer").startup({
 			{
 				"lewis6991/impatient.nvim",
 				config = function()
-					require("impatient")
+					require "impatient"
 				end,
 			},
 
@@ -77,7 +77,7 @@ return require("packer").startup({
 						after = "nvim-treesitter",
 					},
 					config = function()
-						require("plugins.configs.treesitter")
+						require "plugins.configs.treesitter"
 					end,
 				},
 				{
@@ -129,7 +129,7 @@ return require("packer").startup({
 					-- opt = true,
 				},
 				config = function()
-					require("plugins.configs.telescope")
+					require "plugins.configs.telescope"
 				end,
 			},
 
@@ -187,7 +187,7 @@ return require("packer").startup({
 					"hrsh7th/nvim-cmp",
 					ft = lspLangs,
 					config = function()
-						require("plugins.configs.cmp")
+						require "plugins.configs.cmp"
 					end,
 				},
 				{
@@ -222,7 +222,7 @@ return require("packer").startup({
 					"neovim/nvim-lspconfig",
 					ft = lspLangs,
 					config = function()
-						require("plugins.configs.lspconfig")
+						require "plugins.configs.lspconfig"
 					end,
 				},
 				{
@@ -267,7 +267,7 @@ return require("packer").startup({
 					opt = true,
 					event = "BufWinEnter",
 					config = function()
-						require("plugins.configs.term")
+						require "plugins.configs.term"
 					end,
 				},
 				{
@@ -277,16 +277,16 @@ return require("packer").startup({
 					run = "cd app && yarn install",
 				},
 			},
-		})
+		}
 	end,
 
 	config = {
-		compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+		compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
 		display = {
 			open_fn = function()
-				return require("packer.util").float({ border = "rounded" })
+				return require("packer.util").float { border = "rounded" }
 			end,
 		},
 	},
-}),
-	require("packer_compiled")
+},
+	require "packer_compiled"

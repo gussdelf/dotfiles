@@ -131,6 +131,9 @@ M.nightfox = function()
 	hi default GHTextViewDark guifg=#e0d8f4
 	hi default GHListDark guifg=#e0d8f4
 	hi default GHListHl guifg=#e0d8f4 guibg=#282828
+	hi SpecialKey guifg=#cc241d
+	hi SpecialKeyWin guifg=#3c3836
+	set winhighlight=SpecialKey:SpecialKeyWin
 	]]
 end
 
