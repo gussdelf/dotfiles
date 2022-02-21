@@ -119,7 +119,9 @@ M.setTheme = function()
 	hi default GHListHl guifg=#e0d8f4 guibg=#282828
 	hi SpecialKey guifg=#cc241d
 	hi SpecialKeyWin guifg=#3c3836
+	hi SignColumn guibg=#1d2021
 	set winhighlight=SpecialKey:SpecialKeyWin
+	" hi LineNr guibg=#282828
 	]]
 end
 
@@ -164,6 +166,11 @@ M.null_ls = function()
 				},
 			},
 		},
+		on_attach = function(client)
+			if client.resolved_capabilities.document_formatting then
+				vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()"
+			end
+		end,
 	}
 	vim.keymap.set("n", "<C-f>", "<Cmd>lua vim.lsp.buf.formatting()<cr>", { silent = true })
 	vim.keymap.set("v", "<C-f>", "<Cmd>lua vim.lsp.buf.range_formatting()<cr>", { silent = true })

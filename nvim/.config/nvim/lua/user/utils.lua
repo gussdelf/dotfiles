@@ -53,6 +53,8 @@ lspLangs = {
 	"tex",
 	"vue",
 	"lisp",
+	"java",
+	"vim",
 }
 tsEnsureInstall = {
 	"lua",

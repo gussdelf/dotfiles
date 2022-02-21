@@ -42,17 +42,12 @@ local border = {
 }
 
 cmp.setup {
-	window = {
-		completion = {
-			border = border,
-			scrollbar = "┃",
-			-- scrollbar = "║",
-		},
-		documentation = {
-			border = border,
-			-- scrollbar = "║",
-			scrollbar = "┃",
-		},
+	completion = {
+		scrollbar = "┃",
+	},
+	documentation = {
+		border = border,
+		scrollbar = "┃",
 	},
 	snippet = {
 		expand = function(args)
@@ -110,7 +105,19 @@ cmp.setup {
 		{ name = "path" },
 		{ name = "tmux" },
 		{ name = "buffer" },
-		-- { name = "luasnip" },
 		{ name = "nvim_lua", priority = 2 },
+		-- { name = "luasnip" },
 	},
+	experimental = {
+		ghost_text = true,
+	},
+	enable = function()
+		if vim.bo.ft == "TelescopePrompt" then
+			return false
+		end
+
+		if string.find(vim.api.nvim_buf_get_name(0), "s_popup:/") then
+			return false
+		end
+	end,
 }

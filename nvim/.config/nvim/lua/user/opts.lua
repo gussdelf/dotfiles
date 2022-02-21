@@ -28,6 +28,7 @@ vim.g.did_load_filetypes = 0
 vim.g.do_filetype_lua = 1
 
 -- Others
+o.formatoptions:remove({ "c", "r", "o" })
 o.compatible = false
 o.so = 5
 o.swapfile = false

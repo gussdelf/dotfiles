@@ -111,6 +111,10 @@ vim.keymap.set("n", "<leader>ht", function() -- Yes i like doom emacs keybinding
 	require("telescope.builtin").colorscheme(M.minimal())
 end, { silent = true, noremap = true })
 
+vim.keymap.set("n", "<leader>hm", function()
+	require("telescope.builtin").man_pages(M.minimal())
+end, { silent = true, noremap = true })
+
 vim.keymap.set("n", "<leader>is", function()
 	require("telescope.builtin").symbols(M.minimal())
 end, { silent = true, noremap = true })

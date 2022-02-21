@@ -15,13 +15,17 @@ vim.cmd [[
   autocmd!
   autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
-]]
+  ]]
 
 -- Chars
 o.fillchars = { eob = " " }
 o.listchars = { tab = "» " }
 
+-- signcolumn
+o.signcolumn = "yes"
+
 -- Others
+o.showmode = false
 o.guicursor = "n-i:blinkon100,v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 o.background = "dark"
 o.list = true
