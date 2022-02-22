@@ -66,11 +66,10 @@ return require("packer").startup {
 
 			-- Treesitter
 			{
-				--  PERF:: I think this can get a little bit faster.
+				--  PERF: I think this can get a little bit faster.
 				{
 					"nvim-treesitter/nvim-treesitter",
 					ft = tsFileTypes,
-					-- event = "BufRead",
 					requires = {
 						{
 							"nvim-treesitter/playground",
@@ -125,13 +124,19 @@ return require("packer").startup {
 						"nvim-telescope/telescope-fzf-native.nvim",
 						run = "make all",
 					},
-					"nvim-telescope/telescope-file-browser.nvim",
 					"nvim-telescope/telescope-symbols.nvim",
 					"jvgrootveld/telescope-zoxide",
 					-- opt = true,
 				},
 				config = function()
 					require "plugins.configs.telescope"
+				end,
+			},
+			{
+				"ThePrimeagen/harpoon",
+				event = "BufRead",
+				config = function()
+					require("plugins.configs.others").harpoon()
 				end,
 			},
 

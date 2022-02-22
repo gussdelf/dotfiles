@@ -212,4 +212,14 @@ M.todo = function()
 	vim.keymap.set("n", "<leader>to", "<cmd>TodoTrouble<cr>", { silent = true })
 end
 
+M.harpoon = function()
+	vim.keymap.set("n", "<C-h>", function()
+		require("harpoon.mark").add_file()
+	end, { silent = true })
+
+	vim.keymap.set("n", "<C-k>", function()
+		require("harpoon.ui").toggle_quick_menu()
+	end, { silent = true })
+end
+
 return M

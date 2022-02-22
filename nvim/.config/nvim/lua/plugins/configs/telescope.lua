@@ -69,7 +69,6 @@ end
 
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "zoxide"
-require("telescope").load_extension "file_browser"
 
 vim.keymap.set("n", "<leader>te", function()
 	require("telescope.builtin").builtin(M.minimal())
@@ -87,12 +86,8 @@ vim.keymap.set("n", "<leader>ft", function()
 	require("telescope.builtin").filetypes(M.minimal())
 end, { silent = true, noremap = true })
 
-vim.keymap.set("n", "<leader>j", function()
+vim.keymap.set("n", "<C-j>", function()
 	require("telescope").extensions.zoxide.list(M.minimal())
-end, { silent = true, noremap = true })
-
-vim.keymap.set("n", "<leader>fd", function()
-	require("telescope").extensions.file_browser.file_browser(M.minimal())
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>fg", function()

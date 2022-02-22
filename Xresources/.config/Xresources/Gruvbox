@@ -1,7 +1,7 @@
 ! Base16 Gruvbox dark, hard
 ! Scheme: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 st.alpha: 1.0
-st.font: JetBrainsMono Nerd Font:style:regular:pixelsize=15
+st.font: Sarasa Fixed CL:style:regular:pixelsize=15
 
 ! Hard
 #define base00 #1d2021

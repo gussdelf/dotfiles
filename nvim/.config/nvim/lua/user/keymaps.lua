@@ -20,8 +20,6 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = t
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
 vim.keymap.set("v", "j", "gj", { silent = true })
 vim.keymap.set("v", "k", "gk", { silent = true })
-vim.keymap.set("n", "H", "0", { silent = true })
-vim.keymap.set("n", "L", "$", { silent = true })
 
 -- File
 vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { silent = true })
