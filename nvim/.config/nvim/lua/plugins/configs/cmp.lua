@@ -106,7 +106,7 @@ cmp.setup {
 		{ name = "tmux" },
 		{ name = "buffer" },
 		{ name = "nvim_lua", priority = 2 },
-		-- { name = "luasnip" },
+		{ name = "luasnip" },
 	},
 	experimental = {
 		ghost_text = true,
