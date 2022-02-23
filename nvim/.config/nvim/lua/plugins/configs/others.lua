@@ -14,7 +14,6 @@ end
 
 M.bufferline = function()
 	require("bufferline").setup { offsets = { { filetype = "NvimTree", text = "File Explorer" } } }
-	vim.keymap.set("n", "<leader><leader>", "<cmd>BufferLinePick<CR>", { silent = true })
 end
 
 M.colorizer = function()
@@ -109,7 +108,7 @@ end
 M.setTheme = function()
 	vim.g.gruvbox_material_palette = "original"
 	vim.g.gruvbox_material_background = "hard"
-	-- vim.g.gruvbox_material_transparent_background = true
+	vim.g.gruvbox_material_transparent_background = true
 
 	vim.cmd [[colorscheme gruvbox-material]]
 
@@ -119,7 +118,7 @@ M.setTheme = function()
 	hi default GHListHl guifg=#e0d8f4 guibg=#282828
 	hi SpecialKey guifg=#cc241d
 	hi SpecialKeyWin guifg=#3c3836
-	hi SignColumn guibg=#1d2021
+	" hi SignColumn guibg=#1d2021
 	set winhighlight=SpecialKey:SpecialKeyWin
 	" hi LineNr guibg=#282828
 	]]
@@ -151,24 +150,16 @@ M.null_ls = function()
 	require("null-ls").setup {
 		sources = {
 			require("null-ls").builtins.formatting.stylua,
-			require("null-ls").builtins.formatting.prettierd.with {
-				filetypes = {
-					"typescriptreact",
-					"typescript",
-					"javascriptreact",
-					"javascript",
-					"svelte",
-					"json",
-					"jsonc",
-					"css",
-					"html",
-					"vue",
-				},
-			},
+			require("null-ls").builtins.formatting.prettierd,
 		},
 		on_attach = function(client)
 			if client.resolved_capabilities.document_formatting then
-				vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()"
+				vim.cmd [[
+            augroup LspFormatting
+                autocmd! * <buffer>
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+            augroup END
+            ]]
 			end
 		end,
 	}

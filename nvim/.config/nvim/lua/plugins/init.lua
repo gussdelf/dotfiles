@@ -261,7 +261,7 @@ return require("packer").startup {
 				},
 				{
 					"jose-elias-alvarez/null-ls.nvim",
-					ft = lspLangs,
+					-- after = "nvim-lspconfig",
 					config = function()
 						require("plugins.configs.others").null_ls()
 					end,
