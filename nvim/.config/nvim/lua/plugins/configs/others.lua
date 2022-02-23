@@ -204,11 +204,11 @@ M.todo = function()
 end
 
 M.harpoon = function()
-	vim.keymap.set("n", "<C-h>", function()
+	vim.keymap.set("n", "<leader>ha", function()
 		require("harpoon.mark").add_file()
 	end, { silent = true })
 
-	vim.keymap.set("n", "<C-k>", function()
+	vim.keymap.set("n", "<leader>hh", function()
 		require("harpoon.ui").toggle_quick_menu()
 	end, { silent = true })
 end

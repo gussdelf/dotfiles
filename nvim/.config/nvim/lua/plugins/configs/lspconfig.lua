@@ -10,8 +10,8 @@ vim.diagnostic.config {
 }
 
 local on_attach = function(client)
-	client.resolved_capabilities.document_formatting = false
-	client.resolved_capabilities.document_range_formatting = false
+	client.resolved_capabilities.document_formatting = true
+	client.resolved_capabilities.document_range_formatting = true
 end
 
 nvim_lsp.sumneko_lua.setup {
@@ -34,9 +34,6 @@ nvim_lsp.sumneko_lua.setup {
 			runtime = {
 				version = "LuaJIT",
 				path = runtime_path,
-			},
-			format = {
-				enable = false,
 			},
 			workspace = {
 				library = {

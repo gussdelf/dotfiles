@@ -1,11 +1,11 @@
 local o = vim.opt
 
 -- Indent
-o.smartindent = true
-o.autoindent = true
+-- o.autoindent = true
+o.cindent = true
 
 -- I prefer tabs over spaces
--- o.expandtab = true
+o.expandtab = false
 o.tabstop = 4
 o.shiftwidth = 4
 

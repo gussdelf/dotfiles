@@ -86,7 +86,7 @@ vim.keymap.set("n", "<leader>ft", function()
 	require("telescope.builtin").filetypes(M.minimal())
 end, { silent = true, noremap = true })
 
-vim.keymap.set("n", "<C-j>", function()
+vim.keymap.set("n", "<leader>j", function()
 	require("telescope").extensions.zoxide.list(M.minimal())
 end, { silent = true, noremap = true })
 
