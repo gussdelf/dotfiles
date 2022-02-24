@@ -11,5 +11,5 @@
         "use",
         "runtime_path"
     ],
-    "Lua.format.enable": "false"
+    "Lua.format.enable": false
 }
