@@ -15,7 +15,7 @@ vim.cmd [[
   autocmd!
   autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
-  ]]
+]]
 
 -- Chars
 o.fillchars = { eob = " " }

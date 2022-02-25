@@ -24,6 +24,7 @@ bindkey '^H' backward-char-delete
 bindkey '^L' autosuggest-accept
 bindkey '^K' up-line-or-history
 bindkey '^J' down-line-or-history
+bindkey '^O' fzf-cd-widget
 
 # other
 source /usr/share/fzf/key-bindings.zsh

@@ -52,8 +52,26 @@ M.minimal = function()
 		borderchars = {
 			{ "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 			prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
-			results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
-			preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+			results = {
+				"─",
+				"│",
+				"─",
+				"│",
+				"├",
+				"┤",
+				"┘",
+				"└",
+			},
+			preview = {
+				"─",
+				"│",
+				"─",
+				"│",
+				"┌",
+				"┐",
+				"┘",
+				"└",
+			},
 		},
 		path_display = { "truncate" },
 		prompt_prefix = "> ",
@@ -102,9 +120,14 @@ vim.keymap.set("n", "<leader>fh", function()
 	require("telescope.builtin").help_tags()
 end, { silent = true, noremap = true })
 
-vim.keymap.set("n", "<leader>ht", function() -- Yes i like doom emacs keybindings
-	require("telescope.builtin").colorscheme(M.minimal())
-end, { silent = true, noremap = true })
+vim.keymap.set(
+	"n",
+	"<leader>ht",
+	function() -- Yes i like doom emacs keybindings
+		require("telescope.builtin").colorscheme(M.minimal())
+	end,
+	{ silent = true, noremap = true }
+)
 
 vim.keymap.set("n", "<leader>hm", function()
 	require("telescope.builtin").man_pages(M.minimal())

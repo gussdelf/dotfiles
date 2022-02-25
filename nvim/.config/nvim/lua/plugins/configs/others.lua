@@ -6,25 +6,40 @@ M.lualine = function()
 			theme = "auto",
 			section_separators = { left = "", right = "" },
 			component_separators = { left = "", right = "" },
-			disabled_filetypes = { "dashboard", "startify", "NvimTree", "packer" },
+			disabled_filetypes = {
+				"dashboard",
+				"startify",
+				"NvimTree",
+				"packer",
+			},
 		},
 		extensions = { "toggleterm" },
 	}
 end
 
 M.bufferline = function()
-	require("bufferline").setup { offsets = { { filetype = "NvimTree", text = "File Explorer" } } }
+	require("bufferline").setup {
+		offsets = { { filetype = "NvimTree", text = "File Explorer" } },
+	}
 end
 
 M.colorizer = function()
 	require("colorizer").setup()
-	vim.keymap.set("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
+	vim.keymap.set(
+		"n",
+		"<leader>ct",
+		"<cmd>ColorizerToggle<cr>",
+		{ silent = true }
+	)
 end
 
 M.autopairs = function()
 	local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 	local cmp = require "cmp"
-	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
+	cmp.event:on(
+		"confirm_done",
+		cmp_autopairs.on_confirm_done { map_char = { tex = "" } }
+	)
 
 	cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
 	require("nvim-autopairs").setup()
@@ -105,21 +120,56 @@ M.navigator = function()
 		transparency = 100,
 		default_mapping = false,
 		keymaps = {
-			{ key = "gr", func = "require('navigator.reference').reference()" },
+			{
+				key = "gr",
+				func = "require('navigator.reference').reference()",
+			},
 			{ key = "gK", func = "declaration()" },
 			{ key = "gd", func = "definition()" },
-			{ key = "gsy", func = "require('navigator.symbols').document_symbols()" },
-			{ key = "gW", func = "require('navigator.workspace').workspace_symbol()" },
-			{ key = "gp", func = "require('navigator.definition').definition_preview()" },
-			{ key = "K", func = "hover({ popup_opts = { border = single, max_width = 80 }})" },
-			{ key = "<leader>ca", mode = "n", func = "require('navigator.codeAction').code_action()" },
+			{
+				key = "gsy",
+				func = "require('navigator.symbols').document_symbols()",
+			},
+			{
+				key = "gW",
+				func = "require('navigator.workspace').workspace_symbol()",
+			},
+			{
+				key = "gp",
+				func = "require('navigator.definition').definition_preview()",
+			},
+			{
+				key = "K",
+				func = "hover({ popup_opts = { border = single, max_width = 80 }})",
+			},
+			{
+				key = "<leader>ca",
+				mode = "n",
+				func = "require('navigator.codeAction').code_action()",
+			},
 			{ key = "<leader>cA", mode = "v", func = "range_code_action()" },
-			{ key = "<leader>rn", func = "require('navigator.rename').rename()" },
-			{ key = "gL", func = "require('navigator.diagnostics').show_diagnostics()" },
-			{ key = "gG", func = "require('navigator.diagnostics').show_buf_diagnostics()" },
+			{
+				key = "<leader>rn",
+				func = "require('navigator.rename').rename()",
+			},
+			{
+				key = "gL",
+				func = "require('navigator.diagnostics').show_diagnostics()",
+			},
+			{
+				key = "gG",
+				func = "require('navigator.diagnostics').show_buf_diagnostics()",
+			},
 		},
 		lsp = {
-			disable_format_cap = { "sumneko_lua" }, -- For avoiding conflicts with null-ls
+			disable_format_cap = {
+				"sumneko_lua",
+				"rust-analyzer",
+				"gopls",
+				"tsserver",
+				"clangd",
+				"pyright",
+			}, -- For avoiding conflicts with null-ls
 		},
 	}
 	-- vim.keymap.set("n", "<C-o>", "<cmd>bw<cr>", { silent = true })
@@ -130,6 +180,11 @@ M.null_ls = function()
 		sources = {
 			require("null-ls").builtins.formatting.stylua,
 			require("null-ls").builtins.formatting.prettierd,
+			require("null-ls").builtins.formatting.rustfmt,
+			require("null-ls").builtins.formatting.gofmt,
+			require("null-ls").builtins.formatting.black,
+			require("null-ls").builtins.formatting.clang_format,
+			require("null-ls").builtins.formatting.deno_fmt,
 		},
 		on_attach = function(client)
 			if client.resolved_capabilities.document_formatting then
@@ -142,8 +197,18 @@ M.null_ls = function()
 			end
 		end,
 	}
-	vim.keymap.set("n", "<C-f>", "<Cmd>lua vim.lsp.buf.formatting()<cr>", { silent = true })
-	vim.keymap.set("v", "<C-f>", "<Cmd>lua vim.lsp.buf.range_formatting()<cr>", { silent = true })
+	vim.keymap.set(
+		"n",
+		"<C-f>",
+		"<Cmd>lua vim.lsp.buf.formatting()<cr>",
+		{ silent = true }
+	)
+	vim.keymap.set(
+		"v",
+		"<C-f>",
+		"<Cmd>lua vim.lsp.buf.range_formatting()<cr>",
+		{ silent = true }
+	)
 end
 
 M.matchup = function()
@@ -168,9 +233,24 @@ end
 
 M.trouble = function()
 	require("trouble").setup {}
-	vim.keymap.set("n", "<leader>tt", "<cmd>TroubleToggle<cr>", { silent = true })
-	vim.keymap.set("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true })
-	vim.keymap.set("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true })
+	vim.keymap.set(
+		"n",
+		"<leader>tt",
+		"<cmd>TroubleToggle<cr>",
+		{ silent = true }
+	)
+	vim.keymap.set(
+		"n",
+		"<leader>td",
+		"<cmd>TroubleToggle document_diagnostics<cr>",
+		{ silent = true }
+	)
+	vim.keymap.set(
+		"n",
+		"<leader>tw",
+		"<cmd>TroubleToggle workspace_diagnostics<cr>",
+		{ silent = true }
+	)
 end
 
 M.todo = function()
@@ -195,9 +275,24 @@ end
 M.gitsigns = function()
 	require("gitsigns").setup {
 		signs = {
-			add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-			change = { hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-			delete = { hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+			add = {
+				hl = "GitSignsAdd",
+				text = "│",
+				numhl = "GitSignsAddNr",
+				linehl = "GitSignsAddLn",
+			},
+			change = {
+				hl = "GitSignsChange",
+				text = "│",
+				numhl = "GitSignsChangeNr",
+				linehl = "GitSignsChangeLn",
+			},
+			delete = {
+				hl = "GitSignsDelete",
+				text = "_",
+				numhl = "GitSignsDeleteNr",
+				linehl = "GitSignsDeleteLn",
+			},
 			topdelete = {
 				hl = "GitSignsDelete",
 				text = "‾",
