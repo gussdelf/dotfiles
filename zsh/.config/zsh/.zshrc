@@ -10,11 +10,6 @@ _comp_options+=(globdots)
 # vim bindings
 bindkey -v
 
-# some bindings
-bindkey '^H' backward-char-delete
-bindkey '^L' autosuggest-accept
-bindkey '^K' up-line-or-history
-bindkey '^J' down-line-or-history
 
 # load some useful functions
 source $ZDOTDIR/functions.zsh
@@ -23,6 +18,12 @@ source $ZDOTDIR/functions.zsh
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
+
+# some bindings
+bindkey '^H' backward-char-delete
+bindkey '^L' autosuggest-accept
+bindkey '^K' up-line-or-history
+bindkey '^J' down-line-or-history
 
 # other
 source /usr/share/fzf/key-bindings.zsh
