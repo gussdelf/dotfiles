@@ -8,6 +8,8 @@ end
 -- Adding packer.nvim
 vim.cmd [[ packadd packer.nvim ]]
 
+require "packer_compiled"
+
 return require("packer").startup {
 	function()
 		use {
@@ -52,7 +54,7 @@ return require("packer").startup {
 						require("plugins.configs.others").bufferline()
 					end,
 				},
-				--  TODO:: Finish my feline config.
+				--  TODO: Finish my feline config.
 				-- {
 				-- 	"feline-nvim/feline.nvim",
 				-- 	opt = true,
@@ -73,9 +75,13 @@ return require("packer").startup {
 					requires = {
 						{
 							"nvim-treesitter/playground",
+							cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
 							after = "nvim-treesitter",
 						},
-						"nvim-treesitter/nvim-treesitter-textobjects",
+						{
+							"nvim-treesitter/nvim-treesitter-textobjects",
+							after = "nvim-treesitter",
+						},
 					},
 					config = function()
 						require "plugins.configs.treesitter"
@@ -84,6 +90,7 @@ return require("packer").startup {
 				{
 					"windwp/nvim-ts-autotag",
 					opt = true,
+					after = "nvim-treesitter",
 					ft = {
 						"html",
 						"javascript",
@@ -93,24 +100,6 @@ return require("packer").startup {
 						"typescriptcommon",
 						"vue",
 					},
-					config = function()
-						require("plugins.configs.others").autotags()
-					end,
-				},
-				{
-					"p00f/nvim-ts-rainbow",
-					opt = true,
-					after = "nvim-treesitter",
-					config = function()
-						require("plugins.configs.others").tsrainbow()
-					end,
-				},
-				{
-					"norcalli/nvim-colorizer.lua",
-					ft = lspLangs,
-					config = function()
-						require("plugins.configs.others").colorizer()
-					end,
 				},
 			},
 
@@ -159,7 +148,6 @@ return require("packer").startup {
 				{
 					"windwp/nvim-autopairs",
 					after = "nvim-cmp",
-					-- event = "FileType",
 					config = function()
 						require("plugins.configs.others").autopairs()
 					end,
@@ -169,6 +157,12 @@ return require("packer").startup {
 					-- opt = true,
 					config = function()
 						require("Comment").setup()
+					end,
+				},
+				{
+					"norcalli/nvim-colorizer.lua",
+					config = function()
+						require("plugins.configs.others").colorizer()
 					end,
 				},
 			},
@@ -261,7 +255,7 @@ return require("packer").startup {
 				},
 				{
 					"jose-elias-alvarez/null-ls.nvim",
-					-- after = "nvim-lspconfig",
+					event = { "BufRead", "InsertEnter" },
 					config = function()
 						require("plugins.configs.others").null_ls()
 					end,
@@ -296,5 +290,4 @@ return require("packer").startup {
 			end,
 		},
 	},
-},
-	require "packer_compiled"
+}

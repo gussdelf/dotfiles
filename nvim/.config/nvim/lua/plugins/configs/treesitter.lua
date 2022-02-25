@@ -15,6 +15,16 @@ require("nvim-treesitter.configs").setup {
 			node_decremental = "grm",
 		},
 	},
+	autotag = {
+		enable = true,
+		filetypes = {
+			"html",
+			"javascript",
+			"javascriptreact",
+			"svelte",
+			"vue",
+		},
+	},
 	textobjects = {
 		select = {
 			enable = true,

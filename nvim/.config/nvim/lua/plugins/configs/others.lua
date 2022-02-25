@@ -21,20 +21,6 @@ M.colorizer = function()
 	vim.keymap.set("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
 end
 
-M.autotags = function()
-	require("nvim-treesitter.configs").setup {
-		autotag = {
-			enable = true,
-			filetypes = {
-				"html",
-				"javascript",
-				"javascriptreact",
-				"svelte",
-				"vue",
-			},
-		},
-	}
-end
 
 M.autopairs = function()
 	local cmp_autopairs = require "nvim-autopairs.completion.cmp"
@@ -91,17 +77,6 @@ M.signature = function()
 		},
 		zindex = 200,
 		padding = "",
-	}
-end
-
-M.tsrainbow = function()
-	require("nvim-treesitter.configs").setup {
-		rainbow = {
-			enable = true,
-			-- disable = { "jsx", "cpp" },
-			extended_mode = true,
-			max_file_lines = nil,
-		},
 	}
 end
 
