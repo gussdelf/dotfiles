@@ -21,7 +21,6 @@ M.colorizer = function()
 	vim.keymap.set("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
 end
 
-
 M.autopairs = function()
 	local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 	local cmp = require "cmp"
@@ -83,10 +82,12 @@ end
 M.setTheme = function()
 	vim.g.gruvbox_material_palette = "original"
 	vim.g.gruvbox_material_background = "hard"
+	vim.g.gruvbox_material_better_performance = true
+	vim.g.gruvbox_material_sign_column_background = "none"
 	vim.g.gruvbox_material_transparent_background = true
+	vim.g.gruvbox_material_cursor = "red"
 
 	vim.cmd [[colorscheme gruvbox-material]]
-
 	vim.cmd [[
 	hi default GHTextViewDark guifg=#e0d8f4
 	hi default GHListDark guifg=#e0d8f4
@@ -117,6 +118,9 @@ M.navigator = function()
 			{ key = "gL", func = "require('navigator.diagnostics').show_diagnostics()" },
 			{ key = "gG", func = "require('navigator.diagnostics').show_buf_diagnostics()" },
 		},
+		lsp = {
+			disable_format_cap = { "sumneko_lua" }, -- For avoiding conflicts with null-ls
+		},
 	}
 	-- vim.keymap.set("n", "<C-o>", "<cmd>bw<cr>", { silent = true })
 end
@@ -130,11 +134,11 @@ M.null_ls = function()
 		on_attach = function(client)
 			if client.resolved_capabilities.document_formatting then
 				vim.cmd [[
-            augroup LspFormatting
-                autocmd! * <buffer>
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-            augroup END
-            ]]
+			augroup LspFormatting
+			autocmd! * <buffer>
+			autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+			augroup END
+			]]
 			end
 		end,
 	}
