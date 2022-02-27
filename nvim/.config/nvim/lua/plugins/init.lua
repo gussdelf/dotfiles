@@ -1,3 +1,5 @@
+---@diagnostic disable: different-requires
+
 -- Install packer
 local install_path = vim.fn.stdpath "data"
 	.. "/site/pack/packer/start/packer.nvim"
@@ -34,8 +36,9 @@ return require("packer").startup {
 				{
 					"sainnhe/gruvbox-material",
 					event = "VimEnter",
+					requires = { "sainnhe/edge" },
 					config = function()
-						require("plugins.configs.others").setTheme()
+						require "plugins.configs.color"
 					end,
 				},
 				{
@@ -58,21 +61,10 @@ return require("packer").startup {
 						require("plugins.configs.others").bufferline()
 					end,
 				},
-				--  TODO: Finish my feline config.
-				-- {
-				-- 	"feline-nvim/feline.nvim",
-				-- 	opt = true,
-				-- 	after = "nightfox.nvim",
-				-- 	requires = { "nvim-lua/lsp-status.nvim" },
-				-- 	config = function()
-				-- 		require "plugins.configs.feline"
-				-- 	end,
-				-- },
 			},
 
 			-- Treesitter
 			{
-				--  PERF: I think this can get a little bit faster.
 				{
 					"nvim-treesitter/nvim-treesitter",
 					ft = tsFileTypes,
@@ -161,7 +153,6 @@ return require("packer").startup {
 				},
 				{
 					"numToStr/Comment.nvim",
-					-- opt = true,
 					config = function()
 						require("Comment").setup()
 					end,
@@ -216,6 +207,11 @@ return require("packer").startup {
 					after = "cmp-nvim-lsp",
 				},
 				{
+					"tzachar/cmp-tabnine",
+					after = "cmp-nvim-lsp",
+					run = "./install.sh",
+				},
+				{
 					"hrsh7th/cmp-path",
 					after = "cmp-buffer",
 				},
@@ -255,7 +251,6 @@ return require("packer").startup {
 				{
 					"folke/trouble.nvim",
 					ft = lspLangs,
-					-- after = "nvim-lspconfig",
 					config = function()
 						require("plugins.configs.others").trouble()
 					end,

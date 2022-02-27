@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 local M = {}
 
 M.lualine = function()
@@ -94,27 +95,6 @@ M.signature = function()
 	}
 end
 
-M.setTheme = function()
-	vim.g.gruvbox_material_palette = "original"
-	vim.g.gruvbox_material_background = "hard"
-	vim.g.gruvbox_material_better_performance = true
-	vim.g.gruvbox_material_sign_column_background = "none"
-	vim.g.gruvbox_material_transparent_background = true
-	vim.g.gruvbox_material_cursor = "red"
-
-	vim.cmd [[colorscheme gruvbox-material]]
-	vim.cmd [[
-	hi default GHTextViewDark guifg=#e0d8f4
-	hi default GHListDark guifg=#e0d8f4
-	hi default GHListHl guifg=#e0d8f4 guibg=#282828
-	hi SpecialKey guifg=#cc241d
-	hi SpecialKeyWin guifg=#3c3836
-	" hi SignColumn guibg=#1d2021
-	set winhighlight=SpecialKey:SpecialKeyWin
-	" hi LineNr guibg=#282828
-	]]
-end
-
 M.navigator = function()
 	require("navigator").setup {
 		transparency = 100,
@@ -167,7 +147,6 @@ M.navigator = function()
 				"rust-analyzer",
 				"gopls",
 				"tsserver",
-				"clangd",
 				"pyright",
 			}, -- For avoiding conflicts with null-ls
 		},
@@ -179,11 +158,9 @@ M.null_ls = function()
 	require("null-ls").setup {
 		sources = {
 			require("null-ls").builtins.formatting.stylua,
-			require("null-ls").builtins.formatting.prettierd,
 			require("null-ls").builtins.formatting.rustfmt,
 			require("null-ls").builtins.formatting.gofmt,
 			require("null-ls").builtins.formatting.black,
-			require("null-ls").builtins.formatting.clang_format,
 			require("null-ls").builtins.formatting.deno_fmt,
 		},
 		on_attach = function(client)
@@ -235,7 +212,7 @@ M.trouble = function()
 	require("trouble").setup {}
 	vim.keymap.set(
 		"n",
-		"<leader>tt",
+		"<leader>to",
 		"<cmd>TroubleToggle<cr>",
 		{ silent = true }
 	)

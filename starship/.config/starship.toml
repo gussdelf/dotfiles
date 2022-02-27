@@ -2,9 +2,9 @@ add_newline = false
 format = """$character$all"""
 
 [character]
-#success_symbol = "[λ](green)"
-#error_symbol = "[λ](red)"
-#vicmd_symbol = "[ﬦ](blue)"
+# success_symbol = "[λ](green)"
+# error_symbol = "[λ](red)"
+# vicmd_symbol = "[λ](blue)"
 success_symbol = "[ ](green)"
 error_symbol = "[ ](red)"
 vicmd_symbol = "[ ](blue)"

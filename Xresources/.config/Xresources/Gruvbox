@@ -10,6 +10,7 @@ st.font: JetBrainsMono Nerd Font:style:regular:pixelsize=15
 ! soft
 ! #define base00 #32302f
 
+#define cursor #282828
 #define base01 #3c3836
 #define base02 #504945
 #define base03 #665c54

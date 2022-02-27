@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 local cmp = require "cmp"
 
 vim.opt.completeopt = "menuone,noselect"
@@ -64,12 +65,13 @@ cmp.setup {
 			)
 			-- Source
 			vim_item.menu = ({
-				buffer = "Buffer",
-				nvim_lsp = "LSP",
-				name = "api",
-				luasnip = "LuaSnip",
-				latex_symbols = "LaTeX",
-				tmux = "Tmux",
+				buffer = "[BUF]",
+				nvim_lsp = "[LSP]",
+				name = "[API]",
+				luasnip = "[SNIP]",
+				latex_symbols = "[LAT]",
+				tmux = "[TMUX]",
+				cmp_tabnine = "[TN]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -121,12 +123,13 @@ cmp.setup {
 		},
 	},
 	sources = {
-		{ name = "nvim_lsp", priority = 9 },
-		{ name = "path" },
-		{ name = "tmux" },
-		{ name = "buffer" },
-		{ name = "nvim_lua", priority = 2 },
-		{ name = "luasnip" },
+		{ name = "nvim_lua", priority = 9 },
+		{ name = "cmp_tabnine", priority = 8 },
+		{ name = "nvim_lsp", priority = 7 },
+		{ name = "buffer", priority = 6 },
+		{ name = "path", priority = 5 },
+		{ name = "luasnip", priority = 4 },
+		{ name = "tmux", priority = 3 },
 	},
 	experimental = {
 		ghost_text = true,
