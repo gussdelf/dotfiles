@@ -141,6 +141,11 @@ M.navigator = function()
 				func = "require('navigator.diagnostics').show_buf_diagnostics()",
 			},
 		},
+		icons = {
+			icons = false,
+			code_action_icon = "💡",
+			diagnostic_err = "🚨",
+		},
 		lsp = {
 			disable_format_cap = {
 				"sumneko_lua",
@@ -151,7 +156,6 @@ M.navigator = function()
 			}, -- For avoiding conflicts with null-ls
 		},
 	}
-	-- vim.keymap.set("n", "<C-o>", "<cmd>bw<cr>", { silent = true })
 end
 
 M.null_ls = function()
@@ -188,26 +192,6 @@ M.null_ls = function()
 	)
 end
 
-M.matchup = function()
-	require("nvim-treesitter.configs").setup {
-		matchup = {
-			enable = true, -- mandatory, false will disable the whole extension
-		},
-	}
-end
-
-M.neoformat = function()
-	vim.keymap.set("n", "<C-f>", "<Cmd>Neoformat<cr>", { silent = true })
-	vim.keymap.set("v", "<C-f>", "<Cmd>Neoformat<cr>", { silent = true })
-end
-
-M.blankline = function()
-	require("indent_blankline").setup {
-		show_current_context = false,
-		show_current_context_start = false,
-	}
-end
-
 M.trouble = function()
 	require("trouble").setup {}
 	vim.keymap.set(
@@ -230,15 +214,6 @@ M.trouble = function()
 	)
 end
 
-M.todo = function()
-	require("todo-comments").setup {
-		search = {
-			pattern = [[\b(KEYWORDS):]], -- ripgrep regex
-		},
-	}
-	vim.keymap.set("n", "<leader>to", "<cmd>TodoTrouble<cr>", { silent = true })
-end
-
 M.harpoon = function()
 	vim.keymap.set("n", "<leader>ha", function()
 		require("harpoon.mark").add_file()
@@ -247,75 +222,6 @@ M.harpoon = function()
 	vim.keymap.set("n", "<leader>hh", function()
 		require("harpoon.ui").toggle_quick_menu()
 	end, { silent = true })
-end
-
-M.gitsigns = function()
-	require("gitsigns").setup {
-		signs = {
-			add = {
-				hl = "GitSignsAdd",
-				text = "│",
-				numhl = "GitSignsAddNr",
-				linehl = "GitSignsAddLn",
-			},
-			change = {
-				hl = "GitSignsChange",
-				text = "│",
-				numhl = "GitSignsChangeNr",
-				linehl = "GitSignsChangeLn",
-			},
-			delete = {
-				hl = "GitSignsDelete",
-				text = "_",
-				numhl = "GitSignsDeleteNr",
-				linehl = "GitSignsDeleteLn",
-			},
-			topdelete = {
-				hl = "GitSignsDelete",
-				text = "‾",
-				numhl = "GitSignsDeleteNr",
-				linehl = "GitSignsDeleteLn",
-			},
-			changedelete = {
-				hl = "GitSignsChange",
-				text = "~",
-				numhl = "GitSignsChangeNr",
-				linehl = "GitSignsChangeLn",
-			},
-		},
-		signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-		numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-		linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-		word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
-		watch_gitdir = {
-			interval = 1000,
-			follow_files = true,
-		},
-		attach_to_untracked = true,
-		current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-		current_line_blame_opts = {
-			virt_text = true,
-			virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-			delay = 1000,
-			ignore_whitespace = false,
-		},
-		current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
-		sign_priority = 6,
-		update_debounce = 100,
-		status_formatter = nil, -- Use default
-		max_file_length = 40000,
-		preview_config = {
-			-- Options passed to nvim_open_win
-			border = "single",
-			style = "minimal",
-			relative = "cursor",
-			row = 0,
-			col = 1,
-		},
-		yadm = {
-			enable = false,
-		},
-	}
 end
 
 return M

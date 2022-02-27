@@ -61,6 +61,11 @@ return require("packer").startup {
 						require("plugins.configs.others").bufferline()
 					end,
 				},
+				{
+					"folke/zen-mode.nvim",
+					opt = true,
+					cmd = "ZenMode",
+				},
 			},
 
 			-- Treesitter
