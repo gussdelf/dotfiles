@@ -122,10 +122,10 @@ tsFileTypes = {
 
 vim.api.nvim_create_autocmd {
 	event = "TermOpen",
-	pattern = "term://",
+	pattern = "term://*",
 	callback = function()
-		vim.opt_local.nonumber = true
-		vim.opt_local.norelativenumber = true
-		vim.filetype.match "terminal"
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
+		vim.opt_local.filetype = "terminal"
 	end,
 }

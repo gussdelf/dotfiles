@@ -19,8 +19,8 @@ st.font: JetBrainsMono Nerd Font:style:regular:pixelsize=15
 *.foreground:   white
 *.background:   black
 *.cursorColor:  white
-*fading: 35
-*fadeColor: grey
+! *fading: 35
+! *fadeColor: grey
 
 *.color0: black
 *.color1: red
@@ -30,7 +30,7 @@ st.font: JetBrainsMono Nerd Font:style:regular:pixelsize=15
 *.color5: magenta
 *.color6: cyan
 *.color7: white
-*.color8: black
+*.color8: grey
 *.color9: red
 *.color10: green
 *.color11: yellow
