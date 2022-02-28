@@ -119,4 +119,13 @@ tsFileTypes = {
 	"lisp",
 	"java",
 }
-vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]]
+
+vim.api.nvim_create_autocmd {
+	event = "TermOpen",
+	pattern = "term://",
+	callback = function()
+		vim.opt_local.nonumber = true
+		vim.opt_local.norelativenumber = true
+		vim.filetype.match "terminal"
+	end,
+}
