@@ -1,4 +1,7 @@
 ---@diagnostic disable: different-requires
+
+local M = {}
+
 local cmp = require "cmp"
 
 vim.opt.completeopt = "menuone,noselect"
@@ -43,12 +46,15 @@ local border = {
 }
 
 cmp.setup {
-	completion = {
-		scrollbar = "┃",
-	},
-	documentation = {
-		border = border,
-		scrollbar = "┃",
+	window = {
+		completion = {
+			border = border,
+			scrollbar = "┃",
+		},
+		documentation = {
+			border = border,
+			scrollbar = "┃",
+		},
 	},
 	snippet = {
 		expand = function(args)
@@ -63,16 +69,16 @@ cmp.setup {
 				kind_icons[vim_item.kind],
 				vim_item.kind
 			)
-			-- Source
-			vim_item.menu = ({
-				buffer = "[BUF]",
-				nvim_lsp = "[LSP]",
-				name = "[API]",
-				luasnip = "[SNIP]",
-				latex_symbols = "[LAT]",
-				tmux = "[TMUX]",
-				cmp_tabnine = "[TN]",
-			})[entry.source.name]
+			-- -- Source
+			-- vim_item.menu = ({
+			-- 	buffer = "[BUF]",
+			-- 	nvim_lsp = "[LSP]",
+			-- 	name = "[API]",
+			-- 	luasnip = "[SNIP]",
+			-- 	latex_symbols = "[LAT]",
+			-- 	tmux = "[TMUX]",
+			-- 	cmp_tabnine = "[TN]",
+			-- })[entry.source.name]
 			return vim_item
 		end,
 	},
@@ -123,6 +129,7 @@ cmp.setup {
 		},
 	},
 	sources = {
+		{ name = "nvim_lsp_signature_help", priority = 10 },
 		{ name = "nvim_lua", priority = 9 },
 		{ name = "cmp_tabnine", priority = 8 },
 		{ name = "nvim_lsp", priority = 7 },
@@ -130,6 +137,10 @@ cmp.setup {
 		{ name = "path", priority = 5 },
 		{ name = "luasnip", priority = 4 },
 		{ name = "tmux", priority = 3 },
+	},
+	confirm_opts = {
+		behavior = cmp.ConfirmBehavior.Replace,
+		select = false,
 	},
 	experimental = {
 		ghost_text = true,
@@ -144,3 +155,27 @@ cmp.setup {
 		end
 	end,
 }
+
+M.cmdline = function()
+	cmp.setup.cmdline(":", {
+		completion = {
+			border = {
+				"╔",
+				"═",
+				"╗",
+				"║",
+				"╝",
+				"═",
+				"╚",
+				"║",
+			},
+		},
+		sources = cmp.config.sources({
+			{ name = "path" },
+		}, {
+			{ name = "cmdline" },
+		}),
+	})
+end
+
+return M

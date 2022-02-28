@@ -48,4 +48,4 @@ ColorEdge = function()
 	]]
 end
 
-ColorEdge()
+ColorGruv()

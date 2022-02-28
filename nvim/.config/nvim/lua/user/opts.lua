@@ -30,6 +30,9 @@ vim.g.do_filetype_lua = 1
 vim.g.python_host_prog = "/usr/bin/python"
 vim.g.python3_host_prog = "/usr/bin/python3"
 
+-- o.foldmethod = "expr" -- use treesitter for folding
+-- o.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- Others
 o.formatoptions:remove { "c", "r", "o" }
 o.compatible = false

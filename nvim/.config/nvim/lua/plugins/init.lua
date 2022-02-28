@@ -5,16 +5,15 @@ local install_path = vim.fn.stdpath "data"
 	.. "/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.fn.execute(
+	PackerBootstrap = vim.fn.execute(
 		"!git clone --depth 1 https://github.com/wbthomason/packer.nvim "
 			.. install_path
 	)
+	vim.cmd [[ packadd packer.nvim ]]
 end
 
 -- Adding packer.nvim
-vim.cmd [[ packadd packer.nvim ]]
-
-require "packer_compiled"
+pcall(require, "packer_compiled")
 
 return require("packer").startup {
 	function()
@@ -190,6 +189,7 @@ return require("packer").startup {
 			{
 				{
 					"hrsh7th/nvim-cmp",
+					branch = "dev",
 					ft = lspLangs,
 					config = function()
 						require "plugins.configs.cmp"
@@ -287,6 +287,9 @@ return require("packer").startup {
 				},
 			},
 		}
+		if PackerBootstrap then
+			require("packer").sync()
+		end
 	end,
 
 	config = {
