@@ -35,7 +35,12 @@ return require("packer").startup {
 				{
 					"sainnhe/gruvbox-material",
 					event = "VimEnter",
-					requires = { "sainnhe/edge" },
+					requires = {
+						"sainnhe/edge",
+						"EdenEast/nightfox.nvim",
+						{ "rose-pine/neovim", as = "rose-pine" },
+						{ "catppuccin/nvim", as = "catppuccin" },
+					},
 					config = function()
 						require "plugins.configs.color"
 					end,

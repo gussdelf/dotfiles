@@ -10,7 +10,6 @@ _comp_options+=(globdots)
 # vim bindings
 bindkey -v
 
-
 # load some useful functions
 source $ZDOTDIR/functions.zsh
 
@@ -48,7 +47,9 @@ ZSH_HIGHLIGHT_STYLES[comment]=fg=245 # Fix invisible comments
 eval "$(zoxide init --cmd j zsh)"
 
 # asdf
-. /opt/asdf-vm/asdf.sh
+if [ -e  /opt/asdf-vm/asdf.sh ]; then . /opt/asdf-vm/asdf.sh; fi
 
 # nix
-if [ -e /home/haunter/.nix-profile/etc/profile.d/nix.sh ]; then . /home/haunter/.nix-profile/etc/profile.d/nix.sh; fi # added by nix installer
+if [ -e /home/haunter/.nix-profile/etc/profile.d/nix.sh ]; then . /home/haunter/.nix-profile/etc/profile.d/nix.sh; fi 
+
+cl

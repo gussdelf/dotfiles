@@ -34,15 +34,26 @@ local kind_icons = {
 	Variable = " ",
 }
 
+-- local border = {
+-- 	"╔",
+-- 	"═",
+-- 	"╗",
+-- 	"║",
+-- 	"╝",
+-- 	"═",
+-- 	"╚",
+-- 	"║",
+-- }
+
 local border = {
-	"╔",
-	"═",
-	"╗",
-	"║",
-	"╝",
-	"═",
-	"╚",
-	"║",
+	"┌",
+	"─",
+	"┐",
+	"│",
+	"┘",
+	"─",
+	"└",
+	"│",
 }
 
 cmp.setup {
@@ -70,15 +81,15 @@ cmp.setup {
 				vim_item.kind
 			)
 			-- -- Source
-			-- vim_item.menu = ({
-			-- 	buffer = "[BUF]",
-			-- 	nvim_lsp = "[LSP]",
-			-- 	name = "[API]",
-			-- 	luasnip = "[SNIP]",
-			-- 	latex_symbols = "[LAT]",
-			-- 	tmux = "[TMUX]",
-			-- 	cmp_tabnine = "[TN]",
-			-- })[entry.source.name]
+			vim_item.menu = ({
+				buffer = "Buffer",
+				nvim_lsp = "LSP",
+				name = "Api",
+				luasnip = "Snippets",
+				latex_symbols = "LaTeX",
+				tmux = "Tmux",
+				cmp_tabnine = "TabNine",
+			})[entry.source.name]
 			return vim_item
 		end,
 	},
@@ -155,27 +166,5 @@ cmp.setup {
 		end
 	end,
 }
-
-M.cmdline = function()
-	cmp.setup.cmdline(":", {
-		completion = {
-			border = {
-				"╔",
-				"═",
-				"╗",
-				"║",
-				"╝",
-				"═",
-				"╚",
-				"║",
-			},
-		},
-		sources = cmp.config.sources({
-			{ name = "path" },
-		}, {
-			{ name = "cmdline" },
-		}),
-	})
-end
 
 return M
