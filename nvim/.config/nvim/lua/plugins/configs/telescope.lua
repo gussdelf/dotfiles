@@ -119,15 +119,6 @@ vim.keymap.set("n", "<leader>fh", function()
 	require("telescope.builtin").help_tags()
 end, { silent = true, noremap = true })
 
-vim.keymap.set(
-	"n",
-	"<leader>ht",
-	function() -- Yes i like doom emacs keybindings
-		require("telescope.builtin").colorscheme(M.minimal())
-	end,
-	{ silent = true, noremap = true }
-)
-
 vim.keymap.set("n", "<leader>hm", function()
 	require("telescope.builtin").man_pages(M.minimal())
 end, { silent = true, noremap = true })
@@ -143,5 +134,14 @@ end, { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>ss", function()
 	require("telescope.builtin").current_buffer_fuzzy_find()
 end, { silent = true, noremap = true })
+
+vim.keymap.set(
+	"n",
+	"<leader>ht",
+	function() -- Yes i like doom emacs keybindings
+		require("telescope.builtin").colorscheme(M.minimal())
+	end,
+	{ silent = true, noremap = true }
+)
 
 return M
