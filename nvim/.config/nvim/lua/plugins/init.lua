@@ -31,14 +31,6 @@ return require("packer").startup {
 
 			-- Ui
 			{
-				-- Dashboard
-				{
-					"startup-nvim/startup.nvim",
-					event = "VimEnter",
-					config = function()
-						require "plugins.configs.dashboard"
-					end,
-				},
 				-- Theme(s)
 				{
 					"sainnhe/gruvbox-material",
