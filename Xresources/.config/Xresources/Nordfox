@@ -21,4 +21,4 @@
 *color15: #e7ecf4
 
 st.alpha: 1.0
-st.font: VictorMono Nerd Font:style:semibold:pixelsize=15
+st.font: JetBrainsMono Nerd Font:style:regular:pixelsize=15
