@@ -1,6 +1,6 @@
 local g = vim.g
 
-ColorGruv = function(tbg)
+ColorMatGruv = function(tbg)
 	g.gruvbox_material_palette = "original"
 	g.gruvbox_material_enable_italic = true
 	g.gruvbox_material_background = "hard"
@@ -162,4 +162,74 @@ ColorRose = function(tbg)
 	vim.cmd [[colorscheme rose-pine]]
 end
 
-ColorGruv(true)
+ColorKana = function(tng)
+	-- Default options:
+	require("kanagawa").setup {
+		undercurl = true, -- enable undercurls
+		commentStyle = "italic",
+		functionStyle = "italic",
+		keywordStyle = "italic",
+		statementStyle = "bold",
+		typeStyle = "italic",
+		variablebuiltinStyle = "italic",
+		specialReturn = true,
+		specialException = true,
+		transparent = tng,
+		dimInactive = false,
+		colors = {},
+		overrides = {},
+	}
+
+	-- setup must be called before loading
+	vim.cmd [[ colorscheme kanagawa ]]
+end
+
+ColorJava = function(tng)
+	require("themer").setup {
+		colorscheme = "javacafe",
+		transparent = tng,
+		styles = {
+			["function"] = { style = "italic" },
+			functionbuiltin = { style = "italic" },
+			variable = { style = "italic" },
+			variableBuiltIn = { style = "italic" },
+			parameter = { style = "italic" },
+		},
+		plugins = {
+			treesitter = true,
+			indentline = false,
+			barbar = false,
+			bufferline = true,
+			cmp = true,
+			gitsigns = false,
+			lsp = true,
+			telescope = true,
+		},
+	}
+end
+
+ColorSaku = function(tng)
+	require("themer").setup {
+		colorscheme = "sakura",
+		transparent = tng,
+		styles = {
+			["function"] = { style = "italic" },
+			functionbuiltin = { style = "italic" },
+			variable = { style = "italic" },
+			variableBuiltIn = { style = "italic" },
+			parameter = { style = "italic" },
+		},
+		plugins = {
+			treesitter = true,
+			indentline = false,
+			barbar = false,
+			bufferline = true,
+			cmp = true,
+			gitsigns = false,
+			lsp = true,
+			telescope = true,
+		},
+	}
+end
+
+ColorKana(true)

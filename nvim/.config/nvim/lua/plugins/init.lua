@@ -31,6 +31,14 @@ return require("packer").startup {
 
 			-- Ui
 			{
+				-- Dashboard
+				{
+					"startup-nvim/startup.nvim",
+					event = "VimEnter",
+					config = function()
+						require "plugins.configs.dashboard"
+					end,
+				},
 				-- Theme(s)
 				{
 					"sainnhe/gruvbox-material",
@@ -38,6 +46,8 @@ return require("packer").startup {
 					requires = {
 						"sainnhe/edge",
 						"EdenEast/nightfox.nvim",
+						"rebelot/kanagawa.nvim",
+						"themercorp/themer.lua",
 						{ "rose-pine/neovim", as = "rose-pine" },
 						{ "catppuccin/nvim", as = "catppuccin" },
 					},
