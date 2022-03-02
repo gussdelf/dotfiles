@@ -76,7 +76,6 @@ M.minimal = function()
 		path_display = { "truncate" },
 		prompt_prefix = "> ",
 		selection_caret = "> ",
-		width = 0.8,
 		previewer = false,
 		prompt_title = false,
 		hidden = true,
@@ -137,7 +136,7 @@ vim.keymap.set("n", "<leader>is", function()
 	require("telescope.builtin").symbols(M.minimal())
 end, { silent = true, noremap = true })
 
-vim.keymap.set("n", "<leader>dl", function()
+vim.keymap.set("n", "<leader>di", function()
 	require("telescope.builtin").diagnostics()
 end, { silent = true, noremap = true })
 

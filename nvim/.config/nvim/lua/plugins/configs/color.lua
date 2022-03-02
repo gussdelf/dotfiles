@@ -107,7 +107,7 @@ end
 
 ColorFox = function(transparent)
 	require("nightfox").setup {
-		fox = "nightfox",
+		fox = "nordfox",
 		transparent = transparent,
 		alt_nc = false,
 		terminal_colors = true,
@@ -115,6 +115,8 @@ ColorFox = function(transparent)
 			comments = "italic",
 			functions = "italic,bold",
 			keywords = "bold",
+			strings = "bold",
+			variables = "italic",
 		},
 		inverse = {
 			match_paren = true,
@@ -160,4 +162,4 @@ ColorRose = function(tbg)
 	vim.cmd [[colorscheme rose-pine]]
 end
 
-ColorEdge(true)
+ColorGruv(true)

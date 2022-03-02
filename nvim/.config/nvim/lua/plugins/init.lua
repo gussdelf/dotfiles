@@ -68,6 +68,7 @@ return require("packer").startup {
 				{
 					"folke/zen-mode.nvim",
 					opt = true,
+					event = "BufRead",
 					cmd = "ZenMode",
 				},
 			},
@@ -287,7 +288,7 @@ return require("packer").startup {
 				{
 					"iamcco/markdown-preview.nvim",
 					opt = true,
-					ft = { "markdown" },
+					ft = "markdown",
 					run = "cd app && yarn install",
 				},
 			},

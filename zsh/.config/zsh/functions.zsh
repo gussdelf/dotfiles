@@ -27,6 +27,10 @@ function etangle() {
 	emacs --batch --eval "(progn (require 'org) (setq org-confirm-babel-evaluate nil) (org-babel-tangle-file \"$1\"))"
 }
 
+function passs() {
+	pass $1 | xclip -sel clip
+}
+
 fuzzy-xdg-open() {
   local output
   output=$(fzf --height 50% --reverse </dev/tty) && $EDITOR ${(q-)output}

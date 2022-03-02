@@ -30,11 +30,11 @@ alias c='clear;'\
 	magit='emacsclient -nc -e "(magit-status)"'\
 	mkdir='mkdir -p'\
 	server='python -m http.server'\
-
+	\
 	bspwm='startx ~/.config/X11/bspwm'\
 	awesomewm='startx ~/.config/X11/awesome'\
 	ddwm='startx ~/.config/X11/dwm'\
 	qtil='startx ~/.config/X11/qtile'\
-
+	\
 	pcomp='nvim +PackerCompile'\
-	psync='nvim +PackerSync'\
+	psync='nvim +PackerSync'
