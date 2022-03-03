@@ -37,12 +37,8 @@ return require("packer").startup {
 					event = "VimEnter",
 					requires = {
 						"sainnhe/edge",
-						"sainnhe/everforest",
 						"EdenEast/nightfox.nvim",
 						"rebelot/kanagawa.nvim",
-						"themercorp/themer.lua",
-						{ "rose-pine/neovim", as = "rose-pine" },
-						{ "catppuccin/nvim", as = "catppuccin" },
 					},
 					config = function()
 						require "plugins.configs.color"

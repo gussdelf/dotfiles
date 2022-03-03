@@ -1,6 +1,6 @@
 ! window padding
-
-st.font: SauceCodePro Nerd Font:style:medium:pixelsize=15
+st.alpha: 1.0
+st.font: JetBrainsMono Nerd Font:style:regular:pixelsize=15
 ! special
 *.foreground:   #ABB2BF
 *.background:   #1e222a
