@@ -1,5 +1,30 @@
 local g = vim.g
 
+ColorEver = function(tbg)
+	g.everforest_background = "hard"
+	g.everforest_enable_italic = 1
+	g.everforest_transparent_background = tbg
+	g.everforest_sign_column_background = "none"
+	-- g.everforest_ui_contrast = "high"
+	g.everforest_diagnostic_text_highlight = true
+	g.everforest_diagnostic_line_highlight = true
+	g.everforest_diagnostic_virtual_text = true
+	g.everforest_better_performance = true
+
+	vim.cmd [[colorscheme everforest]]
+	vim.cmd [[
+		hi default GHTextViewDark guifg=#e0d8f4
+		hi default GHListDark guifg=#e0d8f4
+		hi default GHListHl guifg=#e0d8f4 guibg=#282828
+		hi SpecialKey guifg=#cc241d
+		hi SpecialKeyWin guifg=#3c3836
+
+		set winhighlight=SpecialKey:SpecialKeyWin
+		" hi SignColumn guibg=#1d2021
+		" hi LineNr guibg=#282828
+	]]
+end
+
 ColorMatGruv = function(tbg)
 	g.gruvbox_material_palette = "original"
 	g.gruvbox_material_enable_italic = true
@@ -232,4 +257,4 @@ ColorSaku = function(tng)
 	}
 end
 
-ColorKana(true)
+ColorMatGruv(true)

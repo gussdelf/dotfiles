@@ -37,6 +37,7 @@ return require("packer").startup {
 					event = "VimEnter",
 					requires = {
 						"sainnhe/edge",
+						"sainnhe/everforest",
 						"EdenEast/nightfox.nvim",
 						"rebelot/kanagawa.nvim",
 						"themercorp/themer.lua",
