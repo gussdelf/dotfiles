@@ -5,6 +5,7 @@
 	st = status
 	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
 	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
+	lg = "log --all --oneline --graph"
 [user]
 	email = gussdelf@gmail.com
 	name = Gustavo Freitas

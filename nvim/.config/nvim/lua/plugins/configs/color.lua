@@ -1,10 +1,5 @@
 local g = vim.g
 
-ColorBase = function()
-	local base16 = require "base16"
-	base16(base16.themes "aquarium", true)
-end
-
 ColorMatGruv = function(tbg)
 	g.gruvbox_material_palette = "original"
 	g.gruvbox_material_enable_italic = true
@@ -52,10 +47,10 @@ ColorEdge = function(tbg)
 	]]
 end
 
-ColorFox = function(transparent)
+ColorFox = function(tbg)
 	require("nightfox").setup {
 		fox = "nordfox",
-		transparent = transparent,
+		transparent = tbg,
 		alt_nc = false,
 		terminal_colors = true,
 		styles = {
@@ -79,7 +74,7 @@ end
 ColorKana = function(tng)
 	-- Default options:
 	require("kanagawa").setup {
-		undercurl = true, -- enable undercurls
+		undercurl = true,
 		commentStyle = "italic",
 		functionStyle = "italic",
 		keywordStyle = "italic",
@@ -88,10 +83,8 @@ ColorKana = function(tng)
 		variablebuiltinStyle = "italic",
 		specialReturn = true,
 		specialException = true,
-		transparent = tng,
 		dimInactive = false,
-		colors = {},
-		overrides = {},
+		transparent = tng,
 	}
 
 	-- setup must be called before loading

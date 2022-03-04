@@ -19,7 +19,7 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 
 # some bindings
-bindkey '^H' backward-char-delete
+bindkey '^H' backward-delete-char
 bindkey '^L' autosuggest-accept
 bindkey '^K' up-line-or-history
 bindkey '^J' down-line-or-history
