@@ -11,7 +11,6 @@ PS2="\[\033[32m\]  > \[\033[0m\]"
 HISTSIZE=10000
 HISTFILESIZE="$XDG_CONFIG_HOME"/bash/history
 
-
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
 

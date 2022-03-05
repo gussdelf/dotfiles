@@ -152,6 +152,7 @@ M.navigator = function()
 				"rust-analyzer",
 				"gopls",
 				"tsserver",
+				"denols",
 				"pyright",
 			}, -- For avoiding conflicts with null-ls
 		},
@@ -165,7 +166,13 @@ M.null_ls = function()
 			require("null-ls").builtins.formatting.rustfmt,
 			require("null-ls").builtins.formatting.gofmt,
 			require("null-ls").builtins.formatting.black,
-			require("null-ls").builtins.formatting.deno_fmt,
+			require("null-ls").builtins.formatting.deno_fmt.with {
+				extra_args = function(params)
+					return {
+						"--options-use-tabs",
+					}
+				end,
+			},
 		},
 		on_attach = function(client)
 			if client.resolved_capabilities.document_formatting then

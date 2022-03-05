@@ -1,6 +1,6 @@
 
 st.alpha: 1.0
-st.font: JetBrainsMono Nerd Font:style:regular:pixelsize=15
+st.font: Meslo LG M Nerd Font:style:regular:pixelsize=15
 ! special
 *.foreground:   #ABB2BF
 *.background:   #282C34

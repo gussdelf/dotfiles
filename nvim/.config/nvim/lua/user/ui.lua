@@ -19,9 +19,10 @@ vim.api.nvim_create_autocmd {
 	end,
 }
 
--- Chars
+-- -- Chars
 o.fillchars = { eob = " " }
 o.listchars = { tab = "» " }
+o.list = true
 
 -- signcolumn
 o.signcolumn = "yes"
@@ -30,7 +31,6 @@ o.signcolumn = "yes"
 o.showmode = false
 o.guicursor = "n-i:blinkon100,v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 o.background = "dark"
-o.list = true
 o.pumheight = 7
 o.splitbelow = true
 o.splitright = true
