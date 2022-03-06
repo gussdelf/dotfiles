@@ -60,7 +60,7 @@ return require("packer").startup {
 				{
 					"akinsho/bufferline.nvim",
 					opt = true,
-					event = "BufAdd",
+					event = "BufHidden",
 					config = function()
 						require("plugins.configs.others").bufferline()
 					end,

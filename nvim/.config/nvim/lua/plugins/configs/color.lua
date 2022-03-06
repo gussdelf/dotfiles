@@ -35,7 +35,7 @@ ColorOne = function(tbg)
 			toggleterm = true,
 		},
 		styles = {
-			-- strings = "bold",
+			strings = "italic",
 			comments = "italic",
 			keywords = "bold,italic",
 			functions = "italic",
@@ -106,9 +106,10 @@ ColorFox = function(tbg)
 		terminal_colors = true,
 		styles = {
 			comments = "italic",
+			strings = "italic",
 			functions = "italic,bold",
 			keywords = "bold",
-			variables = "italic",
+			-- variables = "",
 		},
 		inverse = {
 			match_paren = true,
@@ -145,4 +146,4 @@ ColorKana = function(tng)
 	vim.cmd [[ hi MatchParen gui=underline ]]
 end
 
-ColorMatGruv(false)
+ColorFox()

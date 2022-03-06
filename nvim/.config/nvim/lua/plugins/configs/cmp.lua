@@ -34,37 +34,37 @@ local kind_icons = {
 	Variable = " ",
 }
 
--- local border = {
--- 	"╔",
--- 	"═",
--- 	"╗",
--- 	"║",
--- 	"╝",
--- 	"═",
--- 	"╚",
--- 	"║",
--- }
-
 local border = {
-	"┌",
-	"─",
-	"┐",
-	"│",
-	"┘",
-	"─",
-	"└",
-	"│",
+	"╔",
+	"═",
+	"╗",
+	"║",
+	"╝",
+	"═",
+	"╚",
+	"║",
 }
 
+-- local border = {
+-- 	"┌",
+-- 	"─",
+-- 	"┐",
+-- 	"│",
+-- 	"┘",
+-- 	"─",
+-- 	"└",
+-- 	"│",
+-- }
+--
 cmp.setup {
 	window = {
 		completion = {
 			border = border,
-			scrollbar = "┃",
+			-- scrollbar = "┃",
 		},
 		documentation = {
 			border = border,
-			scrollbar = "┃",
+			-- scrollbar = "┃",
 		},
 	},
 	snippet = {
