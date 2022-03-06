@@ -125,15 +125,15 @@ tsFileTypes = {
 	"java",
 }
 
-vim.api.nvim_create_autocmd {
-	event = "TermOpen",
-	pattern = "term://*",
-	callback = function()
-		vim.opt_local.number = false
-		vim.opt_local.relativenumber = false
-		vim.opt_local.filetype = "terminal"
-	end,
-}
+-- vim.api.nvim_create_autocmd {
+-- 	event = "TermOpen",
+-- 	pattern = "term://*",
+-- 	callback = function()
+-- 		vim.opt_local.number = false
+-- 		vim.opt_local.relativenumber = false
+-- 		vim.opt_local.filetype = "terminal"
+-- 	end,
+-- }
 
 M.transparent_background =
 	function() -- this is a just a function for colorschemes without the option for transparent background

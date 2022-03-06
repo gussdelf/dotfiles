@@ -36,6 +36,9 @@ require("telescope").setup {
 			hidden = true,
 			disable_devicons = true,
 		},
+		builtin = {
+			previewer = false,
+		},
 	},
 	extensions = {
 		fzf = {

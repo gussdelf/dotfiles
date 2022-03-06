@@ -9,17 +9,17 @@ o.relativenumber = true
 -- Cursorline
 o.cursorline = true
 
-vim.api.nvim_create_augroup { name = "YankHighlight", clear = true }
-vim.api.nvim_create_autocmd {
+-- Highlight on yank
+vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
 	group = "YankHighlight",
-	event = "TextYankPost",
 	pattern = "*",
 	callback = function()
 		vim.highlight.on_yank()
 	end,
-}
+})
 
--- -- Chars
+-- Chars
 o.fillchars = { eob = " " }
 o.listchars = { tab = "» " }
 o.list = true
