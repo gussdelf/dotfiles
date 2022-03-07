@@ -146,4 +146,4 @@ ColorKana = function(tng)
 	vim.cmd [[ hi MatchParen gui=underline ]]
 end
 
-ColorFox()
+ColorMatGruv(true)
