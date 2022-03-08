@@ -110,6 +110,11 @@ return require("packer").startup {
 						"vue",
 					},
 				},
+				{
+					"p00f/nvim-ts-rainbow",
+					opt = true,
+					after = "nvim-treesitter",
+				},
 			},
 
 			-- Telescope
