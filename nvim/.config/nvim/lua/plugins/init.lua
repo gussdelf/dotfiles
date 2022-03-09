@@ -296,6 +296,22 @@ return require("packer").startup {
 					ft = "markdown",
 					run = "cd app && yarn install",
 				},
+				{
+					"jbyuki/venn.nvim",
+					opt = true,
+					event = "BufRead",
+					config = function()
+						require("plugins.configs.others").venn()
+					end,
+				},
+				{
+					"jbyuki/nabla.nvim",
+					opt = true,
+					ft = { "tex", "markdown" },
+					config = function()
+						require("plugins.configs.others").nabla()
+					end,
+				},
 			},
 		}
 		if PackerBootstrap then
