@@ -176,9 +176,12 @@ M.null_ls = function()
 		},
 		on_attach = function(client)
 			if client.resolved_capabilities.document_formatting then
-				vim.api.nvim_create_augroup("lspFormatGroup", { clear = true })
+				vim.api.nvim_create_augroup(
+					"nulllsFormatGroup",
+					{ clear = true }
+				)
 				vim.api.nvim_create_autocmd("BufWritePre", {
-					group = "lspFormatGroup",
+					group = "nulllsFormatGroup",
 					pattern = "*",
 					callback = function()
 						vim.lsp.buf.formatting_sync()
