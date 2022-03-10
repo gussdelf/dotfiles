@@ -26,21 +26,13 @@ end
 
 M.colorizer = function()
 	require("colorizer").setup()
-	vim.keymap.set(
-		"n",
-		"<leader>ct",
-		"<cmd>ColorizerToggle<cr>",
-		{ silent = true }
-	)
+	vim.keymap.set("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
 end
 
 M.autopairs = function()
 	local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 	local cmp = require "cmp"
-	cmp.event:on(
-		"confirm_done",
-		cmp_autopairs.on_confirm_done { map_char = { tex = "" } }
-	)
+	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
 	cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
 	require("nvim-autopairs").setup()
@@ -176,10 +168,7 @@ M.null_ls = function()
 		},
 		on_attach = function(client)
 			if client.resolved_capabilities.document_formatting then
-				vim.api.nvim_create_augroup(
-					"nulllsFormatGroup",
-					{ clear = true }
-				)
+				vim.api.nvim_create_augroup("nulllsFormatGroup", { clear = true })
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					group = "nulllsFormatGroup",
 					pattern = "*",
@@ -190,40 +179,15 @@ M.null_ls = function()
 			end
 		end,
 	}
-	vim.keymap.set(
-		"n",
-		"<C-f>",
-		"<Cmd>lua vim.lsp.buf.formatting()<cr>",
-		{ silent = true }
-	)
-	vim.keymap.set(
-		"v",
-		"<C-f>",
-		"<Cmd>lua vim.lsp.buf.range_formatting()<cr>",
-		{ silent = true }
-	)
+	vim.keymap.set("n", "<C-f>", "<Cmd>lua vim.lsp.buf.formatting()<cr>", { silent = true })
+	vim.keymap.set("v", "<C-f>", "<Cmd>lua vim.lsp.buf.range_formatting()<cr>", { silent = true })
 end
 
 M.trouble = function()
 	require("trouble").setup {}
-	vim.keymap.set(
-		"n",
-		"<leader>tt",
-		"<cmd>TroubleToggle<cr>",
-		{ silent = true }
-	)
-	vim.keymap.set(
-		"n",
-		"<leader>td",
-		"<cmd>TroubleToggle document_diagnostics<cr>",
-		{ silent = true }
-	)
-	vim.keymap.set(
-		"n",
-		"<leader>tw",
-		"<cmd>TroubleToggle workspace_diagnostics<cr>",
-		{ silent = true }
-	)
+	vim.keymap.set("n", "<leader>tt", "<cmd>TroubleToggle<cr>", { silent = true })
+	vim.keymap.set("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true })
+	vim.keymap.set("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true })
 end
 
 M.todo_comments = function()
@@ -248,42 +212,12 @@ M.venn = function()
 			vim.b.venn_enabled = true
 			vim.cmd [[setlocal ve=all]]
 			-- draw a line on HJKL keystokes
-			vim.api.nvim_buf_set_keymap(
-				0,
-				"n",
-				"J",
-				"<C-v>j:VBox<CR>",
-				{ noremap = true }
-			)
-			vim.api.nvim_buf_set_keymap(
-				0,
-				"n",
-				"K",
-				"<C-v>k:VBox<CR>",
-				{ noremap = true }
-			)
-			vim.api.nvim_buf_set_keymap(
-				0,
-				"n",
-				"L",
-				"<C-v>l:VBox<CR>",
-				{ noremap = true }
-			)
-			vim.api.nvim_buf_set_keymap(
-				0,
-				"n",
-				"H",
-				"<C-v>h:VBox<CR>",
-				{ noremap = true }
-			)
+			vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", { noremap = true })
+			vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", { noremap = true })
+			vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", { noremap = true })
+			vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", { noremap = true })
 			-- draw a box by pressing "f" with visual selection
-			vim.api.nvim_buf_set_keymap(
-				0,
-				"v",
-				"f",
-				":VBox<CR>",
-				{ noremap = true }
-			)
+			vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", { noremap = true })
 		else
 			vim.cmd [[setlocal ve=]]
 			vim.cmd [[mapclear <buffer>]]

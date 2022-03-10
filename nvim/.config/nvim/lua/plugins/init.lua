@@ -1,14 +1,10 @@
 ---@diagnostic disable: different-requires
 
 -- Install packer
-local install_path = vim.fn.stdpath "data"
-	.. "/site/pack/packer/start/packer.nvim"
+local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	PackerBootstrap = vim.fn.execute(
-		"!git clone --depth 1 https://github.com/wbthomason/packer.nvim "
-			.. install_path
-	)
+	PackerBootstrap = vim.fn.execute("!git clone --depth 1 https://github.com/wbthomason/packer.nvim " .. install_path)
 	vim.cmd [[ packadd packer.nvim ]]
 end
 
@@ -70,6 +66,9 @@ return require("packer").startup {
 					opt = true,
 					event = "BufRead",
 					cmd = "ZenMode",
+					config = function()
+						vim.keymap.set("n", "<leader>tz", "<cmd>ZenMode<cr>", { silent = true })
+					end,
 				},
 			},
 

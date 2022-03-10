@@ -16,18 +16,8 @@ vim.keymap.set("n", "<leader>bj", "<cmd>bnext<CR>", { silent = true })
 vim.keymap.set("n", "<leader>bk", "<cmd>bprevious<CR>", { silent = true })
 
 -- Moviment
-vim.keymap.set(
-	"n",
-	"k",
-	"v:count == 0 ? 'gk' : 'k'",
-	{ noremap = true, expr = true, silent = true }
-)
-vim.keymap.set(
-	"n",
-	"j",
-	"v:count == 0 ? 'gj' : 'j'",
-	{ noremap = true, expr = true, silent = true }
-)
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
 vim.keymap.set("v", "j", "gj", { silent = true })
 vim.keymap.set("v", "k", "gk", { silent = true })
 
