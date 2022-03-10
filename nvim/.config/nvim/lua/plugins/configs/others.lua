@@ -208,7 +208,7 @@ M.trouble = function()
 	require("trouble").setup {}
 	vim.keymap.set(
 		"n",
-		"<leader>to",
+		"<leader>tt",
 		"<cmd>TroubleToggle<cr>",
 		{ silent = true }
 	)
@@ -224,6 +224,11 @@ M.trouble = function()
 		"<cmd>TroubleToggle workspace_diagnostics<cr>",
 		{ silent = true }
 	)
+end
+
+M.todo_comments = function()
+	require("todo-comments").setup()
+	vim.keymap.set("n", "<leader>to", "<cmd>TodoTrouble<cr>", { silent = true })
 end
 
 M.harpoon = function()

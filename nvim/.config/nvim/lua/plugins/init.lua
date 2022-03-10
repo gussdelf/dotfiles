@@ -178,6 +178,13 @@ return require("packer").startup {
 						require("plugins.configs.others").colorizer()
 					end,
 				},
+				{
+					"folke/todo-comments.nvim",
+					event = "BufRead",
+					config = function()
+						require("plugins.configs.others").todo_comments()
+					end,
+				},
 			},
 
 			-- Snippets
