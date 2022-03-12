@@ -36,7 +36,6 @@ return require("packer").startup {
 						"EdenEast/nightfox.nvim",
 						"rebelot/kanagawa.nvim",
 						"olimorris/onedarkpro.nvim",
-						"ishan9299/nvim-solarized-lua",
 					},
 					config = function()
 						require "plugins.configs.color"
