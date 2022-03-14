@@ -52,4 +52,4 @@ if [ -e  /opt/asdf-vm/asdf.sh ]; then . /opt/asdf-vm/asdf.sh; fi
 # nix
 if [ -e /home/haunter/.nix-profile/etc/profile.d/nix.sh ]; then . /home/haunter/.nix-profile/etc/profile.d/nix.sh; fi 
 
-cl
+if [ -e /usr/local/bin/cl ]; then cl; fi
