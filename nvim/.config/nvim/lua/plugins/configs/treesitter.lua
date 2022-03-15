@@ -9,9 +9,9 @@ require("nvim-treesitter.configs").setup {
 	incremental_selection = {
 		enable = true,
 		keymaps = {
-			init_selection = "gnn",
+			init_selection = "<cr>",
+			scope_incremental = "<cr>",
 			node_incremental = "grn",
-			scope_incremental = "grc",
 			node_decremental = "grm",
 		},
 	},
@@ -36,12 +36,14 @@ require("nvim-treesitter.configs").setup {
 			lookahead = true,
 			keymaps = {
 				-- textobjects.scm
+				["ac"] = "@comment.outer",
+				["ic"] = "@comment.inner",
 				["af"] = "@function.outer",
 				["if"] = "@function.inner",
-				["ac"] = "@class.outer",
-				["ic"] = "@class.inner",
 				["ap"] = "@parameter.outer",
 				["ip"] = "@parameter.inner",
+				["ao"] = "@class.outer",
+				["io"] = "@class.inner",
 			},
 		},
 		move = {
@@ -65,4 +67,26 @@ require("nvim-treesitter.configs").setup {
 			},
 		},
 	},
+	playground = {
+		enable = true,
+		disable = {},
+		updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+		persist_queries = false, -- Whether the query persists across vim sessions
+		keybindings = {
+			toggle_query_editor = "o",
+			toggle_hl_groups = "i",
+			toggle_injected_languages = "t",
+			toggle_anonymous_nodes = "a",
+			toggle_language_display = "I",
+			focus_language = "f",
+			unfocus_language = "F",
+			update = "R",
+			goto_node = "<cr>",
+			show_help = "?",
+		},
+	},
 }
+
+local hello = function(pas)
+	print(pas)
+end
