@@ -86,7 +86,3 @@ require("nvim-treesitter.configs").setup {
 		},
 	},
 }
-
-local hello = function(pas)
-	print(pas)
-end
