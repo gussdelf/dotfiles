@@ -1,4 +1,5 @@
 local o = vim.opt
+
 -- Termguicolors
 o.termguicolors = true
 

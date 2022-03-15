@@ -60,6 +60,7 @@ lspLangs = {
 	"vim",
 	"ruby",
 	"python",
+	"julia",
 }
 tsEnsureInstall = {
 	"lua",
@@ -89,6 +90,7 @@ tsEnsureInstall = {
 	"fennel",
 	"commonlisp",
 	"java",
+	"julia",
 }
 
 tsFileTypes = {
@@ -123,6 +125,7 @@ tsFileTypes = {
 	"fennel",
 	"lisp",
 	"java",
+	"julia",
 }
 
 vim.api.nvim_create_autocmd("TermOpen", {
