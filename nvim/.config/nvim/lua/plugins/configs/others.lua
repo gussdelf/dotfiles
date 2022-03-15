@@ -206,7 +206,7 @@ M.harpoon = function()
 		require("harpoon.mark").add_file()
 	end, { silent = true })
 
-	vim.keymap.set("n", "<leader><leader>", function()
+	vim.keymap.set("n", "<leader>o", function()
 		require("harpoon.ui").toggle_quick_menu()
 	end, { silent = true })
 end
