@@ -2,7 +2,7 @@
 # Nightfox colors for Tmux
 # Style: nightfox
 # Upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/nightfox/nightfox_tmux.tmux
-set -g mode-style "fg=#7E9CD8,bg=#1F1F28"
+set -g mode-style "fg=#7E9CD8,bg=#223249"
 set -g message-style "fg=#7E9CD8,bg=#1F1F28"
 set -g message-command-style "fg=#7E9CD8,bg=#1F1F28"
 set -g pane-border-style "fg=#1F1F28"
