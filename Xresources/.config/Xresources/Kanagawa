@@ -1,6 +1,6 @@
 ! kanagawa .Xresources file
 st.alpha: 1.0
-st.font: JetBrainsMono Nerd Font:style:regular:pixelsize=15
+st.font: JetBrainsMono Nerd Font:style:regular:pixelsize=15:antialias=true:autohint=true
 
 *background: #1F1F28
 *foreground: #DCD7BA
