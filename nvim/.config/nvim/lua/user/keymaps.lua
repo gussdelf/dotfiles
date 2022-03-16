@@ -4,7 +4,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Window managment
-
 vim.keymap.set("n", "<leader>wj", "<cmd>wincmd j<cr>", { silent = true }) -- Window down
 vim.keymap.set("n", "<leader>wk", "<cmd>wincmd k<cr>", { silent = true }) -- Window up
 vim.keymap.set("n", "<leader>wl", "<cmd>wincmd l<cr>", { silent = true }) -- Window right
@@ -41,6 +40,9 @@ vim.keymap.set("v", "k", "gk", { silent = true })
 -- File
 vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { silent = true })
 
+-- I don't like press 2 buttons to enter in the cmd mode.
+vim.keymap.set({ "n", "v" }, "ç", ":", { silent = false })
+vim.keymap.set({ "n", "v" }, ";", ":", { silent = false })
+
 -- others
 vim.keymap.set("n", "<Esc>", ":noh<CR>", { silent = true })
-vim.keymap.set({ "n", "v" }, "ç", ":", { silent = false })
