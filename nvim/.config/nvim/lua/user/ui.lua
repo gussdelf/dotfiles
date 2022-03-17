@@ -28,6 +28,17 @@ o.list = true
 -- signcolumn
 o.signcolumn = "yes"
 
+-- Statusline
+-- Using aucmds for now
+vim.api.nvim_create_augroup("GlobalStatusLine", { clear = true })
+vim.api.nvim_create_autocmd("VimEnter", {
+	group = "GlobalStatusLine",
+	pattern = "*",
+	callback = function()
+		vim.opt.laststatus = 3
+	end,
+})
+
 -- Others
 o.showmode = false
 o.guicursor = "n-i:blinkon100,v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
