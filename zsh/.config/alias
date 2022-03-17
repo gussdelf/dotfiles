@@ -3,11 +3,9 @@
 ##Aliases
 alias c='clear;'\
 	n='nnn -e'\
-	:q='exit'\
-	:e='$EDITOR'\
 	xx='chmod +x'\
 	ww="wget"\
-	lg='lazygit'\
+	lz='lazygit'\
 	nf='neofetch'\
 	se='sudoedit'\
 	nw='newsboat'\
@@ -19,6 +17,7 @@ alias c='clear;'\
 	la='exa -s type -la --git --icons'\
 	lla='exa -s type -la --git --icons'\
 	lsa="exa -s type -a --git --icons"\
+	vim='nvim'\
 	doo='doas'\
 	del='doas rm -rf'\
 	zzz='systemctl suspend'\
@@ -33,8 +32,6 @@ alias c='clear;'\
 	\
 	bspwm='startx ~/.config/X11/bspwm'\
 	awesomewm='startx ~/.config/X11/awesome'\
-	ddwm='startx ~/.config/X11/dwm'\
-	qtil='startx ~/.config/X11/qtile'\
 	\
 	pcomp='nvim +PackerCompile'\
 	psync='nvim +PackerSync'

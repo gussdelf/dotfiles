@@ -88,4 +88,4 @@ ColorKana = function(tbg)
 	vim.cmd [[ hi MatchParen gui=underline ]]
 end
 
-ColorKana(true)
+ColorMatGruv(true)
