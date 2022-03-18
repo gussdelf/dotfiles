@@ -11,15 +11,15 @@ o.relativenumber = true
 o.cursorline = true
 
 -- Highlight on yank
--- vim.api.nvim_create_augroup("YankHighlight", { clear = true })
--- vim.api.nvim_create_autocmd("TextYankPost", {
--- 	group = "YankHighlight",
--- 	pattern = "*",
--- 	callback = function()
--- 		vim.highlight.on_yank()
--- 	end,
--- })
-vim.highlight.on_yank()
+vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = "YankHighlight",
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
+
 -- Chars
 o.fillchars = { eob = " " }
 o.listchars = { tab = "» " }
@@ -27,17 +27,6 @@ o.list = true
 
 -- signcolumn
 o.signcolumn = "yes"
-
--- Statusline
--- Using aucmds for now
-vim.api.nvim_create_augroup("GlobalStatusLine", { clear = true })
-vim.api.nvim_create_autocmd("VimEnter", {
-	group = "GlobalStatusLine",
-	pattern = "*",
-	callback = function()
-		vim.opt.laststatus = 3
-	end,
-})
 
 -- Others
 o.showmode = false

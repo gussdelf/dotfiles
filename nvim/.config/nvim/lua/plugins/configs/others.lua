@@ -17,6 +17,7 @@ M.lualine = function()
 		},
 		extensions = { "toggleterm" },
 	}
+	vim.opt.laststatus = 3
 end
 
 M.bufferline = function()
