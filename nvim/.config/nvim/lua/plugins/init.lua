@@ -8,7 +8,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.cmd [[ packadd packer.nvim ]]
 end
 
--- Adding packer.nvim
+-- Require packer_compiled
 pcall(require, "packer_compiled")
 
 return require("packer").startup {
@@ -119,7 +119,7 @@ return require("packer").startup {
 			{
 				"nvim-telescope/telescope.nvim",
 				module = "telescope",
-				event = "BufWinEnter",
+				event = "VimEnter",
 				requires = {
 					{
 						"nvim-telescope/telescope-fzf-native.nvim",
@@ -135,6 +135,7 @@ return require("packer").startup {
 			},
 			{
 				"ThePrimeagen/harpoon",
+				opt = true,
 				event = "BufRead",
 				config = function()
 					require("plugins.configs.others").harpoon()
@@ -172,7 +173,7 @@ return require("packer").startup {
 				},
 				{
 					"nacro90/numb.nvim",
-					event = "VimEnter",
+					event = "BufRead",
 					config = function()
 						require("numb").setup {
 							show_numbers = true,
@@ -201,6 +202,7 @@ return require("packer").startup {
 				{
 					"rafamadriz/friendly-snippets",
 					evert = "InsertCharPre",
+					ft = lspLangs,
 				},
 				{
 					"L3MON4D3/LuaSnip",
@@ -339,7 +341,7 @@ return require("packer").startup {
 		compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
 		display = {
 			open_fn = function()
-				return require("packer.util").float { border = "rounded" }
+				return require("packer.util").float { border = "single" }
 			end,
 		},
 	},
