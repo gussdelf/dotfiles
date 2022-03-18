@@ -33,7 +33,6 @@ return require("packer").startup {
 					event = "VimEnter",
 					requires = {
 						"sainnhe/edge",
-						"EdenEast/nightfox.nvim",
 						"rebelot/kanagawa.nvim",
 					},
 					config = function()

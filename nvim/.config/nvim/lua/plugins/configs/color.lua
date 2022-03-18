@@ -40,33 +40,6 @@ ColorEdge = function(tbg)
 	]]
 end
 
-ColorFox = function(tbg)
-	require("nightfox").setup {
-		fox = "nordfox",
-		transparent = tbg,
-		alt_nc = false,
-		terminal_colors = true,
-		styles = {
-			comments = "italic",
-			strings = "italic",
-			functions = "italic,bold",
-			keywords = "bold",
-			-- variables = "",
-		},
-		inverse = {
-			match_paren = true,
-			visual = true,
-			search = false,
-		},
-		colors = {},
-		hlgroups = {
-			TelescopeMatching = { style = "underline" },
-			MatchParen = { style = "underline" },
-		},
-	}
-	require("nightfox").load()
-end
-
 ColorKana = function(tbg)
 	-- Default options:
 	require("kanagawa").setup {
