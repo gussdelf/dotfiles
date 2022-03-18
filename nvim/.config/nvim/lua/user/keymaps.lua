@@ -29,7 +29,7 @@ vim.keymap.set("n", "<leader>wq", "<cmd>close<cr>", { silent = true }) -- Close 
 -- Buffer
 vim.keymap.set("n", "<leader>bj", "<cmd>bnext<CR>", { silent = true })
 vim.keymap.set("n", "<leader>bk", "<cmd>bprevious<CR>", { silent = true })
-vim.keymap.set("n", "<leader>wq", "<cmd>bw<cr>", { silent = true }) -- Close buffer
+vim.keymap.set("n", "<leader>bc", "<cmd>bw<cr>", { silent = true }) -- Close buffer
 
 -- Moviment
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })

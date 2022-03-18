@@ -11,15 +11,15 @@ o.relativenumber = true
 o.cursorline = true
 
 -- Highlight on yank
-vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-	group = "YankHighlight",
-	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})
-
+-- vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+-- vim.api.nvim_create_autocmd("TextYankPost", {
+-- 	group = "YankHighlight",
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		vim.highlight.on_yank()
+-- 	end,
+-- })
+vim.highlight.on_yank()
 -- Chars
 o.fillchars = { eob = " " }
 o.listchars = { tab = "» " }
