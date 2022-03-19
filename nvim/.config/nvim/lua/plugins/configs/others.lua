@@ -55,6 +55,7 @@ M.hop = function()
 	vim.keymap.set({ "n", "v", "o" }, "F", function()
 		require("hop").hint_lines()
 	end, { silent = true })
+
 	vim.keymap.set({ "n", "v", "o" }, "f", function()
 		require("hop").hint_words()
 	end, { silent = true })
@@ -168,7 +169,7 @@ M.null_ls = function()
 			require("null-ls").builtins.formatting.black,
 			require("null-ls").builtins.formatting.clang_format,
 			require("null-ls").builtins.formatting.deno_fmt.with {
-				extra_args = function(params)
+				extra_args = function()
 					return {
 						"--options-use-tabs",
 					}

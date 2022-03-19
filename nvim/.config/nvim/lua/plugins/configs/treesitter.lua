@@ -17,8 +17,8 @@ require("nvim-treesitter.configs").setup {
 	},
 	rainbow = {
 		enable = true,
-		extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-		max_file_lines = nil, -- Do not enable for files with more than n lines, int
+		extended_mode = true,
+		max_file_lines = nil,
 	},
 	autotag = {
 		enable = true,
@@ -70,8 +70,8 @@ require("nvim-treesitter.configs").setup {
 	playground = {
 		enable = true,
 		disable = {},
-		updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-		persist_queries = false, -- Whether the query persists across vim sessions
+		updatetime = 25,
+		persist_queries = false,
 		keybindings = {
 			toggle_query_editor = "o",
 			toggle_hl_groups = "i",

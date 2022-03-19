@@ -1,6 +1,4 @@
 ---@diagnostic disable: different-requires
-local M = {}
-
 require("telescope").setup {
 	defaults = {
 		mappings = {
@@ -50,7 +48,7 @@ require("telescope").setup {
 	},
 }
 
-M.minimal = function()
+local minimal = function()
 	return require("telescope.themes").get_dropdown {
 		borderchars = {
 			{ "─", "│", "─", "│", "┌", "┐", "┘", "└" },
@@ -91,23 +89,23 @@ require("telescope").load_extension "fzf"
 require("telescope").load_extension "zoxide"
 
 vim.keymap.set("n", "<leader>te", function()
-	require("telescope.builtin").builtin(M.minimal())
+	require("telescope.builtin").builtin(minimal())
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>ff", function()
-	require("telescope.builtin").find_files(M.minimal())
+	require("telescope.builtin").find_files(minimal())
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>fp", function()
-	require("telescope.builtin").git_files(M.minimal())
+	require("telescope.builtin").git_files(minimal())
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>ft", function()
-	require("telescope.builtin").filetypes(M.minimal())
+	require("telescope.builtin").filetypes(minimal())
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>j", function()
-	require("telescope").extensions.zoxide.list(M.minimal())
+	require("telescope").extensions.zoxide.list(minimal())
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>fg", function()
@@ -115,7 +113,7 @@ vim.keymap.set("n", "<leader>fg", function()
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>bb", function()
-	require("telescope.builtin").buffers(M.minimal())
+	require("telescope.builtin").buffers(minimal())
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>fh", function()
@@ -123,11 +121,11 @@ vim.keymap.set("n", "<leader>fh", function()
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>hm", function()
-	require("telescope.builtin").man_pages(M.minimal())
+	require("telescope.builtin").man_pages(minimal())
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>is", function()
-	require("telescope.builtin").symbols(M.minimal())
+	require("telescope.builtin").symbols(minimal())
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>di", function()
@@ -139,7 +137,5 @@ vim.keymap.set("n", "<leader>ss", function()
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>ht", function() -- Yes i like doom emacs keybindings
-	require("telescope.builtin").colorscheme(M.minimal())
+	require("telescope.builtin").colorscheme(minimal())
 end, { silent = true, noremap = true })
-
-return M
