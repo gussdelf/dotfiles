@@ -14,8 +14,11 @@ pcall(require, "packer_compiled")
 return require("packer").startup {
 	function()
 		use {
+			-- Some indispensable plugins
 			"wbthomason/packer.nvim",
 			"nvim-lua/plenary.nvim",
+			"tpope/vim-surround",
+			"tpope/vim-repeat",
 
 			-- Improve startup time
 			{
@@ -141,8 +144,12 @@ return require("packer").startup {
 				end,
 			},
 
-			-- Some utils plugins
+			-- Some useful plugins
 			{
+				{
+					"duggiefresh/vim-easydir",
+					event = "BufWritePre",
+				},
 				{
 					"phaazon/hop.nvim",
 					event = "BufWinEnter",
