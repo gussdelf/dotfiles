@@ -158,6 +158,15 @@ return require("packer").startup {
 					end,
 				},
 				{
+					"abecodes/tabout.nvim",
+					config = function()
+						require("tabout").setup {
+							completion = false,
+							ignore_beginning = false,
+						}
+					end,
+				},
+				{
 					"booperlv/nvim-gomove",
 					event = "BufWinEnter",
 					config = function()
