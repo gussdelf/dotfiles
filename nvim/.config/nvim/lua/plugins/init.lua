@@ -19,6 +19,7 @@ return require("packer").startup {
 			"nvim-lua/plenary.nvim",
 			"tpope/vim-surround",
 			"tpope/vim-repeat",
+			{ "tpope/vim-eunuch", vim.keymap.set("n", "<leader>sf", "<cmd>SudoWrite<cr>", { silent = true }) },
 
 			-- Improve startup time
 			{
@@ -115,6 +116,16 @@ return require("packer").startup {
 					opt = true,
 					after = "nvim-treesitter",
 				},
+				{
+					"abecodes/tabout.nvim",
+					after = "nvim-treesitter",
+					config = function()
+						require("tabout").setup {
+							completion = false,
+							ignore_beginning = false,
+						}
+					end,
+				},
 			},
 
 			-- Telescope
@@ -155,15 +166,6 @@ return require("packer").startup {
 					event = "BufWinEnter",
 					config = function()
 						require("plugins.configs.others").hop()
-					end,
-				},
-				{
-					"abecodes/tabout.nvim",
-					config = function()
-						require("tabout").setup {
-							completion = false,
-							ignore_beginning = false,
-						}
 					end,
 				},
 				{
