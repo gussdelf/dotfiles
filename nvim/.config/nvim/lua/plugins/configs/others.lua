@@ -13,6 +13,7 @@ M.lualine = function()
 				"NvimTree",
 				"packer",
 				"Outline",
+				"TelescopePrompt",
 			},
 		},
 		extensions = { "toggleterm" },

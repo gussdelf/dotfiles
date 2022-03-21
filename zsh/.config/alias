@@ -18,6 +18,7 @@ alias c='clear;'\
 	lla='exa -s type -la --git --icons'\
 	lsa="exa -s type -a --git --icons"\
 	vim='nvim'\
+	cmd='command'\
 	doo='doas'\
 	del='doas rm -rf'\
 	zzz='systemctl suspend'\
