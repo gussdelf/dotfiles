@@ -15,16 +15,22 @@ return require("packer").startup {
 	function()
 		use {
 			-- Some indispensable plugins
-			"wbthomason/packer.nvim",
-			"nvim-lua/plenary.nvim",
-			"tpope/vim-surround",
-			"tpope/vim-repeat",
 			{
-				"tpope/vim-eunuch",
-				cmd = { "SudoWrite" },
-				vim.keymap.set("n", "<leader>sf", "<cmd>SudoWrite<cr>", { silent = true }),
+				"wbthomason/packer.nvim",
+				"nvim-lua/plenary.nvim",
+				"tpope/vim-repeat",
+				{
+					"echasnovski/mini.nvim",
+					config = function()
+						require("plugins.configs.others").mini()
+					end,
+				},
+				{
+					"tpope/vim-eunuch",
+					cmd = { "SudoWrite" },
+					vim.keymap.set("n", "<leader>sf", "<cmd>SudoWrite<cr>", { silent = true }),
+				},
 			},
-
 			-- Improve startup time
 			{
 				"lewis6991/impatient.nvim",
