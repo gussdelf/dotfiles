@@ -52,4 +52,5 @@
 *color20:      base04
 *color21:      base06
 
-st.font: SauceCodePro Nerd Font:style:medium:pixelsize=15
+st.alpha: 1.0
+st.font: JetBrainsMono Nerd Font:style:regular:pixelsize=15:antialias=true:autohint=true

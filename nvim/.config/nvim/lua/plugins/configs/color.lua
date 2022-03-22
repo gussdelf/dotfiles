@@ -31,6 +31,7 @@ ColorEdge = function(tbg)
 
 	vim.cmd [[
 		hi SpecialKey guifg=#cc241d
+		hi TelescopeMatching guibg=#a0c980 guifg=#2b2d3a
 		" hi SpecialKeyWin guifg=#3c3836
 
 		" set winhighlight=SpecialKey:SpecialKeyWin
@@ -57,7 +58,10 @@ ColorKana = function(tbg)
 
 	-- setup must be called before loading
 	vim.cmd [[ colorscheme kanagawa ]]
-	vim.cmd [[ hi MatchParen gui=underline ]]
+	vim.cmd [[
+		hi MatchParen gui=underline 
+		hi TelescopeMatching guibg=#2D4F67 guifg=#DCD7BA
+	]]
 end
 
 ColorMatGruv(true)
