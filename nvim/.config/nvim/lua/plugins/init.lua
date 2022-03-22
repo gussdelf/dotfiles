@@ -19,7 +19,11 @@ return require("packer").startup {
 			"nvim-lua/plenary.nvim",
 			"tpope/vim-surround",
 			"tpope/vim-repeat",
-			{ "tpope/vim-eunuch", vim.keymap.set("n", "<leader>sf", "<cmd>SudoWrite<cr>", { silent = true }) },
+			{
+				"tpope/vim-eunuch",
+				cmd = { "SudoWrite" },
+				vim.keymap.set("n", "<leader>sf", "<cmd>SudoWrite<cr>", { silent = true }),
+			},
 
 			-- Improve startup time
 			{
