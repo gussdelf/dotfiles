@@ -91,83 +91,13 @@ M.signature = function()
 	}
 end
 
-M.navigator = function()
-	require("navigator").setup {
-		transparency = 100,
-		default_mapping = false,
-		keymaps = {
-			{
-				key = "gr",
-				func = "require('navigator.reference').reference()",
-			},
-			{ key = "gK", func = "declaration()" },
-			{ key = "gd", func = "definition()" },
-			{
-				key = "gsy",
-				func = "require('navigator.symbols').document_symbols()",
-			},
-			{
-				key = "gW",
-				func = "require('navigator.workspace').workspace_symbol()",
-			},
-			{
-				key = "gp",
-				func = "require('navigator.definition').definition_preview()",
-			},
-			{
-				key = "K",
-				func = "hover({ popup_opts = { border = single, max_width = 80 }})",
-			},
-			{
-				key = "<leader>ca",
-				mode = "n",
-				func = "require('navigator.codeAction').code_action()",
-			},
-			{ key = "<leader>cA", mode = "v", func = "range_code_action()" },
-			{
-				key = "<leader>rn",
-				func = "require('navigator.rename').rename()",
-			},
-			{
-				key = "gL",
-				func = "require('navigator.diagnostics').show_diagnostics()",
-			},
-			{
-				key = "gG",
-				func = "require('navigator.diagnostics').show_buf_diagnostics()",
-			},
-		},
-		icons = {
-			icons = false,
-			code_action_icon = "💡",
-			diagnostic_err = "🚨",
-		},
-		lsp = {
-			disable_format_cap = {
-				"sumneko_lua",
-				"rust-analyzer",
-				"gopls",
-				"tsserver",
-				"denols",
-				"pyright",
-				"clangd",
-			}, -- For avoiding conflicts with null-ls
-		},
-	}
-	vim.cmd [[
-		hi default GHTextViewDark guifg=#e0d8f4
-		hi default GHListDark guifg=#e0d8f4
-		hi default GHListHl guifg=#e0d8f4 guibg=none
-	]]
-end
-
 M.null_ls = function()
 	require("null-ls").setup {
 		sources = {
 			require("null-ls").builtins.formatting.stylua,
-			require("null-ls").builtins.formatting.rustfmt,
 			require("null-ls").builtins.formatting.gofmt,
 			require("null-ls").builtins.formatting.black,
+			require("null-ls").builtins.formatting.rustfmt,
 			require("null-ls").builtins.formatting.clang_format,
 			require("null-ls").builtins.formatting.deno_fmt.with {
 				extra_args = function()
@@ -245,31 +175,6 @@ M.nabla = function()
 	vim.keymap.set("n", "<leader>p", function()
 		require("nabla").popup()
 	end, { silent = true })
-end
-
-M.mini = function()
-	require("mini.surround").setup {
-		-- Number of lines within which surrounding is searched
-		n_lines = 20,
-
-		-- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
-		highlight_duration = 500,
-
-		-- Pattern to match function name in 'function call' surrounding
-		-- By default it is a string of letters, '_' or '.'
-		funname_pattern = "[%w_%.]+",
-
-		-- Module mappings. Use `''` (empty string) to disable one.
-		mappings = {
-			add = "sa", -- Add surrounding
-			delete = "sd", -- Delete surrounding
-			find = "sf", -- Find surrounding (to the right)
-			find_left = "sF", -- Find surrounding (to the left)
-			highlight = "sh", -- Highlight surrounding
-			replace = "sr", -- Replace surrounding
-			update_n_lines = "sn", -- Update `n_lines`
-		},
-	}
 end
 
 return M

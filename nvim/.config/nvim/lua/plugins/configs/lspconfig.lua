@@ -1,111 +1,83 @@
 ---@diagnostic disable: different-requires
-local nvim_lsp = require "lspconfig"
-
-vim.diagnostic.config {
-	virtual_text = true,
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-	severity_sort = false,
-}
-
-local on_attach = function(client)
-	client.resolved_capabilities.document_formatting = true
-	client.resolved_capabilities.document_range_formatting = true
-end
-
-nvim_lsp.sumneko_lua.setup {
-	settings = {
-		Lua = {
-			diagnostics = {
-				enable = true,
-				globals = {
-					"vim",
-					"describe",
-					"it",
-					"before_each",
-					"after_each",
-					"awesome",
-					"theme",
-					"client",
-					"P",
-				},
-			},
-			runtime = {
-				version = "LuaJIT",
-				path = runtime_path,
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand "$VIMRUNTIME/lua"] = true,
-					[vim.fn.stdpath "config" .. "/lua"] = true,
-					[vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-				},
-				maxPreload = 100000,
-				preloadFileSize = 10000,
-			},
-			telemetry = {
-				enable = false,
-			},
+--
+require("navigator").setup {
+	transparency = 100,
+	default_mapping = false,
+	icons = {
+		icons = false,
+		code_action_icon = "",
+		diagnostic_err = "",
+	},
+	lsp = {
+		format_on_save = true,
+		disable_format_cap = {
+			"sumneko_lua",
+			"gopls",
+			"tsserver",
+			"denols",
+			"pyright",
+			"clangd",
+			"rust_analyzer",
 		},
 	},
-	on_attach = on_attach,
-}
-
-nvim_lsp.jdtls.setup {
-	on_attach = on_attach,
-	root_dir = vim.loop.cwd,
-	cmd = { "jdtls" },
-}
-
-nvim_lsp.rust_analyzer.setup {
-	on_attach = function(client)
-		client.resolved_capabilities.document_formatting = false
-		client.resolved_capabilities.document_range_formatting = false
-	end,
-	settings = {
-		["rust-analyzer"] = {
-			assist = {
-				importGranularity = "module",
-				importPrefix = "by_self",
-			},
-			cargo = {
-				loadOutDirsFromCheck = true,
-			},
-			procMacro = {
-				enable = true,
-			},
-			format = {
-				enable = false,
-			},
+	servers = {
+		"gopls",
+		"denols",
+		"bashls",
+		"julials",
+		"solargraph",
+		"rust_analyzer",
+		"clangd",
+	},
+	keymaps = {
+		{
+			key = "gr",
+			func = "require('navigator.reference').reference()",
+		},
+		{ key = "gK", func = "declaration()" },
+		{ key = "gd", func = "definition()" },
+		{
+			key = "gsy",
+			func = "require('navigator.symbols').document_symbols()",
+		},
+		{
+			key = "gW",
+			func = "require('navigator.workspace').workspace_symbol()",
+		},
+		{
+			key = "gp",
+			func = "require('navigator.definition').definition_preview()",
+		},
+		{
+			key = "K",
+			func = "hover({ popup_opts = { border = single, max_width = 80 }})",
+		},
+		{
+			key = "<leader>ca",
+			mode = "n",
+			func = "require('navigator.codeAction').code_action()",
+		},
+		{ key = "<leader>cA", mode = "v", func = "range_code_action()" },
+		{
+			key = "<leader>rn",
+			func = "require('navigator.rename').rename()",
+		},
+		{
+			key = "gL",
+			func = "require('navigator.diagnostics').show_diagnostics()",
+		},
+		{
+			key = "gG",
+			func = "require('navigator.diagnostics').show_buf_diagnostics()",
 		},
 	},
 }
 
-local servers = {
-	"pyright",
-	"clangd",
-	"gopls",
-	-- "tsserver",
-	"denols",
-	"texlab",
-	"bashls",
-	"html",
-	"cssls",
-	"solargraph",
-	"julials",
-}
-for _, lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup {
-		on_attach = on_attach,
-	}
-end
-
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+vim.cmd [[
+	hi default GHTextViewDark guifg=#e0d8f4
+	hi default GHListDark guifg=#e0d8f4
+	hi default GHListHl guifg=#e0d8f4 guibg=none
+]]
 
 vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { silent = true })
 vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>", { silent = true })

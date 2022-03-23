@@ -18,13 +18,8 @@ return require("packer").startup {
 			{
 				"wbthomason/packer.nvim",
 				"nvim-lua/plenary.nvim",
+				"tpope/vim-surround",
 				"tpope/vim-repeat",
-				{
-					"echasnovski/mini.nvim",
-					config = function()
-						require("plugins.configs.others").mini()
-					end,
-				},
 				{
 					"tpope/vim-eunuch",
 					cmd = { "SudoWrite" },
@@ -285,8 +280,12 @@ return require("packer").startup {
 			-- Lsp stuff
 			{
 				{
-					"neovim/nvim-lspconfig",
+					"ray-x/navigator.lua",
 					ft = lspLangs,
+					requires = {
+						{ "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+						"neovim/nvim-lspconfig",
+					},
 					config = function()
 						require "plugins.configs.lspconfig"
 					end,
@@ -296,17 +295,6 @@ return require("packer").startup {
 					ft = lspLangs,
 					config = function()
 						require("plugins.configs.others").signature()
-					end,
-				},
-				{
-					"ray-x/navigator.lua",
-					ft = lspLangs,
-					requires = {
-						"ray-x/guihua.lua",
-						run = "cd lua/fzy && make",
-					},
-					config = function()
-						require("plugins.configs.others").navigator()
 					end,
 				},
 				{
