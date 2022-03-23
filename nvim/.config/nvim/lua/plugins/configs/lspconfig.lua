@@ -1,5 +1,7 @@
+local M = {}
+
 ---@diagnostic disable: different-requires
---
+
 require("navigator").setup {
 	transparency = 100,
 	default_mapping = false,
@@ -7,6 +9,9 @@ require("navigator").setup {
 		icons = false,
 		code_action_icon = "",
 		diagnostic_err = "",
+		diagnostic_warn = "",
+		diagnostic_info = "",
+		diagnostic_virtual_text = "",
 	},
 	lsp = {
 		format_on_save = true,
@@ -83,3 +88,29 @@ vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { silent = true })
 vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>", { silent = true })
 vim.keymap.set("n", "<leader>ls", "<cmd>LspStart<cr>", { silent = true })
 vim.keymap.set("n", "<leader>lS", "<cmd>LspStop<cr>", { silent = true })
+
+-- vim.diagnostic.config {
+-- 	virtual_text = true,
+-- 	signs = true,
+-- 	underline = true,
+-- 	update_in_insert = false,
+-- 	severity_sort = false,
+-- }
+
+-- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+-- for type, icon in pairs(signs) do
+-- 	local hl = "DiagnosticSign" .. type
+-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+-- end
+
+M.go = function()
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		pattern = "*.go",
+		callback = function()
+			require("go.format").goimport() -- goimport + gofmt
+		end,
+	})
+	require("go").setup()
+end
+
+return M
