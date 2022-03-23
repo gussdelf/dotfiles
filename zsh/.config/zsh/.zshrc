@@ -47,9 +47,7 @@ ZSH_HIGHLIGHT_STYLES[comment]=fg=245 # Fix invisible comments
 eval "$(zoxide init --cmd j zsh)"
 
 # asdf
-if [ -e  /opt/asdf-vm/asdf.sh ]; then . /opt/asdf-vm/asdf.sh; fi
+if [ -e  $PATH/asdf.sh ]; then . /opt/asdf-vm/asdf.sh; fi
 
 # nix
-if [ -e /home/haunter/.nix-profile/etc/profile.d/nix.sh ]; then . /home/haunter/.nix-profile/etc/profile.d/nix.sh; fi 
-
-if [ -e /usr/local/bin/cl ]; then cl; fi
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi 
