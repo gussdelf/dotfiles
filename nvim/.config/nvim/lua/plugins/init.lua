@@ -313,6 +313,29 @@ return require("packer").startup {
 				},
 			},
 
+			-- nvim-dap
+			{
+				{
+					"mfussenegger/nvim-dap",
+					ft = lspLangs,
+				},
+				{
+					"rcarriga/nvim-dap-ui",
+					ft = lspLangs,
+					after = "nvim-dap",
+				},
+			},
+
+			-- Go
+			{
+				"ray-x/go.nvim",
+				ft = "go",
+				after = "navigator.lua",
+				config = function()
+					require("plugins.configs.lspconfig").go()
+				end,
+			},
+
 			-- Etc
 			{
 				{
