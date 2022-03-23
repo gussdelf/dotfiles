@@ -39,5 +39,4 @@ o.compatible = false
 o.so = 5
 o.swapfile = false
 o.shadafile = "NONE"
-o.shadafile = ""
 o.history = 10000
