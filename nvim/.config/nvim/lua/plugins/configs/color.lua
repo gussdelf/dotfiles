@@ -16,6 +16,7 @@ ColorMatGruv = function(tbg)
 		set winhighlight=SpecialKey:SpecialKeyWin
 		hi MatchParen gui=underline
 		hi TelescopeMatching guibg=#b8bb26 guifg=#1d2021
+		hi MarkSignHl guifg=#cc241d
 	]]
 end
 

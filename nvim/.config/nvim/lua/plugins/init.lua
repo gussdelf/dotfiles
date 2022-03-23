@@ -217,6 +217,13 @@ return require("packer").startup {
 						require("plugins.configs.others").todo_comments()
 					end,
 				},
+				{
+					"chentau/marks.nvim",
+					event = "BufRead",
+					config = function()
+						require("plugins.configs.others").marks()
+					end,
+				},
 			},
 
 			-- Snippets
