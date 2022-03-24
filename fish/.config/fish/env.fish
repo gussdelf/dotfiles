@@ -1,0 +1,54 @@
+
+export VISUAl='emacsclient -nc' 
+export EDITOR='nvim'
+export NNN_PLUG='c:fzcd;l:launch;z:autojump;p:preview-tui;P:preview-tabbed;o:fzopen;'
+export LC_CTYPE=pt_BR.UTF-8
+export GOPATH="$XDG_DATA_HOME"/go
+export ZDOTDIR=$HOME/.config/zsh
+export PATH="$HOME/.local/bin:$PATH"
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export _Z_DATA="$XDG_DATA_HOME/z"
+export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+export ZDOTDIR=$HOME/.config/zsh
+export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android
+export HISTFILE="$XDG_DATA_HOME"/zsh/history
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export PATH="$HOME/.local/bin:$PATH"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export GEM_HOME="$XDG_DATA_HOME"/gem
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export TERMINFO="$XDG_DATA_HOME"/terminfo
+export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+export SPACEMACSDIR="$XDG_CONFIG_HOME"/spacemacs.d
+export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$CARGO_HOME/bin:$PATH"
+export PATH="$GEM_HOME/ruby/3.0.0/bin:$PATH"
+export PATH="$XDG_CONFIG_HOME/Doom/bin:$PATH"
+export PATH="$XDG_DATA_HOME/npm/bin:$PATH"
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
+export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
+export JDTLS_HOME="$XDG_DATA_HOME"/jdtls
+export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
+export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME:/asdf/asdfrc"
+export FZF_DEFAULT_COMMAND='fd -H -t f'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color fg:#ebdbb2,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
+  --color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54'
+export WLR_NO_HARDWARE_CURSORS=1
+source $XDG_CONFIG_HOME/iconslf
