@@ -24,6 +24,12 @@ require("navigator").setup {
 			"clangd",
 			"rust_analyzer",
 		},
+		diagnostic = {
+			underline = true,
+			virtual_text = false,
+			update_in_insert = false, -- update diagnostic message in insert mode
+			severity_sort = { reverse = true },
+		},
 	},
 	servers = {
 		"gopls",
