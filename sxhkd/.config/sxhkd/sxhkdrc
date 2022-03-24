@@ -8,7 +8,7 @@ super + Return
 
 # terminal emulator
 alt + ctrl + Return
-	st 
+	st -e fish
 
 # run emacsclient doom
 alt + ctrl + d
@@ -20,7 +20,7 @@ alt + ctrl + e
 
 # watch
 alt + ctrl + y
-	watch -D
+	st -e doas pacman -Syu
 
 # program launcher
 super + @space

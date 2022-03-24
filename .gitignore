@@ -10,6 +10,7 @@ fish/.config/fish/*
 scripts
 !fish/.config/fish/alias.fish
 !fish/.config/fish/config.fish
+!fish/.config/fish/env.fish
 !fish/.config/fish/themes/
 tmux/.config/tmux/plugins
 nvim/.config/nvim/lua/packer_compiled.lua
