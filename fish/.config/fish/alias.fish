@@ -1,11 +1,7 @@
-
-alias c='clear;'
 alias n='nnn -e'
-alias :q='exit'
-alias :e='$EDITOR'
 alias xx='chmod +x'
 alias ww="wget"
-alias lg='lazygit'
+alias lz='lazygit'
 alias nf='neofetch'
 alias se='sudoedit'
 alias nw='newsboat'
@@ -36,3 +32,5 @@ alias qtil='startx ~/.config/X11/qtile'
 
 alias pcomp='nvim +PackerCompile'
 alias psync='nvim +PackerSync'
+
+abbr c 'clear;'

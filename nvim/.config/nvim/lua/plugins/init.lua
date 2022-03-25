@@ -123,6 +123,14 @@ return require("packer").startup {
 					after = "nvim-treesitter",
 				},
 				{
+					"m-demare/hlargs.nvim",
+					ft = tsFileTypes,
+					after = "nvim-treesitter",
+					config = function()
+						require("hlargs").setup()
+					end,
+				},
+				{
 					"abecodes/tabout.nvim",
 					after = "nvim-treesitter",
 					config = function()
