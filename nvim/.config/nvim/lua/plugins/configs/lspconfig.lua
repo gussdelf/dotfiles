@@ -119,4 +119,8 @@ M.go = function()
 	require("go").setup()
 end
 
+M.rust = function()
+	require("rust-tools").setup {}
+end
+
 return M

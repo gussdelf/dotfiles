@@ -7,8 +7,8 @@ ColorMatGruv = function(tbg)
 	g.gruvbox_material_transparent_background = tbg
 	g.gruvbox_material_enable_italic = true
 	g.gruvbox_material_better_performance = true
-	g.gruvbox_material_diagnostic_text_highlight = true
 	g.gruvbox_material_diagnostic_line_highlight = true
+	-- g.gruvbox_material_diagnostic_text_highlight = true
 	vim.cmd [[ color gruvbox-material ]]
 	vim.cmd [[
 		hi SpecialKey guifg=#cc241d
@@ -16,6 +16,7 @@ ColorMatGruv = function(tbg)
 		set winhighlight=SpecialKey:SpecialKeyWin
 		hi MatchParen gui=underline
 		hi TelescopeMatching guibg=#b8bb26 guifg=#1d2021
+		" hi TelescopeSelection guifg=#fe8019
 		hi MarkSignHl guifg=#cc241d
 	]]
 end
@@ -58,11 +59,19 @@ ColorKana = function(tbg)
 	}
 
 	-- setup must be called before loading
-	vim.cmd [[ colorscheme kanagawa ]]
+	vim.cmd [[ color kanagawa ]]
 	vim.cmd [[
 		hi MatchParen gui=underline 
 		hi TelescopeMatching guibg=#2D4F67 guifg=#DCD7BA
 	]]
+end
+
+ColorCode = function(tbg)
+	vim.g.vscode_style = "dark"
+	vim.g.vscode_transparent = tbg
+	vim.g.vscode_italic_comment = 1
+	vim.g.vscode_disable_nvimtree_bg = true
+	vim.cmd [[ color vscode ]]
 end
 
 ColorMatGruv(true)

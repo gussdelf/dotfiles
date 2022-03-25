@@ -43,6 +43,7 @@ return require("packer").startup {
 					requires = {
 						"sainnhe/edge",
 						"rebelot/kanagawa.nvim",
+						"Mofiqul/vscode.nvim",
 					},
 					config = function()
 						require "plugins.configs.color"
@@ -333,14 +334,26 @@ return require("packer").startup {
 				},
 			},
 
-			-- Go
 			{
-				"ray-x/go.nvim",
-				ft = "go",
-				after = "navigator.lua",
-				config = function()
-					require("plugins.configs.lspconfig").go()
-				end,
+				-- Go
+				{
+					"ray-x/go.nvim",
+					ft = "go",
+					after = "navigator.lua",
+					config = function()
+						require("plugins.configs.lspconfig").go()
+					end,
+				},
+
+				-- Rust
+				{
+					"simrat39/rust-tools.nvim",
+					ft = "rust",
+					after = "navigator.lua",
+					config = function()
+						require("plugins.configs.lspconfig").rust()
+					end,
+				},
 			},
 
 			-- Etc
