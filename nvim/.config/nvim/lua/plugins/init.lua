@@ -26,6 +26,7 @@ return require("packer").startup {
 					vim.keymap.set("n", "<leader>sf", "<cmd>SudoWrite<cr>", { silent = true }),
 				},
 			},
+
 			-- Improve startup time
 			{
 				"lewis6991/impatient.nvim",
@@ -36,7 +37,6 @@ return require("packer").startup {
 
 			-- Ui
 			{
-				-- Theme(s)
 				{
 					"sainnhe/gruvbox-material",
 					event = "VimEnter",
@@ -152,16 +152,8 @@ return require("packer").startup {
 					require "plugins.configs.telescope"
 				end,
 			},
-			{
-				"ThePrimeagen/harpoon",
-				opt = true,
-				event = "BufRead",
-				config = function()
-					require("plugins.configs.others").harpoon()
-				end,
-			},
 
-			-- Some useful plugins
+			-- Some useful plugins, but not indispensable.
 			{
 				{
 					"duggiefresh/vim-easydir",
@@ -218,11 +210,21 @@ return require("packer").startup {
 						require("plugins.configs.others").todo_comments()
 					end,
 				},
+
+				-- Marks
 				{
 					"chentau/marks.nvim",
 					event = "BufRead",
 					config = function()
 						require("plugins.configs.others").marks()
+					end,
+				},
+				{
+					"ThePrimeagen/harpoon",
+					opt = true,
+					event = "BufRead",
+					config = function()
+						require("plugins.configs.others").harpoon()
 					end,
 				},
 			},
