@@ -364,6 +364,15 @@ return require("packer").startup {
 						require("plugins.configs.lspconfig").rust()
 					end,
 				},
+
+				-- LaTeX
+				{
+					"lervag/vimtex",
+					ft = "tex",
+					config = function()
+						vim.g.vimtex_view_method = "zathura"
+					end,
+				},
 			},
 
 			-- Etc
