@@ -35,10 +35,14 @@ end
 M.autopairs = function()
 	local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 	local cmp = require "cmp"
+	local Rule = require "nvim-autopairs.rule"
+	local npairs = require "nvim-autopairs"
+
 	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
 	cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
 	require("nvim-autopairs").setup()
+	npairs.add_rule(Rule("$$", "$$", "tex"))
 end
 
 M.luasnip = function()

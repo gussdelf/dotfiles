@@ -164,7 +164,7 @@ return require("packer").startup {
 			-- Some useful plugins, but not indispensable.
 			{
 				{
-					"duggiefresh/vim-easydir",
+					"jghauser/mkdir.nvim",
 					event = "BufWritePre",
 				},
 				{
