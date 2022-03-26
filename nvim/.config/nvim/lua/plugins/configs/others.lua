@@ -27,33 +27,6 @@ M.bufferline = function()
 	}
 end
 
-M.colorizer = function()
-	require("colorizer").setup()
-	vim.keymap.set("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
-end
-
-M.autopairs = function()
-	local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-	local cmp = require "cmp"
-	local Rule = require "nvim-autopairs.rule"
-	local npairs = require "nvim-autopairs"
-
-	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
-
-	cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
-	require("nvim-autopairs").setup()
-	npairs.add_rule(Rule("$$", "$$", "tex"))
-end
-
-M.luasnip = function()
-	local luasnip = require "luasnip"
-	luasnip.config.set_config {
-		history = true,
-		updateevents = "TextChanged,TextChangedI",
-	}
-	require("luasnip.loaders.from_vscode").lazy_load()
-end
-
 M.hop = function()
 	require("hop").setup()
 	-- Mapping
@@ -75,6 +48,58 @@ M.gomove = function()
 	}
 end
 
+M.autopairs = function()
+	local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+	local cmp = require "cmp"
+	local Rule = require "nvim-autopairs.rule"
+	local npairs = require "nvim-autopairs"
+
+	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
+
+	cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
+	require("nvim-autopairs").setup()
+	npairs.add_rule(Rule("$$", "$$", "tex"))
+end
+
+M.colorizer = function()
+	require("colorizer").setup()
+	vim.keymap.set("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { silent = true })
+end
+
+M.todo_comments = function()
+	require("todo-comments").setup()
+	vim.keymap.set("n", "<leader>to", "<cmd>TodoTrouble<cr>", { silent = true })
+end
+
+M.marks = function()
+	require("marks").setup {
+		default_mappings = true,
+		cyclic = true,
+		force_write_shada = false,
+		refresh_interval = 250,
+		sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
+	}
+end
+
+M.harpoon = function()
+	vim.keymap.set("n", "<leader>ha", function()
+		require("harpoon.mark").add_file()
+	end, { silent = true })
+
+	vim.keymap.set("n", "<leader>o", function()
+		require("harpoon.ui").toggle_quick_menu()
+	end, { silent = true })
+end
+
+M.luasnip = function()
+	local luasnip = require "luasnip"
+	luasnip.config.set_config {
+		history = true,
+		updateevents = "TextChanged,TextChangedI",
+	}
+	require("luasnip.loaders.from_vscode").lazy_load()
+end
+
 M.signature = function()
 	local lspsignature = require "lsp_signature"
 	lspsignature.setup {
@@ -93,6 +118,13 @@ M.signature = function()
 		zindex = 200,
 		padding = "",
 	}
+end
+
+M.trouble = function()
+	require("trouble").setup {}
+	vim.keymap.set("n", "<leader>tt", "<cmd>TroubleToggle<cr>", { silent = true })
+	vim.keymap.set("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true })
+	vim.keymap.set("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true })
 end
 
 M.null_ls = function()
@@ -128,28 +160,6 @@ M.null_ls = function()
 	vim.keymap.set("v", "<C-f>", "<Cmd>lua vim.lsp.buf.range_formatting()<cr>", { silent = true })
 end
 
-M.trouble = function()
-	require("trouble").setup {}
-	vim.keymap.set("n", "<leader>tt", "<cmd>TroubleToggle<cr>", { silent = true })
-	vim.keymap.set("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true })
-	vim.keymap.set("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true })
-end
-
-M.todo_comments = function()
-	require("todo-comments").setup()
-	vim.keymap.set("n", "<leader>to", "<cmd>TodoTrouble<cr>", { silent = true })
-end
-
-M.harpoon = function()
-	vim.keymap.set("n", "<leader>ha", function()
-		require("harpoon.mark").add_file()
-	end, { silent = true })
-
-	vim.keymap.set("n", "<leader>o", function()
-		require("harpoon.ui").toggle_quick_menu()
-	end, { silent = true })
-end
-
 M.venn = function()
 	Toggle_venn = function()
 		local venn_enabled = vim.inspect(vim.b.venn_enabled)
@@ -179,16 +189,6 @@ M.nabla = function()
 	vim.keymap.set("n", "<leader>p", function()
 		require("nabla").popup()
 	end, { silent = true })
-end
-
-M.marks = function()
-	require("marks").setup {
-		default_mappings = true,
-		cyclic = true,
-		force_write_shada = false,
-		refresh_interval = 250,
-		sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
-	}
 end
 
 return M
