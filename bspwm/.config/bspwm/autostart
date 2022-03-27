@@ -1,0 +1,14 @@
+#! /usr/bin/env sh
+
+#setxkbmap -model abnt2 -layout br -option caps:swapescape &
+setxkbmap -model abnt2 -layout br -option ctrl:swapcaps &
+xinput --set-prop "SIGMACHIP Usb Mouse" "Coordinate Transformation Matrix" 0.5 0 0 0 0.5 0 0 0 1 &
+xsetroot -cursor_name left_ptr &
+xset r rate 320 40 &
+
+picom &
+xrdb ~/.config/Xresources/Gruvbox &
+feh --bg-scale ~/Imgs/wall/forest.jpg --no-fehbg &
+
+sleep 10 &
+$HOME/.config/polybar/launch.sh &
