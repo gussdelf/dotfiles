@@ -7,7 +7,7 @@ xsetroot -cursor_name left_ptr &
 xset r rate 320 40 &
 
 picom &
-xrdb ~/.config/Xresources/Gruvbox &
+xrdb ~/.config/xrdb/Gruvbox &
 feh --bg-scale ~/Imgs/wall/forest.jpg --no-fehbg &
 
 sleep 10 &
