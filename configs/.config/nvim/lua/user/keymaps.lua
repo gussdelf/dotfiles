@@ -34,8 +34,8 @@ vim.keymap.set("n", "<leader>bc", "<cmd>bw<cr>", { silent = true }) -- Close buf
 -- Moviment
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
-vim.keymap.set("v", "j", "gj", { silent = true })
-vim.keymap.set("v", "k", "gk", { silent = true })
+vim.keymap.set("v", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
+vim.keymap.set("v", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
 
 -- File
 vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { silent = true })

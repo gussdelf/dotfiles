@@ -176,13 +176,6 @@ return require("packer").startup {
 					end,
 				},
 				{
-					"booperlv/nvim-gomove",
-					event = "BufWinEnter",
-					config = function()
-						require("plugins.configs.others").gomove()
-					end,
-				},
-				{
 					"windwp/nvim-autopairs",
 					after = "nvim-cmp",
 					config = function()

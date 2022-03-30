@@ -35,17 +35,8 @@ M.hop = function()
 	end, { silent = true })
 
 	vim.keymap.set({ "n", "v", "o" }, "f", function()
-		require("hop").hint_words()
+		require("hop").hint_char1()
 	end, { silent = true })
-end
-
-M.gomove = function()
-	require("gomove").setup {
-		map_defaults = true,
-		reindent = true,
-		undojoin = true,
-		move_past_end_col = false,
-	}
 end
 
 M.autopairs = function()
