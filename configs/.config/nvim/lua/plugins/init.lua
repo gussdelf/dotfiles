@@ -154,6 +154,7 @@ return require("packer").startup {
 					},
 					"nvim-telescope/telescope-symbols.nvim",
 					"jvgrootveld/telescope-zoxide",
+					{ "AckslD/nvim-neoclip.lua", requires = { { "tami5/sqlite.lua", module = "sqlite" } } },
 					-- opt = true,
 				},
 				config = function()
