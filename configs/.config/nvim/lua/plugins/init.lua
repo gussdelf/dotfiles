@@ -72,7 +72,6 @@ return require("packer").startup {
 				{
 					"folke/zen-mode.nvim",
 					opt = true,
-					event = "BufRead",
 					cmd = "ZenMode",
 					config = function()
 						vim.keymap.set("n", "<leader>tz", "<cmd>ZenMode<cr>", { silent = true })
@@ -155,7 +154,6 @@ return require("packer").startup {
 					"nvim-telescope/telescope-symbols.nvim",
 					"jvgrootveld/telescope-zoxide",
 					{ "AckslD/nvim-neoclip.lua", requires = { { "tami5/sqlite.lua", module = "sqlite" } } },
-					-- opt = true,
 				},
 				config = function()
 					require "plugins.configs.telescope"
@@ -170,13 +168,14 @@ return require("packer").startup {
 				},
 				{
 					"phaazon/hop.nvim",
-					event = "BufWinEnter",
+					event = "BufRead",
 					config = function()
 						require("plugins.configs.others").hop()
 					end,
 				},
 				{
 					"windwp/nvim-autopairs",
+					ft = lspLangs,
 					after = "nvim-cmp",
 					config = function()
 						require("plugins.configs.others").autopairs()
@@ -240,6 +239,7 @@ return require("packer").startup {
 				},
 				{
 					"L3MON4D3/LuaSnip",
+					ft = lspLangs,
 					after = "nvim-cmp",
 					wants = "friendly-snippets",
 					config = function()
@@ -260,31 +260,44 @@ return require("packer").startup {
 				},
 				{
 					"saadparwaiz1/cmp_luasnip",
+					ft = lspLangs,
 					after = "LuaSnip",
 				},
 				{
 					"hrsh7th/cmp-nvim-lua",
+					ft = lspLangs,
+
 					after = "cmp_luasnip",
 				},
 				{
 					"hrsh7th/cmp-nvim-lsp",
+					ft = lspLangs,
+
 					after = "cmp-nvim-lua",
 				},
 				{
 					"hrsh7th/cmp-buffer",
+					ft = lspLangs,
+
 					after = "cmp-nvim-lsp",
 				},
 				{
 					"tzachar/cmp-tabnine",
+					ft = lspLangs,
+
 					after = "cmp-nvim-lsp",
 					run = "./install.sh",
 				},
 				{
 					"hrsh7th/cmp-path",
+					ft = lspLangs,
+
 					after = "cmp-buffer",
 				},
 				{
 					"andersevenrud/cmp-tmux",
+					ft = lspLangs,
+
 					after = "cmp-buffer",
 				},
 			},
