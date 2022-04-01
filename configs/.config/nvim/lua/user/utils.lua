@@ -138,7 +138,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 M.transparent_background =
-	function() -- this is a just a function for colorschemes without the option for transparent background
+	function() -- This is a just a function for colorschemes without the option for transparent background
 		vim.api.nvim_create_autocmd("ColorScheme", {
 			pattern = "*",
 			callback = function()

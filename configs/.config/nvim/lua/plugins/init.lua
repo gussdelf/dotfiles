@@ -167,6 +167,14 @@ return require("packer").startup {
 					event = "BufWritePre",
 				},
 				{
+					"mbbill/undotree",
+					cmd = "UndotreeToggle",
+					event = "BufRead",
+					config = function()
+						vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { silent = true })
+					end,
+				},
+				{
 					"phaazon/hop.nvim",
 					event = "BufRead",
 					config = function()
