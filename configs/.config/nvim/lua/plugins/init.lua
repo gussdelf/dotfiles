@@ -22,10 +22,10 @@ return require("packer").startup {
 			{
 				"wbthomason/packer.nvim",
 				"nvim-lua/plenary.nvim",
-				"tpope/vim-fugitive",
+				"tpope/vim-repeat",
 				"tpope/vim-surround",
 				{
-					"tpope/vim-repeat",
+					"tpope/vim-fugitive",
 					config = function()
 						vim.keymap.set("n", "<leader>gg", "<cmd>G<cr>", { silent = true })
 						vim.cmd [[cnoreabbrev g Git]]
