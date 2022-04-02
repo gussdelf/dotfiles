@@ -18,6 +18,7 @@ return require("packer").startup {
 			{
 				"wbthomason/packer.nvim",
 				"nvim-lua/plenary.nvim",
+				"tpope/vim-fugitive",
 				"tpope/vim-surround",
 				"tpope/vim-repeat",
 				{

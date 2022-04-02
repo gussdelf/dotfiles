@@ -11,6 +11,7 @@ local naughty = require("naughty")
 local ruled = require("ruled")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local dpi = require("beautiful.xresources").apply_dpi
 require("awful.hotkeys_popup.keys")
 
 naughty.connect_signal("request::display_error", function(message, startup)
@@ -65,15 +66,15 @@ tag.connect_signal("request::default_layouts", function()
 	awful.layout.append_default_layouts({
 		awful.layout.suit.tile,
 		awful.layout.suit.floating,
+		awful.layout.suit.spiral,
+		awful.layout.suit.spiral.dwindle,
+		awful.layout.suit.max,
+		awful.layout.suit.max.fullscreen,
 		-- awful.layout.suit.tile.left,
 		-- awful.layout.suit.tile.bottom,
 		-- awful.layout.suit.tile.top,
 		-- awful.layout.suit.fair,
 		-- awful.layout.suit.fair.horizontal,
-		awful.layout.suit.spiral,
-		awful.layout.suit.spiral.dwindle,
-		awful.layout.suit.max,
-		awful.layout.suit.max.fullscreen,
 		-- awful.layout.suit.magnifier,
 		-- awful.layout.suit.corner.nw,
 	})
@@ -223,9 +224,6 @@ awful.mouse.append_global_mousebindings({
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
 	awful.key({ modkey }, "F1", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
-	awful.key({ modkey }, "w", function()
-		mymainmenu:show()
-	end, { description = "show main menu", group = "awesome" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ "Mod1", "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 	awful.key({ modkey }, "x", function()
@@ -416,6 +414,10 @@ client.connect_signal("request::default_keybindings", function()
 		awful.key({ modkey, "Shift" }, "q", function(c)
 			c:kill()
 		end, { description = "close", group = "client" }),
+		awful.key({ modkey }, "w", function(c)
+			c:kill()
+		end, { description = "close", group = "client" }),
+
 		awful.key({ modkey }, "s", awful.client.floating.toggle, {
 			description = "toggle floating",
 			group = "client",
@@ -477,6 +479,7 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 beautiful.useless_gap = 5
+beautiful.border_width = dpi(1)
 
 -- Autostart
 require("user.autostart").setup()
