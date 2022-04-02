@@ -25,13 +25,6 @@ return require("packer").startup {
 				"tpope/vim-repeat",
 				"tpope/vim-surround",
 				{
-					"tpope/vim-fugitive",
-					config = function()
-						vim.keymap.set("n", "<leader>gg", "<cmd>G<cr>", { silent = true })
-						vim.cmd [[cnoreabbrev g Git]]
-					end,
-				},
-				{
 					"tpope/vim-eunuch",
 					cmd = { "SudoWrite" },
 					vim.keymap.set("n", "<leader>sf", "<cmd>SudoWrite<cr>", { silent = true }),
@@ -148,6 +141,24 @@ return require("packer").startup {
 							completion = false,
 							ignore_beginning = false,
 						}
+					end,
+				},
+			},
+
+			-- Git
+			{
+				{
+					"tpope/vim-fugitive",
+					config = function()
+						vim.keymap.set("n", "<leader>gg", "<cmd>G<cr>", { silent = true })
+						vim.cmd [[cnoreabbrev g Git]]
+					end,
+				},
+				{
+					"lewis6991/gitsigns.nvim",
+					event = "BufRead",
+					config = function()
+						require("plugins.configs.others").gitsigns()
 					end,
 				},
 			},
