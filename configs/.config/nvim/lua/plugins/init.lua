@@ -8,6 +8,10 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.cmd [[ packadd packer.nvim ]]
 end
 
+vim.cmd [[cnoreabbrev pc PackerCompile]]
+vim.cmd [[cnoreabbrev ps PackerSync]]
+vim.cmd [[cnoreabbrev pst PackerStatus]]
+
 -- Require packer_compiled
 pcall(require, "packer_compiled")
 
@@ -20,7 +24,13 @@ return require("packer").startup {
 				"nvim-lua/plenary.nvim",
 				"tpope/vim-fugitive",
 				"tpope/vim-surround",
-				"tpope/vim-repeat",
+				{
+					"tpope/vim-repeat",
+					config = function()
+						vim.keymap.set("n", "<leader>gg", "<cmd>G<cr>", { silent = true })
+						vim.cmd [[cnoreabbrev g Git]]
+					end,
+				},
 				{
 					"tpope/vim-eunuch",
 					cmd = { "SudoWrite" },

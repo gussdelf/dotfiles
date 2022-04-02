@@ -25,6 +25,6 @@ local function _lazygit_toggle()
 	lazygit:toggle()
 end
 
-vim.keymap.set("n", "<leader>gg", function()
+vim.keymap.set("n", "<leader>lz", function()
 	_lazygit_toggle()
 end, { silent = true })
