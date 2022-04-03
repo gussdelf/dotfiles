@@ -31,11 +31,27 @@ vim.keymap.set("n", "<leader>bj", "<cmd>bnext<CR>", { silent = true })
 vim.keymap.set("n", "<leader>bk", "<cmd>bprevious<CR>", { silent = true })
 vim.keymap.set("n", "<leader>bc", "<cmd>bw<cr>", { silent = true }) -- Close buffer
 
--- Moviment
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
-vim.keymap.set("v", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
-vim.keymap.set("v", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
+-- g remaps
+vim.keymap.set({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
+vim.keymap.set({ "n", "v" }, "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
+vim.keymap.set({ "n", "v" }, "0", "v:count == 0 ? 'g0' : '0'", { noremap = true, expr = true, silent = true })
+vim.keymap.set({ "n", "v" }, "$", "v:count == 0 ? 'g$' : '$'", { noremap = true, expr = true, silent = true })
+vim.keymap.set({ "n", "v" }, "Q", "gqq", { noremap = true, silent = true })
+
+-- No register rewrite
+vim.keymap.set({ "n", "v" }, "d", '"_d', { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "D", '"_D', { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "c", '"_c', { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "C", '"_C', { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "X", '"_X', { noremap = true, silent = true })
+
+vim.keymap.set({ "n", "v" }, ",d", "d", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, ",D", "D", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, ",c", "c", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, ",C", "C", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, ",x", "x", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, ",X", "X", { noremap = true, silent = true })
 
 -- File
 vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { silent = true })

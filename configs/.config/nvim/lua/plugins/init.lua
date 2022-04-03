@@ -200,7 +200,7 @@ return require("packer").startup {
 				},
 				{
 					"windwp/nvim-autopairs",
-					ft = lspLangs,
+					ft = tsFileTypes,
 					after = "nvim-cmp",
 					config = function()
 						require("plugins.configs.others").autopairs()

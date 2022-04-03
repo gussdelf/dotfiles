@@ -57,7 +57,6 @@ lspLangs = {
 	"vue",
 	"lisp",
 	"java",
-	"vim",
 	"ruby",
 	"python",
 	"julia",
