@@ -27,6 +27,19 @@ M.bufferline = function()
 	}
 end
 
+M.git = function()
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = "fugitive",
+		callback = function()
+			vim.opt_local.number = false
+			vim.opt_local.relativenumber = false
+			vim.opt_local.filetype = "fugitive"
+		end,
+	})
+	vim.keymap.set("n", "<leader>gg", "<cmd>G<cr>", { silent = true })
+	vim.cmd [[cnoreabbrev g Git]]
+end
+
 M.gitsigns = function()
 	require("gitsigns").setup {
 		signs = {

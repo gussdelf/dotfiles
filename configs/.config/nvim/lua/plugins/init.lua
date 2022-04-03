@@ -8,8 +8,9 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.cmd [[ packadd packer.nvim ]]
 end
 
-vim.cmd [[cnoreabbrev pc PackerCompile]]
-vim.cmd [[cnoreabbrev ps PackerSync]]
+vim.cmd [[cnoreabbrev pco PackerCompile]]
+vim.cmd [[cnoreabbrev pcl PackerClean]]
+vim.cmd [[cnoreabbrev pss PackerSync]]
 vim.cmd [[cnoreabbrev pst PackerStatus]]
 
 -- Require packer_compiled
@@ -24,11 +25,6 @@ return require("packer").startup {
 				"nvim-lua/plenary.nvim",
 				"tpope/vim-repeat",
 				"tpope/vim-surround",
-				{
-					"tpope/vim-eunuch",
-					cmd = { "SudoWrite" },
-					vim.keymap.set("n", "<leader>sf", "<cmd>SudoWrite<cr>", { silent = true }),
-				},
 			},
 
 			-- Improve startup time
@@ -150,8 +146,7 @@ return require("packer").startup {
 				{
 					"tpope/vim-fugitive",
 					config = function()
-						vim.keymap.set("n", "<leader>gg", "<cmd>G<cr>", { silent = true })
-						vim.cmd [[cnoreabbrev g Git]]
+						require("plugins.configs.others").git()
 					end,
 				},
 				{
@@ -354,7 +349,7 @@ return require("packer").startup {
 				},
 				{
 					"folke/trouble.nvim",
-					ft = lspLangs,
+					event = "BufRead",
 					config = function()
 						require("plugins.configs.others").trouble()
 					end,

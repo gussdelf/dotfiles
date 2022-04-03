@@ -1,4 +1,5 @@
 alias n='nnn -e'
+alias g='git'
 alias xx='chmod +x'
 alias ww="wget"
 alias lz='lazygit'

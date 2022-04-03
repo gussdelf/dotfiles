@@ -3,6 +3,7 @@
 ##Aliases
 alias c='clear;'\
 	n='nnn -e'\
+	g='git'\
 	xx='chmod +x'\
 	ww="wget"\
 	lz='lazygit'\
