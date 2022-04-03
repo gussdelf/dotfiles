@@ -64,14 +64,19 @@ M.gitsigns = function()
 end
 
 M.hop = function()
-	require("hop").setup()
-	-- Mapping
-	vim.keymap.set({ "n", "v", "o" }, "F", function()
-		require("hop").hint_lines()
+	local hop = require "hop"
+	hop.setup()
+	-- Mappings
+	vim.keymap.set({ "n", "v", "o" }, ",w", function()
+		hop.hint_words()
 	end, { silent = true })
 
-	vim.keymap.set({ "n", "v", "o" }, "f", function()
-		require("hop").hint_char1()
+	vim.keymap.set({ "n", "v", "o" }, ",F", function()
+		hop.hint_lines()
+	end, { silent = true })
+
+	vim.keymap.set({ "n", "v", "o" }, ",f", function()
+		hop.hint_char1()
 	end, { silent = true })
 end
 

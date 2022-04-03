@@ -188,7 +188,7 @@ return require("packer").startup {
 					cmd = "UndotreeToggle",
 					event = "BufRead",
 					config = function()
-						vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { silent = true })
+						vim.keymap.set("n", ",u", "<cmd>UndotreeToggle<cr>", { silent = true })
 					end,
 				},
 				{
