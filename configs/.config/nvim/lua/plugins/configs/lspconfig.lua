@@ -84,12 +84,6 @@ require("navigator").setup {
 	},
 }
 
-vim.cmd [[
-	hi default GHTextViewDark guifg=#e0d8f4
-	hi default GHListDark guifg=#e0d8f4
-	hi default GHListHl guifg=#e0d8f4 guibg=none
-]]
-
 vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { silent = true })
 vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>", { silent = true })
 vim.keymap.set("n", "<leader>ls", "<cmd>LspStart<cr>", { silent = true })

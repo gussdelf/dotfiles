@@ -14,8 +14,14 @@ ColorMatGruv = function(tbg)
 		hi! link SpecialKey red
 		hi! link MarkSignHl red
 		hi! link TelescopeMatching Search
+		hi TSVariable gui=italic
+		hi TSTypeBuiltin gui=none
 		hi SpecialKeyWin guifg=#3c3836
 		set winhighlight=SpecialKey:SpecialKeyWin
+
+		hi default GHTextViewDark guibg=none ctermbg=none
+		hi default GHListDark guibg=none ctermbg=none
+		" hi! link GHListHl TelescopeMatching
 	]]
 end
 
@@ -37,6 +43,8 @@ ColorEdge = function(tbg)
 		" set winhighlight=SpecialKey:SpecialKeyWin
 		" hi SignColumn guibg=#1d2021
 		" hi LineNr guibg=#282828
+		hi default GHTextViewDark guibg=none ctermbg=none
+		hi default GHListDark guibg=none ctermbg=none
 	]]
 end
 
@@ -60,6 +68,8 @@ ColorKana = function(tbg)
 	vim.cmd [[ color kanagawa ]]
 	vim.cmd [[
 		hi! link TelescopeMatching Search
+		hi default GHTextViewDark guibg=none ctermbg=none
+		hi default GHListDark guibg=none ctermbg=none
 	]]
 end
 
@@ -71,6 +81,8 @@ ColorCode = function(tbg)
 	vim.cmd [[ color vscode ]]
 	vim.cmd [[
 		hi! link TelescopeMatching Search
+		hi default GHTextViewDark guibg=none ctermbg=none
+		hi default GHListDark guibg=none ctermbg=none
 	]]
 end
 
