@@ -253,6 +253,11 @@ return require("packer").startup {
 						require("plugins.configs.others").harpoon()
 					end,
 				},
+				-- A better quickfix
+				{
+					"kevinhwang91/nvim-bqf",
+					ft = "qf",
+				},
 			},
 
 			-- Snippets
