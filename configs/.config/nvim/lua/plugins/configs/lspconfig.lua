@@ -1,107 +1,91 @@
 local M = {}
 
----@diagnostic disable: different-requires
+local opts = { noremap = true, silent = true }
 
-require("navigator").setup {
-	transparency = 100,
-	default_mapping = false,
-	icons = {
-		icons = false,
-		code_action_icon = "",
-		diagnostic_err = "",
-		diagnostic_warn = "",
-		diagnostic_info = "",
-		diagnostic_virtual_text = "",
-	},
-	lsp = {
-		format_on_save = true,
-		disable_format_cap = {
-			"sumneko_lua",
-			"gopls",
-			"tsserver",
-			"denols",
-			"pyright",
-			"clangd",
-			"rust_analyzer",
-		},
-		diagnostic = {
-			underline = true,
-			virtual_text = false,
-			update_in_insert = false, -- update diagnostic message in insert mode
-			severity_sort = { reverse = true },
-		},
-	},
-	servers = {
-		"gopls",
-		"denols",
-		"bashls",
-		"julials",
-		"solargraph",
-		"rust_analyzer",
-		"clangd",
-	},
-	keymaps = {
-		{
-			key = "gr",
-			func = "require('navigator.reference').reference()",
-		},
-		{ key = "gK", func = "declaration()" },
-		{ key = "gd", func = "definition()" },
-		{
-			key = "gsy",
-			func = "require('navigator.symbols').document_symbols()",
-		},
-		{
-			key = "gW",
-			func = "require('navigator.workspace').workspace_symbol()",
-		},
-		{
-			key = "gp",
-			func = "require('navigator.definition').definition_preview()",
-		},
-		{
-			key = "K",
-			func = "hover({ popup_opts = { border = single, max_width = 80 }})",
-		},
-		{
-			key = "<leader>ca",
-			mode = "n",
-			func = "require('navigator.codeAction').code_action()",
-		},
-		{ key = "<leader>cA", mode = "v", func = "range_code_action()" },
-		{
-			key = "<leader>rn",
-			func = "require('navigator.rename').rename()",
-		},
-		{
-			key = "gL",
-			func = "require('navigator.diagnostics').show_diagnostics()",
-		},
-		{
-			key = "gG",
-			func = "require('navigator.diagnostics').show_buf_diagnostics()",
-		},
+local keymaps = function(bufnr)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(
+		bufnr,
+		"n",
+		"<leader>wl",
+		"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+		opts
+	)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua require('telescope.builtin').lsp_references()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(
+		bufnr,
+		"n",
+		"gsy",
+		"<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>",
+		opts
+	)
+end
+
+local function on_attach(client, bufnr)
+	local function buf_set_option(...)
+		vim.api.nvim_buf_set_option(bufnr, ...)
+	end
+	client.resolved_capabilities.document_formatting = false
+	client.resolved_capabilities.document_range_formatting = false
+	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+	keymaps(bufnr)
+end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+	properties = {
+		"documentation",
+		"detail",
+		"additionalTextEdits",
 	},
 }
+
+local servers = { "pyright", "rust_analyzer", "tsserver", "clangd", "gopls", "sumneko_lua" }
+for _, lsp in pairs(servers) do
+	require("lspconfig")[lsp].setup {
+		on_attach = on_attach,
+		flags = {
+			debounce_text_changes = 150,
+		},
+	}
+end
 
 vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { silent = true })
 vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>", { silent = true })
 vim.keymap.set("n", "<leader>ls", "<cmd>LspStart<cr>", { silent = true })
 vim.keymap.set("n", "<leader>lS", "<cmd>LspStop<cr>", { silent = true })
 
--- vim.diagnostic.config {
--- 	virtual_text = true,
--- 	signs = true,
--- 	underline = true,
--- 	update_in_insert = false,
--- 	severity_sort = false,
--- }
+vim.diagnostic.config {
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = false,
+}
 
--- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
--- for type, icon in pairs(signs) do
--- 	local hl = "DiagnosticSign" .. type
--- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
--- end
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 M.go = function()
 	vim.api.nvim_create_autocmd("BufWritePre", {

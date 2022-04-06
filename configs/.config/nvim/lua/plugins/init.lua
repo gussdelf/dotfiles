@@ -181,6 +181,7 @@ return require("packer").startup {
 			-- Dressing
 			{
 				"stevearc/dressing.nvim",
+				after = "telescope.nvim",
 				config = function()
 					require("plugins.configs.others").dressing()
 				end,
@@ -344,18 +345,15 @@ return require("packer").startup {
 			-- Lsp stuff
 			{
 				{
-					"ray-x/navigator.lua",
+					"neovim/nvim-lspconfig",
 					ft = lspLangs,
-					requires = {
-						{ "ray-x/guihua.lua", run = "cd lua/fzy && make" },
-						"neovim/nvim-lspconfig",
-					},
 					config = function()
 						require "plugins.configs.lspconfig"
 					end,
 				},
 				{
 					"ray-x/lsp_signature.nvim",
+					after = "nvim-lspconfig",
 					ft = lspLangs,
 					config = function()
 						require("plugins.configs.others").signature()
@@ -363,6 +361,7 @@ return require("packer").startup {
 				},
 				{
 					"folke/trouble.nvim",
+					after = "nvim-lspconfig",
 					event = "BufRead",
 					config = function()
 						require("plugins.configs.others").trouble()
@@ -395,7 +394,7 @@ return require("packer").startup {
 				{
 					"ray-x/go.nvim",
 					ft = "go",
-					after = "navigator.lua",
+					after = "nvim-lspconfig",
 					config = function()
 						require("plugins.configs.lspconfig").go()
 					end,
@@ -405,7 +404,7 @@ return require("packer").startup {
 				{
 					"simrat39/rust-tools.nvim",
 					ft = "rust",
-					after = "navigator.lua",
+					after = "nvim-lspconfig",
 					config = function()
 						require("plugins.configs.lspconfig").rust()
 					end,
