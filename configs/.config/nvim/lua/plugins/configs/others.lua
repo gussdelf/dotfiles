@@ -5,8 +5,8 @@ M.lualine = function()
 	require("lualine").setup {
 		options = {
 			theme = "auto",
-			section_separators = { left = "", right = "" },
-			component_separators = { left = "", right = "" },
+			section_separators = { left = "", right = "" },
+			component_separators = { left = "|", right = "|" },
 			disabled_filetypes = {
 				"dashboard",
 				"startify",
@@ -60,6 +60,15 @@ M.gitsigns = function()
 			},
 		},
 		numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+	}
+end
+
+M.dressing = function()
+	require("dressing").setup {
+		select = {
+			enabled = true,
+			backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
+		},
 	}
 end
 

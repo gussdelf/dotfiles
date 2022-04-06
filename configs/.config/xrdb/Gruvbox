@@ -1,7 +1,7 @@
 ! Base16 Gruvbox dark, hard
 ! Scheme: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 st.alpha: 0.8
-st.font: JetBrainsMono Nerd Font:style:regular:pixelsize=15:antialias=true:autohint=true
+st.font: VictorMono Nerd Font:style:semibold:pixelsize=15:antialias=true:autohint=true
 
 ! Hard
 #define base00 #1d2021

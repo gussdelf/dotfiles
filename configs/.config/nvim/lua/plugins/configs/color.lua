@@ -15,6 +15,7 @@ ColorMatGruv = function(tbg)
 		hi! link MarkSignHl red
 		hi! link TelescopeMatching Search
 		hi TSVariable gui=italic
+		hi TSProperty gui=italic
 		hi TSTypeBuiltin gui=none
 		hi SpecialKeyWin guifg=#3c3836
 		set winhighlight=SpecialKey:SpecialKeyWin

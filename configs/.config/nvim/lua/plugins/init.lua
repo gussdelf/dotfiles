@@ -12,6 +12,7 @@ vim.cmd [[cnoreabbrev pco PackerCompile]]
 vim.cmd [[cnoreabbrev pcl PackerClean]]
 vim.cmd [[cnoreabbrev pss PackerSync]]
 vim.cmd [[cnoreabbrev pst PackerStatus]]
+vim.cmd [[cnoreabbrev psi PackerInstall]]
 
 -- Require packer_compiled
 pcall(require, "packer_compiled")
@@ -174,6 +175,14 @@ return require("packer").startup {
 				},
 				config = function()
 					require "plugins.configs.telescope"
+				end,
+			},
+
+			-- Dressing
+			{
+				"stevearc/dressing.nvim",
+				config = function()
+					require("plugins.configs.others").dressing()
 				end,
 			},
 
