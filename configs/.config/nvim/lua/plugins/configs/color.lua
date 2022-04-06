@@ -20,9 +20,6 @@ ColorMatGruv = function(tbg)
 		hi SpecialKeyWin guifg=#3c3836
 		set winhighlight=SpecialKey:SpecialKeyWin
 
-		hi default GHTextViewDark guibg=none ctermbg=none
-		hi default GHListDark guibg=none ctermbg=none
-		" hi! link GHListHl TelescopeMatching
 	]]
 end
 
@@ -39,13 +36,6 @@ ColorEdge = function(tbg)
 	vim.cmd [[
 		hi! link SpecialKey red
 		hi! link TelescopeMatching Search
-		" hi SpecialKeyWin guifg=#3c3836
-
-		" set winhighlight=SpecialKey:SpecialKeyWin
-		" hi SignColumn guibg=#1d2021
-		" hi LineNr guibg=#282828
-		hi default GHTextViewDark guibg=none ctermbg=none
-		hi default GHListDark guibg=none ctermbg=none
 	]]
 end
 
@@ -69,21 +59,20 @@ ColorKana = function(tbg)
 	vim.cmd [[ color kanagawa ]]
 	vim.cmd [[
 		hi! link TelescopeMatching Search
-		hi default GHTextViewDark guibg=none ctermbg=none
-		hi default GHListDark guibg=none ctermbg=none
 	]]
 end
 
 ColorCode = function(tbg)
-	vim.g.vscode_style = "dark"
-	vim.g.vscode_transparent = tbg
-	vim.g.vscode_italic_comment = 1
-	vim.g.vscode_disable_nvimtree_bg = true
+	g.vscode_style = "dark"
+	g.vscode_transparent = tbg
+	g.vscode_italic_comment = 1
+	g.vscode_disable_nvimtree_bg = true
 	vim.cmd [[ color vscode ]]
 	vim.cmd [[
 		hi! link TelescopeMatching Search
-		hi default GHTextViewDark guibg=none ctermbg=none
-		hi default GHListDark guibg=none ctermbg=none
+		hi TSVariable gui=italic
+		hi TSProperty gui=italic
+		hi TSTypeBuiltin gui=none
 	]]
 end
 
