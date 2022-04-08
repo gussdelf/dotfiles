@@ -68,12 +68,17 @@ M.dressing = function()
 		input = {
 			insert_only = false,
 			border = "single",
+			winblend = 0,
 		},
 		select = {
 			border = "single",
 			enabled = true,
 			backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
 			telescope = require("plugins.configs.telescope").minimal(),
+			builtin = {
+				border = "single",
+				winblend = 0,
+			},
 		},
 	}
 end

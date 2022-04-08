@@ -4,6 +4,7 @@
 alias c='clear;'\
 	n='nnn -e'\
 	g='git'\
+	vi='command vim'\
 	xx='chmod +x'\
 	ww="wget"\
 	lz='lazygit'\

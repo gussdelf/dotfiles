@@ -76,4 +76,4 @@ ColorCode = function(tbg)
 	]]
 end
 
-ColorMatGruv(true)
+ColorMatGruv()
