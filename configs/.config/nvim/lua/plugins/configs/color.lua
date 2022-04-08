@@ -76,4 +76,21 @@ ColorCode = function(tbg)
 	]]
 end
 
+ColorNord = function(tbg)
+	-- Example config in lua
+	vim.g.nord_contrast = true
+	vim.g.nord_borders = false
+	vim.g.nord_disable_background = tbg
+	vim.g.nord_italic = true
+
+	-- Load the colorscheme
+
+	require("nord").set()
+
+	vim.cmd [[
+			hi! link TSField TSFuncBuiltin
+			hi! link TelescopeMatching Search
+	]]
+end
+
 ColorMatGruv()

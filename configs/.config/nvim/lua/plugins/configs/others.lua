@@ -36,8 +36,8 @@ M.git = function()
 			vim.opt_local.filetype = "fugitive"
 		end,
 	})
-	vim.keymap.set("n", "<leader>gg", "<cmd>G<cr>", { silent = true })
-	vim.cmd [[cnoreabbrev g Git]]
+	vim.keymap.set("n", "<leader>gg", "<cmd>0G<cr>", { silent = true })
+	vim.cmd [[cnoreabbrev g 0Git]]
 end
 
 M.gitsigns = function()

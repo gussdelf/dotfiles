@@ -45,6 +45,7 @@ return require("packer").startup {
 						"sainnhe/edge",
 						"rebelot/kanagawa.nvim",
 						"Mofiqul/vscode.nvim",
+						"shaunsingh/nord.nvim",
 					},
 					config = function()
 						require "plugins.configs.color"
