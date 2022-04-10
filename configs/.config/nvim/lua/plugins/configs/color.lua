@@ -1,9 +1,9 @@
 local g = vim.g
 
 ColorMatGruv = function(tbg)
-	g.gruvbox_material_background = "hard"
 	g.gruvbox_material_palette = "original"
 	g.gruvbox_material_sign_column_background = "none"
+	g.gruvbox_material_background = "hard"
 	g.gruvbox_material_transparent_background = tbg
 	g.gruvbox_material_enable_italic = true
 	g.gruvbox_material_better_performance = true
@@ -11,6 +11,7 @@ ColorMatGruv = function(tbg)
 	-- g.gruvbox_material_diagnostic_text_highlight = true
 	vim.cmd [[ color gruvbox-material ]]
 	vim.cmd [[
+		hi! link MatchParen Search
 		hi! link SpecialKey red
 		hi! link MarkSignHl red
 		hi! link TelescopeMatching Search
@@ -19,7 +20,6 @@ ColorMatGruv = function(tbg)
 		hi TSTypeBuiltin gui=none
 		hi SpecialKeyWin guifg=#3c3836
 		set winhighlight=SpecialKey:SpecialKeyWin
-
 	]]
 end
 
@@ -34,6 +34,7 @@ ColorEdge = function(tbg)
 	vim.cmd [[ color edge]]
 
 	vim.cmd [[
+		hi! link MatchParen Search
 		hi! link SpecialKey red
 		hi! link TelescopeMatching Search
 	]]
@@ -58,6 +59,7 @@ ColorKana = function(tbg)
 	-- setup must be called before loading
 	vim.cmd [[ color kanagawa ]]
 	vim.cmd [[
+		hi! link MatchParen Search
 		hi! link TelescopeMatching Search
 	]]
 end
@@ -69,6 +71,7 @@ ColorCode = function(tbg)
 	g.vscode_disable_nvimtree_bg = true
 	vim.cmd [[ color vscode ]]
 	vim.cmd [[
+		hi! link MatchParen Search
 		hi! link TelescopeMatching Search
 		hi TSVariable gui=italic
 		hi TSProperty gui=italic
@@ -88,8 +91,13 @@ ColorNord = function(tbg)
 	require("nord").set()
 
 	vim.cmd [[
-			hi! link TSField TSFuncBuiltin
-			hi! link TelescopeMatching Search
+		hi! link MatchParen Search
+		hi! link TSField TSFuncBuiltin
+		hi! link TelescopeMatching Search
+		hi TSVariable gui=italic
+		hi TSProperty gui=italic
+		hi TSTypeBuiltin gui=none
+		hi TSString gui=none
 	]]
 end
 

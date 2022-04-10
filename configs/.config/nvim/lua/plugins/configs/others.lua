@@ -185,7 +185,6 @@ M.null_ls = function()
 			require("null-ls").builtins.formatting.stylua,
 			require("null-ls").builtins.formatting.gofmt,
 			require("null-ls").builtins.formatting.black,
-			require("null-ls").builtins.formatting.rustfmt,
 			require("null-ls").builtins.formatting.clang_format,
 			require("null-ls").builtins.formatting.deno_fmt.with {
 				extra_args = function()

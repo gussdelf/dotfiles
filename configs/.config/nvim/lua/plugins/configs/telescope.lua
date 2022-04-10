@@ -172,7 +172,7 @@ vim.keymap.set("n", "<leader>ht", function() -- Yes i like doom emacs keybinding
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>fy", function()
-	require("telescope").extensions.neoclip.default(ivy())
+	require("telescope").extensions.neoclip.default(M.minimal())
 end, { silent = true, noremap = true })
 
 return M

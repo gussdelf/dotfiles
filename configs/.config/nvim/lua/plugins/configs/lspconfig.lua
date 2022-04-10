@@ -1,5 +1,7 @@
+---@diagnostic disable: different-requires
 local M = {}
 
+local lspconfig = require "lspconfig"
 local opts = { noremap = true, silent = true }
 
 local keymaps = function(bufnr)
@@ -36,10 +38,10 @@ local function on_attach(client, bufnr)
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
-	client.resolved_capabilities.document_formatting = false
-	client.resolved_capabilities.document_range_formatting = false
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 	keymaps(bufnr)
+	client.resolved_capabilities.document_formatting = false
+	client.resolved_capabilities.document_range_formatting = false
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -69,9 +71,11 @@ local servers = {
 	"julials",
 	"bashls",
 	"jdtls",
+	"vimls",
 }
 for _, lsp in pairs(servers) do
-	require("lspconfig")[lsp].setup {
+	---@diagnostic disable-next-line: different-requires
+	lspconfig[lsp].setup {
 		on_attach = on_attach,
 		flags = {
 			debounce_text_changes = 150,
