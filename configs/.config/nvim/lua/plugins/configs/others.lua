@@ -27,7 +27,7 @@ M.bufferline = function()
 	}
 end
 
-M.git = function()
+M.fugitive = function()
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "fugitive",
 		callback = function()
@@ -36,7 +36,7 @@ M.git = function()
 			vim.opt_local.filetype = "fugitive"
 		end,
 	})
-	vim.keymap.set("n", "<leader>gg", "<cmd>0G<cr>", { silent = true })
+	vim.keymap.set("n", "<leader>gs", "<cmd>0G<cr>", { silent = true })
 	vim.cmd [[cnoreabbrev g 0Git]]
 end
 
@@ -87,7 +87,7 @@ M.hop = function()
 	local hop = require "hop"
 	hop.setup()
 	-- Mappings
-	vim.keymap.set({ "n", "v", "o" }, ",w", function()
+	vim.keymap.set({ "n", "v", "o" }, ",W", function()
 		hop.hint_words()
 	end, { silent = true })
 

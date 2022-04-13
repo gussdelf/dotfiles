@@ -41,7 +41,6 @@ ColorEdge = function(tbg)
 end
 
 ColorKana = function(tbg)
-	-- Default options:
 	require("kanagawa").setup {
 		undercurl = true,
 		commentStyle = "italic",
@@ -94,6 +93,7 @@ ColorNord = function(tbg)
 		hi! link MatchParen Search
 		hi! link TSField TSFuncBuiltin
 		hi! link TelescopeMatching Search
+		hi! link TelescopeSelection CursorLine
 		hi TSVariable gui=italic
 		hi TSProperty gui=italic
 		hi TSTypeBuiltin gui=none

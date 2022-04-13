@@ -40,3 +40,5 @@ o.so = 5
 o.swapfile = false
 o.shadafile = "NONE"
 o.history = 10000
+o.timeoutlen = 500
+o.runtimepath = "$XDG_CONFIG_HOME/nvim,$VIMRUNTIME,$XDG_CONFIG_HOME/nvim/after,$XDG_CONFIG_HOME/nvim/spell"

@@ -10,9 +10,9 @@ end
 
 vim.cmd [[cnoreabbrev pco PackerCompile]]
 vim.cmd [[cnoreabbrev pcl PackerClean]]
-vim.cmd [[cnoreabbrev pss PackerSync]]
-vim.cmd [[cnoreabbrev pst PackerStatus]]
-vim.cmd [[cnoreabbrev psi PackerInstall]]
+vim.cmd [[cnoreabbrev pci PackerInstall]]
+vim.cmd [[cnoreabbrev pcss PackerSync]]
+vim.cmd [[cnoreabbrev pcst PackerStatus]]
 
 -- Require packer_compiled
 pcall(require, "packer_compiled")
@@ -147,7 +147,7 @@ return require("packer").startup {
 				{
 					"tpope/vim-fugitive",
 					config = function()
-						require("plugins.configs.others").git()
+						require("plugins.configs.others").fugitive()
 					end,
 				},
 				{
@@ -324,7 +324,6 @@ return require("packer").startup {
 				{
 					"tzachar/cmp-tabnine",
 					ft = lspLangs,
-
 					after = "cmp-nvim-lsp",
 					run = "./install.sh",
 				},
