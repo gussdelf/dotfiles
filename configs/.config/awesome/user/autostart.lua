@@ -9,7 +9,7 @@ M.setup = function()
 		'xinput --set-prop "SIGMACHIP Usb Mouse" "Coordinate Transformation Matrix" 0.5 0 0 0 0.5 0 0 0 1',
 		"xsetroot -cursor_name left_ptr",
 		"picom --experimental-backends",
-		"feh --bg-scale ~/Imgs/wall/forest.jpg --no-fehbg",
+		-- "feh --bg-scale ~/Imgs/wall/forest.jpg --no-fehbg",
 		"xrdb ~/.config/xrdb/Gruvbox",
 	}
 

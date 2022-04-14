@@ -59,6 +59,11 @@ M.setup = function()
 		})
 
 		ruled.client.append_rule({
+			rule = { class = "mpv" },
+			properties = { maximized = false, floating = false },
+		})
+
+		ruled.client.append_rule({
 			rule = { class = "brave" },
 			properties = { maximized = false, floating = false },
 		})
