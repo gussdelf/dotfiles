@@ -101,4 +101,20 @@ ColorNord = function(tbg)
 	]]
 end
 
+ColorTokyo = function(style, tbg)
+	vim.g.tokyonight_transparent = tbg
+	vim.g.tokyonight_style = style
+	vim.cmd [[ color tokyonight ]]
+	vim.cmd [[
+		hi! link MatchParen Search
+		hi! link TSField TSFuncBuiltin
+		hi! link TelescopeMatching Search
+		hi! link TelescopeSelection CursorLine
+		hi TelescopeNormal guibg=NONE guifg=NONE
+		hi TelescopeBorder guibg=NONE 
+		hi TSVariable gui=italic
+		hi TSProperty gui=italic
+	]]
+end
+
 ColorMatGruv()
