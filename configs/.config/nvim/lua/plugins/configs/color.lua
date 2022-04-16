@@ -1,6 +1,6 @@
 local g = vim.g
 
-ColorMatGruv = function(tbg)
+ColorGruv = function(tbg)
 	g.gruvbox_material_palette = "original"
 	g.gruvbox_material_sign_column_background = "none"
 	g.gruvbox_material_background = "hard"
@@ -123,4 +123,4 @@ ColorTokyo = function(style, tbg)
 	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 end
 
-ColorMatGruv()
+ColorGruv()

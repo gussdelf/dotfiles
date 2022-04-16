@@ -60,7 +60,7 @@ lspLangs = {
 	"ruby",
 	"python",
 	"julia",
-	"vim"
+	"vim",
 }
 
 tsEnsureInstall = {

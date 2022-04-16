@@ -99,6 +99,11 @@ M.navigator = function()
 		transparency = 100,
 		lsp = {
 			disable_format_cap = servers,
+			format_on_save = false,
+			diagnostic = {
+				virtual_text = false,
+				underline = false,
+			},
 		},
 	}
 end
