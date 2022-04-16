@@ -2,44 +2,13 @@
 local M = {}
 
 local lspconfig = require "lspconfig"
-local opts = { noremap = true, silent = true }
-
-local keymaps = function(bufnr)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gL", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gss", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua require('telescope.builtin').lsp_references()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<leader>wl",
-		"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"gsy",
-		"<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>",
-		opts
-	)
-end
 
 local function on_attach(client, bufnr)
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-	keymaps(bufnr)
+	-- keymaps(bufnr)
 	client.resolved_capabilities.document_formatting = false
 	client.resolved_capabilities.document_range_formatting = false
 end
@@ -100,6 +69,38 @@ local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+M.navigator = function()
+	require("navigator").setup {
+		debug = false,
+		width = 0.75,
+		height = 0.3,
+		preview_height = 0.35,
+		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+		default_mapping = false,
+		keymaps = {
+			{ key = "gr", func = "require('navigator.reference').async_ref()" },
+			{ key = "gsy", func = "require('navigator.symbols').document_symbols()" },
+			{ key = "gd", func = "require('navigator.definition').definition()" },
+			{ key = "gD", func = "declaration({ border = 'rounded', max_width = 80 })" },
+			{ key = "gp", func = "require('navigator.definition').definition_preview()" },
+			{ key = "<leader>rn", func = "require('navigator.rename').rename()" },
+			{ key = "gi", func = "implementation()" },
+			{ key = "<leader>D", func = "type_definition()" },
+			{ key = "gL", func = "require('navigator.diagnostics').show_diagnostics()" },
+			{ key = "gG", func = "require('navigator.diagnostics').show_buf_diagnostics()" },
+			{ key = "<Space>ca", mode = "n", func = "require('navigator.codeAction').code_action()" },
+			{ key = "<Space>cA", mode = "v", func = "range_code_action()" },
+			{ key = "K", func = "hover({ popup_opts = { border = single, max_width = 80 }})" },
+			{ key = "<leader>lf", func = "formatting()", mode = "n" },
+			{ key = "<leader>lf", func = "range_formatting()", mode = "v" },
+		},
+		transparency = 100,
+		lsp = {
+			disable_format_cap = servers,
+		},
+	}
 end
 
 M.go = function()

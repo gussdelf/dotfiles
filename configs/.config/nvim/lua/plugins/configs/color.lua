@@ -19,6 +19,8 @@ ColorMatGruv = function(tbg)
 		hi TSProperty gui=italic
 		hi TSTypeBuiltin gui=none
 		hi SpecialKeyWin guifg=#3c3836
+		hi default GHTextViewDark guibg=none ctermbg=none
+		hi default GHListDark guibg=none ctermbg=none
 		set winhighlight=SpecialKey:SpecialKeyWin
 	]]
 end
@@ -37,6 +39,8 @@ ColorEdge = function(tbg)
 		hi! link MatchParen Search
 		hi! link SpecialKey red
 		hi! link TelescopeMatching Search
+		hi default GHTextViewDark guibg=none ctermbg=none
+		hi default GHListDark guibg=none ctermbg=none
 	]]
 end
 
@@ -60,6 +64,8 @@ ColorKana = function(tbg)
 	vim.cmd [[
 		hi! link MatchParen Search
 		hi! link TelescopeMatching Search
+		hi default GHTextViewDark guibg=none ctermbg=none
+		hi default GHListDark guibg=none ctermbg=none
 	]]
 end
 
@@ -75,6 +81,8 @@ ColorCode = function(tbg)
 		hi TSVariable gui=italic
 		hi TSProperty gui=italic
 		hi TSTypeBuiltin gui=none
+		hi default GHTextViewDark guibg=none ctermbg=none
+		hi default GHListDark guibg=none ctermbg=none
 	]]
 end
 
@@ -98,6 +106,8 @@ ColorNord = function(tbg)
 		hi TSProperty gui=italic
 		hi TSTypeBuiltin gui=none
 		hi TSString gui=none
+		hi default GHTextViewDark guibg=none ctermbg=none
+		hi default GHListDark guibg=none ctermbg=none
 	]]
 end
 
@@ -114,6 +124,8 @@ ColorTokyo = function(style, tbg)
 		hi TelescopeBorder guibg=NONE 
 		hi TSVariable gui=italic
 		hi TSProperty gui=italic
+		hi default GHTextViewDark guibg=none ctermbg=none
+		hi default GHListDark guibg=none ctermbg=none
 	]]
 end
 

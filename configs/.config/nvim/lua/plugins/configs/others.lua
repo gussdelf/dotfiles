@@ -23,7 +23,7 @@ end
 
 M.bufferline = function()
 	require("bufferline").setup {
-		offsets = { { filetype = "NvimTree", text = "File Explorer" } },
+		offsets = { { filetype = "NvimTree", text = "File Explorer" }, { filetype = "neo-tree", text = "Explorer" } },
 	}
 end
 

@@ -374,6 +374,15 @@ return require("packer").startup {
 						require("plugins.configs.others").null_ls()
 					end,
 				},
+				{
+					"ray-x/navigator.lua",
+					after = "nvim-lspconfig",
+					ft = lspLangs,
+					requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+					config = function()
+						require("plugins.configs.lspconfig").navigator()
+					end,
+				},
 			},
 
 			-- nvim-dap
