@@ -10,17 +10,17 @@ ColorMatGruv = function(tbg)
 	g.gruvbox_material_diagnostic_line_highlight = true
 	-- g.gruvbox_material_diagnostic_text_highlight = true
 	vim.cmd [[ color gruvbox-material ]]
+	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
+	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
+	vim.api.nvim_set_hl(0, "MarkSignHl", { link = "red" })
+	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
+	vim.api.nvim_set_hl(0, "TSProperty", { italic = true })
+	vim.api.nvim_set_hl(0, "TSVariable", { italic = true })
+	vim.api.nvim_set_hl(0, "TSTypeBuiltin", { bold = false, italic = false, underline = false, undercurl = false })
+	vim.api.nvim_set_hl(0, "SpecialKeyWin", { fg = "#3c3836" })
+	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
+	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 	vim.cmd [[
-		hi! link MatchParen Search
-		hi! link SpecialKey red
-		hi! link MarkSignHl red
-		hi! link TelescopeMatching Search
-		hi TSVariable gui=italic
-		hi TSProperty gui=italic
-		hi TSTypeBuiltin gui=none
-		hi SpecialKeyWin guifg=#3c3836
-		hi default GHTextViewDark guibg=none ctermbg=none
-		hi default GHListDark guibg=none ctermbg=none
 		set winhighlight=SpecialKey:SpecialKeyWin
 	]]
 end
@@ -35,13 +35,11 @@ ColorEdge = function(tbg)
 
 	vim.cmd [[ color edge]]
 
-	vim.cmd [[
-		hi! link MatchParen Search
-		hi! link SpecialKey red
-		hi! link TelescopeMatching Search
-		hi default GHTextViewDark guibg=none ctermbg=none
-		hi default GHListDark guibg=none ctermbg=none
-	]]
+	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
+	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
+	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
+	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
+	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 end
 
 ColorKana = function(tbg)
@@ -61,12 +59,11 @@ ColorKana = function(tbg)
 
 	-- setup must be called before loading
 	vim.cmd [[ color kanagawa ]]
-	vim.cmd [[
-		hi! link MatchParen Search
-		hi! link TelescopeMatching Search
-		hi default GHTextViewDark guibg=none ctermbg=none
-		hi default GHListDark guibg=none ctermbg=none
-	]]
+	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
+	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
+	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
+	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
+	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 end
 
 ColorCode = function(tbg)
@@ -75,15 +72,16 @@ ColorCode = function(tbg)
 	g.vscode_italic_comment = 1
 	g.vscode_disable_nvimtree_bg = true
 	vim.cmd [[ color vscode ]]
-	vim.cmd [[
-		hi! link MatchParen Search
-		hi! link TelescopeMatching Search
-		hi TSVariable gui=italic
-		hi TSProperty gui=italic
-		hi TSTypeBuiltin gui=none
-		hi default GHTextViewDark guibg=none ctermbg=none
-		hi default GHListDark guibg=none ctermbg=none
-	]]
+	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
+	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
+	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
+	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
+	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
+	vim.api.nvim_set_hl(0, "TSVariable", { italic = true })
+	vim.api.nvim_set_hl(0, "TSProperty", { italic = true })
+	vim.api.nvim_set_hl(0, "TSTypeBuiltin", { bold = false, italic = false, underline = false, undercurl = false })
+	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
+	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 end
 
 ColorNord = function(tbg)
@@ -97,36 +95,32 @@ ColorNord = function(tbg)
 
 	require("nord").set()
 
-	vim.cmd [[
-		hi! link MatchParen Search
-		hi! link TSField TSFuncBuiltin
-		hi! link TelescopeMatching Search
-		hi! link TelescopeSelection CursorLine
-		hi TSVariable gui=italic
-		hi TSProperty gui=italic
-		hi TSTypeBuiltin gui=none
-		hi TSString gui=none
-		hi default GHTextViewDark guibg=none ctermbg=none
-		hi default GHListDark guibg=none ctermbg=none
-	]]
+	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
+	vim.api.nvim_set_hl(0, "MarkSignHl", { link = "red" })
+	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
+	vim.api.nvim_set_hl(0, "TSField", { link = "TSFuncBuiltin" })
+	vim.api.nvim_set_hl(0, "TSVariable", { italic = true })
+	vim.api.nvim_set_hl(0, "TSProperty", { italic = true })
+	vim.api.nvim_set_hl(0, "TSTypeBuiltin", { bold = false, italic = false, underline = false, undercurl = false })
+	vim.api.nvim_set_hl(0, "TSString", { bold = false, italic = false, underline = false, undercurl = false })
+	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
+	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 end
 
 ColorTokyo = function(style, tbg)
 	vim.g.tokyonight_transparent = tbg
 	vim.g.tokyonight_style = style
 	vim.cmd [[ color tokyonight ]]
-	vim.cmd [[
-		hi! link MatchParen Search
-		hi! link TSField TSFuncBuiltin
-		hi! link TelescopeMatching Search
-		hi! link TelescopeSelection CursorLine
-		hi TelescopeNormal guibg=NONE guifg=NONE
-		hi TelescopeBorder guibg=NONE 
-		hi TSVariable gui=italic
-		hi TSProperty gui=italic
-		hi default GHTextViewDark guibg=none ctermbg=none
-		hi default GHListDark guibg=none ctermbg=none
-	]]
+	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
+	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
+	vim.api.nvim_set_hl(0, "TelescopeSelection", { link = "CursorLine" })
+	vim.api.nvim_set_hl(0, "TSField", { link = "TSFuncBuiltin" })
+	vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE", fg = "NONE" })
+	vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "NONE" })
+	vim.api.nvim_set_hl(0, "TSVariable", { italic = true })
+	vim.api.nvim_set_hl(0, "TSProperty", { italic = true })
+	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
+	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 end
 
 ColorMatGruv()
