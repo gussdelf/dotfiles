@@ -56,10 +56,10 @@ vim.keymap.set({ "n", "v" }, ",X", "X", { noremap = true, silent = true })
 -- Insert mode moviment
 vim.keymap.set("i", "<C-e>", "<End>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-a>", "<Home>", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-h>", "<C-o>b", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-l>", "<C-o>e", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-j>", "<C-o>j", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-k>", "<C-o>k", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-h>", "<Left>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-l>", "<Right>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-j>", "<Down>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-k>", "<Up>", { noremap = true, silent = true })
 
 -- File
 vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { silent = true })

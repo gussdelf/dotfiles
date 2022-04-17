@@ -20,6 +20,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- Disable numbers on terminal
+vim.api.nvim_create_autocmd("TermOpen", {
+	pattern = "term://*",
+	callback = function()
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
+		vim.opt_local.filetype = "terminal"
+	end,
+})
+
 -- Chars
 o.fillchars = { eob = " " }
 o.listchars = { tab = "» " }

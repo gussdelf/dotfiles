@@ -129,15 +129,6 @@ tsFileTypes = {
 	"julia",
 }
 
-vim.api.nvim_create_autocmd("TermOpen", {
-	pattern = "term://*",
-	callback = function()
-		vim.opt_local.number = false
-		vim.opt_local.relativenumber = false
-		vim.opt_local.filetype = "terminal"
-	end,
-})
-
 M.transparent_background =
 	function() -- This is a just a function for colorschemes without the option for transparent background
 		vim.api.nvim_create_autocmd("ColorScheme", {
