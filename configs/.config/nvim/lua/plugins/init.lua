@@ -307,20 +307,22 @@ return require("packer").startup {
 				{
 					"hrsh7th/cmp-nvim-lua",
 					ft = lspLangs,
-
 					after = "cmp_luasnip",
 				},
 				{
 					"hrsh7th/cmp-nvim-lsp",
 					ft = lspLangs,
-
 					after = "cmp-nvim-lua",
+				},
+				{
+					"hrsh7th/cmp-nvim-lsp-signature-help",
+					ft = lspLangs,
+					after = "cmp-nvim-lsp",
 				},
 				{
 					"hrsh7th/cmp-buffer",
 					ft = lspLangs,
-
-					after = "cmp-nvim-lsp",
+					after = "cmp-nvim-lsp-signature-help",
 				},
 				{
 					"tzachar/cmp-tabnine",
@@ -331,13 +333,11 @@ return require("packer").startup {
 				{
 					"hrsh7th/cmp-path",
 					ft = lspLangs,
-
 					after = "cmp-buffer",
 				},
 				{
 					"andersevenrud/cmp-tmux",
 					ft = lspLangs,
-
 					after = "cmp-buffer",
 				},
 			},

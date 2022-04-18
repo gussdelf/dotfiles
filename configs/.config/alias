@@ -4,7 +4,6 @@
 alias c='clear;'\
 	n='nnn -e'\
 	g='git'\
-	vi='command vim'\
 	xx='chmod +x'\
 	ww="wget"\
 	lz='lazygit'\
@@ -19,7 +18,6 @@ alias c='clear;'\
 	la='exa -s type -la --git --icons'\
 	lla='exa -s type -la --git --icons'\
 	lsa="exa -s type -a --git --icons"\
-	vim='nvim'\
 	cmd='command'\
 	doo='doas'\
 	del='doas rm -rf'\

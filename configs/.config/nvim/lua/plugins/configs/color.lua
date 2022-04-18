@@ -123,4 +123,4 @@ ColorTokyo = function(style, tbg)
 	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 end
 
-ColorGruv()
+ColorGruv(true)
