@@ -1,5 +1,10 @@
 local g = vim.g
 
+function set_colorsheme(name)
+	vim.g.colors_name = name
+	vim.o.background = vim.o.background
+end
+
 ColorGruv = function(tbg)
 	g.gruvbox_material_palette = "original"
 	g.gruvbox_material_sign_column_background = "none"
@@ -9,7 +14,7 @@ ColorGruv = function(tbg)
 	g.gruvbox_material_better_performance = true
 	g.gruvbox_material_diagnostic_line_highlight = true
 	-- g.gruvbox_material_diagnostic_text_highlight = true
-	vim.cmd [[ color gruvbox-material ]]
+	set_colorsheme "gruvbox-material"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
 	vim.api.nvim_set_hl(0, "MarkSignHl", { link = "red" })
@@ -33,7 +38,7 @@ ColorEdge = function(tbg)
 	g.edge_diagnostic_text_highlight = true
 	g.edge_diagnostic_line_highlight = true
 
-	vim.cmd [[ color edge]]
+	set_colorsheme "edge"
 
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
@@ -58,7 +63,7 @@ ColorKana = function(tbg)
 	}
 
 	-- setup must be called before loading
-	vim.cmd [[ color kanagawa ]]
+	set_colorsheme "kanagawa"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
@@ -71,7 +76,7 @@ ColorCode = function(tbg)
 	g.vscode_transparent = tbg
 	g.vscode_italic_comment = 1
 	g.vscode_disable_nvimtree_bg = true
-	vim.cmd [[ color vscode ]]
+	set_colorsheme "vscode"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
@@ -111,6 +116,7 @@ ColorTokyo = function(style, tbg)
 	vim.g.tokyonight_transparent = tbg
 	vim.g.tokyonight_style = style
 	vim.cmd [[ color tokyonight ]]
+	set_colorsheme "tokyonight"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
 	vim.api.nvim_set_hl(0, "TelescopeSelection", { link = "CursorLine" })
