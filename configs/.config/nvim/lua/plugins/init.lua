@@ -25,7 +25,7 @@ return require("packer").startup {
 				"wbthomason/packer.nvim",
 				"nvim-lua/plenary.nvim",
 				"tpope/vim-repeat",
-				"tpope/vim-surround",
+				{ "tpope/vim-surround", event = "VimEnter" },
 			},
 
 			-- Improve startup time
@@ -47,6 +47,7 @@ return require("packer").startup {
 						"Mofiqul/vscode.nvim",
 						"shaunsingh/nord.nvim",
 						"folke/tokyonight.nvim",
+						event = "VimEnter",
 					},
 					config = function()
 						require "plugins.configs.color"
@@ -86,6 +87,7 @@ return require("packer").startup {
 				{
 					"nvim-treesitter/nvim-treesitter",
 					ft = tsFileTypes,
+					event = "BufRead",
 					requires = {
 						{
 							"nvim-treesitter/playground",
@@ -445,6 +447,8 @@ return require("packer").startup {
 					ft = "markdown",
 					run = "cd app && yarn install",
 				},
+
+				-- jbyuki
 				{
 					"jbyuki/venn.nvim",
 					opt = true,
