@@ -87,7 +87,7 @@ return require("packer").startup {
 				{
 					"nvim-treesitter/nvim-treesitter",
 					ft = tsFileTypes,
-					event = "BufRead",
+					event = { "BufRead", "BufNewFile" },
 					requires = {
 						{
 							"nvim-treesitter/playground",

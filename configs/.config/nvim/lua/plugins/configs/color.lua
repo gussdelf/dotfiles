@@ -1,6 +1,6 @@
 local g = vim.g
 
-function set_colorsheme(name)
+function colorscheme(name)
 	vim.g.colors_name = name
 	vim.o.background = vim.o.background
 end
@@ -14,13 +14,14 @@ ColorGruv = function(tbg)
 	g.gruvbox_material_better_performance = true
 	g.gruvbox_material_diagnostic_line_highlight = true
 	-- g.gruvbox_material_diagnostic_text_highlight = true
-	set_colorsheme "gruvbox-material"
+	colorscheme "gruvbox-material"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
 	vim.api.nvim_set_hl(0, "MarkSignHl", { link = "red" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
 	vim.api.nvim_set_hl(0, "TSProperty", { italic = true })
 	vim.api.nvim_set_hl(0, "TSVariable", { italic = true })
+	vim.api.nvim_set_hl(0, "TSBoolean", { bold = true })
 	vim.api.nvim_set_hl(0, "TSTypeBuiltin", { bold = false, italic = false, underline = false, undercurl = false })
 	vim.api.nvim_set_hl(0, "SpecialKeyWin", { fg = "#3c3836" })
 	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
@@ -38,13 +39,14 @@ ColorEdge = function(tbg)
 	g.edge_diagnostic_text_highlight = true
 	g.edge_diagnostic_line_highlight = true
 
-	set_colorsheme "edge"
+	colorscheme "edge"
 
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
 	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
 	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
+	vim.api.nvim_set_hl(0, "TSBoolean", { bold = true })
 end
 
 ColorKana = function(tbg)
@@ -63,7 +65,7 @@ ColorKana = function(tbg)
 	}
 
 	-- setup must be called before loading
-	set_colorsheme "kanagawa"
+	colorscheme "kanagawa"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
@@ -76,7 +78,7 @@ ColorCode = function(tbg)
 	g.vscode_transparent = tbg
 	g.vscode_italic_comment = 1
 	g.vscode_disable_nvimtree_bg = true
-	set_colorsheme "vscode"
+	colorscheme "vscode"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
@@ -84,6 +86,7 @@ ColorCode = function(tbg)
 	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 	vim.api.nvim_set_hl(0, "TSVariable", { italic = true })
 	vim.api.nvim_set_hl(0, "TSProperty", { italic = true })
+	vim.api.nvim_set_hl(0, "TSBoolean", { bold = true })
 	vim.api.nvim_set_hl(0, "TSTypeBuiltin", { bold = false, italic = false, underline = false, undercurl = false })
 	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
 	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
@@ -107,6 +110,7 @@ ColorNord = function(tbg)
 	vim.api.nvim_set_hl(0, "TSVariable", { italic = true })
 	vim.api.nvim_set_hl(0, "TSProperty", { italic = true })
 	vim.api.nvim_set_hl(0, "TSTypeBuiltin", { bold = false, italic = false, underline = false, undercurl = false })
+	vim.api.nvim_set_hl(0, "TSBoolean", { bold = true })
 	vim.api.nvim_set_hl(0, "TSString", { bold = false, italic = false, underline = false, undercurl = false })
 	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
 	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
@@ -116,7 +120,7 @@ ColorTokyo = function(style, tbg)
 	vim.g.tokyonight_transparent = tbg
 	vim.g.tokyonight_style = style
 	vim.cmd [[ color tokyonight ]]
-	set_colorsheme "tokyonight"
+	colorscheme "tokyonight"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
 	vim.api.nvim_set_hl(0, "TelescopeSelection", { link = "CursorLine" })
@@ -125,6 +129,7 @@ ColorTokyo = function(style, tbg)
 	vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "NONE" })
 	vim.api.nvim_set_hl(0, "TSVariable", { italic = true })
 	vim.api.nvim_set_hl(0, "TSProperty", { italic = true })
+	vim.api.nvim_set_hl(0, "TSBoolean", { bold = true })
 	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
 	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 end

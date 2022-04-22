@@ -57,11 +57,11 @@ local border = {
 cmp.setup {
 	window = {
 		completion = {
-			-- border = border,
+			border = border,
 			-- scrollbar = "┃",
 		},
 		documentation = {
-			-- border = border,
+			border = border,
 			-- scrollbar = "┃",
 		},
 	},
