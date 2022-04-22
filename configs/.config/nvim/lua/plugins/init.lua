@@ -58,11 +58,11 @@ return require("packer").startup {
 					after = "gruvbox-material",
 				},
 				{
-					"nvim-lualine/lualine.nvim",
+					"feline-nvim/feline.nvim",
 					opt = true,
 					after = "gruvbox-material",
 					config = function()
-						require("plugins.configs.others").lualine()
+						require "plugins.configs.feline"
 					end,
 				},
 				{
