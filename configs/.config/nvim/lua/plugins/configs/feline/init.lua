@@ -87,7 +87,6 @@ components.active[1] = {
 			return {
 				name = require("feline.providers.vi_mode").get_mode_highlight_name(),
 				fg = require("feline.providers.vi_mode").get_mode_color(),
-				bg = colors.gruvbox.bg,
 				style = "bold",
 			}
 		end,
@@ -178,22 +177,19 @@ components.active[3] = {
 		},
 		right_sep = " ",
 	},
-
-	{
-		provider = " ▊",
-		hl = function()
-			return {
-				fg = colors.gruvbox.green,
-			}
-		end,
-	},
+	-- {
+	-- 	provider = " ▊",
+	-- 	hl = {
+	-- 		fg = colors.gruvbox.green,
+	-- 	},
+	-- },
 }
 
 require("feline").setup {
 	components = components,
 	vi_mode_colors = vi_mode_colors,
 	theme = {
-		bg = colors.gruvbox.bg,
+		bg = "NONE",
 		fg = colors.gruvbox.fg,
 	},
 }
