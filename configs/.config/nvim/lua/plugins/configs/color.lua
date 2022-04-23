@@ -111,7 +111,7 @@ ColorNord = function(tbg)
 	vim.api.nvim_set_hl(0, "TSProperty", { italic = true })
 	vim.api.nvim_set_hl(0, "TSTypeBuiltin", { bold = false, italic = false, underline = false, undercurl = false })
 	vim.api.nvim_set_hl(0, "TSBoolean", { bold = true })
-	vim.api.nvim_set_hl(0, "TSString", { bold = false, italic = false, underline = false, undercurl = false })
+	vim.api.nvim_set_hl(0, "TSString", { italic = false, fg = "#A3BE8C" })
 	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
 	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 end
@@ -134,4 +134,4 @@ ColorTokyo = function(style, tbg)
 	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 end
 
-ColorGruv(true)
+ColorGruv()

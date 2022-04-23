@@ -80,6 +80,15 @@ return require("packer").startup {
 						vim.keymap.set("n", "<leader>tz", "<cmd>ZenMode<cr>", { silent = true })
 					end,
 				},
+				{
+					"lukas-reineke/indent-blankline.nvim",
+					event = "BufRead",
+					config = function()
+						require("indent_blankline").setup {
+							show_end_of_line = true,
+						}
+					end,
+				},
 			},
 
 			-- Treesitter
@@ -295,7 +304,6 @@ return require("packer").startup {
 			{
 				{
 					"hrsh7th/nvim-cmp",
-					branch = "dev",
 					ft = lspLangs,
 					config = function()
 						require "plugins.configs.cmp"

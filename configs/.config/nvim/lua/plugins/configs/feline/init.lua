@@ -1,5 +1,3 @@
--- A initial comment
-
 local colors = require("plugins.configs.feline.colors").colorsheme "gruvbox"
 local utils = require "plugins.configs.feline.utils"
 local lsp = require "feline.providers.lsp"
@@ -179,7 +177,7 @@ components.active[3] = {
 			fg = colors.red,
 			style = "bold",
 		},
-		icon = " ",
+		icon = " ",
 		right_sep = " ",
 	},
 	{

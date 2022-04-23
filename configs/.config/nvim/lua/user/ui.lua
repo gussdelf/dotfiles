@@ -32,8 +32,8 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
 -- Chars
 o.fillchars = { eob = " " }
-o.listchars = { tab = "» " }
-o.list = true
+-- o.listchars = { tab = "» " }
+-- o.list = true
 
 -- signcolumn
 o.signcolumn = "yes"
