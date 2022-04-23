@@ -1,58 +1,24 @@
 -- A initial comment
 
-local colors = require "plugins.configs.feline.colors"
+local colors = require("plugins.configs.feline.colors").colorsheme "gruvbox"
 local lsp = require "feline.providers.lsp"
 
 local vi_mode_colors = {
-	NORMAL = colors.gruvbox.green,
-	INSERT = colors.gruvbox.oceanblue,
-	VISUAl = colors.gruvbox.oceanblue,
-	LINES = colors.gruvbox.oceanblue,
-	OP = colors.gruvbox.green,
-	BLOCK = colors.gruvbox.oceanblue,
-	REPLACE = colors.gruvbox.red,
-	["V-REPLACE"] = colors.gruvbox.red,
-	ENTER = colors.gruvbox.cyan,
-	MORE = colors.gruvbox.cyan,
-	SELECT = colors.gruvbox.orange,
-	COMMAND = colors.gruvbox.magenta,
-	SHELL = colors.gruvbox.green,
-	TERM = colors.gruvbox.oceanblue,
-	NONE = colors.gruvbox.yellow,
-}
-
-local vi_mode_text = {
-	["n"] = "NORMAL",
-	["no"] = "OP",
-	["nov"] = "OP",
-	["noV"] = "OP",
-	["no"] = "OP",
-	["niI"] = "NORMAL",
-	["niR"] = "NORMAL",
-	["niV"] = "NORMAL",
-	["v"] = "VISUAL",
-	["V"] = "LINES",
-	[""] = "BLOCK",
-	["s"] = "SELECT",
-	["S"] = "SELECT",
-	[""] = "BLOCK",
-	["i"] = "INSERT",
-	["ic"] = "INSERT",
-	["ix"] = "INSERT",
-	["R"] = "REPLACE",
-	["Rc"] = "REPLACE",
-	["Rv"] = "V-REPLACE",
-	["Rx"] = "REPLACE",
-	["c"] = "COMMAND",
-	["cv"] = "COMMAND",
-	["ce"] = "COMMAND",
-	["r"] = "ENTER",
-	["rm"] = "MORE",
-	["r?"] = "CONFIRM",
-	["!"] = "SHELL",
-	["t"] = "TERM",
-	["nt"] = "TERM",
-	["null"] = "NONE",
+	NORMAL = colors.green,
+	INSERT = colors.oceanblue,
+	VISUAl = colors.oceanblue,
+	LINES = colors.oceanblue,
+	OP = colors.green,
+	BLOCK = colors.oceanblue,
+	REPLACE = colors.red,
+	["V-REPLACE"] = colors.red,
+	ENTER = colors.cyan,
+	MORE = colors.cyan,
+	SELECT = colors.orange,
+	COMMAND = colors.magenta,
+	SHELL = colors.green,
+	TERM = colors.oceanblue,
+	NONE = colors.yellow,
 }
 
 local components = {
@@ -72,6 +38,26 @@ table.insert(components.inactive, {})
 components.active[1] = {
 	{
 		provider = "▊ ",
+		hl = {
+			fg = colors.oceanblue,
+		},
+	},
+	-- {
+	-- 	provider = function()
+	-- 		local current_text = "" .. vi_mode_text[vim.fn.mode()] .. " "
+	-- 		return current_text
+	-- 	end,
+	-- 	hl = function()
+	-- 		return {
+	-- 			name = require("feline.providers.vi_mode").get_mode_highlight_name(),
+	-- 			fg = require("feline.providers.vi_mode").get_mode_color(),
+	-- 			style = "bold",
+	-- 		}
+	-- 	end,
+	-- 	str = " ",
+	-- },
+	{
+		provider = " ",
 		hl = function()
 			return {
 				fg = require("feline.providers.vi_mode").get_mode_color(),
@@ -79,25 +65,26 @@ components.active[1] = {
 		end,
 	},
 	{
-		provider = function()
-			local current_text = "" .. vi_mode_text[vim.fn.mode()] .. " "
-			return current_text
-		end,
-		hl = function()
-			return {
-				name = require("feline.providers.vi_mode").get_mode_highlight_name(),
-				fg = require("feline.providers.vi_mode").get_mode_color(),
-				style = "bold",
-			}
-		end,
-		str = " ",
+		provider = "file_size",
+		right_sep = " ",
+		left_sep = " ",
 	},
 	{
 		provider = "file_info",
 		hl = {
-			fg = colors.gruvbox.oceanblue,
+			fg = colors.oceanblue,
 			style = "bold",
 		},
+		left_sep = " ",
+		right_sep = " ",
+	},
+	{
+		provider = "position",
+		left_sep = " ",
+		right_sep = " ",
+	},
+	{
+		provider = "line_percentage",
 		left_sep = " ",
 		right_sep = " ",
 	},
@@ -107,8 +94,10 @@ components.active[1] = {
 			return lsp.diagnostics_exist "Error"
 		end,
 		hl = {
-			fg = colors.gruvbox.red,
+			fg = colors.red,
 		},
+		icon = " ",
+		right_sep = " ",
 	},
 	{
 		provider = "diagnostic_warnings",
@@ -116,8 +105,10 @@ components.active[1] = {
 			return lsp.diagnostics_exist "Warn"
 		end,
 		hl = {
-			fg = colors.gruvbox.yellow,
+			fg = colors.yellow,
 		},
+		icon = " ",
+		right_sep = " ",
 	},
 	{
 		provider = "diagnostic_hints",
@@ -125,7 +116,7 @@ components.active[1] = {
 			return lsp.diagnostics_exist "Hint"
 		end,
 		hl = {
-			fg = colors.gruvbox.cyan,
+			fg = colors.cyan,
 		},
 	},
 	{
@@ -134,7 +125,40 @@ components.active[1] = {
 			return lsp.diagnostics_exist "Info"
 		end,
 		hl = {
-			fg = colors.gruvbox.oceanblue,
+			fg = colors.oceanblue,
+		},
+	},
+}
+
+components.active[2] = {
+	{
+		provider = function()
+			local Lsp = vim.lsp.util.get_progress_messages()[1]
+			if Lsp then
+				local msg = Lsp.message or ""
+				local percentage = Lsp.percentage or 0
+				local title = Lsp.title or ""
+				local spinners = {
+					"",
+					"",
+					"",
+				}
+				local success_icon = {
+					"",
+					"",
+					"",
+				}
+				local ms = vim.loop.hrtime() / 1000000
+				local frame = math.floor(ms / 120) % #spinners
+				if percentage >= 70 then
+					return string.format(" %%<%s %s %s (%s%%%%) ", success_icon[frame + 1], title, msg, percentage)
+				end
+				return string.format(" %%<%s %s %s (%s%%%%) ", spinners[frame + 1], title, msg, percentage)
+			end
+			return ""
+		end,
+		hl = {
+			fg = colors.green,
 		},
 	},
 }
@@ -143,46 +167,56 @@ components.active[3] = {
 	{
 		provider = "file_type",
 		hl = {
-			fg = colors.gruvbox.violet,
+			fg = colors.yellow,
 		},
 		right_sep = " ",
 	},
+	{
+		provider = file_osinfo,
+		hl = {
+			fg = colors.oceanblue,
+		},
+		right_sep = " ",
+		left_sep = " ",
+	},
 	-- Git
+	{
+		provider = "git_branch",
+		hl = {
+			fg = colors.red,
+			style = "bold",
+		},
+		icon = " ",
+		right_sep = " ",
+		left_sep = " ",
+	},
 	{
 		provider = "git_diff_added",
 		hl = {
-			fg = colors.gruvbox.green,
+			fg = colors.green,
 		},
 		right_sep = " ",
 	},
 	{
 		provider = "git_diff_changed",
 		hl = {
-			fg = colors.gruvbox.orange,
+			fg = colors.orange,
 		},
 		right_sep = " ",
 	},
 	{
 		provider = "git_diff_removed",
 		hl = {
-			fg = colors.gruvbox.red,
+			fg = colors.red,
 		},
 		right_sep = " ",
 	},
 	{
-		provider = "git_branch",
+		provider = " ▊",
 		hl = {
-			fg = colors.gruvbox.violet,
-			style = "bold",
+			fg = colors.oceanblue,
 		},
-		right_sep = " ",
 	},
-	-- {
-	-- 	provider = " ▊",
-	-- 	hl = {
-	-- 		fg = colors.gruvbox.green,
-	-- 	},
-	-- },
 }
 
 require("feline").setup {
@@ -190,6 +224,6 @@ require("feline").setup {
 	vi_mode_colors = vi_mode_colors,
 	theme = {
 		bg = "NONE",
-		fg = colors.gruvbox.fg,
+		fg = colors.fg,
 	},
 }
