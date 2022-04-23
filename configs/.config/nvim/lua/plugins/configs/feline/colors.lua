@@ -112,4 +112,23 @@ M.tokyo_night = {
 	yellow = "#e0af68",
 }
 
+M.colorsheme = function(theme)
+	local pallete = {
+		bg = require("plugins.configs.feline.colors")[theme].bg,
+		fg = require("plugins.configs.feline.colors")[theme].fg,
+		black = require("plugins.configs.feline.colors")[theme].black,
+		skyblue = require("plugins.configs.feline.colors")[theme].skyblue,
+		cyan = require("plugins.configs.feline.colors")[theme].cyan,
+		green = require("plugins.configs.feline.colors")[theme].green,
+		oceanblue = require("plugins.configs.feline.colors")[theme].oceanblue,
+		magenta = require("plugins.configs.feline.colors")[theme].magenta,
+		orange = require("plugins.configs.feline.colors")[theme].orange,
+		red = require("plugins.configs.feline.colors")[theme].red,
+		violet = require("plugins.configs.feline.colors")[theme].violet,
+		white = require("plugins.configs.feline.colors")[theme].white,
+		yellow = require("plugins.configs.feline.colors")[theme].yellow,
+	}
+	return pallete
+end
+
 return M
