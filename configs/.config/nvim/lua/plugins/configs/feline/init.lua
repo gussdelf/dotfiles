@@ -1,6 +1,7 @@
 -- A initial comment
 
 local colors = require("plugins.configs.feline.colors").colorsheme "gruvbox"
+local utils = require "plugins.configs.feline.utils"
 local lsp = require "feline.providers.lsp"
 
 local vi_mode_colors = {
@@ -42,20 +43,6 @@ components.active[1] = {
 			fg = colors.oceanblue,
 		},
 	},
-	-- {
-	-- 	provider = function()
-	-- 		local current_text = "" .. vi_mode_text[vim.fn.mode()] .. " "
-	-- 		return current_text
-	-- 	end,
-	-- 	hl = function()
-	-- 		return {
-	-- 			name = require("feline.providers.vi_mode").get_mode_highlight_name(),
-	-- 			fg = require("feline.providers.vi_mode").get_mode_color(),
-	-- 			style = "bold",
-	-- 		}
-	-- 	end,
-	-- 	str = " ",
-	-- },
 	{
 		provider = " ",
 		hl = function()
@@ -85,7 +72,6 @@ components.active[1] = {
 	},
 	{
 		provider = "line_percentage",
-		left_sep = " ",
 		right_sep = " ",
 	},
 	{
@@ -165,19 +151,26 @@ components.active[2] = {
 
 components.active[3] = {
 	{
-		provider = "file_type",
-		hl = {
-			fg = colors.yellow,
-		},
-		right_sep = " ",
-	},
-	{
-		provider = file_osinfo,
+		provider = "file_encoding",
 		hl = {
 			fg = colors.oceanblue,
 		},
-		right_sep = " ",
-		left_sep = " ",
+		right_sep = "  ",
+	},
+	{
+		provider = "file_type",
+		hl = {
+			fg = colors.yellow,
+			style = "bold",
+		},
+		right_sep = "  ",
+	},
+	{
+		provider = utils.file_osinfo,
+		hl = {
+			fg = colors.oceanblue,
+		},
+		right_sep = "  ",
 	},
 	-- Git
 	{
@@ -188,7 +181,6 @@ components.active[3] = {
 		},
 		icon = " ",
 		right_sep = " ",
-		left_sep = " ",
 	},
 	{
 		provider = "git_diff_added",

@@ -38,6 +38,9 @@ o.list = true
 -- signcolumn
 o.signcolumn = "yes"
 
+-- Global statusline
+vim.opt.laststatus = 3
+
 -- Others
 o.showmode = false
 -- o.guicursor = "n-i:blinkon100,v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"

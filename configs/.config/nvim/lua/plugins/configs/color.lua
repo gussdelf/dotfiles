@@ -1,6 +1,6 @@
 local g = vim.g
 
-function colorscheme(name)
+function Colorscheme(name)
 	vim.g.colors_name = name
 	vim.o.background = vim.o.background
 end
@@ -14,7 +14,7 @@ ColorGruv = function(tbg)
 	g.gruvbox_material_better_performance = true
 	g.gruvbox_material_diagnostic_line_highlight = true
 	-- g.gruvbox_material_diagnostic_text_highlight = true
-	colorscheme "gruvbox-material"
+	Colorscheme "gruvbox-material"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
 	vim.api.nvim_set_hl(0, "MarkSignHl", { link = "red" })
@@ -39,7 +39,7 @@ ColorEdge = function(tbg)
 	g.edge_diagnostic_text_highlight = true
 	g.edge_diagnostic_line_highlight = true
 
-	colorscheme "edge"
+	Colorscheme "edge"
 
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
@@ -65,7 +65,7 @@ ColorKana = function(tbg)
 	}
 
 	-- setup must be called before loading
-	colorscheme "kanagawa"
+	Colorscheme "kanagawa"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
@@ -78,7 +78,7 @@ ColorCode = function(tbg)
 	g.vscode_transparent = tbg
 	g.vscode_italic_comment = 1
 	g.vscode_disable_nvimtree_bg = true
-	colorscheme "vscode"
+	Colorscheme "vscode"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
@@ -120,7 +120,7 @@ ColorTokyo = function(style, tbg)
 	vim.g.tokyonight_transparent = tbg
 	vim.g.tokyonight_style = style
 	vim.cmd [[ color tokyonight ]]
-	colorscheme "tokyonight"
+	Colorscheme "tokyonight"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
 	vim.api.nvim_set_hl(0, "TelescopeSelection", { link = "CursorLine" })
