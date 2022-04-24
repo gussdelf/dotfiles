@@ -76,7 +76,7 @@ return require("packer").startup {
 				{
 					"folke/zen-mode.nvim",
 					cmd = "ZenMode",
-					config = function()
+					setup = function()
 						vim.keymap.set("n", "<leader>tz", "<cmd>ZenMode<cr>", { silent = true })
 					end,
 				},

@@ -80,23 +80,7 @@ M.code = {
 	yellow = "#D9DAA2",
 }
 
-M.tokyo_storm = {
-	bg = "#24283b",
-	fg = "#c0caf5",
-	black = "#1D202F",
-	skyblue = "#7aa2f7",
-	cyan = "#7dcfff",
-	green = "#9ece6a",
-	oceanblue = "#7aa2f7",
-	magenta = "#bb9af7",
-	orange = "#e0af68",
-	red = "#f7768e",
-	violet = "#bb9af7",
-	white = "#c0caf5",
-	yellow = "#e0af68",
-}
-
-M.tokyo_night = {
+M.tokyo = {
 	bg = "#1a1b26",
 	fg = "#c0caf5",
 	black = "#15161E",
