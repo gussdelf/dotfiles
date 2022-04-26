@@ -2,7 +2,7 @@ local M = {}
 
 M.gruvbox = {
 	bg = "#1d2021",
-	fg = "#d5c4a1",
+	fg = "#ebdbb2",
 	black = "#1d2021",
 	skyblue = "#458588",
 	cyan = "#83a598",
@@ -64,7 +64,7 @@ M.edge = {
 	yellow = "#deb974",
 }
 
-M.code = {
+M.vscode = {
 	bg = "#1e1e1e",
 	fg = "#d4d4d4",
 	black = "#1e1e1e",
@@ -80,7 +80,7 @@ M.code = {
 	yellow = "#D9DAA2",
 }
 
-M.tokyo = {
+M.tokyonight = {
 	bg = "#1a1b26",
 	fg = "#c0caf5",
 	black = "#15161E",

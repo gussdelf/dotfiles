@@ -1,4 +1,12 @@
-local colors = require("plugins.configs.feline.colors").colorsheme "gruvbox"
+local colors_name = function()
+	if vim.g.colors_name == "gruvbox-material" then
+		return "gruvbox"
+	else
+		return vim.g.colors_name
+	end
+end
+
+local colors = require("plugins.configs.feline.colors").colorsheme(colors_name())
 local utils = require "plugins.configs.feline.utils"
 local lsp = require "feline.providers.lsp"
 
@@ -217,3 +225,10 @@ require("feline").setup {
 		fg = colors.fg,
 	},
 }
+
+vim.api.nvim_create_augroup("SourceFeline", { clear = true })
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = "SourceFeline",
+	pattern = "*",
+	command = "source ~/.config/nvim/lua/plugins/configs/feline/init.lua",
+})
