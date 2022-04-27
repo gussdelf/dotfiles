@@ -31,24 +31,6 @@ ColorGruv = function(tbg)
 	]]
 end
 
-ColorEdge = function(tbg)
-	g.edge_style = "neon"
-	g.edge_enable_italic = true
-	g.edge_cursor = "red"
-	g.edge_transparent_background = tbg
-	g.edge_diagnostic_text_highlight = true
-	g.edge_diagnostic_line_highlight = true
-
-	Colorscheme "edge"
-
-	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
-	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
-	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
-	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
-	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
-	vim.api.nvim_set_hl(0, "TSBoolean", { bold = true })
-end
-
 ColorKana = function(tbg)
 	require("kanagawa").setup {
 		undercurl = true,
@@ -69,25 +51,6 @@ ColorKana = function(tbg)
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
-	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
-	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
-end
-
-ColorCode = function(tbg)
-	g.vscode_style = "dark"
-	g.vscode_transparent = tbg
-	g.vscode_italic_comment = 1
-	g.vscode_disable_nvimtree_bg = true
-	Colorscheme "vscode"
-	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
-	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
-	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
-	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
-	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
-	vim.api.nvim_set_hl(0, "TSVariable", { italic = true })
-	vim.api.nvim_set_hl(0, "TSProperty", { italic = true })
-	vim.api.nvim_set_hl(0, "TSBoolean", { bold = true })
-	vim.api.nvim_set_hl(0, "TSTypeBuiltin", { bold = false, italic = false, underline = false, undercurl = false })
 	vim.api.nvim_set_hl(0, "GHTextViewDark", { bg = "NONE", fg = "NONE" })
 	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 end

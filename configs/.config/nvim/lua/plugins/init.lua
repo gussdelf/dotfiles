@@ -42,9 +42,7 @@ return require("packer").startup {
 					"sainnhe/gruvbox-material",
 					event = "VimEnter",
 					requires = {
-						"sainnhe/edge",
 						"rebelot/kanagawa.nvim",
-						"Mofiqul/vscode.nvim",
 						"shaunsingh/nord.nvim",
 						"folke/tokyonight.nvim",
 						event = "VimEnter",
