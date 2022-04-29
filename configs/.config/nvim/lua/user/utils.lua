@@ -92,6 +92,7 @@ tsEnsureInstall = {
 	"commonlisp",
 	"java",
 	"julia",
+	"nix",
 }
 
 tsFileTypes = {

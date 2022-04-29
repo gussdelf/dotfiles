@@ -1,12 +1,13 @@
 local o = vim.opt
+local a = 4
 
 -- Indent
 o.smartindent = true
 
 -- I prefer tabs over spaces
 o.expandtab = false
-o.tabstop = 4
-o.shiftwidth = 4
+o.tabstop = a
+o.shiftwidth = a
 
 -- Clipboard
 o.clipboard = "unnamedplus"
