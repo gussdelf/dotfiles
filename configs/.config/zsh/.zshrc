@@ -26,8 +26,10 @@ bindkey '^J' down-line-or-history
 bindkey '^O' fzf-cd-widget
 
 # other
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+fi
 source $XDG_CONFIG_HOME/alias
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export HISTSIZE=10000
