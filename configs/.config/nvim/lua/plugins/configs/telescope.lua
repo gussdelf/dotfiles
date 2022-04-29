@@ -61,19 +61,6 @@ require("telescope").setup {
 	},
 }
 
-require("neoclip").setup {
-	history = 1000,
-	preview = true,
-	enable_persistent_history = true,
-	keys = {
-		telescope = {
-			i = {
-				paste_behind = "<c-h>",
-			},
-		},
-	},
-}
-
 M.minimal = function()
 	return require("telescope.themes").get_dropdown {
 		borderchars = {
@@ -117,7 +104,6 @@ end
 
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "zoxide"
-require("telescope").load_extension "neoclip"
 
 vim.keymap.set("n", "<leader>te", function()
 	require("telescope.builtin").builtin(M.minimal())
@@ -169,10 +155,6 @@ end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>ht", function() -- Yes i like doom emacs keybindings
 	require("telescope.builtin").colorscheme(M.minimal())
-end, { silent = true, noremap = true })
-
-vim.keymap.set("n", "<leader>fy", function()
-	require("telescope").extensions.neoclip.default(M.minimal())
 end, { silent = true, noremap = true })
 
 return M
