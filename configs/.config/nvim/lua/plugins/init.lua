@@ -24,7 +24,7 @@ return require("packer").startup {
 			{
 				"wbthomason/packer.nvim",
 				"nvim-lua/plenary.nvim",
-				"tpope/vim-repeat",
+				{ "tpope/vim-repeat", event = "VimEnter" },
 				{ "tpope/vim-surround", event = "VimEnter" },
 			},
 

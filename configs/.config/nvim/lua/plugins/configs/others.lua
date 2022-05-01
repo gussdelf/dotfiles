@@ -160,14 +160,18 @@ M.trouble = function()
 end
 
 M.null_ls = function()
+	local b = require("null-ls").builtins
 	require("null-ls").setup {
 		sources = {
-			require("null-ls").builtins.formatting.stylua,
-			require("null-ls").builtins.formatting.gofmt,
-			require("null-ls").builtins.formatting.rustfmt,
-			require("null-ls").builtins.formatting.black,
-			require("null-ls").builtins.formatting.clang_format,
-			require("null-ls").builtins.formatting.deno_fmt.with {
+			b.formatting.stylua,
+			b.formatting.gofmt,
+			b.formatting.rustfmt,
+			b.formatting.black,
+			b.formatting.nixfmt,
+			b.formatting.shfmt,
+			b.formatting.clang_format,
+			b.diagnostics.shellcheck,
+			b.formatting.deno_fmt.with {
 				extra_args = function()
 					return {
 						"--options-use-tabs",

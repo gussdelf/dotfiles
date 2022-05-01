@@ -93,6 +93,7 @@ tsEnsureInstall = {
 	"java",
 	"julia",
 	"nix",
+	"toml",
 }
 
 tsFileTypes = {
@@ -128,6 +129,8 @@ tsFileTypes = {
 	"lisp",
 	"java",
 	"julia",
+	"nix",
+	"toml",
 }
 
 M.transparent_background =

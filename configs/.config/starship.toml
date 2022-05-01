@@ -11,9 +11,12 @@ format = """$character$all"""
 # success_symbol = "[Δ](green)"
 # error_symbol = "[Δ](red)"
 # vicmd_symbol = "[Δ](blue)"
-success_symbol = "[δ](green)"
-error_symbol = "[δ](red)"
-vicmd_symbol = "[δ](blue)"
+# success_symbol = "[δ](green)"
+# error_symbol = "[δ](red)"
+# vicmd_symbol = "[δ](blue)"
+success_symbol = "[ ](purple)"
+error_symbol = "[ ](red)"
+vicmd_symbol = "[ ](green)"
 
 [hostname]
 ssh_only = false
