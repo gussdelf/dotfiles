@@ -1,5 +1,4 @@
 alias n='nnn -e'
-alias g='git'
 alias xx='chmod +x'
 alias ww="wget"
 alias lz='lazygit'
@@ -35,3 +34,4 @@ alias pcomp='nvim +PackerCompile'
 alias psync='nvim +PackerSync'
 
 abbr c 'clear;'
+abbr g 'git'

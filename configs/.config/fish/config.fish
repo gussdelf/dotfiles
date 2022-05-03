@@ -18,9 +18,10 @@ xset r rate 320 40
 set -U fish_greeting 
 
 function fish_user_key_bindings
-  if command -s fzf-share >/dev/null
-    source (fzf-share)/key-bindings.fish
-  end
+	if command -s fzf-share >/dev/null
+		source (fzf-share)/key-bindings.fish
+	end
 
-  fzf_key_bindings
+	fzf_key_bindings
+	bind -M insert \cl forward-word
 end
