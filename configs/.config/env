@@ -1,12 +1,12 @@
 #! /usr/bin/env sh
 
-export VISUAl='emacsclient -nc' 
+export VISUAl='emacsclient -nc'
 export EDITOR='nvim'
-export NNN_PLUG='c:fzcd;l:launch;z:autojump;p:preview-tui;P:preview-tabbed;o:fzopen;'
 export LC_CTYPE=pt_BR.UTF-8
 export GOPATH="$XDG_DATA_HOME"/go
 export ZDOTDIR=$HOME/.config/zsh
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
@@ -39,12 +39,9 @@ export SPACEMACSDIR="$XDG_CONFIG_HOME"/spacemacs.d
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$CARGO_HOME/bin:$PATH"
-export PATH="$GEM_HOME/ruby/3.0.0/bin:$PATH"
-export PATH="$XDG_CONFIG_HOME/Doom/bin:$PATH"
 export PATH="$XDG_DATA_HOME/npm/bin:$PATH"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
 export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
-export JDTLS_HOME="$XDG_DATA_HOME"/jdtls
 export ASDF_DATA_DIR="${XDG_DATA_HOME:-~./local/share}/asdf"
 export ASDF_CONFIG_FILE="${XDG_CONFIG_HOME:-~./config}/asdf/asdfrc"
 export FZF_DEFAULT_COMMAND='fd -H -t f'
