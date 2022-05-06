@@ -44,7 +44,7 @@ vim.opt.laststatus = 3
 -- Others
 o.showmode = false
 -- o.guicursor = "n-i:blinkon100,v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
-o.guicursor = "a:block"
+-- o.guicursor = "a:block"
 o.background = "dark"
 o.pumheight = 7
 o.splitbelow = true

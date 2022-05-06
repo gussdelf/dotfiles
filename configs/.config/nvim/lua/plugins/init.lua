@@ -376,6 +376,7 @@ return require("packer").startup {
 				},
 				{
 					"jose-elias-alvarez/null-ls.nvim",
+					disable = true,
 					event = { "BufRead", "InsertEnter" },
 					config = function()
 						require("plugins.configs.others").null_ls()

@@ -45,9 +45,12 @@ table.insert(components.inactive, {})
 components.active[1] = {
 	{
 		provider = "▊ ",
-		hl = {
-			fg = colors.oceanblue,
-		},
+		hl = function()
+			return {
+				-- fg = colors.oceanblue,
+				fg = require("feline.providers.vi_mode").get_mode_color(),
+			}
+		end,
 	},
 	{
 		provider = " ",

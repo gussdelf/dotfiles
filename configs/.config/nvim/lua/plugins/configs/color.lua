@@ -5,8 +5,8 @@ function Colorscheme(name)
 	vim.o.background = vim.o.background
 end
 
-ColorGruv = function(tbg)
-	g.gruvbox_material_palette = "original"
+ColorGruv = function(style, tbg)
+	g.gruvbox_material_palette = style
 	g.gruvbox_material_sign_column_background = "none"
 	g.gruvbox_material_background = "hard"
 	g.gruvbox_material_transparent_background = tbg
@@ -97,4 +97,4 @@ ColorTokyo = function(style, tbg)
 	vim.api.nvim_set_hl(0, "GHListDark", { bg = "NONE", fg = "NONE" })
 end
 
-ColorGruv()
+ColorGruv "original"

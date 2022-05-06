@@ -4,5 +4,6 @@
         "vim",
         "use",
         "set_colorsheme"
-    ]
+    ],
+    "Lua.format.enable": false
 }
