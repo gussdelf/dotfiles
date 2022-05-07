@@ -3,6 +3,32 @@ local M = {}
 
 local lspconfig = require "lspconfig"
 
+local highlight = function(client)
+	if client.resolved_capabilities.document_highlight then
+		vim.api.nvim_create_autocmd("CursorHold", {
+			group = "lsp_document_highlight",
+			pattern = "*",
+			callback = function()
+				vim.lsp.buf.document_highlight()
+			end,
+		})
+		vim.api.nvim_create_autocmd("CursorMoved", {
+			group = "lsp_document_highlight",
+			pattern = "*",
+			callback = function()
+				vim.lsp.buf.clear_references()
+			end,
+		})
+		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+			group = "lsp_document_highlight",
+			pattern = "*",
+			callback = function()
+				vim.diagnostic.open_float(nil, { focus = false, scope = "cursor", header = "Diagnostics:" })
+			end,
+		})
+	end
+end
+
 local function on_attach(client, bufnr)
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
@@ -11,6 +37,7 @@ local function on_attach(client, bufnr)
 	-- keymaps(bufnr)
 	client.resolved_capabilities.document_formatting = false
 	client.resolved_capabilities.document_range_formatting = false
+	highlight(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
