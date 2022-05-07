@@ -34,6 +34,7 @@ M.kanagawa = {
 
 M.nord = {
 	bg = "#2E3440",
+	bg_dk = "#222730",
 	fg = "#D8DEE9",
 	black = "#3B4252",
 	skyblue = "#5E81AC",

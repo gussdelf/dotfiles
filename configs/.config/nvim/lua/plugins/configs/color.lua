@@ -17,6 +17,7 @@ ColorGruv = function(style, tbg)
 	Colorscheme "gruvbox-material"
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "SpecialKey", { link = "red" })
+	vim.api.nvim_set_hl(0, "CmpItemMenu", { link = "blue" })
 	vim.api.nvim_set_hl(0, "MarkSignHl", { link = "red" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })
 	vim.api.nvim_set_hl(0, "TSProperty", { italic = true })
@@ -66,6 +67,7 @@ ColorNord = function(tbg)
 
 	require("nord").set()
 
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#222730" })
 	vim.api.nvim_set_hl(0, "MatchParen", { link = "Search" })
 	vim.api.nvim_set_hl(0, "MarkSignHl", { link = "red" })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "Search" })

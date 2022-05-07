@@ -4,9 +4,7 @@ local M = {}
 
 local cmp = require "cmp"
 
-vim.opt.completeopt = "menuone,noselect"
-
-local kind_icons = {
+local icons = {
 	Class = " ",
 	Color = " ",
 	Constant = "ﲀ ",
@@ -35,35 +33,41 @@ local kind_icons = {
 }
 
 local border = {
-	"╔",
-	"═",
-	"╗",
-	"║",
-	"╝",
-	"═",
-	"╚",
-	"║",
+	-- "╔",
+	-- "═",
+	-- "╗",
+	-- "║",
+	-- "╝",
+	-- "═",
+	-- "╚",
+	-- "║",
 
-	-- "┌",
-	-- "─",
-	-- "┐",
-	-- "│",
-	-- "┘",
-	-- "─",
-	-- "└",
-	-- "│",
+	"┌",
+	"─",
+	"┐",
+	"│",
+	"┘",
+	"─",
+	"└",
+	"│",
 }
 
 cmp.setup {
 	window = {
 		completion = {
-			border = border,
-			-- scrollbar = "┃",
+			-- border = border,
+			winhighlight = "FloatBorder:NormalFloat",
+			scrollbar = "┃",
 		},
 		documentation = {
-			border = border,
-			-- scrollbar = "┃",
+			-- border = border,
+			scrollbar = "┃",
 		},
+	},
+	completion = {
+		completeopt = "menu,menuone,noinsert",
+		keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
+		keyword_length = 1,
 	},
 	snippet = {
 		expand = function(args)
@@ -71,19 +75,11 @@ cmp.setup {
 		end,
 	},
 	formatting = {
-		format = function(entry, vim_item)
-			-- Kind icons
-			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
-			-- -- Source
-			vim_item.menu = ({
-				buffer = "[Buffer]",
-				nvim_lsp = "[LSP]",
-				name = "[Api]",
-				luasnip = "[Snippets]",
-				latex_symbols = "[LaTeX]",
-				tmux = "[Tmux]",
-				cmp_tabnine = "[TabNine]",
-			})[entry.source.name]
+		fields = { "kind", "abbr", "menu" },
+		format = function(_, vim_item)
+			vim_item.menu = vim_item.kind
+			vim_item.kind = icons[vim_item.kind]
+
 			return vim_item
 		end,
 	},
