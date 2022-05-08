@@ -15,5 +15,6 @@ if command -v fzf-share >/dev/null; then
 fi
 
 eval "$(zoxide init --cmd j bash)"
-xset r rate 320 40
 set -o vi
+
+xset r rate 320 40

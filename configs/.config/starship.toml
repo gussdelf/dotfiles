@@ -33,6 +33,7 @@ show_always = true
  
 [directory]
 read_only = " "
+style = "blue bold"
 truncation_length = 2
 truncation_symbol = "…/"
 
@@ -61,7 +62,7 @@ symbol = " "
 symbol = " "
 
 [lua]
-symbol = " "
+symbol = " "
 
 [julia]
 symbol = " "

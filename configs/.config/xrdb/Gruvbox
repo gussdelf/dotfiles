@@ -1,7 +1,7 @@
 ! Base16 Gruvbox dark, hard
 ! Scheme: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
-st.alpha: 0.8
-st.font: SauceCodePro Nerd Font:style:medium:pixelsize=15
+st.alpha: 1.0
+st.font: Liga SFMono Nerd Font:style:regular:pixelsize=15
 
 ! Hard
 #define base00 #1d2021
