@@ -71,4 +71,4 @@ vim.keymap.set({ "n", "v" }, "ç", ":", { silent = false })
 vim.keymap.set({ "n", "v" }, ";", ":", { silent = false })
 
 -- others
-vim.keymap.set("n", "<Esc>", ":noh<CR>", { silent = true })
+vim.keymap.set("n", "<Esc>", "<cmd>noh<cr>", { silent = true })

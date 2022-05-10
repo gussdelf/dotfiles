@@ -4,7 +4,7 @@ local M = {}
 local lspconfig = require "lspconfig"
 
 local highlight = function(client)
-	if client.resolved_capabilities.document_highlight then
+	if client.server_capabilities.document_highlight then
 		vim.api.nvim_create_autocmd("CursorHold", {
 			group = "lsp_document_highlight",
 			pattern = "*",
@@ -35,8 +35,8 @@ local function on_attach(client, bufnr)
 	end
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 	-- keymaps(bufnr)
-	client.resolved_capabilities.document_formatting = false
-	client.resolved_capabilities.document_range_formatting = false
+	client.server_capabilities.document_formatting = false
+	client.server_capabilities.document_range_formatting = false
 	highlight(client)
 end
 
