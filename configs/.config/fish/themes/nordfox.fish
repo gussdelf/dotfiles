@@ -14,7 +14,7 @@ set -l pink bf88bc
 
 # Syntax Highlighting Colors
 set -g fish_color_normal $foreground
-set -g fish_color_command $cyan
+set -g fish_color_command $green
 set -g fish_color_keyword $pink
 set -g fish_color_quote $yellow
 set -g fish_color_redirection $foreground

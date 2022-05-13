@@ -68,6 +68,7 @@ local servers = {
 	"bashls",
 	"jdtls",
 	"vimls",
+	"rnix",
 }
 for _, lsp in pairs(servers) do
 	---@diagnostic disable-next-line: different-requires

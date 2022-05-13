@@ -1,5 +1,5 @@
 local M = {}
----@diagnostic disable: different-requires
+
 require("telescope").setup {
 	defaults = {
 		mappings = {
@@ -88,8 +88,8 @@ M.minimal = function()
 			},
 		},
 		path_display = { "truncate" },
-		prompt_prefix = "> ",
-		selection_caret = "> ",
+		prompt_prefix = "  ",
+		selection_caret = "  ",
 		previewer = false,
 		prompt_title = false,
 		hidden = true,

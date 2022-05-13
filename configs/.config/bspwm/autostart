@@ -8,7 +8,7 @@ xset r rate 320 40 &
 
 picom -f &
 xrdb ~/.config/xrdb/Gruvbox &
-feh --bg-scale ~/.dotfiles/wallpapers/waterfall2.jpg --no-fehbg &
+feh --bg-scale ~/.dotfiles/wallpapers/forest.jpg --no-fehbg &
 
 sleep 10 &
 $HOME/.config/polybar/launch.sh &

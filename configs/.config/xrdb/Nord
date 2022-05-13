@@ -6,7 +6,7 @@
 ! Repository: https://github.com/arcticicestudio/nord-xresources
 ! License:    MIT
 !
-st.font: SauceCodePro Nerd Font:style:medium:pixelsize=15
+st.font: Liga SFMono Nerd Font:style:regular:pixelsize=15
 
 #define nord0 #2E3440
 #define nord1 #3B4252

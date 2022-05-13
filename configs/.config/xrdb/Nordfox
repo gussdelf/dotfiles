@@ -20,5 +20,5 @@
 *color14: #93ccdc
 *color15: #e7ecf4
 
-st.alpha: 0.8
-st.font: VictorMono Nerd Font:style:semibold:pixelsize=15:antialias=true:autohint=true
+st.alpha: 1.0
+st.font: Liga SFMono Nerd Font:style:regular:pixelsize=15
